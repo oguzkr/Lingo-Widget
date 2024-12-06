@@ -13,9 +13,9 @@ enum Spanish {
             exampleSentence: "¡Hola! ¿Cómo estás?",
             pronunciations: [
                 "tr": "ola",
-                "en": "oh-lah",
+                "en": "oh·lah",
                 "es": "ola",
-                "id": "ho-la"
+                "id": "ho·la"
             ]
         ),
         Word(
@@ -23,9 +23,9 @@ enum Spanish {
             exampleSentence: "¡Buenos días! ¡Que tengas un buen día!",
             pronunciations: [
                 "tr": "buenos dias",
-                "en": "bwe-nos dee-as",
+                "en": "bwe·nos dee·as",
                 "es": "buenos días",
-                "id": "bu-e-nos di-as"
+                "id": "bu·e·nos di·as"
             ]
         ),
         Word(
@@ -33,9 +33,9 @@ enum Spanish {
             exampleSentence: "¡Muchas gracias por tu ayuda!",
             pronunciations: [
                 "tr": "grasyas",
-                "en": "grah-see-as",
+                "en": "grah·see·as",
                 "es": "gracias",
-                "id": "gra-si-as"
+                "id": "gra·si·as"
             ]
         ),
         Word(
@@ -43,9 +43,9 @@ enum Spanish {
             exampleSentence: "Por favor, ¿me puedes ayudar?",
             pronunciations: [
                 "tr": "por favor",
-                "en": "por fah-vor",
+                "en": "por fah·vor",
                 "es": "por favor",
-                "id": "por fa-vor"
+                "id": "por fa·vor"
             ]
         ),
         Word(
@@ -53,9 +53,9 @@ enum Spanish {
             exampleSentence: "¡Adiós, hasta luego!",
             pronunciations: [
                 "tr": "adiyos",
-                "en": "ah-dee-os",
+                "en": "ah·dee·os",
                 "es": "adiós",
-                "id": "a-di-os"
+                "id": "a·di·os"
             ]
         )
     ]
