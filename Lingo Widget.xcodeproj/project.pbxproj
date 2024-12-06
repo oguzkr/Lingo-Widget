@@ -6,14 +6,65 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		12FC88542D02C62F008D9D9A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12FC88532D02C62E008D9D9A /* WidgetKit.framework */; };
+		12FC88562D02C62F008D9D9A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12FC88552D02C62F008D9D9A /* SwiftUI.framework */; };
+		12FC88652D02C630008D9D9A /* LingoWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 12FC88512D02C62E008D9D9A /* LingoWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		12FC88632D02C630008D9D9A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12FC88342D02C589008D9D9A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 12FC88502D02C62E008D9D9A;
+			remoteInfo = LingoWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		12FC886A2D02C630008D9D9A /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				12FC88652D02C630008D9D9A /* LingoWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		12FC883C2D02C589008D9D9A /* Lingo Widget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lingo Widget.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		12FC88512D02C62E008D9D9A /* LingoWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LingoWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		12FC88532D02C62E008D9D9A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		12FC88552D02C62F008D9D9A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		12FC88662D02C630008D9D9A /* Exceptions for "LingoWidget" folder in "LingoWidgetExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 12FC88502D02C62E008D9D9A /* LingoWidgetExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		12FC883E2D02C589008D9D9A /* Lingo Widget */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "Lingo Widget";
+			sourceTree = "<group>";
+		};
+		12FC88572D02C62F008D9D9A /* LingoWidget */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				12FC88662D02C630008D9D9A /* Exceptions for "LingoWidget" folder in "LingoWidgetExtension" target */,
+			);
+			path = LingoWidget;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,6 +77,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		12FC884E2D02C62E008D9D9A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12FC88562D02C62F008D9D9A /* SwiftUI.framework in Frameworks */,
+				12FC88542D02C62F008D9D9A /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -33,6 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				12FC883E2D02C589008D9D9A /* Lingo Widget */,
+				12FC88572D02C62F008D9D9A /* LingoWidget */,
+				12FC88522D02C62E008D9D9A /* Frameworks */,
 				12FC883D2D02C589008D9D9A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +103,18 @@
 			isa = PBXGroup;
 			children = (
 				12FC883C2D02C589008D9D9A /* Lingo Widget.app */,
+				12FC88512D02C62E008D9D9A /* LingoWidgetExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		12FC88522D02C62E008D9D9A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				12FC88532D02C62E008D9D9A /* WidgetKit.framework */,
+				12FC88552D02C62F008D9D9A /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -55,10 +127,12 @@
 				12FC88382D02C589008D9D9A /* Sources */,
 				12FC88392D02C589008D9D9A /* Frameworks */,
 				12FC883A2D02C589008D9D9A /* Resources */,
+				12FC886A2D02C630008D9D9A /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				12FC88642D02C630008D9D9A /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				12FC883E2D02C589008D9D9A /* Lingo Widget */,
@@ -69,6 +143,28 @@
 			productName = "Lingo Widget";
 			productReference = 12FC883C2D02C589008D9D9A /* Lingo Widget.app */;
 			productType = "com.apple.product-type.application";
+		};
+		12FC88502D02C62E008D9D9A /* LingoWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12FC88672D02C630008D9D9A /* Build configuration list for PBXNativeTarget "LingoWidgetExtension" */;
+			buildPhases = (
+				12FC884D2D02C62E008D9D9A /* Sources */,
+				12FC884E2D02C62E008D9D9A /* Frameworks */,
+				12FC884F2D02C62E008D9D9A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				12FC88572D02C62F008D9D9A /* LingoWidget */,
+			);
+			name = LingoWidgetExtension;
+			packageProductDependencies = (
+			);
+			productName = LingoWidgetExtension;
+			productReference = 12FC88512D02C62E008D9D9A /* LingoWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -81,6 +177,9 @@
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					12FC883B2D02C589008D9D9A = {
+						CreatedOnToolsVersion = 16.1;
+					};
+					12FC88502D02C62E008D9D9A = {
 						CreatedOnToolsVersion = 16.1;
 					};
 				};
@@ -100,12 +199,20 @@
 			projectRoot = "";
 			targets = (
 				12FC883B2D02C589008D9D9A /* Lingo Widget */,
+				12FC88502D02C62E008D9D9A /* LingoWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		12FC883A2D02C589008D9D9A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12FC884F2D02C62E008D9D9A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +229,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		12FC884D2D02C62E008D9D9A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		12FC88642D02C630008D9D9A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 12FC88502D02C62E008D9D9A /* LingoWidgetExtension */;
+			targetProxy = 12FC88632D02C630008D9D9A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		12FC88482D02C58A008D9D9A /* Debug */ = {
@@ -258,8 +380,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -267,6 +390,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.oguzkr.Lingo-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -287,8 +413,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -296,6 +423,63 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.oguzkr.Lingo-Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		12FC88682D02C630008D9D9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C7WG386WRN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LingoWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LingoWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.oguzkr.Lingo-Widget.LingoWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		12FC88692D02C630008D9D9A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C7WG386WRN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LingoWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = LingoWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.oguzkr.Lingo-Widget.LingoWidget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -319,6 +503,15 @@
 			buildConfigurations = (
 				12FC884B2D02C58A008D9D9A /* Debug */,
 				12FC884C2D02C58A008D9D9A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12FC88672D02C630008D9D9A /* Build configuration list for PBXNativeTarget "LingoWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12FC88682D02C630008D9D9A /* Debug */,
+				12FC88692D02C630008D9D9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
