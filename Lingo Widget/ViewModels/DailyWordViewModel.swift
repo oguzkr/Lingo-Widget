@@ -14,7 +14,7 @@ class DailyWordViewModel: ObservableObject {
     @Published var pronunciation: String = ""
     @Published var exampleSentence: String = ""
     @Published var sourceExampleSentence: String = ""
-
+    
     private let languageManager = LanguageManager.shared
     private let synthesizer = AVSpeechSynthesizer()
     private var currentLanguageCode: String = "en"
@@ -28,20 +28,20 @@ class DailyWordViewModel: ObservableObject {
         }
     }
     
-    func fetchDailyWord(from sourceLang: String = "tr", to targetLang: String = "en", nativeLanguage: String = "en") {
-          currentLanguageCode = targetLang
-          if let wordPair = languageManager.getDailyWordPair(  
-              from: sourceLang,
-              to: targetLang,
-              nativeLanguage: nativeLanguage
-          ) {
-              sourceWord = wordPair.source.text
-              targetWord = wordPair.target.text
-              pronunciation = wordPair.pronunciation
-              exampleSentence = wordPair.target.exampleSentence
-              sourceExampleSentence = wordPair.source.exampleSentence
-          }
-      }
+    func fetchDailyWord(from sourceLang: String = "tr", to targetLang: String = "en") {
+        currentLanguageCode = targetLang
+        if let wordPair = languageManager.getDailyWordPair(
+            from: sourceLang,
+            to: targetLang,
+            nativeLanguage: sourceLang // Burada değişiklik yapıldı
+        ) {
+            sourceWord = wordPair.source.text
+            targetWord = wordPair.target.text
+            pronunciation = wordPair.pronunciation
+            exampleSentence = wordPair.target.exampleSentence
+            sourceExampleSentence = wordPair.source.exampleSentence
+        }
+    }
     
     func speakWord(text: String? = nil) {
         let textToSpeak = text ?? targetWord
@@ -56,6 +56,26 @@ class DailyWordViewModel: ObservableObject {
         synthesizer.speak(utterance)
     }
     
+    func fetchDailyWord(from sourceLang: String = "tr", to targetLang: String = "en", nativeLanguage: String = "en") {
+        currentLanguageCode = targetLang
+        if let wordPair = languageManager.getDailyWordPair(
+            from: sourceLang,
+            to: targetLang,
+            nativeLanguage: nativeLanguage
+        ) {
+            sourceWord = wordPair.source.text
+            targetWord = wordPair.target.text
+            pronunciation = wordPair.pronunciation
+            exampleSentence = wordPair.target.exampleSentence
+            sourceExampleSentence = wordPair.source.exampleSentence
+        }
+    }
+    
+    func refreshWord(from sourceLang: String, to targetLang: String, nativeLanguage: String) {
+        _ = languageManager.getNewRandomIndex()
+        fetchDailyWord(from: sourceLang, to: targetLang, nativeLanguage: nativeLanguage)
+    }
+    
     private func convertToSpeechLanguageCode(_ code: String) -> String {
         let conversions = [
             "en": "en-US",
@@ -68,7 +88,8 @@ class DailyWordViewModel: ObservableObject {
             "ru": "ru-RU",
             "ja": "ja-JP",
             "ko": "ko-KR",
-            "zh": "zh-CN"
+            "zh": "zh-CN",
+            "id": "id-ID" // Endonezce için eklendi
         ]
         return conversions[code] ?? code
     }

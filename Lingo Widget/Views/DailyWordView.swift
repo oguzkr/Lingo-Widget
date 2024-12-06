@@ -35,7 +35,7 @@ struct DailyWordView: View {
                 Spacer()
                 
                 Button(action: {
-                    viewModel.fetchDailyWord(from: sourceLanguage, to: targetLanguage)
+                    viewModel.refreshWord(from: sourceLanguage, to: targetLanguage, nativeLanguage: sourceLanguage)
                 }) {
                     Image(systemName: "arrow.triangle.2.circlepath")
                         .font(.system(size: 20))

@@ -11,8 +11,7 @@ final class LanguageManager {
     static let shared = LanguageManager()
     
     private let userDefaults = UserDefaults.standard
-    private let lastUpdateKey = "LastUpdateDate"
-    private let dailyIndexKey = "DailyWordIndex"
+    private let currentIndexKey = "CurrentWordIndex"
     
     let languages: [String: [Word]] = [
         "tr": Turkish.words,
@@ -21,39 +20,44 @@ final class LanguageManager {
         "id": Indonesian.words
     ]
     
-    func getDailyWordPair(from: String, to: String, nativeLanguage: String) -> (
-            source: Word,
-            target: Word,
-            pronunciation: String
-        )? {
-            guard let sourceWords = languages[from],
-                  let targetWords = languages[to] else {
-                return nil
-            }
-            
-            let randomIndex = Int.random(in: 0..<min(sourceWords.count, targetWords.count))
-            let sourceWord = sourceWords[randomIndex]
-            let targetWord = targetWords[randomIndex]
-            
-            // Kullanıcının ana diline göre telaffuz
-            let pronunciation = targetWord.pronunciations[nativeLanguage] ??
-                              targetWord.pronunciations["en"] ?? ""
-            
-            return (sourceWord, targetWord, pronunciation)
-        }
+    // Mevcut kelime indeksini al
+    private func getCurrentIndex() -> Int {
+        return userDefaults.integer(forKey: currentIndexKey)
+    }
     
-    private func getDailyIndex() -> Int {
-        let calendar = Calendar.current
-        let now = Date()
-        
-        if let lastUpdate = userDefaults.object(forKey: lastUpdateKey) as? Date,
-           calendar.isDate(lastUpdate, inSameDayAs: now) {
-            return userDefaults.integer(forKey: dailyIndexKey)
+    // Yeni rastgele kelime indeksi oluştur
+    func getNewRandomIndex() -> Int {
+        let newIndex = Int.random(in: 0..<getMinimumWordCount())
+        userDefaults.set(newIndex, forKey: currentIndexKey)
+        return newIndex
+    }
+    
+    private func getMinimumWordCount() -> Int {
+        return languages.values.map { $0.count }.min() ?? 0
+    }
+    
+    func getDailyWordPair(from: String, to: String, nativeLanguage: String) -> (
+        source: Word,
+        target: Word,
+        pronunciation: String
+    )? {
+        guard let sourceWords = languages[from],
+              let targetWords = languages[to] else {
+            return nil
         }
         
-        let newIndex = Int.random(in: 0..<2) // şu an 2 kelime var
-        userDefaults.set(now, forKey: lastUpdateKey)
-        userDefaults.set(newIndex, forKey: dailyIndexKey)
-        return newIndex
+        let currentIndex = getCurrentIndex()
+        
+        guard currentIndex < sourceWords.count && currentIndex < targetWords.count else {
+            return nil
+        }
+        
+        let sourceWord = sourceWords[currentIndex]
+        let targetWord = targetWords[currentIndex]
+        
+        let pronunciation = targetWord.pronunciations[nativeLanguage] ??
+                          targetWord.pronunciations["en"] ?? ""
+        
+        return (sourceWord, targetWord, pronunciation)
     }
 }
