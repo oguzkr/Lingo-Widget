@@ -20,7 +20,7 @@ enum Turkish {
         ),
         Word(
             text: "günaydın",
-            exampleSentence: "Günaydın, iyi bir gün olsun!",
+            exampleSentence: "Günaydın, iyi günler!",
             pronunciations: [
                 "tr": "gün-ay-dın",
                 "en": "goo-nay-dun",

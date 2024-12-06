@@ -19,7 +19,6 @@ class DailyWordViewModel: ObservableObject {
     private let synthesizer = AVSpeechSynthesizer()
     private var currentLanguageCode: String = "en"
     
-    // Preview için başlangıç değerleri atayabilen init ekleyelim
     init(previewData: (source: String, target: String, pronunciation: String, example: String)? = nil) {
         if let data = previewData {
             self.sourceWord = data.source
@@ -29,24 +28,28 @@ class DailyWordViewModel: ObservableObject {
         }
     }
     
-    func fetchDailyWord(from sourceLang: String = "tr", to targetLang: String = "en", nativeLanguage: String = "tr") {
-        if let wordPair = languageManager.getDailyWordPair(from: sourceLang, to: targetLang, nativeLanguage: nativeLanguage) {
-            sourceWord = wordPair.source.text
-            targetWord = wordPair.target.text
-            pronunciation = wordPair.pronunciation
-            exampleSentence = wordPair.target.exampleSentence
-            sourceExampleSentence = wordPair.source.exampleSentence
-            currentLanguageCode = targetLang
-        }
-    }
+    func fetchDailyWord(from sourceLang: String = "tr", to targetLang: String = "en", nativeLanguage: String = "en") {
+          currentLanguageCode = targetLang
+          if let wordPair = languageManager.getDailyWordPair(  
+              from: sourceLang,
+              to: targetLang,
+              nativeLanguage: nativeLanguage
+          ) {
+              sourceWord = wordPair.source.text
+              targetWord = wordPair.target.text
+              pronunciation = wordPair.pronunciation
+              exampleSentence = wordPair.target.exampleSentence
+              sourceExampleSentence = wordPair.source.exampleSentence
+          }
+      }
     
-    func speakWord() {
-        // Dil kodlarını AVSpeechSynthesizer formatına çevirme
+    func speakWord(text: String? = nil) {
+        let textToSpeak = text ?? targetWord
         let languageCode = convertToSpeechLanguageCode(currentLanguageCode)
         
-        let utterance = AVSpeechUtterance(string: targetWord)
+        let utterance = AVSpeechUtterance(string: textToSpeak)
         utterance.voice = AVSpeechSynthesisVoice(language: languageCode)
-        utterance.rate = 0.4  // Yavaş telaffuz için
+        utterance.rate = 0.4
         utterance.pitchMultiplier = 1.0
         utterance.volume = 1.0
         
@@ -54,7 +57,6 @@ class DailyWordViewModel: ObservableObject {
     }
     
     private func convertToSpeechLanguageCode(_ code: String) -> String {
-        // Dil kodlarını AVSpeechSynthesizer formatına çevirme
         let conversions = [
             "en": "en-US",
             "tr": "tr-TR",
@@ -66,8 +68,7 @@ class DailyWordViewModel: ObservableObject {
             "ru": "ru-RU",
             "ja": "ja-JP",
             "ko": "ko-KR",
-            "zh": "zh-CN",
-            // Diğer diller için gerekli dönüşümler eklenebilir
+            "zh": "zh-CN"
         ]
         return conversions[code] ?? code
     }

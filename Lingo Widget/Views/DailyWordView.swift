@@ -9,6 +9,8 @@ import SwiftUI
 
 struct DailyWordView: View {
     @StateObject private var viewModel: DailyWordViewModel
+    @AppStorage("sourceLanguage") private var sourceLanguage: String = "tr"
+    @AppStorage("targetLanguage") private var targetLanguage: String = "en"
     
     init(viewModel: DailyWordViewModel? = nil) {
         _viewModel = StateObject(wrappedValue: viewModel ?? DailyWordViewModel())
@@ -16,16 +18,26 @@ struct DailyWordView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            // Hedef Kelime ve Ses Butonu
+            // Hedef Kelime, Ses Butonu ve Yenileme Butonu
             HStack {
                 Text(viewModel.targetWord)
                     .font(.system(size: 28, weight: .bold))
                     .foregroundStyle(.primary)
                 
                 Button(action: {
-                    viewModel.speakWord()
+                    viewModel.speakWord(text: viewModel.targetWord)
                 }) {
                     Image(systemName: "speaker.wave.2.fill")
+                        .font(.system(size: 20))
+                        .foregroundStyle(.blue)
+                }
+                
+                Spacer()
+                
+                Button(action: {
+                    viewModel.fetchDailyWord(from: sourceLanguage, to: targetLanguage)
+                }) {
+                    Image(systemName: "arrow.triangle.2.circlepath")
                         .font(.system(size: 20))
                         .foregroundStyle(.blue)
                 }
@@ -45,11 +57,21 @@ struct DailyWordView: View {
             Divider()
                 .padding(.vertical, 4)
             
-            // Örnek cümleler
+            // Örnek cümleler ve ses butonu
             VStack(alignment: .leading, spacing: 8) {
-                Text(viewModel.exampleSentence)
-                    .font(.system(size: 16))
-                    .foregroundStyle(.primary)
+                HStack {
+                    Text(viewModel.exampleSentence)
+                        .font(.system(size: 16))
+                        .foregroundStyle(.primary)
+                    
+                    Button(action: {
+                        viewModel.speakWord(text: viewModel.exampleSentence)
+                    }) {
+                        Image(systemName: "speaker.wave.2.fill")
+                            .font(.system(size: 16))
+                            .foregroundStyle(.blue)
+                    }
+                }
                 
                 if !viewModel.sourceExampleSentence.isEmpty {
                     Text(viewModel.sourceExampleSentence)
@@ -65,18 +87,30 @@ struct DailyWordView: View {
         .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
         .onAppear {
             if viewModel.targetWord.isEmpty {
-                viewModel.fetchDailyWord()
+                viewModel.fetchDailyWord(from: sourceLanguage, to: targetLanguage)
             }
         }
     }
 }
 
-
-#Preview {
-    DailyWordView(viewModel: .init(previewData: (
-        source: "hello",
-        target: "merhaba",
-        pronunciation: "mɜːrˈhɑː.bə",
-        example: "Hello, how are you?"
+#Preview("English Native - Learning Turkish") {
+    DailyWordView(viewModel: DailyWordViewModel(previewData: (
+        source: "goodbye",
+        target: "hoşçakal",
+        pronunciation: "hosh-cha-kal",  // İngilizce konuşanlar için telaffuz
+        example: "Hoşçakal, görüşürüz!"
     )))
+    .padding()
+    .background(Color(uiColor: .systemGray6))
+}
+
+#Preview("Turkish Native - Learning English") {
+    DailyWordView(viewModel: DailyWordViewModel(previewData: (
+        source: "hoşçakal",
+        target: "goodbye",
+        pronunciation: "gud-bay",  // Türkçe konuşanlar için telaffuz
+        example: "Goodbye, see you later!"
+    )))
+    .padding()
+    .background(Color(uiColor: .systemGray6))
 }

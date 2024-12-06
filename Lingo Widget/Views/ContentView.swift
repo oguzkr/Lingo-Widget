@@ -8,22 +8,21 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selectedSourceLanguage = "tr"
-    @State private var selectedTargetLanguage = "en"
+    @AppStorage("sourceLanguage") private var selectedSourceLanguage = "tr"
+    @AppStorage("targetLanguage") private var selectedTargetLanguage = "en"
+    @State private var dailyWordViewModel = DailyWordViewModel()
     
     let languages = [
         "tr": "Türkçe",
         "en": "English",
         "es": "Español",
-        // Diğer diller buraya eklenecek
+        "id": "Bahasa Indonesia"
     ]
     
     var body: some View {
         VStack(spacing: 24) {
-            // Dil seçim kontrolleri
             VStack(spacing: 16) {
-                // Ana dil seçimi
-                HStack() {
+                HStack {
                     Text("Ana Dil")
                         .font(.headline)
                     Picker("Ana Dil", selection: $selectedSourceLanguage) {
@@ -37,10 +36,15 @@ struct ContentView: View {
                         RoundedRectangle(cornerRadius: 8)
                             .fill(Color(uiColor: .systemBackground))
                     )
+                    .onChange(of: selectedSourceLanguage) {
+                        dailyWordViewModel.fetchDailyWord(
+                            from: selectedSourceLanguage,
+                            to: selectedTargetLanguage
+                        )
+                    }
                 }
                 
-                // Hedef dil seçimi
-                HStack() {
+                HStack {
                     Text("Öğrenilecek Dil")
                         .font(.headline)
                     Picker("Öğrenilecek Dil", selection: $selectedTargetLanguage) {
@@ -54,18 +58,23 @@ struct ContentView: View {
                         RoundedRectangle(cornerRadius: 8)
                             .fill(Color(uiColor: .systemBackground))
                     )
+                    .onChange(of: selectedTargetLanguage) { 
+                        dailyWordViewModel.fetchDailyWord(
+                            from: selectedSourceLanguage,
+                            to: selectedTargetLanguage
+                        )
+                    }
                 }
             }
             .padding()
 
-            DailyWordView()
+            DailyWordView(viewModel: dailyWordViewModel)
                 .padding(.horizontal)
             
             Spacer()
         }
         .background(Color(uiColor: .systemGray6))
     }
-
 }
 
 

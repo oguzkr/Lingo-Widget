@@ -17,31 +17,30 @@ final class LanguageManager {
     let languages: [String: [Word]] = [
         "tr": Turkish.words,
         "en": English.words,
-        "es": Spanish.words
+        "es": Spanish.words,
+        "id": Indonesian.words
     ]
     
     func getDailyWordPair(from: String, to: String, nativeLanguage: String) -> (
-        source: Word,
-        target: Word,
-        pronunciation: String
-    )? {
-        let index = getDailyIndex()
-        
-        guard let sourceWords = languages[from],
-              let targetWords = languages[to],
-              index < sourceWords.count,
-              index < targetWords.count else {
-            return nil
+            source: Word,
+            target: Word,
+            pronunciation: String
+        )? {
+            guard let sourceWords = languages[from],
+                  let targetWords = languages[to] else {
+                return nil
+            }
+            
+            let randomIndex = Int.random(in: 0..<min(sourceWords.count, targetWords.count))
+            let sourceWord = sourceWords[randomIndex]
+            let targetWord = targetWords[randomIndex]
+            
+            // Kullanıcının ana diline göre telaffuz
+            let pronunciation = targetWord.pronunciations[nativeLanguage] ??
+                              targetWord.pronunciations["en"] ?? ""
+            
+            return (sourceWord, targetWord, pronunciation)
         }
-        
-        let sourceWord = sourceWords[index]
-        let targetWord = targetWords[index]
-        
-        // Kullanıcının ana diline göre telaffuz al
-        let pronunciation = targetWord.pronunciations[nativeLanguage] ?? targetWord.pronunciations["en"] ?? ""
-        
-        return (sourceWord, targetWord, pronunciation)
-    }
     
     private func getDailyIndex() -> Int {
         let calendar = Calendar.current
