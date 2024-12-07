@@ -6,6 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		12508B242D04493500414903 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 12508B232D04493500414903 /* RevenueCat */; };
+		12508B262D04493500414903 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 12508B252D04493500414903 /* RevenueCatUI */; };
+		12508B292D044A9700414903 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 12508B282D044A9700414903 /* FirebaseAnalytics */; };
+		12508B2B2D044A9700414903 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 12508B2A2D044A9700414903 /* FirebaseAuth */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		12FC886A2D02C630008D9D9A /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -37,6 +44,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12508B262D04493500414903 /* RevenueCatUI in Frameworks */,
+				12508B242D04493500414903 /* RevenueCat in Frameworks */,
+				12508B292D044A9700414903 /* FirebaseAnalytics in Frameworks */,
+				12508B2B2D044A9700414903 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +100,10 @@
 			);
 			name = "Lingo Widget";
 			packageProductDependencies = (
+				12508B232D04493500414903 /* RevenueCat */,
+				12508B252D04493500414903 /* RevenueCatUI */,
+				12508B282D044A9700414903 /* FirebaseAnalytics */,
+				12508B2A2D044A9700414903 /* FirebaseAuth */,
 			);
 			productName = "Lingo Widget";
 			productReference = 12FC883C2D02C589008D9D9A /* Lingo Widget.app */;
@@ -118,6 +133,10 @@
 			);
 			mainGroup = 12FC88332D02C589008D9D9A;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				12508B222D04493500414903 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
+				12508B272D044A9700414903 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 12FC883D2D02C589008D9D9A /* Products */;
 			projectDirPath = "";
@@ -356,6 +375,48 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		12508B222D04493500414903 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.13.0;
+			};
+		};
+		12508B272D044A9700414903 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		12508B232D04493500414903 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 12508B222D04493500414903 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCat;
+		};
+		12508B252D04493500414903 /* RevenueCatUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 12508B222D04493500414903 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCatUI;
+		};
+		12508B282D044A9700414903 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 12508B272D044A9700414903 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		12508B2A2D044A9700414903 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 12508B272D044A9700414903 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 12FC88342D02C589008D9D9A /* Project object */;
 }
