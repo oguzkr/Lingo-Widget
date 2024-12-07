@@ -27,6 +27,13 @@ class DailyWordViewModel: ObservableObject {
             self.exampleSentence = data.example
             self.sourceExampleSentence = data.example
         }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: .mixWithOthers)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Audio session ayarlanırken hata: \(error.localizedDescription)")
+        }
     }
     
     func fetchDailyWord(from sourceLang: String = "tr", to targetLang: String = "en") {

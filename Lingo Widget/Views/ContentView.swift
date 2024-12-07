@@ -27,13 +27,13 @@ struct ContentView: View {
                 .ignoresSafeArea()
             
             ScrollView {
-                Toggle("Karanlık Mod", isOn: $isDarkMode)
+                Toggle("Dark Mode", isOn: $isDarkMode)
                     .padding()
                 VStack(spacing: 16) {
                     HStack {
-                        Text("Ana Dil")
+                        Text("Native Language")
                             .font(.headline)
-                        Picker("Ana Dil", selection: $selectedSourceLanguage) {
+                        Picker("Choose", selection: $selectedSourceLanguage) {
                             ForEach(Array(languages.keys.sorted()), id: \.self) { key in
                                 Text(languages[key] ?? key)
                                     .tag(key)
@@ -53,9 +53,9 @@ struct ContentView: View {
                     }
                     
                     HStack {
-                        Text("Öğrenilecek Dil")
+                        Text("Language to learn")
                             .font(.headline)
-                        Picker("Öğrenilecek Dil", selection: $selectedTargetLanguage) {
+                        Picker("Choose", selection: $selectedTargetLanguage) {
                             ForEach(Array(languages.keys.sorted()), id: \.self) { key in
                                 Text(languages[key] ?? key)
                                     .tag(key)
@@ -74,6 +74,10 @@ struct ContentView: View {
                         }
                     }
                 }
+                Text("Widget Designs")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.top, 16)
                 
                 DailyWordViewMedium(viewModel: dailyWordViewModel)
                     .padding(.horizontal)
