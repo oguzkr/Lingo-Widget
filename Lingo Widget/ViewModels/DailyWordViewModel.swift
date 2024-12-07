@@ -25,6 +25,7 @@ class DailyWordViewModel: ObservableObject {
             self.targetWord = data.target
             self.pronunciation = data.pronunciation
             self.exampleSentence = data.example
+            self.sourceExampleSentence = data.example
         }
     }
     
@@ -81,15 +82,7 @@ class DailyWordViewModel: ObservableObject {
             "en": "en-US",
             "tr": "tr-TR",
             "es": "es-ES",
-            "fr": "fr-FR",
-            "de": "de-DE",
-            "it": "it-IT",
-            "pt": "pt-PT",
-            "ru": "ru-RU",
-            "ja": "ja-JP",
-            "ko": "ko-KR",
-            "zh": "zh-CN",
-            "id": "id-ID" // Endonezce için eklendi
+            "id": "id-ID"
         ]
         return conversions[code] ?? code
     }

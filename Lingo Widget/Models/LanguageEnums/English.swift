@@ -15,7 +15,8 @@ enum English {
                 "tr": "he·lo",
                 "en": "heh·low",
                 "es": "je·lou",
-                "id": "he·lo"
+                "id": "he·lo",
+                "fr": "e·lo"
             ]
         ),
         // 2
@@ -26,7 +27,8 @@ enum English {
                 "tr": "gud·mor·ning",
                 "en": "good·mor·ning",
                 "es": "gud·mor·ning",
-                "id": "gud·mor·ning"
+                "id": "gud·mor·ning",
+                "fr": "goud·mor·ning"
             ]
         ),
         // 3
@@ -37,7 +39,8 @@ enum English {
                 "tr": "tenk·yu",
                 "en": "thank·you",
                 "es": "zenk·yu",
-                "id": "teng·kyu"
+                "id": "teng·kyu",
+                "fr": "teng·iou"
             ]
         ),
         // 4
@@ -48,7 +51,8 @@ enum English {
                 "tr": "pi·liz",
                 "en": "please",
                 "es": "plis",
-                "id": "plis"
+                "id": "plis",
+                "fr": "pliz"
             ]
         ),
         // 5
@@ -59,7 +63,8 @@ enum English {
                 "tr": "gud·bay",
                 "en": "good·bye",
                 "es": "gud·bay",
-                "id": "gud·bay"
+                "id": "gud·bay",
+                "fr": "goud·bai"
             ]
         ),
         // 6
@@ -70,7 +75,8 @@ enum English {
                 "tr": "hav·ar·yu",
                 "en": "how·are·you",
                 "es": "jau·ar·yu",
-                "id": "hau·ar·yu"
+                "id": "hau·ar·yu",
+                "fr": "aou·ar·you"
             ]
         ),
         // 7
@@ -81,7 +87,8 @@ enum English {
                 "tr": "fayn",
                 "en": "fine",
                 "es": "fain",
-                "id": "fain"
+                "id": "fain",
+                "fr": "fain"
             ]
         ),
         // 8
@@ -92,7 +99,8 @@ enum English {
                 "tr": "si·yu",
                 "en": "see·you",
                 "es": "si·yu",
-                "id": "si·yu"
+                "id": "si·yu",
+                "fr": "si·you"
             ]
         ),
         // 9
@@ -103,7 +111,8 @@ enum English {
                 "tr": "eks·kiuz·mi",
                 "en": "ex·cuse·me",
                 "es": "eks·kius·mi",
-                "id": "eks·kyus·mi"
+                "id": "eks·kyus·mi",
+                "fr": "eks·kyuz·mi"
             ]
         ),
         // 10
@@ -114,7 +123,8 @@ enum English {
                 "tr": "so·ri",
                 "en": "sor·ry",
                 "es": "so·ri",
-                "id": "so·ri"
+                "id": "so·ri",
+                "fr": "so·ri"
             ]
         ),
         // 11
@@ -125,7 +135,8 @@ enum English {
                 "tr": "gud·nayt",
                 "en": "good·night",
                 "es": "gud·nait",
-                "id": "gud·nait"
+                "id": "gud·nait",
+                "fr": "goud·nait"
             ]
         ),
         // 12
@@ -136,7 +147,8 @@ enum English {
                 "tr": "gud·iv·ning",
                 "en": "good·eve·ning",
                 "es": "gud·iv·ning",
-                "id": "gud·iv·ning"
+                "id": "gud·iv·ning",
+                "fr": "goud·iv·ning"
             ]
         ),
         // 13
@@ -147,7 +159,8 @@ enum English {
                 "tr": "yur·vel·kam",
                 "en": "your·wel·come",
                 "es": "yur·wel·kam",
-                "id": "yor·wel·kam"
+                "id": "yor·wel·kam",
+                "fr": "your·wel·kom"
             ]
         ),
         // 14
@@ -158,7 +171,8 @@ enum English {
                 "tr": "hev·e·nays·dey",
                 "en": "have·a·nice·day",
                 "es": "jav·a·nais·dei",
-                "id": "hev·a·nais·dei"
+                "id": "hev·a·nais·dei",
+                "fr": "av·a·nais·dei"
             ]
         ),
         // 15
@@ -169,7 +183,8 @@ enum English {
                 "tr": "nays·tu·mit·yu",
                 "en": "nice·to·meet·you",
                 "es": "nais·tu·mit·yu",
-                "id": "nais·tu·mit·yu"
+                "id": "nais·tu·mit·yu",
+                "fr": "nais·tu·mit·you"
             ]
         ),
         // 16
@@ -180,7 +195,8 @@ enum English {
                 "tr": "vats·yur·neym",
                 "en": "whats·your·name",
                 "es": "uats·yor·neim",
-                "id": "wats·yor·nem"
+                "id": "wats·yor·nem",
+                "fr": "wats·your·nem"
             ]
         ),
         // 17
@@ -191,7 +207,8 @@ enum English {
                 "tr": "ver·ar·yu·from",
                 "en": "where·are·you·from",
                 "es": "uer·ar·yu·from",
-                "id": "wer·ar·yu·from"
+                "id": "wer·ar·yu·from",
+                "fr": "ouer·ar·you·from"
             ]
         ),
         // 18
@@ -202,7 +219,8 @@ enum English {
                 "tr": "ay·dont·an·dır·stend",
                 "en": "i·dont·under·stand",
                 "es": "ai·dont·an·der·stand",
-                "id": "ai·dont·an·der·stend"
+                "id": "ai·dont·an·der·stend",
+                "fr": "ai·don·an·der·stend"
             ]
         ),
         // 19
@@ -213,7 +231,8 @@ enum English {
                 "tr": "ken·yu·help·mi",
                 "en": "can·you·help·me",
                 "es": "kan·yu·jelp·mi",
-                "id": "ken·yu·help·mi"
+                "id": "ken·yu·help·mi",
+                "fr": "kan·you·elp·mi"
             ]
         ),
         // 20
@@ -224,7 +243,8 @@ enum English {
                 "tr": "of·kors",
                 "en": "of·course",
                 "es": "of·kors",
-                "id": "of·kors"
+                "id": "of·kors",
+                "fr": "of·cours"
             ]
         ),
         // 21
@@ -235,7 +255,8 @@ enum English {
                 "tr": "vat·taym·iz·it",
                 "en": "what·time·is·it",
                 "es": "uat·taim·is·it",
-                "id": "wat·taim·is·it"
+                "id": "wat·taim·is·it",
+                "fr": "ouat·taim·iz·it"
             ]
         ),
         // 22
@@ -246,7 +267,8 @@ enum English {
                 "tr": "hav·maç",
                 "en": "how·much",
                 "es": "jau·mach",
-                "id": "hau·mach"
+                "id": "hau·mach",
+                "fr": "au·mach"
             ]
         ),
         // 23
@@ -257,7 +279,8 @@ enum English {
                 "tr": "va·tır",
                 "en": "wa·ter",
                 "es": "ua·ter",
-                "id": "wa·ter"
+                "id": "wa·ter",
+                "fr": "oua·ter"
             ]
         ),
         // 24
@@ -268,7 +291,8 @@ enum English {
                 "tr": "ko·fi",
                 "en": "cof·fee",
                 "es": "ko·fi",
-                "id": "ko·fi"
+                "id": "ko·fi",
+                "fr": "ko·fi"
             ]
         ),
         // 25
@@ -279,7 +303,8 @@ enum English {
                 "tr": "di·li·şıs",
                 "en": "de·li·cious",
                 "es": "di·li·sios",
-                "id": "de·li·si·us"
+                "id": "de·li·si·us",
+                "fr": "de·li·si·us"
             ]
         ),
         // 26
@@ -290,7 +315,8 @@ enum English {
                 "tr": "ta·yırd",
                 "en": "ti·red",
                 "es": "tai·erd",
-                "id": "tai·red"
+                "id": "tai·red",
+                "fr": "ti·red"
             ]
         ),
         // 27
@@ -301,7 +327,8 @@ enum English {
                 "tr": "lets·go",
                 "en": "lets·go",
                 "es": "lets·gou",
-                "id": "lets·go"
+                "id": "lets·go",
+                "fr": "lets·go"
             ]
         ),
         // 28
@@ -312,7 +339,8 @@ enum English {
                 "tr": "fon",
                 "en": "phone",
                 "es": "foun",
-                "id": "fon"
+                "id": "fon",
+                "fr": "fon"
             ]
         ),
         // 29
@@ -323,7 +351,8 @@ enum English {
                 "tr": "frend",
                 "en": "friend",
                 "es": "frend",
-                "id": "frend"
+                "id": "frend",
+                "fr": "frend"
             ]
         ),
         // 30
@@ -334,7 +363,8 @@ enum English {
                 "tr": "hang·ri",
                 "en": "hun·gry",
                 "es": "jan·gri",
-                "id": "hang·ri"
+                "id": "hang·ri",
+                "fr": "ang·gri"
             ]
         ),
         // 31
@@ -345,7 +375,8 @@ enum English {
                 "tr": "buk",
                 "en": "book",
                 "es": "buk",
-                "id": "buk"
+                "id": "buk",
+                "fr": "buk"
             ]
         ),
         // 32
@@ -356,7 +387,8 @@ enum English {
                 "tr": "ve·dır",
                 "en": "wea·ther",
                 "es": "ue·der",
-                "id": "we·der"
+                "id": "we·der",
+                "fr": "we·der"
             ]
         ),
         // 33
@@ -367,7 +399,8 @@ enum English {
                 "tr": "kold",
                 "en": "cold",
                 "es": "kold",
-                "id": "kold"
+                "id": "kold",
+                "fr": "kold"
             ]
         ),
         // 34
@@ -378,7 +411,8 @@ enum English {
                 "tr": "lav",
                 "en": "love",
                 "es": "lov",
-                "id": "lav"
+                "id": "lav",
+                "fr": "lov"
             ]
         ),
         // 35
@@ -389,7 +423,8 @@ enum English {
                 "tr": "he·pi",
                 "en": "hap·py",
                 "es": "ja·pi",
-                "id": "he·pi"
+                "id": "he·pi",
+                "fr": "ha·pi"
             ]
         ),
         // 36
@@ -400,7 +435,8 @@ enum English {
                 "tr": "havs",
                 "en": "house",
                 "es": "jaus",
-                "id": "haus"
+                "id": "haus",
+                "fr": "aus"
             ]
         ),
         // 37
@@ -411,7 +447,8 @@ enum English {
                 "tr": "mey·bi",
                 "en": "may·be",
                 "es": "mei·bi",
-                "id": "mey·bi"
+                "id": "mey·bi",
+                "fr": "mei·bi"
             ]
         ),
         // 38
@@ -422,7 +459,8 @@ enum English {
                 "tr": "byu·ti·ful",
                 "en": "beau·ti·ful",
                 "es": "biu·ti·ful",
-                "id": "byu·ti·ful"
+                "id": "byu·ti·ful",
+                "fr": "byu·ti·ful"
             ]
         ),
         // 39
@@ -433,7 +471,8 @@ enum English {
                 "tr": "o·pın",
                 "en": "o·pen",
                 "es": "o·pen",
-                "id": "o·pen"
+                "id": "o·pen",
+                "fr": "o·pen"
             ]
         ),
         // 40
@@ -444,7 +483,8 @@ enum English {
                 "tr": "taym",
                 "en": "time",
                 "es": "taim",
-                "id": "taim"
+                "id": "taim",
+                "fr": "taim"
             ]
         ),
         // 41
@@ -455,7 +495,8 @@ enum English {
                 "tr": "fud",
                 "en": "food",
                 "es": "fud",
-                "id": "fud"
+                "id": "fud",
+                "fr": "fud"
             ]
         ),
         // 42
@@ -466,7 +507,8 @@ enum English {
                 "tr": "si·lip",
                 "en": "sleep",
                 "es": "slip",
-                "id": "slip"
+                "id": "slip",
+                "fr": "slip"
             ]
         ),
         // 43
@@ -477,7 +519,8 @@ enum English {
                 "tr": "vörk",
                 "en": "work",
                 "es": "uork",
-                "id": "work"
+                "id": "work",
+                "fr": "work"
             ]
         ),
         // 44
@@ -488,7 +531,8 @@ enum English {
                 "tr": "ma·ni",
                 "en": "mo·ney",
                 "es": "ma·ni",
-                "id": "ma·ni"
+                "id": "ma·ni",
+                "fr": "mo·ni"
             ]
         ),
         // 45
@@ -499,7 +543,8 @@ enum English {
                 "tr": "iyt",
                 "en": "eat",
                 "es": "it",
-                "id": "it"
+                "id": "it",
+                "fr": "it"
             ]
         ),
         // 46
@@ -510,7 +555,8 @@ enum English {
                 "tr": "di·rink",
                 "en": "drink",
                 "es": "drink",
-                "id": "drink"
+                "id": "drink",
+                "fr": "drink"
             ]
         ),
         // 47
@@ -521,7 +567,8 @@ enum English {
                 "tr": "ma·dır",
                 "en": "mo·ther",
                 "es": "ma·der",
-                "id": "ma·der"
+                "id": "ma·der",
+                "fr": "mo·zer"
             ]
         ),
         // 48
@@ -532,7 +579,8 @@ enum English {
                 "tr": "fa·dır",
                 "en": "fa·ther",
                 "es": "fa·der",
-                "id": "fa·der"
+                "id": "fa·der",
+                "fr": "fa·zer"
             ]
         ),
         // 49
@@ -543,7 +591,8 @@ enum English {
                 "tr": "bı·ra·dır",
                 "en": "bro·ther",
                 "es": "bro·der",
-                "id": "bra·der"
+                "id": "bra·der",
+                "fr": "bro·zer"
             ]
         ),
         // 50
@@ -554,7 +603,8 @@ enum English {
                 "tr": "sis·tır",
                 "en": "sis·ter",
                 "es": "sis·ter",
-                "id": "sis·ter"
+                "id": "sis·ter",
+                "fr": "sis·ter"
             ]
         ),
         // 51
@@ -565,7 +615,8 @@ enum English {
                 "tr": "dey",
                 "en": "day",
                 "es": "dei",
-                "id": "dey"
+                "id": "dey",
+                "fr": "dei"
             ]
         ),
         // 52
@@ -576,7 +627,8 @@ enum English {
                 "tr": "nayt",
                 "en": "night",
                 "es": "nait",
-                "id": "nait"
+                "id": "nait",
+                "fr": "nait"
             ]
         ),
         // 53
@@ -587,7 +639,8 @@ enum English {
                 "tr": "kar",
                 "en": "car",
                 "es": "kar",
-                "id": "kar"
+                "id": "kar",
+                "fr": "kar"
             ]
         ),
         // 54
@@ -598,7 +651,8 @@ enum English {
                 "tr": "bas",
                 "en": "bus",
                 "es": "bas",
-                "id": "bas"
+                "id": "bas",
+                "fr": "büs"
             ]
         ),
         // 55
@@ -609,7 +663,8 @@ enum English {
                 "tr": "ti·reyn",
                 "en": "train",
                 "es": "trein",
-                "id": "tren"
+                "id": "tren",
+                "fr": "tren"
             ]
         ),
         // 56
@@ -620,7 +675,8 @@ enum English {
                 "tr": "er·port",
                 "en": "air·port",
                 "es": "er·port",
-                "id": "er·port"
+                "id": "er·port",
+                "fr": "er·port"
             ]
         ),
         // 57
@@ -631,7 +687,8 @@ enum English {
                 "tr": "biç",
                 "en": "beach",
                 "es": "bich",
-                "id": "bich"
+                "id": "bich",
+                "fr": "bich"
             ]
         ),
         // 58
@@ -642,7 +699,8 @@ enum English {
                 "tr": "mar·kıt",
                 "en": "mar·ket",
                 "es": "mar·ket",
-                "id": "mar·ket"
+                "id": "mar·ket",
+                "fr": "mar·ket"
             ]
         ),
         // 59
@@ -653,7 +711,8 @@ enum English {
                 "tr": "res·to·rant",
                 "en": "res·tau·rant",
                 "es": "res·to·rant",
-                "id": "res·to·ran"
+                "id": "res·to·ran",
+                "fr": "res·to·ron"
             ]
         ),
         // 60
@@ -664,7 +723,8 @@ enum English {
                 "tr": "si·kul",
                 "en": "school",
                 "es": "skul",
-                "id": "skul"
+                "id": "skul",
+                "fr": "skul"
             ]
         ),
         // 61
@@ -675,7 +735,8 @@ enum English {
                 "tr": "has·pi·tıl",
                 "en": "hos·pi·tal",
                 "es": "os·pi·tal",
-                "id": "hos·pi·tal"
+                "id": "hos·pi·tal",
+                "fr": "os·pi·tal"
             ]
         ),
         // 62
@@ -686,7 +747,8 @@ enum English {
                 "tr": "dak·tır",
                 "en": "doc·tor",
                 "es": "dok·tor",
-                "id": "dok·ter"
+                "id": "dok·ter",
+                "fr": "dok·tor"
             ]
         ),
         // 63
@@ -697,7 +759,8 @@ enum English {
                 "tr": "sik",
                 "en": "sick",
                 "es": "sik",
-                "id": "sik"
+                "id": "sik",
+                "fr": "sik"
             ]
         ),
         // 64
@@ -708,7 +771,8 @@ enum English {
                 "tr": "me·di·sin",
                 "en": "me·di·cine",
                 "es": "me·di·sin",
-                "id": "me·di·sin"
+                "id": "me·di·sin",
+                "fr": "me·di·sin"
             ]
         ),
         // 65
@@ -719,7 +783,8 @@ enum English {
                 "tr": "tu·dey",
                 "en": "to·day",
                 "es": "tu·dei",
-                "id": "tu·dey"
+                "id": "tu·dey",
+                "fr": "tu·dei"
             ]
         ),
         // 66
@@ -730,7 +795,8 @@ enum English {
                 "tr": "tu·ma·rov",
                 "en": "to·mor·row",
                 "es": "tu·mo·rou",
-                "id": "tu·mo·row"
+                "id": "tu·mo·row",
+                "fr": "tu·mo·ro"
             ]
         ),
         // 67
@@ -741,7 +807,8 @@ enum English {
                 "tr": "yes·tır·dey",
                 "en": "yes·ter·day",
                 "es": "yes·ter·dei",
-                "id": "yes·ter·dey"
+                "id": "yes·ter·dey",
+                "fr": "yes·ter·dei"
             ]
         ),
         // 68
@@ -752,7 +819,8 @@ enum English {
                 "tr": "viyk",
                 "en": "week",
                 "es": "uik",
-                "id": "wik"
+                "id": "wik",
+                "fr": "wik"
             ]
         ),
         // 69
@@ -763,7 +831,8 @@ enum English {
                 "tr": "manth",
                 "en": "month",
                 "es": "month",
-                "id": "manth"
+                "id": "manth",
+                "fr": "mont"
             ]
         ),
         // 70
@@ -774,7 +843,8 @@ enum English {
                 "tr": "yir",
                 "en": "year",
                 "es": "yir",
-                "id": "yir"
+                "id": "yir",
+                "fr": "yir"
             ]
         ),
         // 71
@@ -785,7 +855,8 @@ enum English {
                 "tr": "hat",
                 "en": "hot",
                 "es": "jot",
-                "id": "hot"
+                "id": "hot",
+                "fr": "ot"
             ]
         ),
         // 72
@@ -796,7 +867,8 @@ enum English {
                 "tr": "a·vır",
                 "en": "hour",
                 "es": "au·er",
-                "id": "a·wer"
+                "id": "a·wer",
+                "fr": "our"
             ]
         ),
         // 73
@@ -807,7 +879,8 @@ enum English {
                 "tr": "mi·nit",
                 "en": "mi·nute",
                 "es": "mi·nit",
-                "id": "mi·nit"
+                "id": "mi·nit",
+                "fr": "mi·nut"
             ]
         ),
         // 74
@@ -818,7 +891,8 @@ enum English {
                 "tr": "se·kınd",
                 "en": "se·cond",
                 "es": "se·kond",
-                "id": "se·kend"
+                "id": "se·kend",
+                "fr": "se·kond"
             ]
         ),
         // 75
@@ -829,7 +903,8 @@ enum English {
                 "tr": "si·ti·rit",
                 "en": "street",
                 "es": "strit",
-                "id": "strit"
+                "id": "strit",
+                "fr": "strit"
             ]
         ),
         // 76
@@ -840,7 +915,8 @@ enum English {
                 "tr": "dor",
                 "en": "door",
                 "es": "dor",
-                "id": "dor"
+                "id": "dor",
+                "fr": "dor"
             ]
         ),
         // 77
@@ -851,7 +927,8 @@ enum English {
                 "tr": "vin·dov",
                 "en": "win·dow",
                 "es": "uin·dou",
-                "id": "win·dow"
+                "id": "win·dow",
+                "fr": "win·do"
             ]
         ),
         // 78
@@ -862,7 +939,8 @@ enum English {
                 "tr": "bed·rum",
                 "en": "bed·room",
                 "es": "bed·rum",
-                "id": "bed·rum"
+                "id": "bed·rum",
+                "fr": "bed·rum"
             ]
         ),
         // 79
@@ -873,7 +951,8 @@ enum English {
                 "tr": "bat·rum",
                 "en": "bath·room",
                 "es": "bat·rum",
-                "id": "bath·rum"
+                "id": "bath·rum",
+                "fr": "bat·rum"
             ]
         ),
         // 80
@@ -884,7 +963,8 @@ enum English {
                 "tr": "ki·çın",
                 "en": "kit·chen",
                 "es": "ki·chen",
-                "id": "ki·chen"
+                "id": "ki·chen",
+                "fr": "ki·tchen"
             ]
         ),
         // 81
@@ -895,7 +975,8 @@ enum English {
                 "tr": "rum",
                 "en": "room",
                 "es": "rum",
-                "id": "rum"
+                "id": "rum",
+                "fr": "rum"
             ]
         ),
         // 82
@@ -906,7 +987,8 @@ enum English {
                 "tr": "ki",
                 "en": "key",
                 "es": "ki",
-                "id": "ki"
+                "id": "ki",
+                "fr": "ki"
             ]
         ),
         // 83
@@ -917,7 +999,8 @@ enum English {
                 "tr": "çer",
                 "en": "chair",
                 "es": "cher",
-                "id": "cher"
+                "id": "cher",
+                "fr": "cher"
             ]
         ),
         // 84
@@ -928,7 +1011,8 @@ enum English {
                 "tr": "tey·bıl",
                 "en": "ta·ble",
                 "es": "tei·bol",
-                "id": "te·bel"
+                "id": "te·bel",
+                "fr": "ta·bl"
             ]
         ),
         // 85
@@ -939,7 +1023,8 @@ enum English {
                 "tr": "bed",
                 "en": "bed",
                 "es": "bed",
-                "id": "bed"
+                "id": "bed",
+                "fr": "bed"
             ]
         ),
         // 86
@@ -950,7 +1035,8 @@ enum English {
                 "tr": "rayt",
                 "en": "right",
                 "es": "rait",
-                "id": "rait"
+                "id": "rait",
+                "fr": "rait"
             ]
         ),
         // 87
@@ -961,7 +1047,8 @@ enum English {
                 "tr": "left",
                 "en": "left",
                 "es": "left",
-                "id": "left"
+                "id": "left",
+                "fr": "left"
             ]
         ),
         // 88
@@ -972,7 +1059,8 @@ enum English {
                 "tr": "si·ti·reyt",
                 "en": "straight",
                 "es": "streit",
-                "id": "streyt"
+                "id": "streyt",
+                "fr": "streit"
             ]
         ),
         // 89
@@ -983,7 +1071,8 @@ enum English {
                 "tr": "ni·yır",
                 "en": "near",
                 "es": "nir",
-                "id": "nir"
+                "id": "nir",
+                "fr": "nir"
             ]
         ),
         // 90
@@ -994,7 +1083,8 @@ enum English {
                 "tr": "far",
                 "en": "far",
                 "es": "far",
-                "id": "far"
+                "id": "far",
+                "fr": "far"
             ]
         ),
         // 91
@@ -1005,7 +1095,8 @@ enum English {
                 "tr": "hi·yır",
                 "en": "here",
                 "es": "jir",
-                "id": "hir"
+                "id": "hir",
+                "fr": "ir"
             ]
         ),
         // 92
@@ -1016,7 +1107,8 @@ enum English {
                 "tr": "der",
                 "en": "there",
                 "es": "der",
-                "id": "der"
+                "id": "der",
+                "fr": "der"
             ]
         ),
         // 93
@@ -1027,7 +1119,8 @@ enum English {
                 "tr": "rong",
                 "en": "wrong",
                 "es": "rong",
-                "id": "rong"
+                "id": "rong",
+                "fr": "rong"
             ]
         ),
         // 94
@@ -1038,7 +1131,8 @@ enum English {
                 "tr": "fest",
                 "en": "fast",
                 "es": "fast",
-                "id": "fast"
+                "id": "fast",
+                "fr": "fast"
             ]
         ),
         // 95
@@ -1049,7 +1143,8 @@ enum English {
                 "tr": "si·lov",
                 "en": "slow",
                 "es": "slou",
-                "id": "slow"
+                "id": "slow",
+                "fr": "slo"
             ]
         ),
         // 96
@@ -1060,7 +1155,8 @@ enum English {
                 "tr": "i·zi",
                 "en": "ea·sy",
                 "es": "i·si",
-                "id": "i·zi"
+                "id": "i·zi",
+                "fr": "i·zi"
             ]
         ),
         // 97
@@ -1071,7 +1167,8 @@ enum English {
                 "tr": "di·fi·kılt",
                 "en": "dif·fi·cult",
                 "es": "di·fi·kult",
-                "id": "di·fi·kult"
+                "id": "di·fi·kult",
+                "fr": "di·fi·kült"
             ]
         ),
         // 98
@@ -1082,7 +1179,8 @@ enum English {
                 "tr": "prab·lım",
                 "en": "prob·lem",
                 "es": "pro·blem",
-                "id": "prob·lem"
+                "id": "prob·lem",
+                "fr": "prob·lem"
             ]
         ),
         // 99
@@ -1093,7 +1191,8 @@ enum English {
                 "tr": "ku·es·çın",
                 "en": "ques·tion",
                 "es": "kues·chon",
-                "id": "kues·chen"
+                "id": "kues·chen",
+                "fr": "kes·tiyon"
             ]
         ),
         // 100
@@ -1104,7 +1203,8 @@ enum English {
                 "tr": "help",
                 "en": "help",
                 "es": "jelp",
-                "id": "help"
+                "id": "help",
+                "fr": "elp"
             ]
         ),
         // 101
@@ -1115,7 +1215,8 @@ enum English {
                 "tr": "an·dır·stend",
                 "en": "un·der·stand",
                 "es": "an·der·stand",
-                "id": "an·der·stend"
+                "id": "an·der·stend",
+                "fr": "an·der·stend"
             ]
         ),
         // 102
@@ -1126,7 +1227,8 @@ enum English {
                 "tr": "si·pik",
                 "en": "speak",
                 "es": "spik",
-                "id": "spik"
+                "id": "spik",
+                "fr": "spik"
             ]
         ),
         // 103
@@ -1137,7 +1239,8 @@ enum English {
                 "tr": "lis·ın",
                 "en": "lis·ten",
                 "es": "lis·en",
-                "id": "lis·en"
+                "id": "lis·en",
+                "fr": "lis·ten"
             ]
         ),
         // 104
@@ -1148,7 +1251,8 @@ enum English {
                 "tr": "veyt",
                 "en": "wait",
                 "es": "ueit",
-                "id": "weyt"
+                "id": "weyt",
+                "fr": "weit"
             ]
         ),
         // 105
@@ -1159,7 +1263,8 @@ enum English {
                 "tr": "kol·mi·bek",
                 "en": "call·me·back",
                 "es": "kol·mi·bak",
-                "id": "kol·mi·bek"
+                "id": "kol·mi·bek",
+                "fr": "kol·mi·bak"
             ]
         ),
         // 106
@@ -1170,7 +1275,8 @@ enum English {
                 "tr": "bi·zi",
                 "en": "bu·sy",
                 "es": "bi·si",
-                "id": "bi·zi"
+                "id": "bi·zi",
+                "fr": "bi·zi"
             ]
         ),
         // 107
@@ -1181,7 +1287,8 @@ enum English {
                 "tr": "fi·ri",
                 "en": "free",
                 "es": "fri",
-                "id": "fri"
+                "id": "fri",
+                "fr": "fri"
             ]
         ),
         // 108
@@ -1192,7 +1299,8 @@ enum English {
                 "tr": "houm",
                 "en": "home",
                 "es": "joum",
-                "id": "hom"
+                "id": "hom",
+                "fr": "om"
             ]
         ),
         // 109
@@ -1203,7 +1311,8 @@ enum English {
                 "tr": "vörk",
                 "en": "work",
                 "es": "uork",
-                "id": "work"
+                "id": "work",
+                "fr": "work"
             ]
         ),
         // 110
@@ -1214,7 +1323,8 @@ enum English {
                 "tr": "bört·dey",
                 "en": "birth·day",
                 "es": "berd·dei",
-                "id": "bert·dey"
+                "id": "bert·dey",
+                "fr": "birt·dei"
             ]
         ),
         // 111
@@ -1225,7 +1335,8 @@ enum English {
                 "tr": "eyc",
                 "en": "age",
                 "es": "eich",
-                "id": "eyj"
+                "id": "eyj",
+                "fr": "ej"
             ]
         ),
         // 112
@@ -1236,7 +1347,8 @@ enum English {
                 "tr": "neym",
                 "en": "name",
                 "es": "neim",
-                "id": "neym"
+                "id": "neym",
+                "fr": "nem"
             ]
         ),
         // 113
@@ -1247,7 +1359,8 @@ enum English {
                 "tr": "vok",
                 "en": "walk",
                 "es": "uok",
-                "id": "wok"
+                "id": "wok",
+                "fr": "wok"
             ]
         ),
         // 114
@@ -1258,7 +1371,8 @@ enum English {
                 "tr": "ran",
                 "en": "run",
                 "es": "ran",
-                "id": "ran"
+                "id": "ran",
+                "fr": "ran"
             ]
         ),
         // 115
@@ -1269,7 +1383,8 @@ enum English {
                 "tr": "si·tap",
                 "en": "stop",
                 "es": "stop",
-                "id": "stop"
+                "id": "stop",
+                "fr": "stop"
             ]
         ),
         // 116
@@ -1280,7 +1395,8 @@ enum English {
                 "tr": "si·tart",
                 "en": "start",
                 "es": "start",
-                "id": "start"
+                "id": "start",
+                "fr": "start"
             ]
         ),
         // 117
@@ -1291,7 +1407,8 @@ enum English {
                 "tr": "fi·niş",
                 "en": "fi·nish",
                 "es": "fi·nish",
-                "id": "fi·nish"
+                "id": "fi·nish",
+                "fr": "fi·nish"
             ]
         ),
         // 118
@@ -1302,7 +1419,8 @@ enum English {
                 "tr": "bay",
                 "en": "buy",
                 "es": "bai",
-                "id": "bay"
+                "id": "bay",
+                "fr": "bai"
             ]
         ),
         // 119
@@ -1313,7 +1431,8 @@ enum English {
                 "tr": "sel",
                 "en": "sell",
                 "es": "sel",
-                "id": "sel"
+                "id": "sel",
+                "fr": "sel"
             ]
         ),
         // 120
@@ -1324,7 +1443,8 @@ enum English {
                 "tr": "pey",
                 "en": "pay",
                 "es": "pei",
-                "id": "pey"
+                "id": "pey",
+                "fr": "pei"
             ]
         ),
         // 121
@@ -1335,7 +1455,8 @@ enum English {
                 "tr": "pi·rays",
                 "en": "price",
                 "es": "prais",
-                "id": "prays"
+                "id": "prays",
+                "fr": "prais"
             ]
         ),
         // 122
@@ -1346,7 +1467,8 @@ enum English {
                 "tr": "eks·pen·siv",
                 "en": "ex·pen·sive",
                 "es": "eks·pen·siv",
-                "id": "eks·pen·siv"
+                "id": "eks·pen·siv",
+                "fr": "eks·pen·siv"
             ]
         ),
         // 123
@@ -1357,7 +1479,8 @@ enum English {
                 "tr": "çip",
                 "en": "cheap",
                 "es": "chip",
-                "id": "chip"
+                "id": "chip",
+                "fr": "chip"
             ]
         ),
         // 124
@@ -1368,7 +1491,8 @@ enum English {
                 "tr": "ed·res",
                 "en": "add·ress",
                 "es": "ad·dres",
-                "id": "ad·dres"
+                "id": "ad·dres",
+                "fr": "ad·res"
             ]
         ),
         // 125
@@ -1379,7 +1503,8 @@ enum English {
                 "tr": "i·meyl",
                 "en": "e·mail",
                 "es": "i·meil",
-                "id": "i·meyl"
+                "id": "i·meyl",
+                "fr": "i·mel"
             ]
         ),
         // 126
@@ -1390,7 +1515,8 @@ enum English {
                 "tr": "nam·bır",
                 "en": "num·ber",
                 "es": "nam·ber",
-                "id": "nam·ber"
+                "id": "nam·ber",
+                "fr": "num·ber"
             ]
         ),
         // 127
@@ -1401,7 +1527,8 @@ enum English {
                 "tr": "ho·tel",
                 "en": "ho·tel",
                 "es": "o·tel",
-                "id": "ho·tel"
+                "id": "ho·tel",
+                "fr": "o·tel"
             ]
         ),
         // 128
@@ -1412,7 +1539,8 @@ enum English {
                 "tr": "pas·port",
                 "en": "pass·port",
                 "es": "pas·port",
-                "id": "pas·port"
+                "id": "pas·port",
+                "fr": "pas·port"
             ]
         ),
         // 129
@@ -1423,7 +1551,8 @@ enum English {
                 "tr": "ti·kit",
                 "en": "tic·ket",
                 "es": "ti·ket",
-                "id": "ti·ket"
+                "id": "ti·ket",
+                "fr": "ti·ket"
             ]
         ),
         // 130
@@ -1434,7 +1563,8 @@ enum English {
                 "tr": "fi·layt",
                 "en": "flight",
                 "es": "flait",
-                "id": "flait"
+                "id": "flait",
+                "fr": "flait"
             ]
         ),
         // 131
@@ -1445,7 +1575,8 @@ enum English {
                 "tr": "leyt",
                 "en": "late",
                 "es": "leit",
-                "id": "leyt"
+                "id": "leyt",
+                "fr": "leit"
             ]
         ),
         // 132
@@ -1456,7 +1587,8 @@ enum English {
                 "tr": "ör·li",
                 "en": "ear·ly",
                 "es": "er·li",
-                "id": "er·li"
+                "id": "er·li",
+                "fr": "er·li"
             ]
         ),
         // 133
@@ -1467,7 +1599,8 @@ enum English {
                 "tr": "mor·ning",
                 "en": "mor·ning",
                 "es": "mor·ning",
-                "id": "mor·ning"
+                "id": "mor·ning",
+                "fr": "mor·ning"
             ]
         ),
         // 134
@@ -1478,7 +1611,8 @@ enum English {
                 "tr": "iv·ning",
                 "en": "eve·ning",
                 "es": "iv·ning",
-                "id": "iv·ning"
+                "id": "iv·ning",
+                "fr": "iv·ning"
             ]
         ),
         // 135
@@ -1489,7 +1623,8 @@ enum English {
                 "tr": "af·tır·nun",
                 "en": "af·ter·noon",
                 "es": "af·ter·nun",
-                "id": "af·ter·nun"
+                "id": "af·ter·nun",
+                "fr": "af·ter·nun"
             ]
         ),
         // 136
@@ -1500,7 +1635,8 @@ enum English {
                 "tr": "bi·red",
                 "en": "bread",
                 "es": "bred",
-                "id": "bred"
+                "id": "bred",
+                "fr": "bred"
             ]
         ),
         // 137
@@ -1511,7 +1647,8 @@ enum English {
                 "tr": "milk",
                 "en": "milk",
                 "es": "milk",
-                "id": "milk"
+                "id": "milk",
+                "fr": "milk"
             ]
         ),
         // 138
@@ -1522,7 +1659,8 @@ enum English {
                 "tr": "ti",
                 "en": "tea",
                 "es": "ti",
-                "id": "ti"
+                "id": "ti",
+                "fr": "ti"
             ]
         ),
         // 139
@@ -1533,7 +1671,8 @@ enum English {
                 "tr": "şu·gır",
                 "en": "su·gar",
                 "es": "shu·gar",
-                "id": "su·gar"
+                "id": "su·gar",
+                "fr": "su·gar"
             ]
         ),
         // 140
@@ -1544,7 +1683,8 @@ enum English {
                 "tr": "solt",
                 "en": "salt",
                 "es": "solt",
-                "id": "solt"
+                "id": "solt",
+                "fr": "solt"
             ]
         ),
         // 141
@@ -1555,7 +1695,8 @@ enum English {
                 "tr": "lanç",
                 "en": "lunch",
                 "es": "lanch",
-                "id": "lanch"
+                "id": "lanch",
+                "fr": "lanch"
             ]
         ),
         // 142
@@ -1566,7 +1707,8 @@ enum English {
                 "tr": "di·nır",
                 "en": "din·ner",
                 "es": "di·ner",
-                "id": "di·ner"
+                "id": "di·ner",
+                "fr": "di·ner"
             ]
         ),
         // 143
@@ -1577,7 +1719,8 @@ enum English {
                 "tr": "bi·rek·fıst",
                 "en": "break·fast",
                 "es": "brek·fast",
-                "id": "brek·fast"
+                "id": "brek·fast",
+                "fr": "brek·fast"
             ]
         ),
         // 144
@@ -1588,7 +1731,8 @@ enum English {
                 "tr": "mit",
                 "en": "meat",
                 "es": "mit",
-                "id": "mit"
+                "id": "mit",
+                "fr": "mit"
             ]
         ),
         // 145
@@ -1599,7 +1743,8 @@ enum English {
                 "tr": "fiş",
                 "en": "fish",
                 "es": "fish",
-                "id": "fish"
+                "id": "fish",
+                "fr": "fish"
             ]
         ),
         // 146
@@ -1610,7 +1755,8 @@ enum English {
                 "tr": "fi·rut",
                 "en": "fruit",
                 "es": "frut",
-                "id": "frut"
+                "id": "frut",
+                "fr": "frut"
             ]
         ),
         // 147
@@ -1621,7 +1767,8 @@ enum English {
                 "tr": "vec·tı·bıl",
                 "en": "veg·e·ta·ble",
                 "es": "vej·ta·bol",
-                "id": "vej·te·bel"
+                "id": "vej·te·bel",
+                "fr": "ve·ge·ta·bl"
             ]
         ),
         // 148
@@ -1632,7 +1779,8 @@ enum English {
                 "tr": "a·vır",
                 "en": "hour",
                 "es": "au·er",
-                "id": "au·er"
+                "id": "au·er",
+                "fr": "our"
             ]
         ),
         // 149
@@ -1643,7 +1791,8 @@ enum English {
                 "tr": "in·for·mey·şın",
                 "en": "in·for·ma·tion",
                 "es": "in·for·mei·shon",
-                "id": "in·for·mey·shen"
+                "id": "in·for·mey·shen",
+                "fr": "in·for·ma·sion"
             ]
         ),
         // 150
@@ -1654,7 +1803,8 @@ enum English {
                 "tr": "vel·kam",
                 "en": "wel·come",
                 "es": "uel·kam",
-                "id": "wel·kam"
+                "id": "wel·kam",
+                "fr": "wel·kom"
             ]
         )
     ]
