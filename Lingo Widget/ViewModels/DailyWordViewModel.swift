@@ -51,7 +51,7 @@ class DailyWordViewModel: ObservableObject {
     }
     
     private func selectNewWord() -> String {
-        return allWordIds.first ?? "hello" //test için basit bi random seçim
+        return allWordIds.randomElement() ?? "hello"
         
         let availableWords = allWordIds.filter { !shownWordIds.contains($0) }
         
