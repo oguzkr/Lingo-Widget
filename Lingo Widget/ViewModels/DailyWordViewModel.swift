@@ -14,20 +14,34 @@ class DailyWordViewModel: ObservableObject {
     @Published var pronunciation: String = ""
     @Published var exampleSentence: String = ""
     @Published var sourceExampleSentence: String = ""
+    @Published var romanized: String?
+    @Published var romanizedExample: String?
     
-    private let languageManager = LanguageManager.shared
+    private let defaults: UserDefaults = UserDefaults.standard
+
+    private var shownWordIds: [String] {
+        get { defaults.array(forKey: "shownWords") as? [String] ?? [] }
+        set { defaults.set(newValue, forKey: "shownWords") }
+    }
+    
+    private var lastWordDate: Date {
+        get { defaults.object(forKey: "lastWordDate") as? Date ?? Date() }
+        set { defaults.set(newValue, forKey: "lastWordDate") }
+    }
+    
+    private var currentWordId: String {
+        get { defaults.string(forKey: "currentWordId") ?? "" }
+        set { defaults.set(newValue, forKey: "currentWordId") }
+    }
+    
     private let synthesizer = AVSpeechSynthesizer()
     private var currentLanguageCode: String = "en"
     
-    init(previewData: (source: String, target: String, pronunciation: String, example: String)? = nil) {
-        if let data = previewData {
-            self.sourceWord = data.source
-            self.targetWord = data.target
-            self.pronunciation = data.pronunciation
-            self.exampleSentence = data.example
-            self.sourceExampleSentence = data.example
-        }
-        
+    init() {
+        setupAudioSession()
+    }
+    
+    private func setupAudioSession() {
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: .mixWithOthers)
             try AVAudioSession.sharedInstance().setActive(true)
@@ -36,19 +50,64 @@ class DailyWordViewModel: ObservableObject {
         }
     }
     
+    private func selectNewWord() -> String {
+        return allWordIds.first ?? "hello" //test için basit bi random seçim
+        
+        let availableWords = allWordIds.filter { !shownWordIds.contains($0) }
+        
+        if availableWords.isEmpty {
+            shownWordIds.removeAll()
+            return allWordIds.randomElement() ?? "hello"
+        } else {
+            return availableWords.randomElement() ?? "hello"
+        }
+    }
+    
+    private func loadWord(id: String) -> Word? {
+        guard let url = Bundle.main.url(forResource: id, withExtension: "json"),
+              let data = try? Data(contentsOf: url),
+              let word = try? JSONDecoder().decode(Word.self, from: data)
+        else {
+            return nil
+        }
+        return word
+    }
+    
     func fetchDailyWord(from sourceLang: String = "tr", to targetLang: String = "en") {
         currentLanguageCode = targetLang
-        if let wordPair = languageManager.getDailyWordPair(
-            from: sourceLang,
-            to: targetLang,
-            nativeLanguage: sourceLang // Burada değişiklik yapıldı
-        ) {
-            sourceWord = wordPair.source.text
-            targetWord = wordPair.target.text
-            pronunciation = wordPair.pronunciation
-            exampleSentence = wordPair.target.exampleSentence
-            sourceExampleSentence = wordPair.source.exampleSentence
+        
+        // Test aşaması için her seferinde yeni kelime
+        currentWordId = selectNewWord()
+        
+        /* Daha sonra aktif edilecek olan günlük kelime kontrolü
+        let calendar = Calendar.current
+        if !calendar.isDate(lastWordDate, inSameDayAs: Date()) {
+            currentWordId = selectNewWord()
+            shownWordIds.append(currentWordId)
+            lastWordDate = Date()
         }
+        */
+        
+        // Kelimeyi yükle
+        if let word = loadWord(id: currentWordId) {
+            guard let sourceTranslation = word.translations[sourceLang],
+                  let targetTranslation = word.translations[targetLang] else {
+                return
+            }
+            
+            sourceWord = sourceTranslation.text
+            targetWord = targetTranslation.text
+            pronunciation = targetTranslation.pronunciations[sourceLang] ?? ""
+            exampleSentence = targetTranslation.exampleSentence
+            sourceExampleSentence = sourceTranslation.exampleSentence
+            romanized = targetTranslation.romanized
+            romanizedExample = targetTranslation.romanizedExample
+        }
+    }
+    
+    func refreshWord(from sourceLang: String, to targetLang: String, nativeLanguage: String) {
+        currentWordId = selectNewWord()
+        fetchDailyWord(from: sourceLang, to: targetLang)
     }
     
     func speakWord(text: String? = nil) {
@@ -64,33 +123,143 @@ class DailyWordViewModel: ObservableObject {
         synthesizer.speak(utterance)
     }
     
-    func fetchDailyWord(from sourceLang: String = "tr", to targetLang: String = "en", nativeLanguage: String = "en") {
-        currentLanguageCode = targetLang
-        if let wordPair = languageManager.getDailyWordPair(
-            from: sourceLang,
-            to: targetLang,
-            nativeLanguage: nativeLanguage
-        ) {
-            sourceWord = wordPair.source.text
-            targetWord = wordPair.target.text
-            pronunciation = wordPair.pronunciation
-            exampleSentence = wordPair.target.exampleSentence
-            sourceExampleSentence = wordPair.source.exampleSentence
-        }
-    }
-    
-    func refreshWord(from sourceLang: String, to targetLang: String, nativeLanguage: String) {
-        _ = languageManager.getNewRandomIndex()
-        fetchDailyWord(from: sourceLang, to: targetLang, nativeLanguage: nativeLanguage)
-    }
-    
     private func convertToSpeechLanguageCode(_ code: String) -> String {
+        // Her dil için standart konuşma kodları
         let conversions = [
-            "en": "en-US",
             "tr": "tr-TR",
+            "en": "en-US",
             "es": "es-ES",
-            "id": "id-ID"
+            "id": "id-ID",
+            "fr": "fr-FR",
+            "it": "it-IT",
+            "pt": "pt-PT",
+            "zh": "zh-CN",
+            "ru": "ru-RU",
+            "ja": "ja-JP",
+            "hi": "hi-IN",
+            "fil": "fil-PH",
+            "th": "th-TH",
+            "ko": "ko-KR",
+            "nl": "nl-NL",
+            "sv": "sv-SE",
+            "pl": "pl-PL",
+            "el": "el-GR",
+            "de": "de-DE"
         ]
         return conversions[code] ?? code
     }
+    
+    // Kelime listesi
+    private let allWordIds: [String] = [
+        // Selamlaşmalar (1-10)
+        "hello",              // 1
+        "good_morning",       // 2
+        "good_afternoon",     // 3
+        "good_evening",       // 4
+        "good_night",         // 5
+        "how_are_you",        // 6
+        "goodbye",            // 7
+        "see_you_later",      // 8
+        "nice_to_meet_you",   // 9
+        "take_care",          // 10
+        // Teşekkür ve Özür (11-15)
+        "thank_you",          // 11
+        "welcome",            // 12
+        "excuse_me",          // 13
+        "sorry",              // 14
+        "no_problem",         // 15
+        // Yönler ve Yönlendirme (16-25)
+        "where",              // 16
+        "left",               // 17
+        "right",              // 18
+        "straight",           // 19
+        "near",               // 20
+        "far",                // 21
+        "stop",               // 22
+        "here",               // 23
+        "there",              // 24
+        "which_way",          // 25
+        // Restoran ve Yemek (26-35)
+        "hungry",             // 26
+        "thirsty",            // 27
+        "water",              // 28
+        "menu",               // 29
+        "bill",               // 30
+        "delicious",          // 31
+        "spicy",              // 32
+        "sweet",              // 33
+        "recommend",          // 34
+        "coffee",             // 35
+        // Alışveriş (36-45)
+        "how_much",           // 36
+        "expensive",          // 37
+        "cheap",              // 38
+        "buy",                // 39
+        "color",              // 40
+        "cash",               // 41
+        "card",               // 42
+        "receipt",            // 43
+        "bag",                // 44
+        "size",               // 45
+        // Seyahat ve Ulaşım (46-55)
+        "bathroom",           // 46
+        "hotel",              // 47
+        "airport",            // 48
+        "bus",                // 49
+        "train",              // 50
+        "subway",             // 51
+        "ticket",             // 52
+        "platform",           // 53
+        "station",            // 54
+        "how_long",           // 55
+        // Zaman ve Tarih (56-65)
+        "time",               // 56
+        "today",              // 57
+        "tomorrow",           // 58
+        "yesterday",          // 59
+        "morning",            // 60
+        "afternoon",          // 61
+        "evening",            // 62
+        "now",                // 63
+        "later",              // 64
+        "soon",               // 65
+        // Temel Duygular ve Haller (66-75)
+        "happy",              // 66
+        "sad",                // 67
+        "tired",              // 68
+        "angry",              // 69
+        "excited",            // 70
+        "lost",               // 71
+        "fine",               // 72
+        "busy",               // 73
+        "free",               // 74
+        "bored",              // 75
+        // Acil Durumlar (76-85)
+        "help",               // 76
+        "police",             // 77
+        "ambulance",          // 78
+        "sick",               // 79
+        "injured",            // 80
+        "fire",               // 81
+        "danger",             // 82
+        "passport",           // 83
+        "doctor",             // 84
+        "pharmacy",           // 85
+        // Günlük Kullanım (86-100)
+        "yes",                // 86
+        "no",                 // 87
+        "maybe",              // 88
+        "please",             // 89
+        "understand",         // 90
+        "repeat",             // 91
+        "mean",               // 92
+        "know",               // 93
+        "name",               // 94
+        "old",                // 95
+        "what",               // 96
+        "great",              // 97
+        "awesome",            // 98
+        "nice",               // 99
+        "place"               // 100
+    ]
 }

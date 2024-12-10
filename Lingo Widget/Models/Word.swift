@@ -7,8 +7,15 @@
 
 import Foundation
 
-struct Word {
-    let text: String
-    let exampleSentence: String
-    let pronunciations: [String: String] // [languageCode: pronunciation]
+struct Word: Codable {
+    let id: String
+    let translations: [String: Translation]
+    
+    struct Translation: Codable {
+        let text: String
+        let exampleSentence: String
+        let romanized: String?
+        let romanizedExample: String?
+        let pronunciations: [String: String]
+    }
 }

@@ -15,10 +15,25 @@ struct ContentView: View {
     @State private var dailyWordViewModel = DailyWordViewModel()
     
     let languages = [
-        "tr": "Türkçe",
+        "tr": "Türkçe (Turkish)",
         "en": "English",
-        "es": "Español",
-        "id": "Bahasa Indonesia"
+        "es": "Español (Spanish)",
+        "id": "Bahasa (Indonesian)",
+        "fr": "Français (French)",
+        "it": "Italiano (Italian)",
+        "pt": "Português (Portuguese)",
+        "zh": "中文 (Chinese)",
+        "ru": "Русский (Russian)",
+        "ja": "日本語 (Japanese)",
+        "hi": "हिन्दी (Hindi)",
+        "fil": "Filipino",
+        "th": "ไทย (Thai)",
+        "ko": "한국어 (Korean)",
+        "nl": "Nederlands (Dutch)",
+        "sv": "Svenska (Swedish)",
+        "pl": "Polski (Polish)",
+        "el": "Ελληνικά (Greek)",
+        "de": "Deutsch (German)"
     ]
     
     var body: some View {
