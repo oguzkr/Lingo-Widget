@@ -183,7 +183,7 @@ class DailyWordViewModel: ObservableObject {
         "hungry",             // 26
         "thirsty",            // 27
         "water",              // 28
-        "menu",               // 29
+        "money",               // 29
         "bill",               // 30
         "delicious",          // 31
         "spicy",              // 32
@@ -260,6 +260,7 @@ class DailyWordViewModel: ObservableObject {
         "great",              // 97
         "awesome",            // 98
         "nice",               // 99
-        "place"               // 100
+        "place",               // 100
+        "new",                // 101
     ]
 }
