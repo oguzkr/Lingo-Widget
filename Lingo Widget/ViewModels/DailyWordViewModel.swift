@@ -126,16 +126,16 @@ class DailyWordViewModel: ObservableObject {
     private func convertToSpeechLanguageCode(_ code: String) -> String {
         // Her dil için standart konuşma kodları
         let conversions = [
-            "tr": "tr-TR",
-            "en": "en-US",
-            "es": "es-ES",
-            "id": "id-ID",
-            "fr": "fr-FR",
-            "it": "it-IT",
-            "pt": "pt-PT",
-            "zh": "zh-CN",
-            "ru": "ru-RU",
-            "ja": "ja-JP",
+            "tr": "tr-TR", // Türkçe
+            "en": "en-US", // İngilizce
+            "es": "es-ES", // İspanyolca
+            "id": "id-ID", // Endonezyaca
+            "fr": "fr-FR", // Fransızca
+            "it": "it-IT", // İtalyanca
+            "pt": "pt-PT", // Portekizce
+            "zh": "zh-CN", // Çince
+            "ru": "ru-RU", // Rusça
+            "ja": "ja-JP", // Japonca
             "hi": "hi-IN",
             "fil": "fil-PH",
             "th": "th-TH",
