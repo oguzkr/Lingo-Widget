@@ -193,8 +193,8 @@ struct DailyWordViewMedium: View {
                 Button {
                     viewModel.speakWord(text: viewModel.targetWord)
                 } label: {
-                    Image(systemName: "speaker.wave.2.circle.fill")
-                        .symbolRenderingMode(.hierarchical)
+                    Image(systemName: "speaker.wave.2.fill")
+                        .symbolRenderingMode(.monochrome)
                         .font(.system(size: 24))
                         .foregroundStyle(.blue)
                 }
@@ -238,7 +238,9 @@ struct DailyWordViewMedium: View {
         HStack {
             let romanized = viewModel.pronunciation
             Text("🗣️ \(romanized)")
-                .font(.system(size: 14, weight: .light, design: .default))
+                .font(.system(size: 14,
+                              weight: .light,
+                              design: .default))
                 .shadow(color: .black.opacity(0.5), radius: 5)
             
         }
@@ -255,14 +257,14 @@ struct DailyWordViewMedium: View {
                         .lineLimit(2)
                         .minimumScaleFactor(1)
                     
-                    Spacer(minLength: 8)
+                    Spacer()
                     
                     Button {
                         viewModel.speakWord(text: viewModel.exampleSentence)
                     } label: {
                         Image(systemName: "speaker.wave.2.fill")
-                            .symbolRenderingMode(.hierarchical)
-                            .font(.system(size: 14))
+                            .symbolRenderingMode(.monochrome)
+                            .font(.system(size: 24))
                             .foregroundStyle(.blue)
                     }
                 }
