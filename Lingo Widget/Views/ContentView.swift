@@ -124,21 +124,20 @@ struct DailyWordViewMedium: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             // MARK: - Header Section
-            wordSection
+            topWordSection
             // MARK: - Romanized Section
-            romanizedSection
+            middleWordSection
             
             // MARK: - Pronunciation & Source
-            detailsSection
+            bottomWordSection
             
             Divider()
-                .padding(.vertical, 4)
+                .padding(.vertical, 0)
             
             // MARK: - Example Sentences
             exampleSection
         }
         .padding(16)
-        .frame(maxWidth: .infinity)
         .background(
             RoundedRectangle(cornerRadius: 16)
                 .fill(backgroundGradient)
@@ -160,9 +159,9 @@ struct DailyWordViewMedium: View {
     }
     
     // MARK: - Subviews
-    private var wordSection: some View {
-        VStack(alignment: .center) {
-            HStack {
+    private var topWordSection: some View {
+        VStack(alignment: .center, spacing: 0) {
+            HStack(spacing: 5) {
                 Image(viewModel.targetLanguageCode)
                     .resizable()
                     .scaledToFill()
@@ -171,18 +170,25 @@ struct DailyWordViewMedium: View {
                     
                 
                 Text(viewModel.targetWord)
-                    .font(.system(size: 16, weight: .bold, design: .default))
+                    .font(.system(size: 20, weight: .bold, design: .default))
                     .foregroundColor(.primary)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.7)
-                    .opacity(isWordVisible ? 1 : 0)
+                    .lineLimit(2)
+
+                if let romanized = viewModel.romanized {
+                    Divider()
+                    Image(systemName: "character.textbox")
+                        .font(.system(size: 12))
+                        .foregroundStyle(.secondary)
+                    
+                        Text(romanized)
+                            .italic()
+                            .font(.system(size: 14).weight(.light))
+                            .foregroundColor(.secondary)
+                            .opacity(isExampleVisible ? 1 : 0)
+                    
+                }
                 
                 Spacer()
-                
-               let romanized = viewModel.pronunciation
-                Text("(\(romanized))")
-                    .font(.system(size: 11, weight: .light, design: .rounded))
-                
                 
                 Button {
                     viewModel.speakWord(text: viewModel.targetWord)
@@ -196,7 +202,7 @@ struct DailyWordViewMedium: View {
         }
     }
     
-    private var detailsSection: some View {
+    private var bottomWordSection: some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Image(viewModel.sourceLanguageCode)
@@ -206,9 +212,11 @@ struct DailyWordViewMedium: View {
                     .shadow(color: shadowColor, radius: 4)
                 
                 Text(viewModel.sourceWord)
-                    .font(.system(size: 18, weight: .medium, design: .rounded))
+                    .font(.system(size: 20, weight: .bold, design: .default))
                     .foregroundColor(.primary)
-                    .opacity(isWordVisible ? 1 : 0)
+                    .lineLimit(2)
+                
+                
                 
                 Spacer()
                 
@@ -226,20 +234,13 @@ struct DailyWordViewMedium: View {
         }
     }
     
-    private var romanizedSection: some View {
+    private var middleWordSection: some View {
         HStack {
-            if let pronunciation = viewModel.romanized {
-                Image(systemName: "character.textbox")
-                    .font(.system(size: 12))
-                    .foregroundStyle(.gray)
-                
-                Text(pronunciation)
-                    .font(.system(size: 12, design: .rounded))
-                    .foregroundColor(.secondary)
-                    .lineLimit(2)
-                    .minimumScaleFactor(0.7)
-                    .opacity(isExampleVisible ? 1 : 0)
-            }
+            let romanized = viewModel.pronunciation
+            Text("🗣️ \(romanized)")
+                .font(.system(size: 14, weight: .light, design: .default))
+                .shadow(color: .black.opacity(0.5), radius: 5)
+            
         }
     }
     
@@ -270,10 +271,10 @@ struct DailyWordViewMedium: View {
             
             if let romanizedExample = viewModel.romanizedExample {
                 Text(romanizedExample)
-                    .font(.system(size: 14, design: .rounded))
+                    .italic()
+                    .font(.system(size: 13).weight(.light))
                     .foregroundColor(.secondary)
                     .lineLimit(2)
-                    .minimumScaleFactor(0.9)
                     .opacity(isExampleVisible ? 1 : 0)
             }
             
@@ -302,5 +303,14 @@ struct DailyWordViewMedium: View {
     
     private var shadowColor: Color {
         colorScheme == .dark ? .black.opacity(0.3) : .black.opacity(0.5)
+    }
+}
+
+
+extension String {
+    /// Sadece harflerden oluşan bir String döndürür.
+    /// - Returns: Sadece harfleri içeren bir String.
+    func extractLetters() -> String {
+        self.unicodeScalars.filter { CharacterSet.letters.contains($0) }.map { String($0) }.joined()
     }
 }
