@@ -96,11 +96,6 @@ struct ContentView: View {
                 
                 DailyWordViewMedium(viewModel: dailyWordViewModel)
                     .padding(.horizontal)
-                HStack {
-                    DailyWordViewSmall(viewModel: dailyWordViewModel)
-                        .padding(.leading)
-                    Spacer()
-                }
             }
         }.preferredColorScheme(isDarkMode ? .dark : .light)
     }
@@ -116,271 +111,196 @@ struct DailyWordViewMedium: View {
     @StateObject private var viewModel: DailyWordViewModel
     @AppStorage("sourceLanguage") private var sourceLanguage: String = "tr"
     @AppStorage("targetLanguage") private var targetLanguage: String = "en"
+    @Environment(\.colorScheme) private var colorScheme
+    
+    // Animation states
+    @State private var isWordVisible = false
+    @State private var isExampleVisible = false
     
     init(viewModel: DailyWordViewModel? = nil) {
         _viewModel = StateObject(wrappedValue: viewModel ?? DailyWordViewModel())
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .leading, spacing: 8) {
+            // MARK: - Header Section
+            wordSection
+            // MARK: - Romanized Section
+            romanizedSection
+            
+            // MARK: - Pronunciation & Source
+            detailsSection
+            
+            Divider()
+                .padding(.vertical, 4)
+            
+            // MARK: - Example Sentences
+            exampleSection
+        }
+        .padding(16)
+        .frame(maxWidth: .infinity)
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(backgroundGradient)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .shadow(color: shadowColor, radius: 8, x: 0, y: 2)
+        .heightAsPercentage(20.8)
+        .onAppear {
+            withAnimation(.easeIn(duration: 0.3)) {
+                isWordVisible = true
+            }
+            withAnimation(.easeIn(duration: 0.3).delay(0.2)) {
+                isExampleVisible = true
+            }
+            if viewModel.targetWord.isEmpty {
+                viewModel.fetchDailyWord(from: sourceLanguage, to: targetLanguage)
+            }
+        }
+    }
+    
+    // MARK: - Subviews
+    private var wordSection: some View {
+        VStack(alignment: .center) {
             HStack {
-                // Hedef kelime için esnek yapı
-                ViewThatFits(in: .vertical) {
-                    Text(viewModel.targetWord)
-                        .font(.system(size: 28, weight: .bold))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.8)
-                        .fixedSize(horizontal: false, vertical: true)
+                Image(viewModel.targetLanguageCode)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 20, height: 20)
+                    .shadow(color: shadowColor, radius: 4)
                     
-                    Text(viewModel.targetWord)
-                        .font(.system(size: 24, weight: .bold))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.7)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
                 
-                Button(action: {
-                    viewModel.speakWord(text: viewModel.targetWord)
-                }) {
-                    Image(systemName: "speaker.wave.2.fill")
-                        .font(.system(size: 20))
-                        .foregroundStyle(.blue)
-                }
+                Text(viewModel.targetWord)
+                    .font(.system(size: 16, weight: .bold, design: .default))
+                    .foregroundColor(.primary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
+                    .opacity(isWordVisible ? 1 : 0)
                 
                 Spacer()
                 
-                Button(action: {
-                    viewModel.refreshWord(from: sourceLanguage, to: targetLanguage, nativeLanguage: sourceLanguage)
-                }) {
-                    Image(systemName: "arrow.triangle.2.circlepath")
-                        .font(.system(size: 20))
+               let romanized = viewModel.pronunciation
+                Text("(\(romanized))")
+                    .font(.system(size: 11, weight: .light, design: .rounded))
+                
+                
+                Button {
+                    viewModel.speakWord(text: viewModel.targetWord)
+                } label: {
+                    Image(systemName: "speaker.wave.2.circle.fill")
+                        .symbolRenderingMode(.hierarchical)
+                        .font(.system(size: 24))
                         .foregroundStyle(.blue)
                 }
             }
-            
-            ViewThatFits(in: .vertical) {
-                Text(viewModel.pronunciation)
-                    .font(.system(size: 18))
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.8)
-                    .fixedSize(horizontal: false, vertical: true)
-                
-                Text(viewModel.pronunciation)
-                    .font(.system(size: 16))
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.7)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
-            
-            ViewThatFits(in: .vertical) {
-                Text(viewModel.sourceWord)
-                    .font(.system(size: 22, weight: .medium))
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.8)
-                    .fixedSize(horizontal: false, vertical: true)
+        }
+    }
+    
+    private var detailsSection: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            HStack {
+                Image(viewModel.sourceLanguageCode)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 20, height: 20)
+                    .shadow(color: shadowColor, radius: 4)
                 
                 Text(viewModel.sourceWord)
-                    .font(.system(size: 18, weight: .medium))
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.7)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
-            
-            Divider()
-                .padding(.vertical, 0)
-            
-            // Örnek cümleler
-            VStack(alignment: .leading, spacing: 4) {
-                HStack {
-                    ViewThatFits(in: .vertical) {
-                        Text(viewModel.exampleSentence)
-                            .font(.system(size: 20))
-                            .lineLimit(2)
-                            .minimumScaleFactor(0.8)
-                            .fixedSize(horizontal: false, vertical: true)
-                        
-                        Text(viewModel.exampleSentence)
-                            .font(.system(size: 18))
-                            .lineLimit(2)
-                            .minimumScaleFactor(0.7)
-                            .fixedSize(horizontal: false, vertical: true)
+                    .font(.system(size: 18, weight: .medium, design: .rounded))
+                    .foregroundColor(.primary)
+                    .opacity(isWordVisible ? 1 : 0)
+                
+                Spacer()
+                
+                Button {
+                    withAnimation {
+                        viewModel.refreshWord(from: sourceLanguage, to: targetLanguage, nativeLanguage: sourceLanguage)
                     }
+                } label: {
+                    Image(systemName: "arrow.triangle.2.circlepath")
+                        .symbolRenderingMode(.hierarchical)
+                        .font(.system(size: 24))
+                        .foregroundStyle(.blue)
+                }
+            }
+        }
+    }
+    
+    private var romanizedSection: some View {
+        HStack {
+            if let pronunciation = viewModel.romanized {
+                Image(systemName: "character.textbox")
+                    .font(.system(size: 12))
+                    .foregroundStyle(.gray)
+                
+                Text(pronunciation)
+                    .font(.system(size: 12, design: .rounded))
+                    .foregroundColor(.secondary)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.7)
+                    .opacity(isExampleVisible ? 1 : 0)
+            }
+        }
+    }
+    
+    
+    private var exampleSection: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            if !viewModel.exampleSentence.isEmpty {
+                HStack {
+                    Text(viewModel.exampleSentence)
+                        .font(.system(size: 15))
+                        .foregroundColor(.primary)
+                        .lineLimit(2)
+                        .minimumScaleFactor(1)
                     
-                    Button(action: {
+                    Spacer(minLength: 8)
+                    
+                    Button {
                         viewModel.speakWord(text: viewModel.exampleSentence)
-                    }) {
+                    } label: {
                         Image(systemName: "speaker.wave.2.fill")
-                            .font(.system(size: 16))
+                            .symbolRenderingMode(.hierarchical)
+                            .font(.system(size: 14))
                             .foregroundStyle(.blue)
                     }
                 }
-                
-                if !viewModel.sourceExampleSentence.isEmpty {
-                    ViewThatFits(in: .vertical) {
-                        Text(viewModel.sourceExampleSentence)
-                            .font(.system(size: 20))
-                            .lineLimit(2)
-                            .minimumScaleFactor(0.8)
-                            .fixedSize(horizontal: false, vertical: true)
-                        
-                        Text(viewModel.sourceExampleSentence)
-                            .font(.system(size: 18))
-                            .lineLimit(2)
-                            .minimumScaleFactor(0.7)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                }
+                .opacity(isExampleVisible ? 1 : 0)
+            }
+            
+            if let romanizedExample = viewModel.romanizedExample {
+                Text(romanizedExample)
+                    .font(.system(size: 14, design: .rounded))
+                    .foregroundColor(.secondary)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.9)
+                    .opacity(isExampleVisible ? 1 : 0)
+            }
+            
+            if !viewModel.sourceExampleSentence.isEmpty {
+                Text(viewModel.sourceExampleSentence)
+                    .font(.system(size: 15))
+                    .foregroundColor(.primary)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.9)
+                    .opacity(isExampleVisible ? 1 : 0)
             }
         }
-        .padding()
-        .heightAsPercentage(20.8)
-        .background(Color(uiColor: .systemBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 16))
-        .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
-        .onAppear {
-            if viewModel.targetWord.isEmpty {
-                viewModel.fetchDailyWord(from: sourceLanguage, to: targetLanguage)
-            }
-        }
-
-    }
-}
-
-
-struct DailyWordViewSmall: View {
-    @StateObject private var viewModel: DailyWordViewModel
-    @AppStorage("sourceLanguage") private var sourceLanguage: String = "tr"
-    @AppStorage("targetLanguage") private var targetLanguage: String = "en"
-    
-    init(viewModel: DailyWordViewModel? = nil) {
-        _viewModel = StateObject(wrappedValue: viewModel ?? DailyWordViewModel())
     }
     
-    var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            HStack {
-                ViewThatFits(in: .vertical) {
-                    Text(viewModel.targetWord)
-                        .font(.system(size: 24, weight: .bold))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.8)
-                        .fixedSize(horizontal: false, vertical: true)
-                    
-                    Text(viewModel.targetWord)
-                        .font(.system(size: 20, weight: .bold))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.7)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-                
-                Spacer()
-                Button(action: {
-                    viewModel.speakWord(text: viewModel.targetWord)
-                }) {
-                    Image(systemName: "speaker.wave.2.fill")
-                        .font(.system(size: 20))
-                        .foregroundStyle(.blue)
-                }
-            }
-            
-            ViewThatFits(in: .vertical) {
-                Text(viewModel.pronunciation)
-                    .font(.system(size: 18))
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.8)
-                    .fixedSize(horizontal: false, vertical: true)
-                
-                Text(viewModel.pronunciation)
-                    .font(.system(size: 16))
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.7)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
-            
-            HStack {
-                ViewThatFits(in: .vertical) {
-                    Text(viewModel.sourceWord)
-                        .font(.system(size: 20, weight: .medium))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.8)
-                        .fixedSize(horizontal: false, vertical: true)
-                    
-                    Text(viewModel.sourceWord)
-                        .font(.system(size: 16, weight: .medium))
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.7)
-                        .fixedSize(horizontal: false, vertical: true)
-                }
-                
-                Spacer()
-                
-                Button(action: {
-                    viewModel.refreshWord(from: sourceLanguage, to: targetLanguage, nativeLanguage: sourceLanguage)
-                }) {
-                    Image(systemName: "arrow.triangle.2.circlepath")
-                        .font(.system(size: 20))
-                        .foregroundStyle(.blue)
-                }
-            }
-            
-            // Örnek cümleler (eğer iki satırda gösteremezse font küçülüyor)
-            if !viewModel.exampleSentence.isEmpty || !viewModel.sourceExampleSentence.isEmpty {
-                Divider()
-                    .padding(.vertical, 4)
-                
-                VStack(alignment: .leading, spacing: 8) {
-                    HStack {
-                        ViewThatFits(in: .vertical) {
-                            Text(viewModel.exampleSentence)
-                                .font(.system(size: 14))
-                                .lineLimit(2)
-                                .minimumScaleFactor(0.8)
-                                .fixedSize(horizontal: false, vertical: true)
-                            
-                            Text(viewModel.exampleSentence)
-                                .font(.system(size: 12))
-                                .lineLimit(2)
-                                .minimumScaleFactor(0.7)
-                                .fixedSize(horizontal: false, vertical: true)
-                        }
-                        Spacer()
-                        Button(action: {
-                            viewModel.speakWord(text: viewModel.exampleSentence)
-                        }) {
-                            Image(systemName: "speaker.wave.2.fill")
-                                .font(.system(size: 16))
-                                .foregroundStyle(.blue)
-                        }
-                    }
-                    
-                    if !viewModel.sourceExampleSentence.isEmpty {
-                        ViewThatFits(in: .vertical) {
-                            Text(viewModel.sourceExampleSentence)
-                                .font(.system(size: 14))
-                                .lineLimit(2)
-                                .minimumScaleFactor(0.8)
-                                .fixedSize(horizontal: false, vertical: true)
-                            
-                            Text(viewModel.sourceExampleSentence)
-                                .font(.system(size: 12))
-                                .lineLimit(2)
-                                .minimumScaleFactor(0.7)
-                                .fixedSize(horizontal: false, vertical: true)
-                        }
-                    }
-                }
-            }
-        }
-        .padding()
-        .heightAsPercentage(20.8)
-        .widthAsPercentage(43.5)
-        .background(Color(uiColor: .systemBackground))
-        .clipShape(RoundedRectangle(cornerRadius: 16))
-        .shadow(color: .black.opacity(0.1), radius: 5, x: 0, y: 2)
-        .onAppear {
-            if viewModel.targetWord.isEmpty {
-                viewModel.fetchDailyWord(from: sourceLanguage, to: targetLanguage)
-            }
-        }
+    // MARK: - Styling
+    private var backgroundGradient: some ShapeStyle {
+        LinearGradient(
+            gradient: Gradient(colors: [
+                colorScheme == .dark ? Color(white: 0.2) : .white,
+                colorScheme == .dark ? Color(white: 0.15) : Color(white: 0.97)
+            ]),
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+    }
+    
+    private var shadowColor: Color {
+        colorScheme == .dark ? .black.opacity(0.3) : .black.opacity(0.5)
     }
 }

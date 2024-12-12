@@ -9,13 +9,15 @@ import SwiftUI
 import AVFoundation
 
 class DailyWordViewModel: ObservableObject {
-    @Published var sourceWord: String = ""
-    @Published var targetWord: String = ""
-    @Published var pronunciation: String = ""
-    @Published var exampleSentence: String = ""
-    @Published var sourceExampleSentence: String = ""
-    @Published var romanized: String?
-    @Published var romanizedExample: String?
+    @Published var sourceLanguageCode: String = "" //for flag icon
+    @Published var sourceWord: String = "" //text (1)
+    @Published var targetWord: String = "" //text (2)
+    @Published var targetLanguageCode: String = "" //for flag icon
+    @Published var pronunciation: String = "" //pronunciation for targetWord (2)
+    @Published var exampleSentence: String = "" //exampleSentence (1)
+    @Published var sourceExampleSentence: String = "" //exampleSentence (2)
+    @Published var romanized: String? // (2)
+    @Published var romanizedExample: String? // (2)
     
     private let defaults: UserDefaults = UserDefaults.standard
 
@@ -95,6 +97,8 @@ class DailyWordViewModel: ObservableObject {
                 return
             }
             
+            sourceLanguageCode = sourceLang
+            targetLanguageCode = targetLang
             sourceWord = sourceTranslation.text
             targetWord = targetTranslation.text
             pronunciation = targetTranslation.pronunciations[sourceLang] ?? ""
@@ -136,15 +140,15 @@ class DailyWordViewModel: ObservableObject {
             "zh": "zh-CN", // Çince
             "ru": "ru-RU", // Rusça
             "ja": "ja-JP", // Japonca
-            "hi": "hi-IN",
-            "fil": "fil-PH",
-            "th": "th-TH",
-            "ko": "ko-KR",
-            "nl": "nl-NL",
-            "sv": "sv-SE",
-            "pl": "pl-PL",
-            "el": "el-GR",
-            "de": "de-DE"
+            "hi": "hi-IN", // Hintçe
+            "fil": "fil-PH", // Filipince
+            "th": "th-TH", // Tayca
+            "ko": "ko-KR", // Korece
+            "nl": "nl-NL", // Hollandaca
+            "sv": "sv-SE", // İsveççe
+            "pl": "pl-PL", // Lehçe
+            "el": "el-GR", // Yunanca
+            "de": "de-DE" // Almanca
         ]
         return conversions[code] ?? code
     }
