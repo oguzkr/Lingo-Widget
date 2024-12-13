@@ -238,6 +238,7 @@ struct DailyWordViewMedium: View {
         HStack {
             let romanized = viewModel.pronunciation
             Text("🗣️ \(romanized)")
+                .italic()
                 .font(.system(size: 14,
                               weight: .light,
                               design: .default))
