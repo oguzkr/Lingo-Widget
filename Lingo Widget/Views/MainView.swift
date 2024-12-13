@@ -204,7 +204,6 @@ struct DailyWordViewSmall: View {
                 .foregroundStyle(.secondary)
             
             Text(romanized)
-                .italic()
                 .font(.system(size: 18).weight(.light))
                 .foregroundColor(.secondary)
                 .opacity(isExampleVisible ? 1 : 0)
