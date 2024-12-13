@@ -1,11 +1,11 @@
 //
-//  Lingo_WidgetApp.swift
+//  AppDelegate.swift
 //  Lingo Widget
 //
-//  Created by Oguz Doruk on 6.12.2024.
+//  Created by Oguz Doruk on 13.12.2024.
 //
 
-import SwiftUI
+import UIKit
 import FirebaseCore
 
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -14,14 +14,4 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     FirebaseApp.configure()
     return true
   }
-}
-
-@main
-struct Lingo_WidgetApp: App {
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
 }

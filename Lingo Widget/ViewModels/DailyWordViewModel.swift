@@ -9,15 +9,16 @@ import SwiftUI
 import AVFoundation
 
 class DailyWordViewModel: ObservableObject {
-    @Published var sourceLanguageCode: String = "" //for flag icon
-    @Published var sourceWord: String = "" //text (1)
-    @Published var targetWord: String = "" //text (2)
-    @Published var targetLanguageCode: String = "" //for flag icon
-    @Published var pronunciation: String = "" //pronunciation for targetWord (2)
-    @Published var exampleSentence: String = "" //exampleSentence (1)
-    @Published var sourceExampleSentence: String = "" //exampleSentence (2)
-    @Published var romanized: String? // (2)
-    @Published var romanizedExample: String? // (2)
+    
+    @Published var sourceLanguageCode: String = ""
+    @Published var sourceWord: String = ""
+    @Published var targetWord: String = ""
+    @Published var targetLanguageCode: String = ""
+    @Published var pronunciation: String = ""
+    @Published var exampleSentence: String = ""
+    @Published var sourceExampleSentence: String = ""
+    @Published var romanized: String?
+    @Published var romanizedExample: String?
     
     private let defaults: UserDefaults = UserDefaults.standard
 
@@ -53,8 +54,6 @@ class DailyWordViewModel: ObservableObject {
     }
     
     private func selectNewWord() -> String {
-        return allWordIds.randomElement() ?? "hello"
-        
         let availableWords = allWordIds.filter { !shownWordIds.contains($0) }
         
         if availableWords.isEmpty {
@@ -77,20 +76,14 @@ class DailyWordViewModel: ObservableObject {
     
     func fetchDailyWord(from sourceLang: String = "tr", to targetLang: String = "en") {
         currentLanguageCode = targetLang
-        
-        // Test aşaması için her seferinde yeni kelime
-        currentWordId = selectNewWord()
-        
-        /* Daha sonra aktif edilecek olan günlük kelime kontrolü
+
         let calendar = Calendar.current
         if !calendar.isDate(lastWordDate, inSameDayAs: Date()) {
             currentWordId = selectNewWord()
             shownWordIds.append(currentWordId)
             lastWordDate = Date()
         }
-        */
         
-        // Kelimeyi yükle
         if let word = loadWord(id: currentWordId) {
             guard let sourceTranslation = word.translations[sourceLang],
                   let targetTranslation = word.translations[targetLang] else {
