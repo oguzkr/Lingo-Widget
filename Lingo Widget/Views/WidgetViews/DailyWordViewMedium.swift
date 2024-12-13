@@ -13,22 +13,22 @@ struct DailyWordViewMedium: View {
     @AppStorage("targetLanguage") private var targetLanguage: String = "en"
     @Environment(\.colorScheme) private var colorScheme
     
-    @State private var isWordVisible = false
-    @State private var isExampleVisible = false
-    @State private var isCompactLayout: Bool = false
-    @State private var showPronunciationInline: Bool = false
+    // Layout durumları
+    @State private var isWordLineCompact: Bool = false // Kelime satırının sıkışık olup olmadığı
+    @State private var shouldShowInlinePronunciation: Bool = false // Telaffuzun yanyana gösterilip gösterilmeyeceği
     
     init(viewModel: DailyWordViewModel? = nil) {
         _viewModel = StateObject(wrappedValue: viewModel ?? DailyWordViewModel())
     }
     
+    // Romanized gösterim gerekiyor mu?
     private var shouldShowRomanized: Bool {
-        guard let romanized = viewModel.romanized else { return false }
         return !viewModel.targetWord.allSatisfy { $0.isLetter && $0.isASCII }
     }
     
+    // Ayraç gösterilmeli mi?
     private var shouldShowDivider: Bool {
-        if viewModel.romanized != nil || !viewModel.pronunciation.isEmpty {
+        if shouldShowRomanized && viewModel.romanized != nil || !viewModel.pronunciation.isEmpty {
             return true
         }
         if !viewModel.exampleSentence.isEmpty {
@@ -37,13 +37,33 @@ struct DailyWordViewMedium: View {
         return false
     }
     
+    // Spacing hesaplama
+    private var calculatedSpacing: CGFloat {
+        // Romanized yoksa daha ferah layout kullanabiliriz
+        if !shouldShowRomanized {
+            return isWordLineCompact ? 6 : 10
+        }
+        
+        // Romanized var ve layout sıkışıksa minimum spacing
+        if isWordLineCompact {
+            if shouldShowRomanized {
+                return 4
+            } else {
+                return 6
+            }
+        }
+        
+        // Romanized var ama layout ferah
+        return 6
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
-            VStack(spacing: 2) {
+            VStack(spacing: calculatedSpacing) {
                 targetLanguageSection
                     .padding(.horizontal, 8)
                 
-                if !showPronunciationInline && !viewModel.pronunciation.isEmpty {
+                if !shouldShowInlinePronunciation && !viewModel.pronunciation.isEmpty {
                     pronunciationSection
                         .padding(.horizontal, 8)
                 }
@@ -75,7 +95,9 @@ struct DailyWordViewMedium: View {
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .shadow(color: shadowColor, radius: 8, x: 0, y: 2)
         .onAppear {
-            setupInitialState()
+            if viewModel.targetWord.isEmpty {
+                viewModel.refreshWord(from: sourceLanguage, to: targetLanguage, nativeLanguage: sourceLanguage)
+            }
         }
     }
     
@@ -83,62 +105,62 @@ struct DailyWordViewMedium: View {
         VStack(alignment: .leading, spacing: 2) {
             HStack {
                 ViewThatFits(in: .horizontal) {
-                    // 1. Deneme: Her şey yan yana
-                    HStack(spacing: 6) {
-                        HStack(spacing: 4) {
-                            Image(viewModel.targetLanguageCode)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 20, height: 20)
-                            
-                            Text(viewModel.targetWord)
-                                .font(.system(size: 20, weight: .bold))
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.7)
-                        }
-                        
-                        if shouldShowRomanized, let romanized = viewModel.romanized {
-                            Divider()
-                                .frame(height: 20)
-                                .padding(.horizontal, 2)
-                            
-                            romanizedView(romanized)
-                        }
-                        
-                        if !viewModel.pronunciation.isEmpty {
-                            Divider()
-                                .frame(height: 20)
-                                .padding(.horizontal, 2)
-                            
-                            pronunciationView
-                        }
-                    }
-                    .onAppear {
-                        isCompactLayout = false
-                        showPronunciationInline = true
-                    }
+                    // Geniş düzen denemesi
+                    wideLayoutView
                     
-                    // 2. Deneme: Sadece kelime
-                    targetWordView
-                        .onAppear {
-                            isCompactLayout = true
-                            showPronunciationInline = false
-                        }
+                    // Dar düzen denemesi
+                    compactLayoutView
                 }
                 
                 Spacer(minLength: 0)
-                
                 speakButton
             }
             
-            if isCompactLayout && shouldShowRomanized, let romanized = viewModel.romanized {
+            // Sıkışık düzende ve romanized gerekliyse alt satırda göster
+            if isWordLineCompact && shouldShowRomanized, let romanized = viewModel.romanized {
                 romanizedView(romanized)
                     .padding(.top, 2)
             }
         }
     }
     
-    private var targetWordView: some View {
+    private var wideLayoutView: some View {
+        HStack(spacing: 6) {
+            HStack(spacing: 4) {
+                Image(viewModel.targetLanguageCode)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 20, height: 20)
+                
+                Text(viewModel.targetWord)
+                    .font(.system(size: 20, weight: .bold))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
+            }
+            
+            if shouldShowRomanized, let romanized = viewModel.romanized {
+                Divider()
+                    .frame(height: 20)
+                    .padding(.horizontal, 2)
+                
+                romanizedView(romanized)
+            }
+            
+            if !viewModel.pronunciation.isEmpty {
+                Divider()
+                    .frame(height: 20)
+                    .padding(.horizontal, 2)
+                
+                pronunciationView
+            }
+        }
+        .onAppear {
+            isWordLineCompact = false
+            shouldShowInlinePronunciation = true
+        }
+    }
+    
+    private var compactLayoutView: some View {
         HStack(spacing: 4) {
             Image(viewModel.targetLanguageCode)
                 .resizable()
@@ -149,6 +171,10 @@ struct DailyWordViewMedium: View {
                 .font(.system(size: 20, weight: .bold))
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
+        }
+        .onAppear {
+            isWordLineCompact = true
+            shouldShowInlinePronunciation = false
         }
     }
     
@@ -212,9 +238,7 @@ struct DailyWordViewMedium: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             
             Button {
-                withAnimation {
-                    viewModel.refreshWord(from: sourceLanguage, to: targetLanguage, nativeLanguage: sourceLanguage)
-                }
+                viewModel.refreshWord(from: sourceLanguage, to: targetLanguage, nativeLanguage: sourceLanguage)
             } label: {
                 Image(systemName: "arrow.triangle.2.circlepath")
                     .font(.system(size: 18))
@@ -242,7 +266,8 @@ struct DailyWordViewMedium: View {
                 }
             }
             
-            if let romanizedExample = viewModel.romanizedExample {
+            // Romanized varsa example'ın romanized'ını göster
+            if shouldShowRomanized, let romanizedExample = viewModel.romanizedExample {
                 Text(romanizedExample)
                     .italic()
                     .font(.system(size: 15))
@@ -254,21 +279,10 @@ struct DailyWordViewMedium: View {
             if !viewModel.sourceExampleSentence.isEmpty {
                 Text(viewModel.sourceExampleSentence)
                     .font(.system(size: 17))
+                    .foregroundColor(.secondary)
                     .lineLimit(2)
                     .minimumScaleFactor(0.8)
             }
-        }
-    }
-    
-    private func setupInitialState() {
-        withAnimation(.easeIn(duration: 0.3)) {
-            isWordVisible = true
-        }
-        withAnimation(.easeIn(duration: 0.3).delay(0.2)) {
-            isExampleVisible = true
-        }
-        if viewModel.targetWord.isEmpty {
-            viewModel.refreshWord(from: sourceLanguage, to: targetLanguage, nativeLanguage: sourceLanguage)
         }
     }
     
