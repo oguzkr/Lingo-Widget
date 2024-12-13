@@ -116,7 +116,6 @@ struct DailyWordViewSmall: View {
     @AppStorage("targetLanguage") private var targetLanguage: String = "en"
     @Environment(\.colorScheme) private var colorScheme
 
-    // Animation states
     @State private var isWordVisible = false
     @State private var isExampleVisible = false
 
@@ -126,18 +125,32 @@ struct DailyWordViewSmall: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            // Üst içerik - dinamik alan
-            VStack(spacing: 3) {
+            // Üst içerik - Dinamik alan
+            VStack(spacing: 0) {
+                Spacer(minLength: 0) // Üst boşluk
+
                 topWordSection
-                secondWordSection
-                thirdWordSection
+
+                if let romanized = viewModel.romanized, !romanized.isEmpty {
+                    Spacer(minLength: 0)
+                    secondWordSection(romanized: romanized)
+                }
+
+                let pronunciation = viewModel.pronunciation
+                if !pronunciation.isEmpty {
+                    Spacer(minLength: 0)
+                    thirdWordSection(pronunciation: pronunciation)
+                }
+
+                Spacer(minLength: 0)
                 bottomWordSection
+
+                Spacer(minLength: 0) // Alt boşluk
             }
             .padding(.horizontal, 5)
-            .padding(.top, 5)
-            .padding(.bottom, 8)
+            .padding(.vertical, 5)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            
+
             // Alt butonlar - sabit alan
             bottomButtonsSection
                 .frame(height: 40)
@@ -184,44 +197,35 @@ struct DailyWordViewSmall: View {
         .frame(maxWidth: .infinity)
     }
 
-    private var secondWordSection: some View {
-        Group {
-            if let romanized = viewModel.romanized, !romanized.isEmpty {
-                HStack(spacing: 5) {
-                    Image(systemName: "character.textbox")
-                        .font(.system(size: 14))
-                        .foregroundStyle(.secondary)
-                    
-                    Text(romanized)
-                        .italic()
-                        .font(.system(size: 18).weight(.light))
-                        .foregroundColor(.secondary)
-                        .opacity(isExampleVisible ? 1 : 0)
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.5)
-                        .allowsTightening(true)
-                }
-                .frame(maxWidth: .infinity)
-            }
+    private func secondWordSection(romanized: String) -> some View {
+        HStack(spacing: 5) {
+            Image(systemName: "character.textbox")
+                .font(.system(size: 14))
+                .foregroundStyle(.secondary)
+            
+            Text(romanized)
+                .italic()
+                .font(.system(size: 18).weight(.light))
+                .foregroundColor(.secondary)
+                .opacity(isExampleVisible ? 1 : 0)
+                .lineLimit(2)
+                .minimumScaleFactor(0.5)
+                .allowsTightening(true)
         }
+        .frame(maxWidth: .infinity)
     }
 
-    private var thirdWordSection: some View {
-        let pronunciation = viewModel.pronunciation
-        return Group {
-            if !pronunciation.isEmpty {
-                HStack {
-                    Text("🗣️ \(pronunciation)")
-                        .italic()
-                        .font(.system(size: 18, weight: .light))
-                        .shadow(color: .black.opacity(0.5), radius: 5)
-                        .lineLimit(2)
-                        .minimumScaleFactor(0.5)
-                        .allowsTightening(true)
-                }
-                .frame(maxWidth: .infinity)
-            }
+    private func thirdWordSection(pronunciation: String) -> some View {
+        HStack {
+            Text("🗣️ \(pronunciation)")
+                .italic()
+                .font(.system(size: 18, weight: .light))
+                .shadow(color: .black.opacity(0.5), radius: 5)
+                .lineLimit(2)
+                .minimumScaleFactor(0.5)
+                .allowsTightening(true)
         }
+        .frame(maxWidth: .infinity)
     }
 
     private var bottomWordSection: some View {
