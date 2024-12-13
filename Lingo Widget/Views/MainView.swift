@@ -93,11 +93,11 @@ struct MainView: View {
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(.top, 16)
+                    DailyWordViewMedium(viewModel: dailyWordViewModel)
+                        .padding()
                 
-                DailyWordViewMedium(viewModel: dailyWordViewModel)
-                    .padding()
+                    DailyWordViewSmall(viewModel: dailyWordViewModel)
                 
-                DailyWordViewSmall(viewModel: dailyWordViewModel)
             }
         }.preferredColorScheme(isDarkMode ? .dark : .light)
     }
