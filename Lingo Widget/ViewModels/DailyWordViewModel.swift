@@ -20,8 +20,29 @@ class DailyWordViewModel: ObservableObject {
     @Published var romanized: String?
     @Published var romanizedExample: String?
     
+    @Published var recentWords: [Word] = []
+    
+    private let recentWordsKey = "recentWords"
+    private let maxRecentWords = 2
+
+    
     private let defaults: UserDefaults = UserDefaults.standard
 
+    private func loadRecentWords() {
+        if let data = UserDefaults.standard.data(forKey: recentWordsKey),
+           let words = try? JSONDecoder().decode([Word].self, from: data) {
+            recentWords = words
+        } else {
+            recentWords = getInitialRandomWords()
+        }
+    }
+
+    private func saveRecentWords() {
+        if let encoded = try? JSONEncoder().encode(recentWords) {
+            UserDefaults.standard.set(encoded, forKey: recentWordsKey)
+        }
+    }
+    
     private var shownWordIds: [String] {
         get { defaults.array(forKey: "shownWords") as? [String] ?? [] }
         set { defaults.set(newValue, forKey: "shownWords") }
@@ -42,6 +63,7 @@ class DailyWordViewModel: ObservableObject {
     
     init() {
         setupAudioSession()
+        loadRecentWords()
     }
     
     private func setupAudioSession() {
@@ -102,9 +124,41 @@ class DailyWordViewModel: ObservableObject {
         }
     }
     
+    private func getInitialRandomWords() -> [Word] {
+        var randomWords: [Word] = []
+        var usedIds = Set<String>()
+        
+        // Mevcut kelimeyi dahil etme
+        if !currentWordId.isEmpty {
+            usedIds.insert(currentWordId)
+        }
+        
+        // 2 rastgele kelime seç
+        while randomWords.count < 2 {
+            let randomId = allWordIds.randomElement() ?? ""
+            if !usedIds.contains(randomId) {
+                if let word = loadWord(id: randomId) {
+                    randomWords.append(word)
+                    usedIds.insert(randomId)
+                }
+            }
+        }
+        
+        return randomWords
+    }
+    
     func refreshWord(from sourceLang: String, to targetLang: String, nativeLanguage: String) {
         currentWordId = selectNewWord()
         fetchDailyWord(from: sourceLang, to: targetLang)
+        
+        if let word = loadWord(id: currentWordId) {
+            // Yeni kelimeyi geçmişe ekle
+            recentWords.insert(word, at: 0)
+            if recentWords.count > maxRecentWords {
+                recentWords.removeLast()
+            }
+            saveRecentWords()
+        }
     }
     
     func speakWord(text: String? = nil) {

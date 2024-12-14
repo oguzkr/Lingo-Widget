@@ -1,5 +1,5 @@
 //
-//  DailyWordViewMedium.swift
+//  DailyWordViewLarge.swift
 //  Lingo Widget
 //
 //  Created by Oguz Doruk on 13.12.2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DailyWordViewMedium: View {
+struct DailyWordViewLarge: View {
     @StateObject private var viewModel: DailyWordViewModel
     @AppStorage("sourceLanguage") private var sourceLanguage: String = "tr"
     @AppStorage("targetLanguage") private var targetLanguage: String = "en"
@@ -35,7 +35,7 @@ struct DailyWordViewMedium: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            VStack(spacing: 6) {
+            VStack(spacing: 8) {
                 targetLanguageSection
                     .padding(.horizontal, 8)
                 
@@ -56,8 +56,38 @@ struct DailyWordViewMedium: View {
                         .padding(.horizontal, 8)
                 }
             }
+            
+            Divider()
+                .padding(.vertical, 4)
+            
+            VStack(spacing: 4) {
+                // Sadece gerçek geçmiş varsa başlığı göster
+                if UserDefaults.standard.data(forKey: "recentWords") != nil {
+                    HStack(spacing: 4) {
+                        Image(systemName: "clock.fill")
+                            .font(.system(size: 12))
+                            .foregroundStyle(.secondary)
+                        Text("Recents")
+                            .font(.system(size: 12))
+                            .foregroundStyle(.secondary)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .padding(.bottom, 2)
+                }
+                HStack(spacing: 0) {
+                    if viewModel.recentWords.count >= 2 {
+                        recentWordView(word: viewModel.recentWords[0])
+                        
+                        Divider()
+                            .padding(.horizontal, 4)
+                        
+                        recentWordView(word: viewModel.recentWords[1])
+                    }
+                }
+                .frame(height: 80)
+            }
         }
-        .heightAsPercentage(20.8)
+        .heightAsPercentage(40)
         .padding(8)
         .background(
             RoundedRectangle(cornerRadius: 16)
@@ -70,6 +100,46 @@ struct DailyWordViewMedium: View {
                 viewModel.refreshWord(from: sourceLanguage, to: targetLanguage, nativeLanguage: sourceLanguage)
             }
         }
+    }
+    private func recentWordView(word: Word) -> some View {
+       let targetTranslation = word.translations[targetLanguage]
+       let sourceTranslation = word.translations[sourceLanguage]
+       
+       return VStack(alignment: .leading, spacing: 4) {
+           HStack(alignment: .top) {
+               Text(targetTranslation?.text ?? "")
+                   .font(.system(size: 20, weight: .medium))
+                   .lineLimit(2)
+                   .minimumScaleFactor(0.7)
+               
+               Spacer()
+               
+               Button {
+                   viewModel.speakWord(text: targetTranslation?.text ?? "")
+               } label: {
+                   Image(systemName: "speaker.wave.2.fill")
+                       .font(.system(size: 14))
+                       .foregroundStyle(.blue)
+               }
+           }
+           
+           if let pronunciation = targetTranslation?.pronunciations[sourceLanguage] {
+               Text(pronunciation)
+                   .italic()
+                   .font(.system(size: 20, weight: .light))
+                   .foregroundStyle(.secondary)
+                   .lineLimit(2)
+                   .minimumScaleFactor(0.8)
+           }
+           
+           Text(sourceTranslation?.text ?? "")
+               .font(.system(size: 20))
+               .foregroundStyle(.secondary)
+               .lineLimit(2)
+               .minimumScaleFactor(0.8)
+       }
+       .padding(.horizontal, 8)
+       .frame(maxWidth: .infinity)
     }
     
     private var targetLanguageSection: some View {
@@ -310,6 +380,6 @@ struct DailyWordViewMedium: View {
 }
 
 #Preview {
-    DailyWordViewMedium(viewModel: DailyWordViewModel())
+    DailyWordViewLarge(viewModel: DailyWordViewModel())
         .padding()
 }
