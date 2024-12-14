@@ -24,10 +24,10 @@ class DailyWordViewModel: ObservableObject {
     
     private let recentWordsKey = "recentWords"
     private let maxRecentWords = 2
-
+    
     
     private let defaults: UserDefaults = UserDefaults.standard
-
+    
     private func loadRecentWords() {
         if let data = UserDefaults.standard.data(forKey: recentWordsKey),
            let words = try? JSONDecoder().decode([Word].self, from: data) {
@@ -36,7 +36,7 @@ class DailyWordViewModel: ObservableObject {
             recentWords = getInitialRandomWords()
         }
     }
-
+    
     private func saveRecentWords() {
         if let encoded = try? JSONEncoder().encode(recentWords) {
             UserDefaults.standard.set(encoded, forKey: recentWordsKey)
@@ -96,33 +96,7 @@ class DailyWordViewModel: ObservableObject {
         return word
     }
     
-    func fetchDailyWord(from sourceLang: String = "tr", to targetLang: String = "en") {
-        currentLanguageCode = targetLang
-
-        let calendar = Calendar.current
-        if !calendar.isDate(lastWordDate, inSameDayAs: Date()) {
-            currentWordId = selectNewWord()
-            shownWordIds.append(currentWordId)
-            lastWordDate = Date()
-        }
-        
-        if let word = loadWord(id: currentWordId) {
-            guard let sourceTranslation = word.translations[sourceLang],
-                  let targetTranslation = word.translations[targetLang] else {
-                return
-            }
-            
-            sourceLanguageCode = sourceLang
-            targetLanguageCode = targetLang
-            sourceWord = sourceTranslation.text
-            targetWord = targetTranslation.text
-            pronunciation = targetTranslation.pronunciations[sourceLang] ?? ""
-            exampleSentence = targetTranslation.exampleSentence
-            sourceExampleSentence = sourceTranslation.exampleSentence
-            romanized = targetTranslation.romanized
-            romanizedExample = targetTranslation.romanizedExample
-        }
-    }
+    
     
     private func getInitialRandomWords() -> [Word] {
         var randomWords: [Word] = []
@@ -147,19 +121,89 @@ class DailyWordViewModel: ObservableObject {
         return randomWords
     }
     
-    func refreshWord(from sourceLang: String, to targetLang: String, nativeLanguage: String) {
-        currentWordId = selectNewWord()
-        fetchDailyWord(from: sourceLang, to: targetLang)
-        
-        if let word = loadWord(id: currentWordId) {
-            // Yeni kelimeyi geçmişe ekle
+    private func addToRecents(_ word: Word) {
+        // Son eklenen kelimeden farklı ise ekle
+        if recentWords.isEmpty || recentWords[0].id != word.id {
             recentWords.insert(word, at: 0)
             if recentWords.count > maxRecentWords {
                 recentWords.removeLast()
             }
             saveRecentWords()
+            objectWillChange.send()
         }
     }
+    
+    func fetchDailyWord(from sourceLang: String = "tr", to targetLang: String = "en") {
+        currentLanguageCode = targetLang
+        
+        // Yeni gün kontrolü
+        let calendar = Calendar.current
+        if !calendar.isDate(lastWordDate, inSameDayAs: Date()) {
+            refreshWord(from: sourceLang, to: targetLang, nativeLanguage: sourceLang)
+            return
+        }
+        
+        // Mevcut kelimeyi yükle
+        if let word = loadWord(id: currentWordId) {
+            guard let sourceTranslation = word.translations[sourceLang],
+                  let targetTranslation = word.translations[targetLang] else {
+                return
+            }
+            
+            sourceLanguageCode = sourceLang
+            targetLanguageCode = targetLang
+            sourceWord = sourceTranslation.text
+            targetWord = targetTranslation.text
+            pronunciation = targetTranslation.pronunciations[sourceLang] ?? ""
+            exampleSentence = targetTranslation.exampleSentence
+            sourceExampleSentence = sourceTranslation.exampleSentence
+            romanized = targetTranslation.romanized
+            romanizedExample = targetTranslation.romanizedExample
+        }
+    }
+    
+    func refreshWord(from sourceLang: String, to targetLang: String, nativeLanguage: String) {
+        // Yeni kelimeyi seç
+        let newId = selectNewWord()
+        
+        // Eğer yeni kelime yüklenebilirse
+        if let newWord = loadWord(id: newId) {
+            // Önce kelimeyi geçmişe ekle (eğer mevcut kelime varsa)
+            if !currentWordId.isEmpty, let currentWord = loadWord(id: currentWordId) {
+                if recentWords.isEmpty || recentWords[0].id != currentWord.id {
+                    recentWords.insert(currentWord, at: 0)
+                    if recentWords.count > maxRecentWords {
+                        recentWords.removeLast()
+                    }
+                    saveRecentWords()
+                }
+            }
+            
+            // Yeni kelimeyi current yap
+            currentWordId = newId
+            shownWordIds.append(currentWordId)
+            lastWordDate = Date()
+            
+            // UI'ı güncelle
+            guard let sourceTranslation = newWord.translations[sourceLang],
+                  let targetTranslation = newWord.translations[targetLang] else {
+                return
+            }
+            
+            sourceLanguageCode = sourceLang
+            targetLanguageCode = targetLang
+            sourceWord = sourceTranslation.text
+            targetWord = targetTranslation.text
+            pronunciation = targetTranslation.pronunciations[sourceLang] ?? ""
+            exampleSentence = targetTranslation.exampleSentence
+            sourceExampleSentence = sourceTranslation.exampleSentence
+            romanized = targetTranslation.romanized
+            romanizedExample = targetTranslation.romanizedExample
+            
+            objectWillChange.send()
+        }
+    }
+    
     
     func speakWord(text: String? = nil) {
         let textToSpeak = text ?? targetWord
