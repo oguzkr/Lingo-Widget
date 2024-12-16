@@ -11,7 +11,20 @@
 		12508B262D04493500414903 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 12508B252D04493500414903 /* RevenueCatUI */; };
 		12508B292D044A9700414903 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 12508B282D044A9700414903 /* FirebaseAnalytics */; };
 		12508B2B2D044A9700414903 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 12508B2A2D044A9700414903 /* FirebaseAuth */; };
+		126781672D0FCEF200BDA251 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 126781662D0FCEF200BDA251 /* WidgetKit.framework */; };
+		126781682D0FCEF200BDA251 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12FC88552D02C62F008D9D9A /* SwiftUI.framework */; };
+		126781772D0FCEF300BDA251 /* Lingo Widget ExtensionExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 126781652D0FCEF200BDA251 /* Lingo Widget ExtensionExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		126781752D0FCEF300BDA251 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 12FC88342D02C589008D9D9A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 126781642D0FCEF200BDA251;
+			remoteInfo = "Lingo Widget ExtensionExtension";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		12FC886A2D02C630008D9D9A /* Embed Foundation Extensions */ = {
@@ -20,6 +33,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				126781772D0FCEF300BDA251 /* Lingo Widget ExtensionExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -27,19 +41,162 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		126781652D0FCEF200BDA251 /* Lingo Widget ExtensionExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Lingo Widget ExtensionExtension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		126781662D0FCEF200BDA251 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		1267817D2D0FCF5800BDA251 /* Lingo Widget ExtensionExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Lingo Widget ExtensionExtension.entitlements"; sourceTree = "<group>"; };
 		12FC883C2D02C589008D9D9A /* Lingo Widget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Lingo Widget.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		12FC88552D02C62F008D9D9A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		1267817A2D0FCEF300BDA251 /* Exceptions for "Lingo Widget Extension" folder in "Lingo Widget ExtensionExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 126781642D0FCEF200BDA251 /* Lingo Widget ExtensionExtension */;
+		};
+		126781812D0FCFE700BDA251 /* Exceptions for "Lingo Widget" folder in "Lingo Widget ExtensionExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Assets.xcassets,
+				Models/Word.swift,
+				Resources/WordsJsonFiles/afternoon.json,
+				Resources/WordsJsonFiles/airport.json,
+				Resources/WordsJsonFiles/ambulance.json,
+				Resources/WordsJsonFiles/angry.json,
+				Resources/WordsJsonFiles/bag.json,
+				Resources/WordsJsonFiles/bathroom.json,
+				Resources/WordsJsonFiles/bill.json,
+				Resources/WordsJsonFiles/bored.json,
+				Resources/WordsJsonFiles/bus.json,
+				Resources/WordsJsonFiles/busy.json,
+				Resources/WordsJsonFiles/buy.json,
+				Resources/WordsJsonFiles/car.json,
+				Resources/WordsJsonFiles/card.json,
+				Resources/WordsJsonFiles/cash.json,
+				Resources/WordsJsonFiles/cheap.json,
+				Resources/WordsJsonFiles/clean.json,
+				Resources/WordsJsonFiles/coffee.json,
+				Resources/WordsJsonFiles/color.json,
+				Resources/WordsJsonFiles/danger.json,
+				Resources/WordsJsonFiles/delicious.json,
+				Resources/WordsJsonFiles/dirty.json,
+				Resources/WordsJsonFiles/early.json,
+				Resources/WordsJsonFiles/embassy.json,
+				Resources/WordsJsonFiles/evening.json,
+				Resources/WordsJsonFiles/excited.json,
+				Resources/WordsJsonFiles/excuse_me.json,
+				Resources/WordsJsonFiles/expensive.json,
+				Resources/WordsJsonFiles/far.json,
+				Resources/WordsJsonFiles/fire.json,
+				Resources/WordsJsonFiles/forget.json,
+				Resources/WordsJsonFiles/free.json,
+				Resources/WordsJsonFiles/good_afternoon.json,
+				Resources/WordsJsonFiles/good_evening.json,
+				Resources/WordsJsonFiles/good_morning.json,
+				Resources/WordsJsonFiles/good_night.json,
+				Resources/WordsJsonFiles/goodbye.json,
+				Resources/WordsJsonFiles/happy.json,
+				Resources/WordsJsonFiles/hello.json,
+				Resources/WordsJsonFiles/help.json,
+				Resources/WordsJsonFiles/here.json,
+				Resources/WordsJsonFiles/hospital.json,
+				Resources/WordsJsonFiles/hotel.json,
+				Resources/WordsJsonFiles/how_are_you.json,
+				Resources/WordsJsonFiles/how_long.json,
+				Resources/WordsJsonFiles/how_much.json,
+				Resources/WordsJsonFiles/hungry.json,
+				Resources/WordsJsonFiles/injured.json,
+				Resources/WordsJsonFiles/late.json,
+				Resources/WordsJsonFiles/later.json,
+				Resources/WordsJsonFiles/left.json,
+				Resources/WordsJsonFiles/listen.json,
+				Resources/WordsJsonFiles/lost.json,
+				Resources/WordsJsonFiles/maybe.json,
+				Resources/WordsJsonFiles/money.json,
+				Resources/WordsJsonFiles/morning.json,
+				Resources/WordsJsonFiles/near.json,
+				Resources/WordsJsonFiles/new.json,
+				Resources/WordsJsonFiles/nice_to_meet_you.json,
+				Resources/WordsJsonFiles/nice.json,
+				Resources/WordsJsonFiles/no_problem.json,
+				Resources/WordsJsonFiles/now.json,
+				Resources/WordsJsonFiles/old.json,
+				Resources/WordsJsonFiles/pharmacy.json,
+				Resources/WordsJsonFiles/place.json,
+				Resources/WordsJsonFiles/please.json,
+				Resources/WordsJsonFiles/police.json,
+				Resources/WordsJsonFiles/receipt.json,
+				Resources/WordsJsonFiles/recommend.json,
+				Resources/WordsJsonFiles/repeat.json,
+				Resources/WordsJsonFiles/right.json,
+				Resources/WordsJsonFiles/sad.json,
+				Resources/WordsJsonFiles/same.json,
+				Resources/WordsJsonFiles/see_you_later.json,
+				Resources/WordsJsonFiles/sick.json,
+				Resources/WordsJsonFiles/size.json,
+				Resources/WordsJsonFiles/sleepy.json,
+				Resources/WordsJsonFiles/soon.json,
+				Resources/WordsJsonFiles/sorry.json,
+				Resources/WordsJsonFiles/spicy.json,
+				Resources/WordsJsonFiles/station.json,
+				Resources/WordsJsonFiles/stop.json,
+				Resources/WordsJsonFiles/straight.json,
+				Resources/WordsJsonFiles/subway.json,
+				Resources/WordsJsonFiles/sweet.json,
+				Resources/WordsJsonFiles/take_care.json,
+				Resources/WordsJsonFiles/thank_you.json,
+				Resources/WordsJsonFiles/there.json,
+				Resources/WordsJsonFiles/thirsty.json,
+				Resources/WordsJsonFiles/ticket.json,
+				Resources/WordsJsonFiles/time.json,
+				Resources/WordsJsonFiles/tired.json,
+				Resources/WordsJsonFiles/today.json,
+				Resources/WordsJsonFiles/tomorrow.json,
+				Resources/WordsJsonFiles/train.json,
+				Resources/WordsJsonFiles/understand.json,
+				Resources/WordsJsonFiles/water.json,
+				Resources/WordsJsonFiles/welcome.json,
+				Resources/WordsJsonFiles/where.json,
+				Resources/WordsJsonFiles/which_way.json,
+				Resources/WordsJsonFiles/yesterday.json,
+				Resources/WordsJsonFiles/young.json,
+				ViewModels/DailyWordViewModel.swift,
+			);
+			target = 126781642D0FCEF200BDA251 /* Lingo Widget ExtensionExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		126781692D0FCEF200BDA251 /* Lingo Widget Extension */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				1267817A2D0FCEF300BDA251 /* Exceptions for "Lingo Widget Extension" folder in "Lingo Widget ExtensionExtension" target */,
+			);
+			path = "Lingo Widget Extension";
+			sourceTree = "<group>";
+		};
 		12FC883E2D02C589008D9D9A /* Lingo Widget */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				126781812D0FCFE700BDA251 /* Exceptions for "Lingo Widget" folder in "Lingo Widget ExtensionExtension" target */,
+			);
 			path = "Lingo Widget";
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		126781622D0FCEF200BDA251 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				126781682D0FCEF200BDA251 /* SwiftUI.framework in Frameworks */,
+				126781672D0FCEF200BDA251 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		12FC88392D02C589008D9D9A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -57,7 +214,9 @@
 		12FC88332D02C589008D9D9A = {
 			isa = PBXGroup;
 			children = (
+				1267817D2D0FCF5800BDA251 /* Lingo Widget ExtensionExtension.entitlements */,
 				12FC883E2D02C589008D9D9A /* Lingo Widget */,
+				126781692D0FCEF200BDA251 /* Lingo Widget Extension */,
 				12FC88522D02C62E008D9D9A /* Frameworks */,
 				12FC883D2D02C589008D9D9A /* Products */,
 			);
@@ -67,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				12FC883C2D02C589008D9D9A /* Lingo Widget.app */,
+				126781652D0FCEF200BDA251 /* Lingo Widget ExtensionExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -75,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				12FC88552D02C62F008D9D9A /* SwiftUI.framework */,
+				126781662D0FCEF200BDA251 /* WidgetKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -82,6 +243,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		126781642D0FCEF200BDA251 /* Lingo Widget ExtensionExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1267817B2D0FCEF300BDA251 /* Build configuration list for PBXNativeTarget "Lingo Widget ExtensionExtension" */;
+			buildPhases = (
+				126781612D0FCEF200BDA251 /* Sources */,
+				126781622D0FCEF200BDA251 /* Frameworks */,
+				126781632D0FCEF200BDA251 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				126781692D0FCEF200BDA251 /* Lingo Widget Extension */,
+			);
+			name = "Lingo Widget ExtensionExtension";
+			packageProductDependencies = (
+			);
+			productName = "Lingo Widget ExtensionExtension";
+			productReference = 126781652D0FCEF200BDA251 /* Lingo Widget ExtensionExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		12FC883B2D02C589008D9D9A /* Lingo Widget */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 12FC884A2D02C58A008D9D9A /* Build configuration list for PBXNativeTarget "Lingo Widget" */;
@@ -94,6 +277,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				126781762D0FCEF300BDA251 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				12FC883E2D02C589008D9D9A /* Lingo Widget */,
@@ -116,9 +300,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1610;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1610;
 				TargetAttributes = {
+					126781642D0FCEF200BDA251 = {
+						CreatedOnToolsVersion = 16.2;
+					};
 					12FC883B2D02C589008D9D9A = {
 						CreatedOnToolsVersion = 16.1;
 					};
@@ -143,11 +330,19 @@
 			projectRoot = "";
 			targets = (
 				12FC883B2D02C589008D9D9A /* Lingo Widget */,
+				126781642D0FCEF200BDA251 /* Lingo Widget ExtensionExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		126781632D0FCEF200BDA251 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		12FC883A2D02C589008D9D9A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -158,6 +353,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		126781612D0FCEF200BDA251 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		12FC88382D02C589008D9D9A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -167,7 +369,73 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		126781762D0FCEF300BDA251 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 126781642D0FCEF200BDA251 /* Lingo Widget ExtensionExtension */;
+			targetProxy = 126781752D0FCEF300BDA251 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		126781782D0FCEF300BDA251 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Lingo Widget ExtensionExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C7WG386WRN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Lingo Widget Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Lingo Widget Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.oguzkr.Lingo-Widget.Lingo-Widget-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		126781792D0FCEF300BDA251 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = "Lingo Widget ExtensionExtension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = C7WG386WRN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Lingo Widget Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Lingo Widget Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.oguzkr.Lingo-Widget.Lingo-Widget-Extension";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		12FC88482D02C58A008D9D9A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -292,6 +560,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Lingo Widget/Lingo Widget.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C7WG386WRN;
@@ -324,6 +593,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Lingo Widget/Lingo Widget.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = C7WG386WRN;
@@ -354,6 +624,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1267817B2D0FCEF300BDA251 /* Build configuration list for PBXNativeTarget "Lingo Widget ExtensionExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				126781782D0FCEF300BDA251 /* Debug */,
+				126781792D0FCEF300BDA251 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		12FC88372D02C589008D9D9A /* Build configuration list for PBXProject "Lingo Widget" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

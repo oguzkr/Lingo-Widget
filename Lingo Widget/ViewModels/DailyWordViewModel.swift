@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AVFoundation
+import WidgetKit
 
 class DailyWordViewModel: ObservableObject {
     
@@ -25,19 +26,19 @@ class DailyWordViewModel: ObservableObject {
     private let recentWordsKey = "recentWords"
     private let maxRecentWords = 2
 
-    private let defaults = UserDefaults.standard
+    private let defaults = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")!
 
-    private var shownWordIds: [String] {
+    var shownWordIds: [String] {
         get { defaults.array(forKey: "shownWords") as? [String] ?? [] }
         set { defaults.set(newValue, forKey: "shownWords") }
     }
 
-    private var lastWordDate: Date {
+    var lastWordDate: Date {
         get { defaults.object(forKey: "lastWordDate") as? Date ?? Date(timeIntervalSince1970: 0) }
         set { defaults.set(newValue, forKey: "lastWordDate") }
     }
 
-    private var currentWordId: String {
+    var currentWordId: String {
         get { defaults.string(forKey: "currentWordId") ?? "" }
         set { defaults.set(newValue, forKey: "currentWordId") }
     }
@@ -113,6 +114,7 @@ class DailyWordViewModel: ObservableObject {
     }
 
     func fetchDailyWord(from sourceLang: String = "tr", to targetLang: String = "en") {
+        print("fetchDailyWord: \(sourceLang) -> \(targetLang)")
         currentLanguageCode = targetLang
         let calendar = Calendar.current
 
@@ -129,6 +131,8 @@ class DailyWordViewModel: ObservableObject {
             // Mevcut kelime yüklenemiyor, yeni bir kelime seç
             refreshWord(from: sourceLang, to: targetLang, nativeLanguage: sourceLang)
         }
+        
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     func refreshWord(from sourceLang: String, to targetLang: String, nativeLanguage: String) {
@@ -168,6 +172,8 @@ class DailyWordViewModel: ObservableObject {
 
         // UI Güncelle
         updateUI(with: loadedNewWord, sourceLang: sourceLang, targetLang: targetLang)
+        
+        WidgetCenter.shared.reloadAllTimelines()
     }
 
     private func updateUI(with word: Word, sourceLang: String, targetLang: String) {

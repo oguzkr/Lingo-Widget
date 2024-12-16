@@ -9,8 +9,13 @@ import SwiftUI
 
 struct DailyWordViewSmall: View {
     @StateObject private var viewModel: DailyWordViewModel
-    @AppStorage("sourceLanguage") private var sourceLanguage: String = "tr"
-    @AppStorage("targetLanguage") private var targetLanguage: String = "en"
+    
+    @AppStorage("sourceLanguage", store: UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget"))
+    private var selectedSourceLanguage = "tr"
+
+    @AppStorage("targetLanguage", store: UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget"))
+    private var selectedTargetLanguage = "en"
+    
     @Environment(\.colorScheme) private var colorScheme
 
     @State private var isWordVisible = false
@@ -67,7 +72,9 @@ struct DailyWordViewSmall: View {
                 isExampleVisible = true
             }
             if viewModel.targetWord.isEmpty {
-                viewModel.refreshWord(from: sourceLanguage, to: targetLanguage, nativeLanguage: sourceLanguage)
+                viewModel.refreshWord(from: selectedSourceLanguage,
+                                      to: selectedTargetLanguage,
+                                      nativeLanguage: selectedSourceLanguage)
             }
         }
         .heightAsPercentage(20.8)
@@ -151,9 +158,9 @@ struct DailyWordViewSmall: View {
                 Spacer()
                 Button {
                     withAnimation {
-                        viewModel.refreshWord(from: sourceLanguage,
-                                              to: targetLanguage,
-                                              nativeLanguage: sourceLanguage)
+                        viewModel.refreshWord(from: selectedSourceLanguage,
+                                              to: selectedTargetLanguage,
+                                              nativeLanguage: selectedSourceLanguage)
                     }
                 } label: {
                     Image(systemName: "arrow.triangle.2.circlepath")

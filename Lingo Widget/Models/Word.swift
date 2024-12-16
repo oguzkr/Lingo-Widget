@@ -19,3 +19,36 @@ struct Word: Codable {
         let pronunciations: [String: String]
     }
 }
+
+
+extension Word {
+    static let placeholder: Word = {
+        let sourceTranslation = Translation(
+            text: "Merhaba",
+            exampleSentence: "Merhaba, nasılsın?",
+            romanized: nil,
+            romanizedExample: nil,
+            pronunciations: [
+                "en": "mer·ha·ba"
+            ]
+        )
+        
+        let targetTranslation = Translation(
+            text: "Hello",
+            exampleSentence: "Hello, how are you?",
+            romanized: nil,
+            romanizedExample: nil,
+            pronunciations: [
+                "tr": "he·lou"
+            ]
+        )
+        
+        return Word(
+            id: "hello",
+            translations: [
+                "tr": sourceTranslation,
+                "en": targetTranslation
+            ]
+        )
+    }()
+}

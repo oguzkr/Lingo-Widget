@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct MainView: View {
-    @AppStorage("sourceLanguage") private var selectedSourceLanguage = "tr"
-    @AppStorage("targetLanguage") private var selectedTargetLanguage = "en"
+    @AppStorage("sourceLanguage", store: UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget"))
+    private var selectedSourceLanguage = "tr"
+
+    @AppStorage("targetLanguage", store: UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget"))
+    private var selectedTargetLanguage = "en"
+    
     @AppStorage("isDarkMode") private var isDarkMode = false
     
     @State private var dailyWordViewModel = DailyWordViewModel()
@@ -60,10 +64,7 @@ struct MainView: View {
                                 .fill(Color(uiColor: .systemBackground))
                         )
                         .onChange(of: selectedSourceLanguage) {
-                            dailyWordViewModel.fetchDailyWord(
-                                from: selectedSourceLanguage,
-                                to: selectedTargetLanguage
-                            )
+                            dailyWordViewModel.fetchDailyWord(from: selectedSourceLanguage, to: selectedTargetLanguage)
                         }
                     }
                     
@@ -98,22 +99,26 @@ struct MainView: View {
                     .font(.headline)
                     .fontWeight(.bold)
                 
-                DailyWordViewLarge(viewModel: dailyWordViewModel)
-                    .padding()
-                
-                Text("Medium Widget")
-                    .font(.headline)
-                    .fontWeight(.bold)
-                DailyWordViewMedium(viewModel: dailyWordViewModel)
-                    .padding()
-                
+//                DailyWordViewLarge(viewModel: dailyWordViewModel)
+//                    .padding()
+//                
+//                Text("Medium Widget")
+//                    .font(.headline)
+//                    .fontWeight(.bold)
+//                DailyWordViewMedium(viewModel: dailyWordViewModel)
+//                    .padding()
+//                
                 Text("Small Widget")
                     .font(.headline)
                     .fontWeight(.bold)
                 DailyWordViewSmall(viewModel: dailyWordViewModel)
                 
             }
-        }.preferredColorScheme(isDarkMode ? .dark : .light)
+        }
+        .preferredColorScheme(isDarkMode ? .dark : .light)
+        .onAppear {
+            dailyWordViewModel.fetchDailyWord()
+        }
     }
 }
  
