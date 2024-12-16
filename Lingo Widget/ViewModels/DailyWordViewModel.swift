@@ -137,41 +137,16 @@ class DailyWordViewModel: ObservableObject {
 
     func refreshWord(from sourceLang: String, to targetLang: String, nativeLanguage: String) {
         currentLanguageCode = targetLang
-
-        // Önce yeni bir kelime seç
-        var newId = selectNewWord()
-
-        // Yeni kelime yüklenemezse tekrar dene (çok nadir bir durum)
-        var tryCount = 0
-        var newWord: Word? = nil
-        while tryCount < 5 {
-            if let w = loadWord(id: newId) {
-                newWord = w
-                break
-            } else {
-                newId = selectNewWord()
-                tryCount += 1
-            }
-        }
-
-        guard let loadedNewWord = newWord else {
-            print("Yeni kelime yüklenemedi.")
+        let newId = selectNewWord()
+        guard let newWord = loadWord(id: newId) else {
+            print("Widget: Yeni kelime yüklenemedi.")
             return
         }
-
-        // Eğer önceki kelime varsa recent'e ekle
-        if !currentWordId.isEmpty, let oldWord = loadWord(id: currentWordId) {
-            addToRecents(oldWord)
-        }
-
         currentWordId = newId
-        if !shownWordIds.contains(newId) {
-            shownWordIds.append(newId)
-        }
+        defaults.set(currentWordId, forKey: "currentWordId")
         lastWordDate = Date()
-
-        // UI Güncelle
-        updateUI(with: loadedNewWord, sourceLang: sourceLang, targetLang: targetLang)
+        updateUI(with: newWord, sourceLang: sourceLang, targetLang: targetLang)
+        print("Widget: refreshWord çalıştı.")
         
         WidgetCenter.shared.reloadAllTimelines()
     }

@@ -26,10 +26,7 @@ struct RefreshIntent: AppIntent {
         
         // Yeni kelime yükle
         viewModel.refreshWord(from: sourceLanguage, to: targetLanguage, nativeLanguage: sourceLanguage)
-        
-        // Widget'ı yenile
-        WidgetCenter.shared.reloadAllTimelines()
-        
+      
         return .result()
     }
 }
