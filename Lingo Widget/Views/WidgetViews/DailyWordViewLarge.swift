@@ -58,21 +58,21 @@ struct DailyWordViewLarge: View {
             }
             
             Divider()
-                .padding(.vertical, 4)
+                .padding(.vertical, 10)
             
             VStack(spacing: 4) {
                 // Sadece gerçek geçmiş varsa başlığı göster
                 if UserDefaults.standard.data(forKey: "recentWords") != nil {
                     HStack(spacing: 4) {
                         Image(systemName: "clock.fill")
-                            .font(.system(size: 12))
+                            .font(.system(size: 15))
                             .foregroundStyle(.secondary)
                         Text("Recents")
-                            .font(.system(size: 12))
+                            .font(.system(size: 15))
                             .foregroundStyle(.secondary)
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .padding(.bottom, 2)
+                    .padding(.bottom, 5)
                 }
                 HStack(spacing: 0) {
                     if viewModel.recentWords.count >= 2 {
@@ -110,7 +110,7 @@ struct DailyWordViewLarge: View {
                Text(targetTranslation?.text ?? "")
                    .font(.system(size: 20, weight: .medium))
                    .lineLimit(2)
-                   .minimumScaleFactor(0.7)
+                   .minimumScaleFactor(0.5)
                
                Spacer()
                
@@ -118,7 +118,7 @@ struct DailyWordViewLarge: View {
                    viewModel.speakWord(text: targetTranslation?.text ?? "")
                } label: {
                    Image(systemName: "speaker.wave.2.fill")
-                       .font(.system(size: 14))
+                       .font(.system(size: 15))
                        .foregroundStyle(.blue)
                }
            }
@@ -129,14 +129,14 @@ struct DailyWordViewLarge: View {
                    .font(.system(size: 20, weight: .light))
                    .foregroundStyle(.secondary)
                    .lineLimit(2)
-                   .minimumScaleFactor(0.8)
+                   .minimumScaleFactor(0.5)
            }
            
            Text(sourceTranslation?.text ?? "")
                .font(.system(size: 20))
                .foregroundStyle(.secondary)
                .lineLimit(2)
-               .minimumScaleFactor(0.8)
+               .minimumScaleFactor(0.5)
        }
        .padding(.horizontal, 8)
        .frame(maxWidth: .infinity)
@@ -165,12 +165,12 @@ struct DailyWordViewLarge: View {
                 Image(viewModel.targetLanguageCode)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 20, height: 20)
+                    .frame(width: 25, height: 25)
                 
                 Text(viewModel.targetWord)
-                    .font(.system(size: 20, weight: .bold))
+                    .font(.system(size: 25, weight: .bold))
                     .lineLimit(1)
-                    .minimumScaleFactor(0.7)
+                    .minimumScaleFactor(0.5)
             }
             
             // Romanized varsa göster
@@ -205,12 +205,12 @@ struct DailyWordViewLarge: View {
                     Image(viewModel.targetLanguageCode)
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 20, height: 20)
+                        .frame(width: 25, height: 25)
                     
                     Text(viewModel.targetWord)
-                        .font(.system(size: 20, weight: .bold))
+                        .font(.system(size: 25, weight: .bold))
                         .lineLimit(1)
-                        .minimumScaleFactor(0.7)
+                        .minimumScaleFactor(0.5)
                 }
                 
                 // Romanized varsa göster
@@ -242,12 +242,12 @@ struct DailyWordViewLarge: View {
                 Image(viewModel.targetLanguageCode)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 20, height: 20)
+                    .frame(width: 25, height: 25)
                 
                 Text(viewModel.targetWord)
-                    .font(.system(size: 20, weight: .bold))
+                    .font(.system(size: 25, weight: .bold))
                     .lineLimit(1)
-                    .minimumScaleFactor(0.7)
+                    .minimumScaleFactor(0.5)
                 
                 Spacer()
                 
@@ -269,25 +269,25 @@ struct DailyWordViewLarge: View {
     private func romanizedView(_ text: String) -> some View {
         HStack(spacing: 4) {
             Image(systemName: "character.textbox")
-                .font(.system(size: 12))
+                .font(.system(size: 15))
                 .foregroundStyle(.secondary)
             
             Text(text)
                 .italic()
-                .font(.system(size: 20, weight: .light))
+                .font(.system(size: 25, weight: .light))
                 .foregroundColor(.secondary)
                 .lineLimit(1)
-                .minimumScaleFactor(0.8)
+                .minimumScaleFactor(0.5)
         }
     }
     
     private var pronunciationView: some View {
         Text("🗣️ \(viewModel.pronunciation)")
             .italic()
-            .font(.system(size: 20, weight: .light))
+            .font(.system(size: 25, weight: .light))
             .foregroundColor(.secondary)
             .lineLimit(1)
-            .minimumScaleFactor(0.8)
+            .minimumScaleFactor(0.5)
     }
     
     private var speakButton: some View {
@@ -295,7 +295,7 @@ struct DailyWordViewLarge: View {
             viewModel.speakWord(text: viewModel.targetWord)
         } label: {
             Image(systemName: "speaker.wave.2.fill")
-                .font(.system(size: 18))
+                .font(.system(size: 25))
                 .foregroundStyle(.blue)
         }
     }
@@ -306,12 +306,12 @@ struct DailyWordViewLarge: View {
                 Image(viewModel.sourceLanguageCode)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 20, height: 20)
+                    .frame(width: 25, height: 25)
                 
                 Text(viewModel.sourceWord)
-                    .font(.system(size: 20, weight: .bold))
+                    .font(.system(size: 25, weight: .bold))
                     .lineLimit(1)
-                    .minimumScaleFactor(0.7)
+                    .minimumScaleFactor(0.5)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             
@@ -319,7 +319,7 @@ struct DailyWordViewLarge: View {
                 viewModel.refreshWord(from: sourceLanguage, to: targetLanguage, nativeLanguage: sourceLanguage)
             } label: {
                 Image(systemName: "arrow.triangle.2.circlepath")
-                    .font(.system(size: 18))
+                    .font(.system(size: 25))
                     .foregroundStyle(.blue)
             }
         }
@@ -329,9 +329,9 @@ struct DailyWordViewLarge: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack(alignment: .top) {
                 Text(viewModel.exampleSentence)
-                    .font(.system(size: 20))
+                    .font(.system(size: 22))
                     .lineLimit(2)
-                    .minimumScaleFactor(0.8)
+                    .minimumScaleFactor(0.5)
                 
                 Spacer()
                 
@@ -339,7 +339,7 @@ struct DailyWordViewLarge: View {
                     viewModel.speakWord(text: viewModel.exampleSentence)
                 } label: {
                     Image(systemName: "speaker.wave.2.fill")
-                        .font(.system(size: 16))
+                        .font(.system(size: 22))
                         .foregroundStyle(.blue)
                 }
             }
@@ -347,18 +347,18 @@ struct DailyWordViewLarge: View {
             if shouldShowRomanized, let romanizedExample = viewModel.romanizedExample {
                 Text(romanizedExample)
                     .italic()
-                    .font(.system(size: 20))
+                    .font(.system(size: 22))
                     .foregroundColor(.secondary)
                     .lineLimit(2)
-                    .minimumScaleFactor(0.8)
+                    .minimumScaleFactor(0.5)
             }
             
             if !viewModel.sourceExampleSentence.isEmpty {
                 Text(viewModel.sourceExampleSentence)
-                    .font(.system(size: 20))
+                    .font(.system(size: 22))
                     .foregroundColor(.secondary)
                     .lineLimit(2)
-                    .minimumScaleFactor(0.8)
+                    .minimumScaleFactor(0.5)
             }
         }
     }

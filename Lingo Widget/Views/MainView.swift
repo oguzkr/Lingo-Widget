@@ -97,6 +97,7 @@ struct MainView: View {
                 Text("Large Widget")
                     .font(.headline)
                     .fontWeight(.bold)
+                
                 DailyWordViewLarge(viewModel: dailyWordViewModel)
                     .padding()
                 

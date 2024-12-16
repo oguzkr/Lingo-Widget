@@ -76,15 +76,20 @@ class DailyWordViewModel: ObservableObject {
     }
     
     private func selectNewWord() -> String {
-        let availableWords = allWordIds.filter { !shownWordIds.contains($0) }
+        var availableWords = allWordIds.filter { !shownWordIds.contains($0) }
         
+        // Eğer hiç kullanılmamış kelime kalmadıysa
         if availableWords.isEmpty {
+            // Mevcut kelimeyi hariç tut
+            availableWords = allWordIds.filter { $0 != currentWordId }
+            // Gösterilen kelimeleri sıfırla
             shownWordIds.removeAll()
-            return allWordIds.randomElement() ?? "hello"
-        } else {
-            return availableWords.randomElement() ?? "hello"
         }
+        
+        // Random kelime seç
+        return availableWords.randomElement() ?? allWordIds[0]
     }
+
     
     private func loadWord(id: String) -> Word? {
         guard let url = Bundle.main.url(forResource: id, withExtension: "json"),
@@ -163,25 +168,20 @@ class DailyWordViewModel: ObservableObject {
     }
     
     func refreshWord(from sourceLang: String, to targetLang: String, nativeLanguage: String) {
-        // Yeni kelimeyi seç
+        currentLanguageCode = targetLang
         let newId = selectNewWord()
         
         // Eğer yeni kelime yüklenebilirse
         if let newWord = loadWord(id: newId) {
             // Önce kelimeyi geçmişe ekle (eğer mevcut kelime varsa)
             if !currentWordId.isEmpty, let currentWord = loadWord(id: currentWordId) {
-                if recentWords.isEmpty || recentWords[0].id != currentWord.id {
-                    recentWords.insert(currentWord, at: 0)
-                    if recentWords.count > maxRecentWords {
-                        recentWords.removeLast()
-                    }
-                    saveRecentWords()
-                }
+                addToRecents(currentWord)
             }
             
-            // Yeni kelimeyi current yap
             currentWordId = newId
-            shownWordIds.append(currentWordId)
+            if !shownWordIds.contains(newId) {
+                shownWordIds.append(newId)
+            }
             lastWordDate = Date()
             
             // UI'ı güncelle
@@ -190,17 +190,22 @@ class DailyWordViewModel: ObservableObject {
                 return
             }
             
-            sourceLanguageCode = sourceLang
-            targetLanguageCode = targetLang
-            sourceWord = sourceTranslation.text
-            targetWord = targetTranslation.text
-            pronunciation = targetTranslation.pronunciations[sourceLang] ?? ""
-            exampleSentence = targetTranslation.exampleSentence
-            sourceExampleSentence = sourceTranslation.exampleSentence
-            romanized = targetTranslation.romanized
-            romanizedExample = targetTranslation.romanizedExample
-            
-            objectWillChange.send()
+            // State'i güncelle ve UI'ı yenile
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.sourceLanguageCode = sourceLang
+                self.targetLanguageCode = targetLang
+                self.sourceWord = sourceTranslation.text
+                self.targetWord = targetTranslation.text
+                self.pronunciation = targetTranslation.pronunciations[sourceLang] ?? ""
+                self.exampleSentence = targetTranslation.exampleSentence
+                self.sourceExampleSentence = sourceTranslation.exampleSentence
+                self.romanized = targetTranslation.romanized
+                self.romanizedExample = targetTranslation.romanizedExample
+                
+                // UI'ı yenile
+                self.objectWillChange.send()
+            }
         }
     }
     
