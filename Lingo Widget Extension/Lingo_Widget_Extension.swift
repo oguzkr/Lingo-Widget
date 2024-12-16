@@ -20,6 +20,14 @@ struct Provider: AppIntentTimelineProvider {
     }
 
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
+        // Default dil ayarlarını kaydet
+        if sharedDefaults?.string(forKey: "sourceLanguage") == nil {
+            sharedDefaults?.set("es", forKey: "sourceLanguage")
+        }
+        if sharedDefaults?.string(forKey: "targetLanguage") == nil {
+            sharedDefaults?.set("en", forKey: "targetLanguage")
+        }
+
         return SimpleEntry(date: Date(), word: .placeholder, configuration: configuration)
     }
     

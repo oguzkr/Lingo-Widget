@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @AppStorage("sourceLanguage", store: UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget"))
-    private var selectedSourceLanguage = "tr"
+    private var selectedSourceLanguage = "es"
 
     @AppStorage("targetLanguage", store: UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget"))
     private var selectedTargetLanguage = "en"
