@@ -101,6 +101,23 @@ class DailyWordViewModel: ObservableObject {
         }
         return word
     }
+    
+    func fetchCurrentWord() {
+        let sourceLang = defaults.string(forKey: "sourceLanguage") ?? "tr"
+        let targetLang = defaults.string(forKey: "targetLanguage") ?? "en"
+        currentLanguageCode = targetLang
+
+        // Always reload the currentWordId from shared storage
+        let currentWordId = defaults.string(forKey: "currentWordId") ?? ""
+
+        // Load the current word if available
+        if let currentWord = loadWord(id: currentWordId) {
+            updateUI(with: currentWord, sourceLang: sourceLang, targetLang: targetLang)
+        } else {
+            // If no word is available, fetch a new one
+            fetchDailyWord(from: sourceLang, to: targetLang)
+        }
+    }
 
     private func addToRecents(_ word: Word) {
         // Eğer recentWords boş ya da en üstteki kelime bu kelime değilse ekle

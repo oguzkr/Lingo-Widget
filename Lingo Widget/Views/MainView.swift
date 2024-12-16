@@ -16,7 +16,8 @@ struct MainView: View {
     
     @AppStorage("isDarkMode") private var isDarkMode = false
     
-    @State private var dailyWordViewModel = DailyWordViewModel()
+    @StateObject private var dailyWordViewModel = DailyWordViewModel()
+    @Environment(\.scenePhase) var scenePhase
     
     let languages = [
         "tr": "Türkçe (Turkish)",
@@ -117,7 +118,19 @@ struct MainView: View {
         }
         .preferredColorScheme(isDarkMode ? .dark : .light)
         .onAppear {
-            dailyWordViewModel.fetchDailyWord()
+            dailyWordViewModel.fetchDailyWord(
+                from: selectedSourceLanguage,
+                to: selectedTargetLanguage
+            )
+        }
+        .onChange(of: scenePhase) { oldPhase, newPhase in
+            print("Scene phase changed from \(oldPhase) to \(newPhase)")
+            if newPhase == .active {
+                dailyWordViewModel.fetchCurrentWord()
+            }
+            if newPhase == .background {
+                exit(0)
+            }
         }
     }
 }

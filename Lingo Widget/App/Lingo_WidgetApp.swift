@@ -16,8 +16,7 @@ struct Lingo_WidgetApp: App {
         WindowGroup {
             MainView()
                 .onOpenURL { url in
-                    if url.scheme == "com.oguzkr.Lingo-Widget" {
-                        print("URL: \(url)")
+                    if url.scheme == "lingowidget" {
                         switch url.host {
                         case "speak":
                             let sourceLanguage = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "sourceLanguage") ?? "tr"

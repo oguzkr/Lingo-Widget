@@ -14,19 +14,16 @@ struct RefreshIntent: AppIntent {
     static var title: LocalizedStringResource = "Refresh Word"
     
     func perform() async throws -> some IntentResult {
-        // Shared UserDefaults'u al
         let sharedDefaults = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")!
-        
-        // DailyWordViewModel oluştur
         let viewModel = DailyWordViewModel()
-        
-        // Dil ayarlarını al
+
         let sourceLanguage = sharedDefaults.string(forKey: "sourceLanguage") ?? "tr"
         let targetLanguage = sharedDefaults.string(forKey: "targetLanguage") ?? "en"
-        
-        // Yeni kelime yükle
+
         viewModel.refreshWord(from: sourceLanguage, to: targetLanguage, nativeLanguage: sourceLanguage)
-      
+        
+        WidgetCenter.shared.reloadAllTimelines()
+        
         return .result()
     }
 }
@@ -94,12 +91,12 @@ struct SmallLingoWidget: View {
             Image(targetLanguage)
                 .resizable()
                 .scaledToFill()
-                .frame(width: 24, height: 24)
+                .frame(width: 22, height: 22)
                 .shadow(color: shadowColor, radius: 4)
             
             if let targetText = word.translations[targetLanguage]?.text {
                 Text(targetText)
-                    .font(.system(size: 24, weight: .bold))
+                    .font(.system(size: 22, weight: .bold))
                     .foregroundColor(.primary)
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
@@ -118,7 +115,7 @@ struct SmallLingoWidget: View {
                 .foregroundStyle(.secondary)
             
             Text(romanized)
-                .font(.system(size: 18).weight(.light))
+                .font(.system(size: 16).weight(.light))
                 .foregroundColor(.secondary)
                 .lineLimit(2)
                 .minimumScaleFactor(0.5)
@@ -131,7 +128,7 @@ struct SmallLingoWidget: View {
         HStack {
             Text("🗣️ \(pronunciation)")
                 .italic()
-                .font(.system(size: 18, weight: .light))
+                .font(.system(size: 16, weight: .light))
                 .shadow(color: .black.opacity(0.5), radius: 5)
                 .lineLimit(2)
                 .minimumScaleFactor(0.5)
@@ -145,12 +142,12 @@ struct SmallLingoWidget: View {
             Image(sourceLanguage)
                 .resizable()
                 .scaledToFill()
-                .frame(width: 24, height: 24)
+                .frame(width: 22, height: 22)
                 .shadow(color: shadowColor, radius: 4)
             
             if let sourceText = word.translations[sourceLanguage]?.text {
                 Text(sourceText)
-                    .font(.system(size: 24, weight: .bold))
+                    .font(.system(size: 22, weight: .bold))
                     .foregroundColor(.primary)
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
@@ -180,7 +177,7 @@ struct SmallLingoWidget: View {
                 Divider()
                 Spacer()
                 
-                Link(destination: URL(string: "com.oguzkr.Lingo-Widget://speak")!) {
+                Link(destination: URL(string: "lingowidget://speak")!) {
                     Image(systemName: "speaker.wave.2.fill")
                         .symbolRenderingMode(.monochrome)
                         .font(.system(size: 20))
