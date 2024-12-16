@@ -8,18 +8,17 @@
 import WidgetKit
 import SwiftUI
 
-struct Provider: AppIntentTimelineProvider {
+struct Provider: TimelineProvider {
     let sharedDefaults = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")
     
     func placeholder(in context: Context) -> SimpleEntry {
         return SimpleEntry(
             date: Date(),
-            word: Word.placeholder,
-            configuration: ConfigurationAppIntent()
+            word: Word.placeholder
         )
     }
 
-    func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
+    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) { // Bu method eklendi
         // Default dil ayarlarını kaydet
         if sharedDefaults?.string(forKey: "sourceLanguage") == nil {
             sharedDefaults?.set("es", forKey: "sourceLanguage")
@@ -28,10 +27,11 @@ struct Provider: AppIntentTimelineProvider {
             sharedDefaults?.set("en", forKey: "targetLanguage")
         }
 
-        return SimpleEntry(date: Date(), word: .placeholder, configuration: configuration)
+        let entry = SimpleEntry(date: Date(), word: .placeholder)
+        completion(entry)
     }
     
-    func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<SimpleEntry> {
+    func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> ()) { // Bu method eklendi
         // Mevcut tarihi al
         let currentDate = Date()
         let midnight = Calendar.current.startOfDay(for: currentDate)
@@ -65,18 +65,17 @@ struct Provider: AppIntentTimelineProvider {
                         pronunciations: [sourceLanguage: viewModel.pronunciation]
                     )
                 ]
-            ),
-            configuration: configuration
+            )
         )
 
-        return Timeline(entries: [entry], policy: .after(nextMidnight))
+        let timeline = Timeline(entries: [entry], policy: .after(nextMidnight))
+        completion(timeline)
     }
 }
 
 struct SimpleEntry: TimelineEntry {
     let date: Date
     let word: Word
-    let configuration: ConfigurationAppIntent
 }
 
 struct Lingo_Widget_ExtensionEntryView : View {
@@ -92,7 +91,7 @@ struct Lingo_Widget_Extension: Widget {
     let kind: String = "Lingo_Widget_Extension"
 
     var body: some WidgetConfiguration {
-        AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
             Lingo_Widget_ExtensionEntryView(entry: entry)
                 .containerBackground(for: .widget) {
                     RoundedRectangle(cornerRadius: 16)
@@ -108,5 +107,5 @@ struct Lingo_Widget_Extension: Widget {
 #Preview(as: .systemSmall) {
     Lingo_Widget_Extension()
 } timeline: {
-    SimpleEntry(date: .now, word: .placeholder, configuration: .init())
+    SimpleEntry(date: .now, word: .placeholder)
 }
