@@ -17,7 +17,7 @@ struct RefreshIntent: AppIntent {
         let sharedDefaults = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")!
         let viewModel = DailyWordViewModel()
 
-        let sourceLanguage = sharedDefaults.string(forKey: "sourceLanguage") ?? "tr"
+        let sourceLanguage = sharedDefaults.string(forKey: "sourceLanguage") ?? "es"
         let targetLanguage = sharedDefaults.string(forKey: "targetLanguage") ?? "en"
 
         viewModel.refreshWord(from: sourceLanguage, to: targetLanguage, nativeLanguage: sourceLanguage)
@@ -35,7 +35,7 @@ struct SmallLingoWidget: View {
     
     // UserDefaults'dan dil ayarlarını al
     private var sourceLanguage: String {
-        UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "sourceLanguage") ?? "tr"
+        UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "sourceLanguage") ?? "es"
     }
     
     private var targetLanguage: String {
@@ -231,17 +231,17 @@ struct SmallLingoWidget_Previews: PreviewProvider {
             
             // Chinese example preview
             SmallLingoWidget(word: Word(
-                id: "hello_zh",
+                id: "hello",
                 translations: [
                     "tr": Word.Translation(
-                        text: "Merhaba",
+                        text: "MerhabaCC",
                         exampleSentence: "Merhaba, nasılsın?",
                         romanized: nil,
                         romanizedExample: nil,
                         pronunciations: ["en": "mer·ha·ba"]
                     ),
                     "en": Word.Translation(
-                        text: "Hello",
+                        text: "HelloBB",
                         exampleSentence: "Hello, how are you?",
                         romanized: nil,
                         romanizedExample: nil,

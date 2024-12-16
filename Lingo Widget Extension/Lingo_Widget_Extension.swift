@@ -12,18 +12,14 @@ struct Provider: AppIntentTimelineProvider {
     let sharedDefaults = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")
     
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), word: .placeholder, configuration: ConfigurationAppIntent())
+        return SimpleEntry(
+            date: Date(),
+            word: Word.placeholder,
+            configuration: ConfigurationAppIntent()
+        )
     }
 
     func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> SimpleEntry {
-        // Default dil ayarlarını kaydet
-        if sharedDefaults?.string(forKey: "sourceLanguage") == nil {
-            sharedDefaults?.set("tr", forKey: "sourceLanguage")
-        }
-        if sharedDefaults?.string(forKey: "targetLanguage") == nil {
-            sharedDefaults?.set("en", forKey: "targetLanguage")
-        }
-        
         return SimpleEntry(date: Date(), word: .placeholder, configuration: configuration)
     }
     
@@ -34,7 +30,7 @@ struct Provider: AppIntentTimelineProvider {
         let nextMidnight = Calendar.current.date(byAdding: .day, value: 1, to: midnight)!
         
         // Dil ayarlarını al
-        let sourceLanguage = sharedDefaults?.string(forKey: "sourceLanguage") ?? "tr"
+        let sourceLanguage = sharedDefaults?.string(forKey: "sourceLanguage") ?? "de"
         let targetLanguage = sharedDefaults?.string(forKey: "targetLanguage") ?? "en"
         
         // ViewModel'i oluştur ve kelimeleri yükle

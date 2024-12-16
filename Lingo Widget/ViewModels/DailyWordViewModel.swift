@@ -103,7 +103,7 @@ class DailyWordViewModel: ObservableObject {
     }
     
     func fetchCurrentWord() {
-        let sourceLang = defaults.string(forKey: "sourceLanguage") ?? "tr"
+        let sourceLang = defaults.string(forKey: "sourceLanguage") ?? "es"
         let targetLang = defaults.string(forKey: "targetLanguage") ?? "en"
         currentLanguageCode = targetLang
 

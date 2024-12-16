@@ -24,31 +24,33 @@ struct Word: Codable {
 extension Word {
     static let placeholder: Word = {
         let sourceTranslation = Translation(
-            text: "Merhaba",
-            exampleSentence: "Merhaba, nasılsın?",
+            text: "How are you?",
+            exampleSentence: "How are you doing today?",
             romanized: nil,
             romanizedExample: nil,
             pronunciations: [
-                "en": "mer·ha·ba"
+                "es": "hau ar yu"
             ]
         )
         
         let targetTranslation = Translation(
-            text: "Hello",
-            exampleSentence: "Hello, how are you?",
+            text: "¿Cómo estás?",
+            exampleSentence: "¿Cómo estás hoy?",
             romanized: nil,
             romanizedExample: nil,
             pronunciations: [
-                "tr": "he·lou"
+                "en": "koh-moh es-tahs"
             ]
         )
         
         return Word(
-            id: "hello",
+            id: "how_are_you",
             translations: [
-                "tr": sourceTranslation,
-                "en": targetTranslation
+                "en": sourceTranslation,
+                "es": targetTranslation
             ]
         )
     }()
 }
+
+
