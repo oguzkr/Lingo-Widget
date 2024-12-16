@@ -177,7 +177,7 @@ struct SmallLingoWidget: View {
                 Divider()
                 Spacer()
                 
-                Link(destination: URL(string: "lingowidget://speak")!) {
+                Link(destination: URL(string: "lingowidget://speak?text=word")!) {
                     Image(systemName: "speaker.wave.2.fill")
                         .symbolRenderingMode(.monochrome)
                         .font(.system(size: 20))

@@ -19,38 +19,3 @@ struct Word: Codable {
         let pronunciations: [String: String]
     }
 }
-
-
-extension Word {
-    static let placeholder: Word = {
-        let sourceTranslation = Translation(
-            text: "How are you?",
-            exampleSentence: "How are you doing today?",
-            romanized: nil,
-            romanizedExample: nil,
-            pronunciations: [
-                "es": "hau ar yu"
-            ]
-        )
-        
-        let targetTranslation = Translation(
-            text: "¿Cómo estás?",
-            exampleSentence: "¿Cómo estás hoy?",
-            romanized: nil,
-            romanizedExample: nil,
-            pronunciations: [
-                "en": "koh-moh es-tahs"
-            ]
-        )
-        
-        return Word(
-            id: "how_are_you",
-            translations: [
-                "en": sourceTranslation,
-                "es": targetTranslation
-            ]
-        )
-    }()
-}
-
-

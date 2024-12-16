@@ -83,7 +83,14 @@ struct Lingo_Widget_ExtensionEntryView : View {
     @Environment(\.widgetFamily) var family
 
     var body: some View {
-        SmallLingoWidget(word: entry.word)
+        switch family {
+        case .systemSmall:
+            SmallLingoWidget(word: entry.word)
+        case .systemMedium:
+            MediumLingoWidget(word: entry.word)
+        default:
+            SmallLingoWidget(word: entry.word)
+        }
     }
 }
 
@@ -100,7 +107,7 @@ struct Lingo_Widget_Extension: Widget {
         }
         .configurationDisplayName("Lingo Daily Word")
         .description("Learn a new word every day.")
-        .supportedFamilies([.systemSmall])
+        .supportedFamilies([.systemSmall, .systemMedium])
     }
 }
 

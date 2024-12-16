@@ -60,6 +60,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Assets.xcassets,
+				Helpers/Extensions/placeholderExtension.swift,
 				Models/Word.swift,
 				Resources/WordsJsonFiles/afternoon.json,
 				Resources/WordsJsonFiles/airport.json,

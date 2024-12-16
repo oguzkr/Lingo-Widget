@@ -17,15 +17,22 @@ struct Lingo_WidgetApp: App {
             MainView()
                 .onOpenURL { url in
                     if url.scheme == "lingowidget" {
-                        switch url.host {
-                        case "speak":
-                            let sourceLanguage = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "sourceLanguage") ?? "es"
-                            let targetLanguage = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "targetLanguage") ?? "en"
-
-                            viewModel.fetchDailyWord(from: sourceLanguage, to: targetLanguage)
-                            viewModel.speakWord()
-                        default:
-                            break
+                        let sourceLanguage = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "sourceLanguage") ?? "es"
+                        let targetLanguage = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "targetLanguage") ?? "en"
+                        
+                        viewModel.fetchDailyWord(from: sourceLanguage, to: targetLanguage)
+                        
+                        if let components = URLComponents(url: url, resolvingAgainstBaseURL: true),
+                           let textType = components.queryItems?.first(where: { $0.name == "text" })?.value {
+                            switch textType {
+                            case "word":
+                                viewModel.speakWord()
+                            case "example":
+                                let example = viewModel.exampleSentence
+                                viewModel.speakWord(text: example)
+                            default:
+                                break
+                            }
                         }
                     }
                 }
