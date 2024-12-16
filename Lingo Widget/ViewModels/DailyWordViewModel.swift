@@ -19,348 +19,234 @@ class DailyWordViewModel: ObservableObject {
     @Published var sourceExampleSentence: String = ""
     @Published var romanized: String?
     @Published var romanizedExample: String?
-    
+
     @Published var recentWords: [Word] = []
-    
+
     private let recentWordsKey = "recentWords"
     private let maxRecentWords = 2
-    
-    
-    private let defaults: UserDefaults = UserDefaults.standard
-    
-    private func loadRecentWords() {
-        if let data = UserDefaults.standard.data(forKey: recentWordsKey),
-           let words = try? JSONDecoder().decode([Word].self, from: data) {
-            recentWords = words
-        } else {
-            recentWords = getInitialRandomWords()
-        }
-    }
-    
-    private func saveRecentWords() {
-        if let encoded = try? JSONEncoder().encode(recentWords) {
-            UserDefaults.standard.set(encoded, forKey: recentWordsKey)
-        }
-    }
-    
+
+    private let defaults = UserDefaults.standard
+
     private var shownWordIds: [String] {
         get { defaults.array(forKey: "shownWords") as? [String] ?? [] }
         set { defaults.set(newValue, forKey: "shownWords") }
     }
-    
+
     private var lastWordDate: Date {
-        get { defaults.object(forKey: "lastWordDate") as? Date ?? Date() }
+        get { defaults.object(forKey: "lastWordDate") as? Date ?? Date(timeIntervalSince1970: 0) }
         set { defaults.set(newValue, forKey: "lastWordDate") }
     }
-    
+
     private var currentWordId: String {
         get { defaults.string(forKey: "currentWordId") ?? "" }
         set { defaults.set(newValue, forKey: "currentWordId") }
     }
-    
+
     private let synthesizer = AVSpeechSynthesizer()
     private var currentLanguageCode: String = "en"
-    
+
     init() {
         setupAudioSession()
         loadRecentWords()
     }
-    
+
     private func setupAudioSession() {
         do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: .mixWithOthers)
+            try AVAudioSession.sharedInstance().setCategory(.playback,
+                                                             mode: .default,
+                                                             options: .mixWithOthers)
             try AVAudioSession.sharedInstance().setActive(true)
         } catch {
             print("Audio session ayarlanırken hata: \(error.localizedDescription)")
         }
     }
-    
+
+    private func loadRecentWords() {
+        if let data = defaults.data(forKey: recentWordsKey),
+           let words = try? JSONDecoder().decode([Word].self, from: data) {
+            recentWords = words
+        } else {
+            recentWords = []
+        }
+    }
+
+    private func saveRecentWords() {
+        if let encoded = try? JSONEncoder().encode(recentWords) {
+            defaults.set(encoded, forKey: recentWordsKey)
+        }
+    }
+
     private func selectNewWord() -> String {
         var availableWords = allWordIds.filter { !shownWordIds.contains($0) }
-        
-        // Eğer hiç kullanılmamış kelime kalmadıysa
+
+        // Eğer hiç yeni kelime kalmadıysa, bütün kelimeleri tekrar gösterilebilir hale getir
         if availableWords.isEmpty {
-            // Mevcut kelimeyi hariç tut
-            availableWords = allWordIds.filter { $0 != currentWordId }
-            // Gösterilen kelimeleri sıfırla
             shownWordIds.removeAll()
+            availableWords = allWordIds.filter { $0 != currentWordId }
+            if availableWords.isEmpty {
+                // Tek kelime varsa mecburen onu seçeceğiz.
+                availableWords = allWordIds
+            }
         }
-        
-        // Random kelime seç
+
         return availableWords.randomElement() ?? allWordIds[0]
     }
 
-    
     private func loadWord(id: String) -> Word? {
         guard let url = Bundle.main.url(forResource: id, withExtension: "json"),
               let data = try? Data(contentsOf: url),
-              let word = try? JSONDecoder().decode(Word.self, from: data)
-        else {
+              let word = try? JSONDecoder().decode(Word.self, from: data) else {
             return nil
         }
         return word
     }
-    
-    
-    
-    private func getInitialRandomWords() -> [Word] {
-        var randomWords: [Word] = []
-        var usedIds = Set<String>()
-        
-        // Mevcut kelimeyi dahil etme
-        if !currentWordId.isEmpty {
-            usedIds.insert(currentWordId)
-        }
-        
-        // 2 rastgele kelime seç
-        while randomWords.count < 2 {
-            let randomId = allWordIds.randomElement() ?? ""
-            if !usedIds.contains(randomId) {
-                if let word = loadWord(id: randomId) {
-                    randomWords.append(word)
-                    usedIds.insert(randomId)
-                }
-            }
-        }
-        
-        return randomWords
-    }
-    
+
     private func addToRecents(_ word: Word) {
-        // Son eklenen kelimeden farklı ise ekle
-        if recentWords.isEmpty || recentWords[0].id != word.id {
+        // Eğer recentWords boş ya da en üstteki kelime bu kelime değilse ekle
+        if recentWords.isEmpty || recentWords.first?.id != word.id {
             recentWords.insert(word, at: 0)
             if recentWords.count > maxRecentWords {
                 recentWords.removeLast()
             }
             saveRecentWords()
-            objectWillChange.send()
         }
     }
-    
+
     func fetchDailyWord(from sourceLang: String = "tr", to targetLang: String = "en") {
         currentLanguageCode = targetLang
-        
-        // Yeni gün kontrolü
         let calendar = Calendar.current
-        if !calendar.isDate(lastWordDate, inSameDayAs: Date()) {
+
+        // Yeni gün mü veya mevcut kelime yok mu?
+        if currentWordId.isEmpty || !calendar.isDate(lastWordDate, inSameDayAs: Date()) {
             refreshWord(from: sourceLang, to: targetLang, nativeLanguage: sourceLang)
             return
         }
-        
-        // Mevcut kelimeyi yükle
-        if let word = loadWord(id: currentWordId) {
-            guard let sourceTranslation = word.translations[sourceLang],
-                  let targetTranslation = word.translations[targetLang] else {
-                return
-            }
-            
-            sourceLanguageCode = sourceLang
-            targetLanguageCode = targetLang
-            sourceWord = sourceTranslation.text
-            targetWord = targetTranslation.text
-            pronunciation = targetTranslation.pronunciations[sourceLang] ?? ""
-            exampleSentence = targetTranslation.exampleSentence
-            sourceExampleSentence = sourceTranslation.exampleSentence
-            romanized = targetTranslation.romanized
-            romanizedExample = targetTranslation.romanizedExample
+
+        if let currentWord = loadWord(id: currentWordId) {
+            // Mevcut kelimeyi göster
+            updateUI(with: currentWord, sourceLang: sourceLang, targetLang: targetLang)
+        } else {
+            // Mevcut kelime yüklenemiyor, yeni bir kelime seç
+            refreshWord(from: sourceLang, to: targetLang, nativeLanguage: sourceLang)
         }
     }
-    
+
     func refreshWord(from sourceLang: String, to targetLang: String, nativeLanguage: String) {
         currentLanguageCode = targetLang
-        let newId = selectNewWord()
-        
-        // Eğer yeni kelime yüklenebilirse
-        if let newWord = loadWord(id: newId) {
-            // Önce kelimeyi geçmişe ekle (eğer mevcut kelime varsa)
-            if !currentWordId.isEmpty, let currentWord = loadWord(id: currentWordId) {
-                addToRecents(currentWord)
-            }
-            
-            currentWordId = newId
-            if !shownWordIds.contains(newId) {
-                shownWordIds.append(newId)
-            }
-            lastWordDate = Date()
-            
-            // UI'ı güncelle
-            guard let sourceTranslation = newWord.translations[sourceLang],
-                  let targetTranslation = newWord.translations[targetLang] else {
-                return
-            }
-            
-            // State'i güncelle ve UI'ı yenile
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.sourceLanguageCode = sourceLang
-                self.targetLanguageCode = targetLang
-                self.sourceWord = sourceTranslation.text
-                self.targetWord = targetTranslation.text
-                self.pronunciation = targetTranslation.pronunciations[sourceLang] ?? ""
-                self.exampleSentence = targetTranslation.exampleSentence
-                self.sourceExampleSentence = sourceTranslation.exampleSentence
-                self.romanized = targetTranslation.romanized
-                self.romanizedExample = targetTranslation.romanizedExample
-                
-                // UI'ı yenile
-                self.objectWillChange.send()
+
+        // Önce yeni bir kelime seç
+        var newId = selectNewWord()
+
+        // Yeni kelime yüklenemezse tekrar dene (çok nadir bir durum)
+        var tryCount = 0
+        var newWord: Word? = nil
+        while tryCount < 5 {
+            if let w = loadWord(id: newId) {
+                newWord = w
+                break
+            } else {
+                newId = selectNewWord()
+                tryCount += 1
             }
         }
+
+        guard let loadedNewWord = newWord else {
+            print("Yeni kelime yüklenemedi.")
+            return
+        }
+
+        // Eğer önceki kelime varsa recent'e ekle
+        if !currentWordId.isEmpty, let oldWord = loadWord(id: currentWordId) {
+            addToRecents(oldWord)
+        }
+
+        currentWordId = newId
+        if !shownWordIds.contains(newId) {
+            shownWordIds.append(newId)
+        }
+        lastWordDate = Date()
+
+        // UI Güncelle
+        updateUI(with: loadedNewWord, sourceLang: sourceLang, targetLang: targetLang)
     }
-    
-    
+
+    private func updateUI(with word: Word, sourceLang: String, targetLang: String) {
+        guard let sourceTranslation = word.translations[sourceLang],
+              let targetTranslation = word.translations[targetLang] else {
+            return
+        }
+
+        sourceLanguageCode = sourceLang
+        targetLanguageCode = targetLang
+        sourceWord = sourceTranslation.text
+        targetWord = targetTranslation.text
+        pronunciation = targetTranslation.pronunciations[sourceLang] ?? ""
+        exampleSentence = targetTranslation.exampleSentence
+        sourceExampleSentence = sourceTranslation.exampleSentence
+        romanized = targetTranslation.romanized
+        romanizedExample = targetTranslation.romanizedExample
+    }
+
     func speakWord(text: String? = nil) {
         let textToSpeak = text ?? targetWord
         let languageCode = convertToSpeechLanguageCode(currentLanguageCode)
-        
+
         let utterance = AVSpeechUtterance(string: textToSpeak)
         utterance.voice = AVSpeechSynthesisVoice(language: languageCode)
         utterance.rate = 0.4
         utterance.pitchMultiplier = 1.0
         utterance.volume = 1.0
-        
+
         synthesizer.speak(utterance)
     }
-    
+
     private func convertToSpeechLanguageCode(_ code: String) -> String {
-        // Her dil için standart konuşma kodları
         let conversions = [
-            "tr": "tr-TR", // Türkçe
-            "en": "en-US", // İngilizce
-            "es": "es-ES", // İspanyolca
-            "id": "id-ID", // Endonezyaca
-            "fr": "fr-FR", // Fransızca
-            "it": "it-IT", // İtalyanca
-            "pt": "pt-PT", // Portekizce
-            "zh": "zh-CN", // Çince
-            "ru": "ru-RU", // Rusça
-            "ja": "ja-JP", // Japonca
-            "hi": "hi-IN", // Hintçe
-            "fil": "fil-PH", // Filipince
-            "th": "th-TH", // Tayca
-            "ko": "ko-KR", // Korece
-            "nl": "nl-NL", // Hollandaca
-            "sv": "sv-SE", // İsveççe
-            "pl": "pl-PL", // Lehçe
-            "el": "el-GR", // Yunanca
-            "de": "de-DE" // Almanca
+            "tr": "tr-TR",
+            "en": "en-US",
+            "es": "es-ES",
+            "id": "id-ID",
+            "fr": "fr-FR",
+            "it": "it-IT",
+            "pt": "pt-PT",
+            "zh": "zh-CN",
+            "ru": "ru-RU",
+            "ja": "ja-JP",
+            "hi": "hi-IN",
+            "fil": "fil-PH",
+            "th": "th-TH",
+            "ko": "ko-KR",
+            "nl": "nl-NL",
+            "sv": "sv-SE",
+            "pl": "pl-PL",
+            "el": "el-GR",
+            "de": "de-DE"
         ]
         return conversions[code] ?? code
     }
-    
+
     // Kelime listesi
     private let allWordIds: [String] = [
-        // Selamlaşmalar (1-10)
-        "hello",              // 1
-        "good_morning",       // 2
-        "good_afternoon",     // 3
-        "good_evening",       // 4
-        "good_night",         // 5
-        "how_are_you",        // 6
-        "goodbye",            // 7
-        "see_you_later",      // 8
-        "nice_to_meet_you",   // 9
-        "take_care",          // 10
-        // Teşekkür ve Özür (11-15)
-        "thank_you",          // 11
-        "welcome",            // 12
-        "excuse_me",          // 13
-        "sorry",              // 14
-        "no_problem",         // 15
-        // Yönler ve Yönlendirme (16-25)
-        "where",              // 16
-        "left",               // 17
-        "right",              // 18
-        "straight",           // 19
-        "near",               // 20
-        "far",                // 21
-        "stop",               // 22
-        "here",               // 23
-        "there",              // 24
-        "which_way",          // 25
-        // Restoran ve Yemek (26-35)
-        "hungry",             // 26
-        "thirsty",            // 27
-        "water",              // 28
-        "money",               // 29
-        "bill",               // 30
-        "delicious",          // 31
-        "spicy",              // 32
-        "sweet",              // 33
-        "recommend",          // 34
-        "coffee",             // 35
-        // Alışveriş (36-45)
-        "how_much",           // 36
-        "expensive",          // 37
-        "cheap",              // 38
-        "buy",                // 39
-        "color",              // 40
-        "cash",               // 41
-        "card",               // 42
-        "receipt",            // 43
-        "bag",                // 44
-        "size",               // 45
-        // Seyahat ve Ulaşım (46-55)
-        "bathroom",           // 46
-        "hotel",              // 47
-        "airport",            // 48
-        "bus",                // 49
-        "train",              // 50
-        "subway",             // 51
-        "ticket",             // 52
-        "platform",           // 53
-        "station",            // 54
-        "how_long",           // 55
-        // Zaman ve Tarih (56-65)
-        "time",               // 56
-        "today",              // 57
-        "tomorrow",           // 58
-        "yesterday",          // 59
-        "morning",            // 60
-        "afternoon",          // 61
-        "evening",            // 62
-        "now",                // 63
-        "later",              // 64
-        "soon",               // 65
-        // Temel Duygular ve Haller (66-75)
-        "happy",              // 66
-        "sad",                // 67
-        "tired",              // 68
-        "angry",              // 69
-        "excited",            // 70
-        "lost",               // 71
-        "fine",               // 72
-        "busy",               // 73
-        "free",               // 74
-        "bored",              // 75
-        // Acil Durumlar (76-85)
-        "help",               // 76
-        "police",             // 77
-        "ambulance",          // 78
-        "sick",               // 79
-        "injured",            // 80
-        "fire",               // 81
-        "danger",             // 82
-        "passport",           // 83
-        "doctor",             // 84
-        "pharmacy",           // 85
-        // Günlük Kullanım (86-100)
-        "yes",                // 86
-        "no",                 // 87
-        "maybe",              // 88
-        "please",             // 89
-        "understand",         // 90
-        "repeat",             // 91
-        "mean",               // 92
-        "know",               // 93
-        "name",               // 94
-        "old",                // 95
-        "what",               // 96
-        "great",              // 97
-        "awesome",            // 98
-        "nice",               // 99
-        "place",               // 100
-        "new",                // 101
+        "hello", "good_morning", "good_afternoon", "good_evening", "good_night",
+        "how_are_you", "goodbye", "see_you_later", "nice_to_meet_you", "take_care",
+        "thank_you", "welcome", "excuse_me", "sorry", "no_problem",
+        "where", "left", "right", "straight", "near",
+        "far", "stop", "here", "there", "which_way",
+        "hungry", "thirsty", "water", "money", "bill",
+        "delicious", "spicy", "sweet", "recommend", "coffee",
+        "how_much", "expensive", "cheap", "buy", "color",
+        "cash", "card", "receipt", "bag", "size",
+        "bathroom", "hotel", "airport", "bus", "train",
+        "subway", "ticket", "platform", "station", "how_long",
+        "time", "today", "tomorrow", "yesterday", "morning",
+        "afternoon", "evening", "now", "later", "soon",
+        "happy", "sad", "tired", "angry", "excited",
+        "lost", "fine", "busy", "free", "bored",
+        "help", "police", "ambulance", "sick", "injured",
+        "fire", "danger", "passport", "doctor", "pharmacy",
+        "yes", "no", "maybe", "please", "understand",
+        "repeat", "mean", "know", "name", "old",
+        "what", "great", "awesome", "nice", "place",
+        "new"
     ]
 }
