@@ -91,28 +91,6 @@ struct MainView: View {
                         }
                     }
                 }
-//                Text("Widget Designs")
-//                    .font(.title)
-//                    .fontWeight(.bold)
-//                    .padding(.top, 16)
-//                
-//                Text("Large Widget")
-//                    .font(.headline)
-//                    .fontWeight(.bold)
-//                
-//                DailyWordViewLarge(viewModel: dailyWordViewModel)
-//                    .padding()
-//                
-//                Text("Medium Widget")
-//                    .font(.headline)
-//                    .fontWeight(.bold)
-//                DailyWordViewMedium(viewModel: dailyWordViewModel)
-//                    .padding()
-//                
-                Text("Small Widget")
-                    .font(.headline)
-                    .fontWeight(.bold)
-                DailyWordViewSmall(viewModel: dailyWordViewModel)
                 
             }
         }

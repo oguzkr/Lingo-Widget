@@ -21,8 +21,13 @@ class DailyWordViewModel: ObservableObject {
     @Published var romanized: String?
     @Published var romanizedExample: String?
 
+    @Published var recentWords: [Word] = []
+    
     private let defaults = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")!
-
+    
+    private let recentWordsKey = "recentWords"
+    private let maxRecentWords = 2
+    
     var shownWordIds: [String] {
         get { defaults.array(forKey: "shownWords") as? [String] ?? [] }
         set { defaults.set(newValue, forKey: "shownWords") }
@@ -43,7 +48,42 @@ class DailyWordViewModel: ObservableObject {
 
     init() {
         setupAudioSession()
+        loadRecentWords()
     }
+    
+    private func loadRecentWords() {
+        if let data = defaults.data(forKey: recentWordsKey),
+           let decoded = try? JSONDecoder().decode([Word].self, from: data) {
+            recentWords = decoded
+        } else if recentWords.isEmpty {
+            createInitialRecentWords()
+        }
+    }
+    
+    private func createInitialRecentWords() {
+        let randomWords = Array(allWordIds.shuffled().prefix(2))
+        for wordId in randomWords {
+            if let word = loadWord(id: wordId) {
+                recentWords.append(word)
+            }
+        }
+        saveRecentWords()
+    }
+    
+    private func saveRecentWords() {
+        if let encoded = try? JSONEncoder().encode(recentWords) {
+            defaults.set(encoded, forKey: recentWordsKey)
+        }
+    }
+    
+    private func addToRecentWords(_ word: Word) {
+            recentWords.insert(word, at: 0)
+            if recentWords.count > maxRecentWords {
+                recentWords.removeLast()
+            }
+            saveRecentWords()
+        }
+        
 
     private func setupAudioSession() {
         do {
@@ -59,19 +99,17 @@ class DailyWordViewModel: ObservableObject {
     private func selectNewWord() -> String {
         var availableWords = allWordIds.filter { !shownWordIds.contains($0) }
 
-        // Eğer hiç yeni kelime kalmadıysa, bütün kelimeleri tekrar gösterilebilir hale getir
         if availableWords.isEmpty {
             shownWordIds.removeAll()
             availableWords = allWordIds.filter { $0 != currentWordId }
             if availableWords.isEmpty {
-                // Tek kelime varsa mecburen onu seçeceğiz.
                 availableWords = allWordIds
             }
         }
-
+        
         return availableWords.randomElement() ?? allWordIds[0]
     }
-
+    
     private func loadWord(id: String) -> Word? {
         guard let url = Bundle.main.url(forResource: id, withExtension: "json"),
               let data = try? Data(contentsOf: url),
@@ -127,14 +165,17 @@ class DailyWordViewModel: ObservableObject {
             print("Widget: Yeni kelime yüklenemedi.")
             return
         }
+        
         currentWordId = newId
         defaults.set(currentWordId, forKey: "currentWordId")
         lastWordDate = Date()
+        
+        addToRecentWords(newWord)
         updateUI(with: newWord, sourceLang: sourceLang, targetLang: targetLang)
-        print("Widget: refreshWord çalıştı.")
         
         WidgetCenter.shared.reloadAllTimelines()
     }
+    
 
     private func updateUI(with word: Word, sourceLang: String, targetLang: String) {
         guard let sourceTranslation = word.translations[sourceLang],
