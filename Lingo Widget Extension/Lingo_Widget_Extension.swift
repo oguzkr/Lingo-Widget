@@ -160,12 +160,14 @@ struct Provider: TimelineProvider {
         )
         
         // Recent words'ü mevcut kelimeyi dahil etmeden al
-        let recentWords = viewModel.recentWords.filter { $0.id != currentWord.id }
-        
+        let recentWords = viewModel.recentWords
+            .filter { $0.id != currentWord.id }
+            .prefix(2)
+
         let entry = SimpleEntry(
             date: currentDate,
             word: currentWord,
-            recentWords: Array(recentWords.prefix(2))
+            recentWords: Array(recentWords)
         )
         
         let timeline = Timeline(entries: [entry], policy: .after(nextMidnight))

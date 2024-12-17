@@ -26,7 +26,6 @@ class DailyWordViewModel: ObservableObject {
     private let defaults = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")!
     
     private let recentWordsKey = "recentWords"
-    private let maxRecentWords = 2
     
     var shownWordIds: [String] {
         get { defaults.array(forKey: "shownWords") as? [String] ?? [] }
@@ -77,17 +76,17 @@ class DailyWordViewModel: ObservableObject {
     }
     
     private func addToRecentWords(_ word: Word) {
-        // Eğer kelime zaten recentWords'de varsa, onu kaldır
+        // Önce aynı kelime varsa kaldır
         recentWords.removeAll { $0.id == word.id }
         
         // Yeni kelimeyi başa ekle
         recentWords.insert(word, at: 0)
         
         // Maksimum sayıyı kontrol et
-        if recentWords.count > maxRecentWords {
+        while recentWords.count > 3 {
             recentWords.removeLast()
         }
-        
+        print("Recent words: \(recentWords.map { $0.id })")
         saveRecentWords()
     }
         
