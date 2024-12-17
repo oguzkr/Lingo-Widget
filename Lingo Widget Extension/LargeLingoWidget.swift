@@ -16,11 +16,11 @@ struct LargeLingoWidget: View {
     @Environment(\.colorScheme) var colorScheme
     
     private var sourceLanguage: String {
-        UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "sourceLanguage") ?? "ru"
+        UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "sourceLanguage") ?? "en"
     }
     
     private var targetLanguage: String {
-        UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "targetLanguage") ?? "en"
+        UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "targetLanguage") ?? "es"
     }
     
     private var shouldShowRomanized: Bool {
@@ -83,7 +83,7 @@ struct LargeLingoWidget: View {
     private func pronunciationView(_ text: String) -> some View {
         Text("🗣️ \(text)")
             .italic()
-            .font(.system(size: 20, weight: .light))
+            .font(.system(size: 24, weight: .light))
             .foregroundColor(.secondary)
             .lineLimit(1)
             .minimumScaleFactor(0.7)
@@ -107,12 +107,12 @@ struct LargeLingoWidget: View {
             
             if shouldShowRomanized,
                let romanized = word.translations[targetLanguage]?.romanized {
-                Divider()
+                Divider().frame(height: 20)
                 romanizedView(romanized)
             }
             
             if let pronunciation = word.translations[targetLanguage]?.pronunciations[sourceLanguage] {
-                Divider()
+                Divider().frame(height: 20)
                 pronunciationView(pronunciation)
             }
             
@@ -122,7 +122,7 @@ struct LargeLingoWidget: View {
                 Image(systemName: "speaker.wave.2.fill")
                     .font(.system(size: 22))
                     .foregroundStyle(.blue)
-            }
+            }.buttonStyle(.bordered)
         }
     }
     
@@ -145,9 +145,9 @@ struct LargeLingoWidget: View {
                 
                 Link(destination: URL(string: "lingowidget://speak?text=word")!) {
                     Image(systemName: "speaker.wave.2.fill")
-                        .font(.system(size: 22))
+                        .font(.system(size: 24))
                         .foregroundStyle(.blue)
-                }
+                }.buttonStyle(.bordered)
             }
             
             if shouldShowRomanized,
@@ -181,10 +181,11 @@ struct LargeLingoWidget: View {
             
             Button(intent: RefreshIntent()) {
                 Image(systemName: "arrow.triangle.2.circlepath")
-                    .font(.system(size: 22))
+                    .font(.system(size: 24))
                     .foregroundStyle(.blue)
+                
             }
-            .buttonStyle(.plain)
+            .buttonStyle(.bordered)
         }
     }
     
@@ -206,10 +207,10 @@ struct LargeLingoWidget: View {
             
             Button(intent: RefreshIntent()) {
                 Image(systemName: "arrow.triangle.2.circlepath")
-                    .font(.system(size: 22))
+                    .font(.system(size: 24))
                     .foregroundStyle(.blue)
             }
-            .buttonStyle(.plain)
+            .buttonStyle(.bordered)
         }
     }
     
@@ -217,7 +218,7 @@ struct LargeLingoWidget: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Text(exampleSentence)
-                    .font(.system(size: 16))
+                    .font(.system(size: 20))
                     .lineLimit(3)
                     .minimumScaleFactor(0.7) 
                 
@@ -225,15 +226,15 @@ struct LargeLingoWidget: View {
                 
                 Link(destination: URL(string: "lingowidget://speak?text=example")!) {
                     Image(systemName: "speaker.wave.2.fill")
-                        .font(.system(size: 16))
+                        .font(.system(size: 20))
                         .foregroundStyle(.blue)
-                }
+                }.buttonStyle(.bordered)
             }
             
             if shouldShowRomanized,
                let romanizedExample = word.translations[targetLanguage]?.romanizedExample {
                 Text(romanizedExample)
-                    .font(.system(size: 16, weight: .light))
+                    .font(.system(size: 20, weight: .light))
                     .italic()
                     .foregroundColor(.secondary)
                     .lineLimit(2)
@@ -242,7 +243,7 @@ struct LargeLingoWidget: View {
             
             if let sourceExample = word.translations[sourceLanguage]?.exampleSentence {
                 Text(sourceExample)
-                    .font(.system(size: 16))
+                    .font(.system(size: 20))
                     .foregroundColor(.secondary)
                     .lineLimit(2)
                     .minimumScaleFactor(0.7) 
@@ -254,14 +255,14 @@ struct LargeLingoWidget: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack(spacing:4) {
                 Text("Recent Words")
-                    .font(.system(size: 14, weight: .medium))
-                    .foregroundColor(.secondary)
+                    .font(.system(size: 16, weight: .medium))
+                    .foregroundColor(.secondary.opacity(0.7))
                     .lineLimit(2)
                     .minimumScaleFactor(0.7)
                     
                 Image(systemName: "clock")
                     .font(.system(size: 14, weight: .medium))
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.secondary.opacity(0.7))
             }.padding(.top, 4)
             
             HStack(spacing: 4) {
@@ -279,13 +280,15 @@ struct LargeLingoWidget: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: 16, height: 16)
-                
+                    .shadow(color: .black.opacity(0.5), radius: 2)
+
                 if let targetText = word.translations[targetLanguage]?.text {
                     Text(targetText)
                         .font(.system(size: 16, weight: .semibold))
                         .lineLimit(1)
                         .minimumScaleFactor(0.7) 
                 }
+                Spacer()
             }
             
             HStack(spacing: 4) {
@@ -293,6 +296,7 @@ struct LargeLingoWidget: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: 16, height: 16)
+                    .shadow(color: .black.opacity(0.5), radius: 2)
                 
                 if let sourceText = word.translations[sourceLanguage]?.text {
                     Text(sourceText)
@@ -303,6 +307,7 @@ struct LargeLingoWidget: View {
                 }
             }
         }
+        .padding(.leading, 4)
         .padding(4)
         .frame(maxWidth: .infinity)
         .background(Color.secondary.opacity(0.1))
@@ -327,68 +332,13 @@ struct LargeLingoWidget_Previews: PreviewProvider {
         Group {
             // İngilizce-Rusça örneği (romanization ve uzun metinler için)
             LargeLingoWidget(
-                word: Word(
-                    id: "good_night",
-                    translations: [
-                        "en": Word.Translation(
-                            text: "good night",
-                            exampleSentence: "Good night, sweet dreams!",
-                            romanized: "XXXX",
-                            romanizedExample: "XXXXXXVVVVVVV asl;fka;",
-                            pronunciations: ["ru": "AAAAX"]
-                        ),
-                        "ru": Word.Translation(
-                            text: "спокойной ночи",
-                            exampleSentence: "Спокойной ночи, сладких снов!",
-                            romanized: "spokoynoy nochi",
-                            romanizedExample: "Spokoynoy nochi, sladkikh snov!",
-                            pronunciations: ["en": "spa·koy·noy no·chi"]
-                        )
-                    ]
-                ),
+                word: .placeholder,
                 recentWords: [
-                    Word(
-                        id: "good_morning",
-                        translations: [
-                            "en": Word.Translation(
-                                text: "good morning",
-                                exampleSentence: "Good morning! Have a nice day.",
-                                romanized: "a",
-                                romanizedExample: "romanizedExample",
-                                pronunciations: ["ru": "gud·mor·ning"]
-                            ),
-                            "ru": Word.Translation(
-                                text: "доброе утро",
-                                exampleSentence: "Доброе утро! Хорошего дня.",
-                                romanized: "dobroye utro",
-                                romanizedExample: "Dobroye utro! Khoroshego dnya.",
-                                pronunciations: ["en": "dob·ro·ye·ut·ro"]
-                            )
-                        ]
-                    ),
-                    Word(
-                        id: "good_evening",
-                        translations: [
-                            "en": Word.Translation(
-                                text: "good evening",
-                                exampleSentence: "Good evening! How was your day?",
-                                romanized: "romanized",
-                                romanizedExample: "romanizedExample",
-                                pronunciations: ["ru": "pron x unciat x ions"]
-                            ),
-                            "ru": Word.Translation(
-                                text: "добрый вечер",
-                                exampleSentence: "Добрый вечер! Как прошел день?",
-                                romanized: "dobryy vecher",
-                                romanizedExample: "Dobryy vecher! Kak proshel den'?",
-                                pronunciations: ["en": "xxx·xxx·xxxx"]
-                            )
-                        ]
-                    )
+                    .placeholder,
+                    .placeholder
                 ]
             )
             .previewContext(WidgetPreviewContext(family: .systemLarge))
-            .previewDisplayName("English-Russian Example")
             
             // Boş recent words örneği
             LargeLingoWidget(
