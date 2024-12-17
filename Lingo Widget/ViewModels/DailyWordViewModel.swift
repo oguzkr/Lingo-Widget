@@ -77,12 +77,19 @@ class DailyWordViewModel: ObservableObject {
     }
     
     private func addToRecentWords(_ word: Word) {
-            recentWords.insert(word, at: 0)
-            if recentWords.count > maxRecentWords {
-                recentWords.removeLast()
-            }
-            saveRecentWords()
+        // Eğer kelime zaten recentWords'de varsa, onu kaldır
+        recentWords.removeAll { $0.id == word.id }
+        
+        // Yeni kelimeyi başa ekle
+        recentWords.insert(word, at: 0)
+        
+        // Maksimum sayıyı kontrol et
+        if recentWords.count > maxRecentWords {
+            recentWords.removeLast()
         }
+        
+        saveRecentWords()
+    }
         
 
     private func setupAudioSession() {

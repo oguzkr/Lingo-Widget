@@ -17,25 +17,132 @@ struct Provider: TimelineProvider {
     let sharedDefaults = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")
     
     func placeholder(in context: Context) -> SimpleEntry {
-        return SimpleEntry(
-            date: Date(),
-            word: Word.placeholder,
-            recentWords: []
-        )
+       return SimpleEntry(
+           date: Date(),
+           word: Word(
+               id: "hello",
+               translations: [
+                   "en": Word.Translation(
+                       text: "hello",
+                       exampleSentence: "Hello, how are you?",
+                       romanized: nil,
+                       romanizedExample: nil,
+                       pronunciations: ["es": "he·lou"]
+                   ),
+                   "es": Word.Translation(
+                       text: "hola",
+                       exampleSentence: "¡Hola! ¿Cómo estás?",
+                       romanized: nil,
+                       romanizedExample: nil,
+                       pronunciations: ["en": "o·la"]
+                   )
+               ]
+           ),
+           recentWords: [
+               Word(
+                   id: "how_are_you",
+                   translations: [
+                       "en": Word.Translation(
+                           text: "how are you",
+                           exampleSentence: "How are you today?",
+                           romanized: nil,
+                           romanizedExample: nil,
+                           pronunciations: ["es": "hau·ar·yu"]
+                       ),
+                       "es": Word.Translation(
+                           text: "cómo estás",
+                           exampleSentence: "¿Cómo estás hoy?",
+                           romanized: nil,
+                           romanizedExample: nil,
+                           pronunciations: ["en": "ko·mo·es·tas"]
+                       )
+                   ]
+               ),
+               Word(
+                   id: "good_morning",
+                   translations: [
+                       "en": Word.Translation(
+                           text: "good morning",
+                           exampleSentence: "Good morning! Have a nice day!",
+                           romanized: nil,
+                           romanizedExample: nil,
+                           pronunciations: ["es": "gud·mor·ning"]
+                       ),
+                       "es": Word.Translation(
+                           text: "buenos días",
+                           exampleSentence: "¡Buenos días! ¡Que tengas un buen día!",
+                           romanized: nil,
+                           romanizedExample: nil,
+                           pronunciations: ["en": "bue·nos·di·as"]
+                       )
+                   ]
+               )
+           ]
+       )
     }
     
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        if sharedDefaults?.string(forKey: "sourceLanguage") == nil {
-            sharedDefaults?.set("es", forKey: "sourceLanguage")
-        }
-        if sharedDefaults?.string(forKey: "targetLanguage") == nil {
-            sharedDefaults?.set("en", forKey: "targetLanguage")
-        }
-        
         let entry = SimpleEntry(
             date: Date(),
-            word: .placeholder,
-            recentWords: []
+            word: Word(
+                id: "hello",
+                translations: [
+                    "en": Word.Translation(
+                        text: "hello",
+                        exampleSentence: "Hello, how are you?",
+                        romanized: nil,
+                        romanizedExample: nil,
+                        pronunciations: ["es": "he·lou"]
+                    ),
+                    "es": Word.Translation(
+                        text: "hola",
+                        exampleSentence: "¡Hola! ¿Cómo estás?",
+                        romanized: nil,
+                        romanizedExample: nil,
+                        pronunciations: ["en": "o·la"]
+                    )
+                ]
+            ),
+            recentWords: [
+                Word(
+                    id: "how_are_you",
+                    translations: [
+                        "en": Word.Translation(
+                            text: "how are you",
+                            exampleSentence: "How are you today?",
+                            romanized: nil,
+                            romanizedExample: nil,
+                            pronunciations: ["es": "hau·ar·yu"]
+                        ),
+                        "es": Word.Translation(
+                            text: "cómo estás",
+                            exampleSentence: "¿Cómo estás hoy?",
+                            romanized: nil,
+                            romanizedExample: nil,
+                            pronunciations: ["en": "ko·mo·es·tas"]
+                        )
+                    ]
+                ),
+                Word(
+                    id: "good_morning",
+                    translations: [
+                        "en": Word.Translation(
+                            text: "good morning",
+                            exampleSentence: "Good morning! Have a nice day!",
+                            romanized: nil,
+                            romanizedExample: nil,
+                            pronunciations: ["es": "gud·mor·ning"]
+                        ),
+                        "es": Word.Translation(
+                            text: "buenos días",
+                            exampleSentence: "¡Buenos días! ¡Que tengas un buen día!",
+                            romanized: nil,
+                            romanizedExample: nil,
+                            pronunciations: ["en": "bue·nos·di·as"]
+                        )
+                    ]
+                )
+            ]
         )
         completion(entry)
     }
@@ -51,28 +158,33 @@ struct Provider: TimelineProvider {
         let viewModel = DailyWordViewModel()
         viewModel.fetchDailyWord(from: sourceLanguage, to: targetLanguage)
         
+        let currentWord = Word(
+            id: viewModel.currentWordId,
+            translations: [
+                sourceLanguage: Word.Translation(
+                    text: viewModel.sourceWord,
+                    exampleSentence: viewModel.sourceExampleSentence,
+                    romanized: nil,
+                    romanizedExample: nil,
+                    pronunciations: [:]
+                ),
+                targetLanguage: Word.Translation(
+                    text: viewModel.targetWord,
+                    exampleSentence: viewModel.exampleSentence,
+                    romanized: viewModel.romanized,
+                    romanizedExample: viewModel.romanizedExample,
+                    pronunciations: [sourceLanguage: viewModel.pronunciation]
+                )
+            ]
+        )
+        
+        // Recent words'ü mevcut kelimeyi dahil etmeden al
+        let recentWords = viewModel.recentWords.filter { $0.id != currentWord.id }
+        
         let entry = SimpleEntry(
             date: currentDate,
-            word: Word(
-                id: viewModel.currentWordId,
-                translations: [
-                    sourceLanguage: Word.Translation(
-                        text: viewModel.sourceWord,
-                        exampleSentence: viewModel.sourceExampleSentence,
-                        romanized: nil,
-                        romanizedExample: nil,
-                        pronunciations: [:]
-                    ),
-                    targetLanguage: Word.Translation(
-                        text: viewModel.targetWord,
-                        exampleSentence: viewModel.exampleSentence,
-                        romanized: viewModel.romanized,
-                        romanizedExample: viewModel.romanizedExample,
-                        pronunciations: [sourceLanguage: viewModel.pronunciation]
-                    )
-                ]
-            ),
-            recentWords: viewModel.recentWords
+            word: currentWord,
+            recentWords: Array(recentWords.prefix(2))
         )
         
         let timeline = Timeline(entries: [entry], policy: .after(nextMidnight))
@@ -117,11 +229,68 @@ struct Lingo_Widget_Extension: Widget {
 }
 
 #Preview(as: .systemLarge) {
-    Lingo_Widget_Extension()
+   Lingo_Widget_Extension()
 } timeline: {
-    SimpleEntry(
-        date: .now,
-        word: .placeholder,
-        recentWords: [.placeholder, .placeholder]
-    )
+   SimpleEntry(
+       date: .now,
+       word: Word(
+           id: "hello",
+           translations: [
+               "en": Word.Translation(
+                   text: "hello",
+                   exampleSentence: "Hello, how are you?",
+                   romanized: nil,
+                   romanizedExample: nil,
+                   pronunciations: ["es": "he·lou"]
+               ),
+               "es": Word.Translation(
+                   text: "hola",
+                   exampleSentence: "¡Hola! ¿Cómo estás?",
+                   romanized: nil,
+                   romanizedExample: nil,
+                   pronunciations: ["en": "o·la"]
+               )
+           ]
+       ),
+       recentWords: [
+           Word(
+               id: "how_are_you",
+               translations: [
+                   "en": Word.Translation(
+                       text: "how are you",
+                       exampleSentence: "How are you today?",
+                       romanized: nil,
+                       romanizedExample: nil,
+                       pronunciations: ["es": "hau·ar·yu"]
+                   ),
+                   "es": Word.Translation(
+                       text: "cómo estás",
+                       exampleSentence: "¿Cómo estás hoy?",
+                       romanized: nil,
+                       romanizedExample: nil,
+                       pronunciations: ["en": "ko·mo·es·tas"]
+                   )
+               ]
+           ),
+           Word(
+               id: "good_morning",
+               translations: [
+                   "en": Word.Translation(
+                       text: "good morning",
+                       exampleSentence: "Good morning! Have a nice day!",
+                       romanized: nil,
+                       romanizedExample: nil,
+                       pronunciations: ["es": "gud·mor·ning"]
+                   ),
+                   "es": Word.Translation(
+                       text: "buenos días",
+                       exampleSentence: "¡Buenos días! ¡Que tengas un buen día!",
+                       romanized: nil,
+                       romanizedExample: nil,
+                       pronunciations: ["en": "bue·nos·di·as"]
+                   )
+               ]
+           )
+       ]
+   )
 }

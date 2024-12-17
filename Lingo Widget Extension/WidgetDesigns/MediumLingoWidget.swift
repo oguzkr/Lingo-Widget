@@ -15,7 +15,7 @@ struct MediumLingoWidget: View {
     @Environment(\.colorScheme) var colorScheme
     
     private var sourceLanguage: String {
-        UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "sourceLanguage") ?? "ru"
+        UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "sourceLanguage") ?? "es"
     }
     
     private var targetLanguage: String {
