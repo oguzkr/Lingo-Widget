@@ -21,11 +21,6 @@ class DailyWordViewModel: ObservableObject {
     @Published var romanized: String?
     @Published var romanizedExample: String?
 
-    @Published var recentWords: [Word] = []
-
-    private let recentWordsKey = "recentWords"
-    private let maxRecentWords = 2
-
     private let defaults = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")!
 
     var shownWordIds: [String] {
@@ -48,7 +43,6 @@ class DailyWordViewModel: ObservableObject {
 
     init() {
         setupAudioSession()
-        loadRecentWords()
     }
 
     private func setupAudioSession() {
@@ -59,21 +53,6 @@ class DailyWordViewModel: ObservableObject {
             try AVAudioSession.sharedInstance().setActive(true)
         } catch {
             print("Audio session ayarlanırken hata: \(error.localizedDescription)")
-        }
-    }
-
-    private func loadRecentWords() {
-        if let data = defaults.data(forKey: recentWordsKey),
-           let words = try? JSONDecoder().decode([Word].self, from: data) {
-            recentWords = words
-        } else {
-            recentWords = []
-        }
-    }
-
-    private func saveRecentWords() {
-        if let encoded = try? JSONEncoder().encode(recentWords) {
-            defaults.set(encoded, forKey: recentWordsKey)
         }
     }
 
@@ -116,17 +95,6 @@ class DailyWordViewModel: ObservableObject {
         } else {
             // If no word is available, fetch a new one
             fetchDailyWord(from: sourceLang, to: targetLang)
-        }
-    }
-
-    private func addToRecents(_ word: Word) {
-        // Eğer recentWords boş ya da en üstteki kelime bu kelime değilse ekle
-        if recentWords.isEmpty || recentWords.first?.id != word.id {
-            recentWords.insert(word, at: 0)
-            if recentWords.count > maxRecentWords {
-                recentWords.removeLast()
-            }
-            saveRecentWords()
         }
     }
 
