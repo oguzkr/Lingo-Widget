@@ -68,8 +68,9 @@ struct LargeLingoWidget: View {
     private func romanizedView(_ text: String) -> some View {
         HStack(spacing: 4) {
             Image(systemName: "character.textbox")
-                .font(.system(size: 12))
+                .font(.system(size: 20))
                 .foregroundStyle(.secondary)
+                .minimumScaleFactor(0.7)
             
             Text(text)
                 .italic()
@@ -122,6 +123,7 @@ struct LargeLingoWidget: View {
                 Image(systemName: "speaker.wave.2.fill")
                     .font(.system(size: 22))
                     .foregroundStyle(.blue)
+                    .minimumScaleFactor(0.7)
             }.buttonStyle(.bordered)
         }
     }
@@ -147,6 +149,7 @@ struct LargeLingoWidget: View {
                     Image(systemName: "speaker.wave.2.fill")
                         .font(.system(size: 24))
                         .foregroundStyle(.blue)
+                        .minimumScaleFactor(0.7)
                 }.buttonStyle(.bordered)
             }
             
@@ -183,7 +186,7 @@ struct LargeLingoWidget: View {
                 Image(systemName: "arrow.triangle.2.circlepath")
                     .font(.system(size: 24))
                     .foregroundStyle(.blue)
-                
+                    .minimumScaleFactor(0.7)
             }
             .buttonStyle(.bordered)
         }
@@ -209,6 +212,7 @@ struct LargeLingoWidget: View {
                 Image(systemName: "arrow.triangle.2.circlepath")
                     .font(.system(size: 24))
                     .foregroundStyle(.blue)
+                    .minimumScaleFactor(0.7)
             }
             .buttonStyle(.bordered)
         }
@@ -228,6 +232,7 @@ struct LargeLingoWidget: View {
                     Image(systemName: "speaker.wave.2.fill")
                         .font(.system(size: 20))
                         .foregroundStyle(.blue)
+                        .minimumScaleFactor(0.7)
                 }.buttonStyle(.bordered)
             }
             
@@ -263,6 +268,7 @@ struct LargeLingoWidget: View {
                 Image(systemName: "clock")
                     .font(.system(size: 14, weight: .medium))
                     .foregroundColor(.secondary.opacity(0.7))
+                    .minimumScaleFactor(0.7)
             }.padding(.top, 4)
             
             HStack(spacing: 4) {
@@ -291,6 +297,24 @@ struct LargeLingoWidget: View {
                 Spacer()
             }
             
+            if let romanized = word.translations[targetLanguage]?.romanized {
+                HStack(spacing: 6) {
+                    Image(systemName: "character.textbox")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 14, height: 15)
+                        .shadow(color: .black.opacity(0.5), radius: 2)
+                        .foregroundStyle(.secondary)
+                    
+                    Text(romanized)
+                        .italic()
+                        .font(.system(size: 16, weight: .light))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
+                        .foregroundStyle(.secondary)
+                }
+            }
+            
             HStack(spacing: 4) {
                 Image(sourceLanguage)
                     .resizable()
@@ -300,7 +324,7 @@ struct LargeLingoWidget: View {
                 
                 if let sourceText = word.translations[sourceLanguage]?.text {
                     Text(sourceText)
-                        .font(.system(size: 16, weight: .semibold))
+                        .font(.system(size: 16, weight: .regular))
                         .foregroundColor(.secondary)
                         .lineLimit(2)
                         .minimumScaleFactor(0.7)
