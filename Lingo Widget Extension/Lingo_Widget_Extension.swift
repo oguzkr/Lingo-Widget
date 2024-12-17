@@ -17,136 +17,117 @@ struct Provider: TimelineProvider {
     let sharedDefaults = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")
     
     func placeholder(in context: Context) -> SimpleEntry {
-       return SimpleEntry(
-           date: Date(),
-           word: Word(
-               id: "hello",
-               translations: [
-                   "en": Word.Translation(
-                       text: "hello",
-                       exampleSentence: "Hello, how are you?",
-                       romanized: nil,
-                       romanizedExample: nil,
-                       pronunciations: ["es": "he·lou"]
-                   ),
-                   "es": Word.Translation(
-                       text: "hola",
-                       exampleSentence: "¡Hola! ¿Cómo estás?",
-                       romanized: nil,
-                       romanizedExample: nil,
-                       pronunciations: ["en": "o·la"]
-                   )
-               ]
-           ),
-           recentWords: [
-               Word(
-                   id: "how_are_you",
-                   translations: [
-                       "en": Word.Translation(
-                           text: "how are you",
-                           exampleSentence: "How are you today?",
-                           romanized: nil,
-                           romanizedExample: nil,
-                           pronunciations: ["es": "hau·ar·yu"]
-                       ),
-                       "es": Word.Translation(
-                           text: "cómo estás",
-                           exampleSentence: "¿Cómo estás hoy?",
-                           romanized: nil,
-                           romanizedExample: nil,
-                           pronunciations: ["en": "ko·mo·es·tas"]
-                       )
-                   ]
-               ),
-               Word(
-                   id: "good_morning",
-                   translations: [
-                       "en": Word.Translation(
-                           text: "good morning",
-                           exampleSentence: "Good morning! Have a nice day!",
-                           romanized: nil,
-                           romanizedExample: nil,
-                           pronunciations: ["es": "gud·mor·ning"]
-                       ),
-                       "es": Word.Translation(
-                           text: "buenos días",
-                           exampleSentence: "¡Buenos días! ¡Que tengas un buen día!",
-                           romanized: nil,
-                           romanizedExample: nil,
-                           pronunciations: ["en": "bue·nos·di·as"]
-                       )
-                   ]
-               )
-           ]
-       )
-    }
+          let sourceLang = sharedDefaults?.string(forKey: "sourceLanguage") ?? "es"
+          let targetLang = sharedDefaults?.string(forKey: "targetLanguage") ?? "en"
+          
+          guard let helloUrl = Bundle.main.url(forResource: "hello", withExtension: "json"),
+                let howAreYouUrl = Bundle.main.url(forResource: "how_are_you", withExtension: "json"),
+                let goodMorningUrl = Bundle.main.url(forResource: "good_morning", withExtension: "json"),
+                let helloData = try? Data(contentsOf: helloUrl),
+                let howAreYouData = try? Data(contentsOf: howAreYouUrl),
+                let goodMorningData = try? Data(contentsOf: goodMorningUrl),
+                let hello = try? JSONDecoder().decode(Word.self, from: helloData),
+                let howAreYou = try? JSONDecoder().decode(Word.self, from: howAreYouData),
+                let goodMorning = try? JSONDecoder().decode(Word.self, from: goodMorningData),
+                let helloSourceTrans = hello.translations[sourceLang],
+                let helloTargetTrans = hello.translations[targetLang],
+                let howAreYouSourceTrans = howAreYou.translations[sourceLang],
+                let howAreYouTargetTrans = howAreYou.translations[targetLang],
+                let goodMorningSourceTrans = goodMorning.translations[sourceLang],
+                let goodMorningTargetTrans = goodMorning.translations[targetLang] else {
+              return SimpleEntry(date: Date(), word: Word.placeholder, recentWords: [])
+          }
+          
+          // Ana kelime için Word objesi
+          let mainWord = Word(
+              id: "hello",
+              translations: [
+                  sourceLang: helloSourceTrans,
+                  targetLang: helloTargetTrans
+              ]
+          )
+          
+          // Son kelimeler için Word objeleri
+          let recentWord1 = Word(
+              id: "how_are_you",
+              translations: [
+                  sourceLang: howAreYouSourceTrans,
+                  targetLang: howAreYouTargetTrans
+              ]
+          )
+          
+          let recentWord2 = Word(
+              id: "good_morning",
+              translations: [
+                  sourceLang: goodMorningSourceTrans,
+                  targetLang: goodMorningTargetTrans
+              ]
+          )
+          
+          return SimpleEntry(
+              date: Date(),
+              word: mainWord,
+              recentWords: [recentWord1, recentWord2]
+          )
+      }
     
     func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
+        let sourceLang = sharedDefaults?.string(forKey: "sourceLanguage") ?? "es"
+        let targetLang = sharedDefaults?.string(forKey: "targetLanguage") ?? "en"
+        
+        guard let helloUrl = Bundle.main.url(forResource: "hello", withExtension: "json"),
+              let howAreYouUrl = Bundle.main.url(forResource: "how_are_you", withExtension: "json"),
+              let goodMorningUrl = Bundle.main.url(forResource: "good_morning", withExtension: "json"),
+              let helloData = try? Data(contentsOf: helloUrl),
+              let howAreYouData = try? Data(contentsOf: howAreYouUrl),
+              let goodMorningData = try? Data(contentsOf: goodMorningUrl),
+              let hello = try? JSONDecoder().decode(Word.self, from: helloData),
+              let howAreYou = try? JSONDecoder().decode(Word.self, from: howAreYouData),
+              let goodMorning = try? JSONDecoder().decode(Word.self, from: goodMorningData),
+              let helloSourceTrans = hello.translations[sourceLang],
+              let helloTargetTrans = hello.translations[targetLang],
+              let howAreYouSourceTrans = howAreYou.translations[sourceLang],
+              let howAreYouTargetTrans = howAreYou.translations[targetLang],
+              let goodMorningSourceTrans = goodMorning.translations[sourceLang],
+              let goodMorningTargetTrans = goodMorning.translations[targetLang] else {
+            completion(SimpleEntry(date: Date(), word: Word.placeholder, recentWords: []))
+            return
+        }
+        
+        // Ana kelime için Word objesi
+        let mainWord = Word(
+            id: "hello",
+            translations: [
+                sourceLang: helloSourceTrans,
+                targetLang: helloTargetTrans
+            ]
+        )
+        
+        // Son kelimeler için Word objeleri
+        let recentWord1 = Word(
+            id: "how_are_you",
+            translations: [
+                sourceLang: howAreYouSourceTrans,
+                targetLang: howAreYouTargetTrans
+            ]
+        )
+        
+        let recentWord2 = Word(
+            id: "good_morning",
+            translations: [
+                sourceLang: goodMorningSourceTrans,
+                targetLang: goodMorningTargetTrans
+            ]
+        )
+        
         let entry = SimpleEntry(
             date: Date(),
-            word: Word(
-                id: "hello",
-                translations: [
-                    "en": Word.Translation(
-                        text: "hello",
-                        exampleSentence: "Hello, how are you?",
-                        romanized: nil,
-                        romanizedExample: nil,
-                        pronunciations: ["es": "he·lou"]
-                    ),
-                    "es": Word.Translation(
-                        text: "hola",
-                        exampleSentence: "¡Hola! ¿Cómo estás?",
-                        romanized: nil,
-                        romanizedExample: nil,
-                        pronunciations: ["en": "o·la"]
-                    )
-                ]
-            ),
-            recentWords: [
-                Word(
-                    id: "how_are_you",
-                    translations: [
-                        "en": Word.Translation(
-                            text: "how are you",
-                            exampleSentence: "How are you today?",
-                            romanized: nil,
-                            romanizedExample: nil,
-                            pronunciations: ["es": "hau·ar·yu"]
-                        ),
-                        "es": Word.Translation(
-                            text: "cómo estás",
-                            exampleSentence: "¿Cómo estás hoy?",
-                            romanized: nil,
-                            romanizedExample: nil,
-                            pronunciations: ["en": "ko·mo·es·tas"]
-                        )
-                    ]
-                ),
-                Word(
-                    id: "good_morning",
-                    translations: [
-                        "en": Word.Translation(
-                            text: "good morning",
-                            exampleSentence: "Good morning! Have a nice day!",
-                            romanized: nil,
-                            romanizedExample: nil,
-                            pronunciations: ["es": "gud·mor·ning"]
-                        ),
-                        "es": Word.Translation(
-                            text: "buenos días",
-                            exampleSentence: "¡Buenos días! ¡Que tengas un buen día!",
-                            romanized: nil,
-                            romanizedExample: nil,
-                            pronunciations: ["en": "bue·nos·di·as"]
-                        )
-                    ]
-                )
-            ]
+            word: mainWord,
+            recentWords: [recentWord1, recentWord2]
         )
         completion(entry)
     }
-    
+        
     func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> ()) {
         let currentDate = Date()
         let midnight = Calendar.current.startOfDay(for: currentDate)
@@ -229,68 +210,11 @@ struct Lingo_Widget_Extension: Widget {
 }
 
 #Preview(as: .systemLarge) {
-   Lingo_Widget_Extension()
+    Lingo_Widget_Extension()
 } timeline: {
-   SimpleEntry(
-       date: .now,
-       word: Word(
-           id: "hello",
-           translations: [
-               "en": Word.Translation(
-                   text: "hello",
-                   exampleSentence: "Hello, how are you?",
-                   romanized: nil,
-                   romanizedExample: nil,
-                   pronunciations: ["es": "he·lou"]
-               ),
-               "es": Word.Translation(
-                   text: "hola",
-                   exampleSentence: "¡Hola! ¿Cómo estás?",
-                   romanized: nil,
-                   romanizedExample: nil,
-                   pronunciations: ["en": "o·la"]
-               )
-           ]
-       ),
-       recentWords: [
-           Word(
-               id: "how_are_you",
-               translations: [
-                   "en": Word.Translation(
-                       text: "how are you",
-                       exampleSentence: "How are you today?",
-                       romanized: nil,
-                       romanizedExample: nil,
-                       pronunciations: ["es": "hau·ar·yu"]
-                   ),
-                   "es": Word.Translation(
-                       text: "cómo estás",
-                       exampleSentence: "¿Cómo estás hoy?",
-                       romanized: nil,
-                       romanizedExample: nil,
-                       pronunciations: ["en": "ko·mo·es·tas"]
-                   )
-               ]
-           ),
-           Word(
-               id: "good_morning",
-               translations: [
-                   "en": Word.Translation(
-                       text: "good morning",
-                       exampleSentence: "Good morning! Have a nice day!",
-                       romanized: nil,
-                       romanizedExample: nil,
-                       pronunciations: ["es": "gud·mor·ning"]
-                   ),
-                   "es": Word.Translation(
-                       text: "buenos días",
-                       exampleSentence: "¡Buenos días! ¡Que tengas un buen día!",
-                       romanized: nil,
-                       romanizedExample: nil,
-                       pronunciations: ["en": "bue·nos·di·as"]
-                   )
-               ]
-           )
-       ]
-   )
+    SimpleEntry(
+        date: .now,
+        word: .placeholder,
+        recentWords: [.placeholder, .placeholder]
+    )
 }
