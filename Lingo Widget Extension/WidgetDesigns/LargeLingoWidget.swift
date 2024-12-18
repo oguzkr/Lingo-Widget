@@ -16,11 +16,11 @@ struct LargeLingoWidget: View {
     @Environment(\.colorScheme) var colorScheme
     
     private var sourceLanguage: String {
-        UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "sourceLanguage") ?? "es"
+        UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "sourceLanguage") ?? "en"
     }
     
     private var targetLanguage: String {
-        UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "targetLanguage") ?? "en"
+        UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "targetLanguage") ?? "ru"
     }
     
     private var shouldShowRomanized: Bool {
@@ -48,6 +48,7 @@ struct LargeLingoWidget: View {
             // Target language section
             ViewThatFits(in: .horizontal) {
                 targetLanguageFullWidth
+                targetLanguageHalfCompact
                 targetLanguageCompact
             }
             
@@ -125,6 +126,45 @@ struct LargeLingoWidget: View {
                     .foregroundStyle(.blue)
                     .minimumScaleFactor(0.7)
             }.buttonStyle(.bordered)
+        }
+    }
+    
+    private var targetLanguageHalfCompact: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            HStack {
+                Image(targetLanguage)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 24, height: 24)
+                
+                if let targetText = word.translations[targetLanguage]?.text {
+                    Text(targetText)
+                        .font(.system(size: 24, weight: .bold))
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.7)
+                }
+                
+                
+                if shouldShowRomanized,
+                   let romanized = word.translations[targetLanguage]?.romanized {
+                    Divider().frame(height: 20)
+                    romanizedView(romanized)
+                }
+                
+                Spacer()
+                
+                Link(destination: URL(string: "lingowidget://speak?text=word")!) {
+                    Image(systemName: "speaker.wave.2.fill")
+                        .font(.system(size: 24))
+                        .foregroundStyle(.blue)
+                        .minimumScaleFactor(0.7)
+                }.buttonStyle(.bordered)
+            }
+
+            
+            if let pronunciation = word.translations[targetLanguage]?.pronunciations[sourceLanguage] {
+                pronunciationView(pronunciation)
+            }
         }
     }
     
@@ -224,7 +264,7 @@ struct LargeLingoWidget: View {
                 Text(exampleSentence)
                     .font(.system(size: 20))
                     .lineLimit(3)
-                    .minimumScaleFactor(0.7) 
+                    .minimumScaleFactor(0.7)
                 
                 Spacer()
                 
@@ -243,7 +283,7 @@ struct LargeLingoWidget: View {
                     .italic()
                     .foregroundColor(.secondary)
                     .lineLimit(2)
-                    .minimumScaleFactor(0.7) 
+                    .minimumScaleFactor(0.7)
             }
             
             if let sourceExample = word.translations[sourceLanguage]?.exampleSentence {
@@ -251,7 +291,7 @@ struct LargeLingoWidget: View {
                     .font(.system(size: 20))
                     .foregroundColor(.secondary)
                     .lineLimit(2)
-                    .minimumScaleFactor(0.7) 
+                    .minimumScaleFactor(0.7)
             }
         }
     }
@@ -315,6 +355,15 @@ struct LargeLingoWidget: View {
                 }
             }
             
+            if let pronunciation = word.translations[targetLanguage]?.pronunciations[sourceLanguage] {
+                Text("🗣️ \(pronunciation)")
+                    .italic()
+                    .font(.system(size: 16, weight: .light))
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
+                    .foregroundStyle(.secondary)
+            }
+            
             HStack(spacing: 4) {
                 Image(sourceLanguage)
                     .resizable()
@@ -351,164 +400,72 @@ struct LargeLingoWidget: View {
 }
 
 struct LargeLingoWidget_Previews: PreviewProvider {
-   static var previews: some View {
-       Group {
-           // İngilizce-İspanyolca örneği
-           LargeLingoWidget(
-               word: Word(
-                   id: "hello",
-                   translations: [
-                       "en": Word.Translation(
-                           text: "hello",
-                           exampleSentence: "Hello, how are you?",
-                           romanized: nil,
-                           romanizedExample: nil,
-                           pronunciations: ["es": "he·lou"]
-                       ),
-                       "es": Word.Translation(
-                           text: "hola",
-                           exampleSentence: "¡Hola! ¿Cómo estás?",
-                           romanized: nil,
-                           romanizedExample: nil,
-                           pronunciations: ["en": "o·la"]
-                       )
-                   ]
-               ),
-               recentWords: [
-                   Word(
-                       id: "how_are_you",
-                       translations: [
-                           "en": Word.Translation(
-                               text: "how are you",
-                               exampleSentence: "How are you today?",
-                               romanized: nil,
-                               romanizedExample: nil,
-                               pronunciations: ["es": "hau·ar·yu"]
-                           ),
-                           "es": Word.Translation(
-                               text: "cómo estás",
-                               exampleSentence: "¿Cómo estás hoy?",
-                               romanized: nil,
-                               romanizedExample: nil,
-                               pronunciations: ["en": "ko·mo·es·tas"]
-                           )
-                       ]
-                   ),
-                   Word(
-                       id: "good_morning",
-                       translations: [
-                           "en": Word.Translation(
-                               text: "good morning",
-                               exampleSentence: "Good morning! Have a nice day!",
-                               romanized: nil,
-                               romanizedExample: nil,
-                               pronunciations: ["es": "gud·mor·ning"]
-                           ),
-                           "es": Word.Translation(
-                               text: "buenos días",
-                               exampleSentence: "¡Buenos días! ¡Que tengas un buen día!",
-                               romanized: nil,
-                               romanizedExample: nil,
-                               pronunciations: ["en": "bue·nos·di·as"]
-                           )
-                       ]
-                   )
-               ]
-           )
-           .previewContext(WidgetPreviewContext(family: .systemLarge))
-           .previewDisplayName("With Recent Words")
-           
-           // Boş recent words örneği
-           LargeLingoWidget(
-               word: Word(
-                   id: "hello",
-                   translations: [
-                       "en": Word.Translation(
-                           text: "hello",
-                           exampleSentence: "Hello, how are you?",
-                           romanized: nil,
-                           romanizedExample: nil,
-                           pronunciations: ["es": "he·lou"]
-                       ),
-                       "es": Word.Translation(
-                           text: "hola",
-                           exampleSentence: "¡Hola! ¿Cómo estás?",
-                           romanized: nil,
-                           romanizedExample: nil,
-                           pronunciations: ["en": "o·la"]
-                       )
-                   ]
-               ),
-               recentWords: []
-           )
-           .previewContext(WidgetPreviewContext(family: .systemLarge))
-           .previewDisplayName("No Recent Words")
-           
-           // Dark mode örneği
-           LargeLingoWidget(
-               word: Word(
-                   id: "hello",
-                   translations: [
-                       "en": Word.Translation(
-                           text: "hello",
-                           exampleSentence: "Hello, how are you?",
-                           romanized: nil,
-                           romanizedExample: nil,
-                           pronunciations: ["es": "he·lou"]
-                       ),
-                       "es": Word.Translation(
-                           text: "hola",
-                           exampleSentence: "¡Hola! ¿Cómo estás?",
-                           romanized: nil,
-                           romanizedExample: nil,
-                           pronunciations: ["en": "o·la"]
-                       )
-                   ]
-               ),
-               recentWords: [
-                   Word(
-                       id: "how_are_you",
-                       translations: [
-                           "en": Word.Translation(
-                               text: "how are you",
-                               exampleSentence: "How are you today?",
-                               romanized: nil,
-                               romanizedExample: nil,
-                               pronunciations: ["es": "hau·ar·yu"]
-                           ),
-                           "es": Word.Translation(
-                               text: "cómo estás",
-                               exampleSentence: "¿Cómo estás hoy?",
-                               romanized: nil,
-                               romanizedExample: nil,
-                               pronunciations: ["en": "ko·mo·es·tas"]
-                           )
-                       ]
-                   ),
-                   Word(
-                       id: "good_morning",
-                       translations: [
-                           "en": Word.Translation(
-                               text: "good morning",
-                               exampleSentence: "Good morning! Have a nice day!",
-                               romanized: nil,
-                               romanizedExample: nil,
-                               pronunciations: ["es": "gud·mor·ning"]
-                           ),
-                           "es": Word.Translation(
-                               text: "buenos días",
-                               exampleSentence: "¡Buenos días! ¡Que tengas un buen día!",
-                               romanized: nil,
-                               romanizedExample: nil,
-                               pronunciations: ["en": "bue·nos·di·as"]
-                           )
-                       ]
-                   )
-               ]
-           )
-           .previewContext(WidgetPreviewContext(family: .systemLarge))
-           .environment(\.colorScheme, .dark)
-           .previewDisplayName("Dark Mode")
-       }
-   }
+    static var previews: some View {
+        Group {
+            // English-Russian example
+            LargeLingoWidget(
+                word: Word(
+                    id: "hello",
+                    translations: [
+                        "en": Word.Translation(
+                            text: "hello",
+                            exampleSentence: "Hello, how are you?",
+                            romanized: nil,
+                            romanizedExample: nil,
+                            pronunciations: ["ru": "he-loh"]
+                        ),
+                        "ru": Word.Translation(
+                            text: "привет",
+                            exampleSentence: "Привет, как дела?",
+                            romanized: "privet",
+                            romanizedExample: "Privet, kak dela?",
+                            pronunciations: ["en": "pri-vyet"]
+                        )
+                    ]
+                ),
+                recentWords: [
+                    Word(
+                        id: "how_are_you",
+                        translations: [
+                            "en": Word.Translation(
+                                text: "how are you",
+                                exampleSentence: "How are you today?",
+                                romanized: nil,
+                                romanizedExample: nil,
+                                pronunciations: ["ru": "hau ar yu"]
+                            ),
+                            "ru": Word.Translation(
+                                text: "как дела",
+                                exampleSentence: "Как дела сегодня?",
+                                romanized: "kak dela",
+                                romanizedExample: "Kak dela segodnya?",
+                                pronunciations: ["en": "kahk deh-lah"]
+                            )
+                        ]
+                    ),
+                    Word(
+                        id: "good_morning",
+                        translations: [
+                            "en": Word.Translation(
+                                text: "good morning",
+                                exampleSentence: "Good morning! Have a nice day!",
+                                romanized: nil,
+                                romanizedExample: nil,
+                                pronunciations: ["ru": "gud mor-ning"]
+                            ),
+                            "ru": Word.Translation(
+                                text: "доброе утро",
+                                exampleSentence: "Доброе утро! Хорошего дня!",
+                                romanized: "dobroe utro",
+                                romanizedExample: "Dobroe utro! Khoroshego dnya!",
+                                pronunciations: ["en": "doh-brah-yuh oo-trah"]
+                            )
+                        ]
+                    )
+                ]
+            )
+            .previewContext(WidgetPreviewContext(family: .systemLarge))
+            .previewDisplayName("With Recent Words")
+        }
+    }
 }
