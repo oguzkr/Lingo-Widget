@@ -332,7 +332,7 @@ struct LargeLingoWidget: View {
                     Text(targetText)
                         .font(.system(size: 16, weight: .semibold))
                         .lineLimit(1)
-                        .minimumScaleFactor(0.7) 
+                        .minimumScaleFactor(0.6)
                 }
                 Spacer()
             }
@@ -342,7 +342,7 @@ struct LargeLingoWidget: View {
                     Image(systemName: "character.textbox")
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 14, height: 15)
+                        .frame(width: 15, height: 15)
                         .shadow(color: .black.opacity(0.5), radius: 2)
                         .foregroundStyle(.secondary)
                     
@@ -350,7 +350,7 @@ struct LargeLingoWidget: View {
                         .italic()
                         .font(.system(size: 16, weight: .light))
                         .lineLimit(1)
-                        .minimumScaleFactor(0.7)
+                        .minimumScaleFactor(0.5)
                         .foregroundStyle(.secondary)
                 }
             }
@@ -360,7 +360,7 @@ struct LargeLingoWidget: View {
                     .italic()
                     .font(.system(size: 16, weight: .light))
                     .lineLimit(1)
-                    .minimumScaleFactor(0.7)
+                    .minimumScaleFactor(0.5)
                     .foregroundStyle(.secondary)
             }
             
@@ -376,7 +376,7 @@ struct LargeLingoWidget: View {
                         .font(.system(size: 16, weight: .regular))
                         .foregroundColor(.secondary)
                         .lineLimit(2)
-                        .minimumScaleFactor(0.7)
+                        .minimumScaleFactor(0.5)
                 }
             }
         }
@@ -465,7 +465,7 @@ struct LargeLingoWidget_Previews: PreviewProvider {
                 ]
             )
             .previewContext(WidgetPreviewContext(family: .systemLarge))
-            .previewDisplayName("With Recent Words")
+            .previewDisplayName("RU - EN")
         }
     }
 }
