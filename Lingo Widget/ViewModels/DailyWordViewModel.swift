@@ -240,23 +240,40 @@ class DailyWordViewModel: ObservableObject {
 
     // Kelime listesi
     private let allWordIds: [String] = [
+        // Greetings and Basic Interactions
         "hello", "good_morning", "good_afternoon", "good_evening", "good_night",
         "how_are_you", "goodbye", "see_you_later", "nice_to_meet_you", "take_care",
         "thank_you", "welcome", "excuse_me", "sorry", "no_problem",
+        
+        // Directions and Location
         "where", "left", "right", "straight", "near",
         "far", "stop", "here", "there", "which_way",
+        
+        // Food, Drinks and Dining
         "hungry", "thirsty", "water", "money", "bill",
         "delicious", "spicy", "sweet", "recommend", "coffee",
+        
+        // Shopping and Money
         "how_much", "expensive", "cheap", "buy", "color",
         "cash", "card", "receipt", "bag", "size",
+        
+        // Transportation and Places
         "bathroom", "hotel", "airport", "bus", "train",
         "subway", "ticket", "platform", "station", "how_long",
+        
+        // Time and Schedule
         "time", "today", "tomorrow", "yesterday", "morning",
         "afternoon", "evening", "now", "later", "soon",
+        
+        // Feelings and States
         "happy", "sad", "tired", "angry", "excited",
         "lost", "fine", "busy", "free", "bored",
+        
+        // Emergency and Health
         "help", "police", "ambulance", "sick", "injured",
         "fire", "danger", "passport", "doctor", "pharmacy",
+        
+        // Basic Communication
         "yes", "no", "maybe", "please", "understand",
         "repeat", "mean", "know", "name", "old",
         "what", "great", "awesome", "nice", "place",
