@@ -9,12 +9,25 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @State private var currentPage = 2
+    @State private var currentPage = 0
+    
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
+    
     @AppStorage("sourceLanguage", store: UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget"))
-    private var selectedSourceLanguage = "en"
+    private var selectedSourceLanguage = "" {
+        didSet {
+            nextButtonDisabled = false
+        }
+    }
     @AppStorage("targetLanguage", store: UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget"))
-    private var selectedTargetLanguage = "es"
+    private var selectedTargetLanguage = "" {
+        didSet {
+            startLearningButtonDisabled = false
+        }
+    }
+    
+    @State private var nextButtonDisabled = true
+    @State private var startLearningButtonDisabled = true
     
     // Mevcut languages dictionary'sini kullanıyoruz
     let languages = [
@@ -54,11 +67,21 @@ struct OnboardingView: View {
             .tabViewStyle(.page(indexDisplayMode: .never))
             .animation(.easeInOut, value: currentPage)
             
-            // Bottom Navigation
             if currentPage > 0 {
                 VStack {
                     Spacer()
-                    nextButton
+                    HStack(spacing: 5) {
+                        backButton
+                            .widthAsPercentage(15)
+                        if currentPage == 1 {
+                            nextButton
+                                .widthAsPercentage(75)
+                        } else if currentPage == 2 {
+                            startButton
+                                .widthAsPercentage(75)
+                        }
+                        
+                    }
                 }
                 .ignoresSafeArea(.keyboard)
             }
@@ -67,7 +90,6 @@ struct OnboardingView: View {
     
     private var welcomeView: some View {
         VStack(spacing: 20) {
-            // İstersen ufak bir boşluk bırak
             Spacer()
             
             FloatingHelloAnimation()
@@ -134,7 +156,7 @@ struct OnboardingView: View {
                             selectedSourceLanguage = key
                         }
                     }
-                }
+                }.padding(.bottom, 60)
             }.padding(.horizontal)
         }
     }
@@ -160,7 +182,7 @@ struct OnboardingView: View {
                             }
                         }
                     }
-                }
+                }.padding(.bottom, 60)
             }.padding(.horizontal)
         }
     }
@@ -171,14 +193,62 @@ struct OnboardingView: View {
                 if currentPage == 1 && selectedSourceLanguage.isEmpty {
                     return
                 }
-                if currentPage == 2 {
+                currentPage += 1
+            }
+        }) {
+            Text("Next")
+                .font(.headline)
+                .foregroundColor(.white)
+                .frame(height: 55)
+                .frame(maxWidth: .infinity)
+                .background(nextButtonDisabled ? .white.opacity(0.5) : .clear)
+                .background(
+                    LinearGradient(
+                        colors: [.blue, .purple],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
+                .cornerRadius(15)
+        }
+        .disabled(nextButtonDisabled)
+        .padding(.bottom, 30)
+    }
+
+    private var startButton: some View {
+        Button(action: {
+            withAnimation {
+                if !selectedTargetLanguage.isEmpty {
                     completeOnboarding()
-                } else {
-                    currentPage += 1
                 }
             }
         }) {
-            Text(currentPage == 2 ? "Start Learning" : "Next")
+            Text("Start Learning")
+                .font(.headline)
+                .foregroundColor(.white)
+                .frame(height: 55)
+                .frame(maxWidth: .infinity)
+                .background(startLearningButtonDisabled ? .white.opacity(0.5) : .clear)
+                .background(
+                    LinearGradient(
+                        colors: [.blue, .purple],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
+                .cornerRadius(15)
+        }
+        .disabled(startLearningButtonDisabled)
+        .padding(.bottom, 30)
+    }
+    
+    private var backButton: some View {
+        Button(action: {
+            withAnimation {
+                currentPage -= 1
+            }
+        }) {
+            Text("<")
                 .font(.headline)
                 .foregroundColor(.white)
                 .frame(height: 55)
@@ -192,7 +262,6 @@ struct OnboardingView: View {
                 )
                 .cornerRadius(15)
         }
-        .padding(.horizontal)
         .padding(.bottom, 30)
     }
     
