@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "<" : {
+
+    },
     "Choose" : {
       "localizations" : {
         "tr" : {
@@ -42,6 +45,7 @@
       }
     },
     "Learn a Language" : {
+      "extractionState" : "stale",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -50,6 +54,9 @@
           }
         }
       }
+    },
+    "Learn a new word one at a time, right on your home screen" : {
+
     },
     "Native Language" : {
       "localizations" : {
@@ -61,7 +68,11 @@
         }
       }
     },
+    "Next" : {
+
+    },
     "One word at a time, right on your home screen" : {
+      "extractionState" : "stale",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -70,6 +81,12 @@
           }
         }
       }
+    },
+    "Start Learning" : {
+
+    },
+    "Welcome" : {
+
     },
     "What language do you want to learn?" : {
       "localizations" : {
