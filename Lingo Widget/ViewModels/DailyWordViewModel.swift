@@ -10,7 +10,7 @@ import AVFoundation
 import WidgetKit
 
 class DailyWordViewModel: ObservableObject {
-    
+    // MARK: - Published Properties
     @Published var sourceLanguageCode: String = ""
     @Published var sourceWord: String = ""
     @Published var targetWord: String = ""
@@ -20,36 +20,68 @@ class DailyWordViewModel: ObservableObject {
     @Published var sourceExampleSentence: String = ""
     @Published var romanized: String?
     @Published var romanizedExample: String?
-
     @Published var recentWords: [Word] = []
+    @Published var currentWord: Word = .placeholder
+    @Published var knownWords: [Word] = []
     
+    // MARK: - Private Properties
     private let defaults = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")!
-    
     private let recentWordsKey = "recentWords"
+    private let knownWordsKey = "knownWords"
+    private let synthesizer = AVSpeechSynthesizer()
+    private var currentLanguageCode: String = "en"
     
     var shownWordIds: [String] {
         get { defaults.array(forKey: "shownWords") as? [String] ?? [] }
         set { defaults.set(newValue, forKey: "shownWords") }
     }
-
+    
     var lastWordDate: Date {
         get { defaults.object(forKey: "lastWordDate") as? Date ?? Date(timeIntervalSince1970: 0) }
         set { defaults.set(newValue, forKey: "lastWordDate") }
     }
-
+    
     var currentWordId: String {
         get { defaults.string(forKey: "currentWordId") ?? "" }
         set { defaults.set(newValue, forKey: "currentWordId") }
     }
-
-    private let synthesizer = AVSpeechSynthesizer()
-    private var currentLanguageCode: String = "en"
-
+    
+    // MARK: - Initialization
     init() {
         setupAudioSession()
         loadRecentWords()
+        loadKnownWords()
+        fetchCurrentWord() // Initialize currentWord
     }
     
+    // MARK: - Known Words Management
+    private func loadKnownWords() {
+        if let data = defaults.data(forKey: knownWordsKey),
+           let decoded = try? JSONDecoder().decode([Word].self, from: data) {
+            knownWords = decoded
+        }
+    }
+    
+    private func saveKnownWords() {
+        if let encoded = try? JSONEncoder().encode(knownWords) {
+            defaults.set(encoded, forKey: knownWordsKey)
+        }
+    }
+    
+    func markCurrentWordAsKnown() {
+        guard !knownWords.contains(where: { $0.id == currentWord.id }) else { return }
+        
+        knownWords.append(currentWord)
+        saveKnownWords()
+        
+        refreshWord(
+            from: defaults.string(forKey: "sourceLanguage") ?? "en",
+            to: defaults.string(forKey: "targetLanguage") ?? "es",
+            nativeLanguage: defaults.string(forKey: "sourceLanguage") ?? "en"
+        )
+    }
+    
+    // MARK: - Recent Words Management
     private func loadRecentWords() {
         if let data = defaults.data(forKey: recentWordsKey),
            let decoded = try? JSONDecoder().decode([Word].self, from: data) {
@@ -76,35 +108,18 @@ class DailyWordViewModel: ObservableObject {
     }
     
     private func addToRecentWords(_ word: Word) {
-        // Önce aynı kelime varsa kaldır
         recentWords.removeAll { $0.id == word.id }
-        
-        // Yeni kelimeyi başa ekle
         recentWords.insert(word, at: 0)
-        
-        // Maksimum sayıyı kontrol et
         while recentWords.count > 3 {
             recentWords.removeLast()
         }
-        print("Recent words: \(recentWords.map { $0.id })")
         saveRecentWords()
     }
-        
-
-    private func setupAudioSession() {
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playback,
-                                                             mode: .default,
-                                                             options: .mixWithOthers)
-            try AVAudioSession.sharedInstance().setActive(true)
-        } catch {
-            print("Audio session ayarlanırken hata: \(error.localizedDescription)")
-        }
-    }
-
+    
+    // MARK: - Word Loading and Management
     private func selectNewWord() -> String {
         var availableWords = allWordIds.filter { !shownWordIds.contains($0) }
-
+        
         if availableWords.isEmpty {
             shownWordIds.removeAll()
             availableWords = allWordIds.filter { $0 != currentWordId }
@@ -125,45 +140,41 @@ class DailyWordViewModel: ObservableObject {
         return word
     }
     
+    // MARK: - UI Update and Word Fetching
     func fetchCurrentWord() {
         let sourceLang = defaults.string(forKey: "sourceLanguage") ?? "es"
         let targetLang = defaults.string(forKey: "targetLanguage") ?? "en"
         currentLanguageCode = targetLang
-
-        // Always reload the currentWordId from shared storage
+        
         let currentWordId = defaults.string(forKey: "currentWordId") ?? ""
-
-        // Load the current word if available
-        if let currentWord = loadWord(id: currentWordId) {
-            updateUI(with: currentWord, sourceLang: sourceLang, targetLang: targetLang)
+        
+        if let word = loadWord(id: currentWordId) {
+            currentWord = word
+            updateUI(with: word, sourceLang: sourceLang, targetLang: targetLang)
         } else {
-            // If no word is available, fetch a new one
             fetchDailyWord(from: sourceLang, to: targetLang)
         }
     }
-
+    
     func fetchDailyWord(from sourceLang: String = "tr", to targetLang: String = "en") {
-        print("fetchDailyWord: \(sourceLang) -> \(targetLang)")
         currentLanguageCode = targetLang
         let calendar = Calendar.current
-
-        // Yeni gün mü veya mevcut kelime yok mu?
+        
         if currentWordId.isEmpty || !calendar.isDate(lastWordDate, inSameDayAs: Date()) {
             refreshWord(from: sourceLang, to: targetLang, nativeLanguage: sourceLang)
             return
         }
-
-        if let currentWord = loadWord(id: currentWordId) {
-            // Mevcut kelimeyi göster
-            updateUI(with: currentWord, sourceLang: sourceLang, targetLang: targetLang)
+        
+        if let word = loadWord(id: currentWordId) {
+            currentWord = word
+            updateUI(with: word, sourceLang: sourceLang, targetLang: targetLang)
         } else {
-            // Mevcut kelime yüklenemiyor, yeni bir kelime seç
             refreshWord(from: sourceLang, to: targetLang, nativeLanguage: sourceLang)
         }
         
         WidgetCenter.shared.reloadAllTimelines()
     }
-
+    
     func refreshWord(from sourceLang: String, to targetLang: String, nativeLanguage: String) {
         currentLanguageCode = targetLang
         let newId = selectNewWord()
@@ -172,6 +183,7 @@ class DailyWordViewModel: ObservableObject {
             return
         }
         
+        currentWord = newWord
         currentWordId = newId
         defaults.set(currentWordId, forKey: "currentWordId")
         lastWordDate = Date()
@@ -182,13 +194,12 @@ class DailyWordViewModel: ObservableObject {
         WidgetCenter.shared.reloadAllTimelines()
     }
     
-
     private func updateUI(with word: Word, sourceLang: String, targetLang: String) {
         guard let sourceTranslation = word.translations[sourceLang],
               let targetTranslation = word.translations[targetLang] else {
             return
         }
-
+        
         sourceLanguageCode = sourceLang
         targetLanguageCode = targetLang
         sourceWord = sourceTranslation.text
@@ -198,47 +209,48 @@ class DailyWordViewModel: ObservableObject {
         sourceExampleSentence = sourceTranslation.exampleSentence
         romanized = targetTranslation.romanized
         romanizedExample = targetTranslation.romanizedExample
+        currentWord = word
     }
-
+    
+    // MARK: - Audio
+    private func setupAudioSession() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback,
+                                                          mode: .default,
+                                                          options: .mixWithOthers)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print("Audio session ayarlanırken hata: \(error.localizedDescription)")
+        }
+    }
+    
     func speakWord(text: String? = nil) {
         let textToSpeak = text ?? targetWord
         let languageCode = convertToSpeechLanguageCode(currentLanguageCode)
-
+        
         let utterance = AVSpeechUtterance(string: textToSpeak)
         utterance.voice = AVSpeechSynthesisVoice(language: languageCode)
         utterance.rate = 0.4
         utterance.pitchMultiplier = 1.0
         utterance.volume = 1.0
-
+        
         synthesizer.speak(utterance)
     }
-
+    
     private func convertToSpeechLanguageCode(_ code: String) -> String {
         let conversions = [
-            "tr": "tr-TR",
-            "en": "en-US",
-            "es": "es-ES",
-            "id": "id-ID",
-            "fr": "fr-FR",
-            "it": "it-IT",
-            "pt": "pt-PT",
-            "zh": "zh-CN",
-            "ru": "ru-RU",
-            "ja": "ja-JP",
-            "hi": "hi-IN",
-            "fil": "fil-PH",
-            "th": "th-TH",
-            "ko": "ko-KR",
-            "nl": "nl-NL",
-            "sv": "sv-SE",
-            "pl": "pl-PL",
-            "el": "el-GR",
+            "tr": "tr-TR", "en": "en-US", "es": "es-ES",
+            "id": "id-ID", "fr": "fr-FR", "it": "it-IT",
+            "pt": "pt-PT", "zh": "zh-CN", "ru": "ru-RU",
+            "ja": "ja-JP", "hi": "hi-IN", "fil": "fil-PH",
+            "th": "th-TH", "ko": "ko-KR", "nl": "nl-NL",
+            "sv": "sv-SE", "pl": "pl-PL", "el": "el-GR",
             "de": "de-DE"
         ]
         return conversions[code] ?? code
     }
-
-    // Kelime listesi
+    
+    // MARK: - Word IDs
     private let allWordIds: [String] = [
         // Greetings and Basic Interactions
         "hello", "good_morning", "good_afternoon", "good_evening", "good_night",
