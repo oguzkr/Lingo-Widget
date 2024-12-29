@@ -11,7 +11,8 @@ struct MainView: View {
     @StateObject private var dailyWordViewModel = DailyWordViewModel()
     @State private var showSettings = false
     @State private var showPremiumSheet = false
-    
+    @Environment(\.scenePhase) var scenePhase
+
     @AppStorage("sourceLanguage", store: UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget"))
     private var selectedSourceLanguage = "es"
     
@@ -62,6 +63,15 @@ struct MainView: View {
             }
             .sheet(isPresented: $showPremiumSheet) {
                 PremiumView()
+            }
+            .onChange(of: scenePhase) { oldPhase, newPhase in
+                print("Scene phase changed from \(oldPhase) to \(newPhase)")
+                if newPhase == .active {
+                    dailyWordViewModel.fetchCurrentWord()
+                }
+                if newPhase == .background {
+                    exit(0)
+                }
             }
         }
     }

@@ -62,7 +62,7 @@ struct KnownWordRow: View {
         .padding()
         .background(Color(.systemBackground))
         .cornerRadius(10)
-        .shadow(color: .black.opacity(0.1), radius: 5)
+        .shadow(color: .primary.opacity(0.4), radius: 5)
         .padding(.horizontal)
     }
 }
