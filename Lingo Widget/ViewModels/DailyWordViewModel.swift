@@ -22,7 +22,7 @@ class DailyWordViewModel: ObservableObject {
     @Published var romanizedExample: String?
     @Published var recentWords: [Word] = []
     @Published var currentWord: Word = .placeholder
-    @Published var knownWords: [Word] = []
+    @Published var knownWords: [WordWithLanguages] = []
     
     // MARK: - Private Properties
     private let defaults = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")!
@@ -57,7 +57,7 @@ class DailyWordViewModel: ObservableObject {
     // MARK: - Known Words Management
     private func loadKnownWords() {
         if let data = defaults.data(forKey: knownWordsKey),
-           let decoded = try? JSONDecoder().decode([Word].self, from: data) {
+           let decoded = try? JSONDecoder().decode([WordWithLanguages].self, from: data) {
             knownWords = decoded
         }
     }
@@ -69,17 +69,45 @@ class DailyWordViewModel: ObservableObject {
     }
     
     func markCurrentWordAsKnown() {
-        guard !knownWords.contains(where: { $0.id == currentWord.id }) else { return }
+        let sourceLanguage = defaults.string(forKey: "sourceLanguage") ?? "en"
+        let targetLanguage = defaults.string(forKey: "targetLanguage") ?? "es"
         
-        knownWords.append(currentWord)
+        let isAlreadyKnown = knownWords.contains { word in
+            word.word.id == currentWord.id &&
+            word.sourceLanguage == sourceLanguage &&
+            word.targetLanguage == targetLanguage
+        }
+        
+        guard !isAlreadyKnown else { return }
+        
+        let wordWithLangs = WordWithLanguages(
+            word: currentWord,
+            sourceLanguage: sourceLanguage,
+            targetLanguage: targetLanguage
+        )
+        
+        // Yeni kelimeyi listenin başına ekliyoruz
+        knownWords.insert(wordWithLangs, at: 0)
         saveKnownWords()
         
         refreshWord(
-            from: defaults.string(forKey: "sourceLanguage") ?? "en",
-            to: defaults.string(forKey: "targetLanguage") ?? "es",
-            nativeLanguage: defaults.string(forKey: "sourceLanguage") ?? "en"
+            from: sourceLanguage,
+            to: targetLanguage,
+            nativeLanguage: sourceLanguage
         )
     }
+    
+    func getKnownWordsForCurrentLanguages() -> [Word] {
+            let sourceLanguage = defaults.string(forKey: "sourceLanguage") ?? "en"
+            let targetLanguage = defaults.string(forKey: "targetLanguage") ?? "es"
+            
+            return knownWords
+                .filter { word in
+                    word.sourceLanguage == sourceLanguage &&
+                    word.targetLanguage == targetLanguage
+                }
+                .map { $0.word }
+        }
     
     // MARK: - Recent Words Management
     private func loadRecentWords() {

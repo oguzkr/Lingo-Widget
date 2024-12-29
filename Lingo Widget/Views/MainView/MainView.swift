@@ -62,8 +62,7 @@ struct MainView: View {
                         .padding(.horizontal)
                     }
                     
-                    // Known Words List
-                    KnownWordsList(words: dailyWordViewModel.knownWords)
+                    KnownWordsList(words: dailyWordViewModel.getKnownWordsForCurrentLanguages())
                 }
                 .padding(.top)
             }
@@ -92,21 +91,29 @@ struct KnownWordsList: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
-                Text("Words I Know")
-                    .font(.title2)
-                    .fontWeight(.bold)
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Words I Learned")
+                        .font(.system(size: 24, weight: .bold))
+                        .foregroundColor(.primary)
+                    
+                    Text("\(words.count) words")
+                        .font(.system(size: 14))
+                        .foregroundColor(.secondary)
+                }
                 
                 Spacer()
                 
                 Button("Manage") {
                     // Manage action
                 }
+                .font(.system(size: 16, weight: .medium))
                 .foregroundColor(.blue)
             }
             .padding(.horizontal)
             
             if words.isEmpty {
                 Text("Mark words as known to see them here")
+                    .font(.system(size: 16))
                     .foregroundColor(.secondary)
                     .padding()
             } else {
@@ -122,20 +129,54 @@ struct KnownWordsList: View {
 struct KnownWordRow: View {
     let word: Word
     
+    private var sourceLanguage: String {
+        UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "sourceLanguage") ?? "en"
+    }
+    
+    private var targetLanguage: String {
+        UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "targetLanguage") ?? "ru"
+    }
+    
+    private var shouldShowRomanized: Bool {
+        guard let targetTranslation = word.translations[targetLanguage] else { return false }
+        return !targetTranslation.text.allSatisfy { $0.isLetter && $0.isASCII }
+    }
+    
     var body: some View {
         HStack {
-            VStack(alignment: .leading, spacing: 4) {
-                Text(word.translations["targetLanguage"]?.text ?? "")
-                    .font(.system(size: 17, weight: .semibold))
-                Text(word.translations["sourceLanguage"]?.text ?? "")
-                    .font(.system(size: 15))
-                    .foregroundColor(.secondary)
+            VStack(alignment: .leading, spacing: 8) {
+                if let targetText = word.translations[targetLanguage]?.text {
+                    Text(targetText)
+                        .font(.system(size: 18, weight: .semibold))
+                        .foregroundColor(.primary)
+                    
+                    if shouldShowRomanized,
+                       let romanized = word.translations[targetLanguage]?.romanized {
+                        HStack(spacing: 4) {
+                            Image(systemName: "character.textbox")
+                                .font(.system(size: 12))
+                                .foregroundStyle(.secondary)
+                            
+                            Text(romanized)
+                                .italic()
+                                .font(.system(size: 14, weight: .regular))
+                                .foregroundColor(.secondary)
+                        }
+                    }
+                }
+                
+                if let sourceText = word.translations[sourceLanguage]?.text {
+                    Text(sourceText)
+                        .font(.system(size: 16))
+                        .foregroundColor(.secondary)
+                }
             }
             
             Spacer()
             
             Image(systemName: "checkmark.circle.fill")
                 .foregroundColor(.green)
+                .font(.system(size: 20))
         }
         .padding()
         .background(Color(.systemBackground))

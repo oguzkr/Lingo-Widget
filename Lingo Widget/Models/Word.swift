@@ -19,3 +19,9 @@ struct Word: Codable {
         let pronunciations: [String: String]
     }
 }
+
+struct WordWithLanguages: Codable {
+    let word: Word
+    let sourceLanguage: String
+    let targetLanguage: String
+}
