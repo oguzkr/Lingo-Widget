@@ -62,7 +62,7 @@ struct MainView: View {
                         .padding(.horizontal)
                     }
                     
-                    KnownWordsList(words: dailyWordViewModel.getKnownWordsForCurrentLanguages())
+                    KnownWordsList(viewModel: dailyWordViewModel)
                 }
                 .padding(.top)
             }
@@ -86,7 +86,8 @@ struct MainView: View {
 }
 
 struct KnownWordsList: View {
-    let words: [Word]
+    @ObservedObject var viewModel: DailyWordViewModel
+    @State private var showingManageWords = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -96,7 +97,7 @@ struct KnownWordsList: View {
                         .font(.system(size: 24, weight: .bold))
                         .foregroundColor(.primary)
                     
-                    Text("\(words.count) words")
+                    Text("\(viewModel.getKnownWordsForCurrentLanguages().count) words")
                         .font(.system(size: 14))
                         .foregroundColor(.secondary)
                 }
@@ -104,25 +105,28 @@ struct KnownWordsList: View {
                 Spacer()
                 
                 Button("Manage") {
-                    // Manage action
+                    showingManageWords = true
                 }
                 .font(.system(size: 16, weight: .medium))
                 .foregroundColor(.blue)
             }
             .padding(.horizontal)
             
-            if words.isEmpty {
+            if viewModel.getKnownWordsForCurrentLanguages().isEmpty {
                 Text("Mark words as known to see them here")
                     .font(.system(size: 16))
                     .foregroundColor(.secondary)
                     .padding()
             } else {
-                ForEach(words, id: \.id) { word in
+                ForEach(viewModel.getKnownWordsForCurrentLanguages(), id: \.id) { word in
                     KnownWordRow(word: word)
                 }
             }
         }
         .padding(.top)
+        .sheet(isPresented: $showingManageWords) {
+            ManageKnownWordsView(viewModel: viewModel)  // Pass the viewModel
+        }
     }
 }
 

@@ -62,7 +62,7 @@ class DailyWordViewModel: ObservableObject {
         }
     }
     
-    private func saveKnownWords() {
+    func saveKnownWords() {
         if let encoded = try? JSONEncoder().encode(knownWords) {
             defaults.set(encoded, forKey: knownWordsKey)
         }
