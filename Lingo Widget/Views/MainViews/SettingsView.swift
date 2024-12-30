@@ -85,7 +85,7 @@ struct SettingsView: View {
     
     private var languageSection: some View {
         Section("Languages") {
-            languageRow(title: "I speak", code: selectedSourceLanguage) {
+            languageRow(title: "My language", code: selectedSourceLanguage) {
                 isSelectingSourceLanguage = true
                 showLanguageSelection = true
             }
