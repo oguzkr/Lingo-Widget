@@ -9,36 +9,36 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var dailyWordViewModel: DailyWordViewModel
     @AppStorage("preferredColorScheme") private var preferredColorScheme = 0
     @AppStorage("sourceLanguage", store: UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget"))
     private var selectedSourceLanguage = "en"
     @AppStorage("targetLanguage", store: UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget"))
     private var selectedTargetLanguage = "es"
-    @StateObject private var dailyWordViewModel = DailyWordViewModel()
     @State private var showResetConfirmation = false
     @State private var showLanguageSelection = false
     @State private var isSelectingSourceLanguage = true
     
     private let languages = [
-        "tr": "Türkçe",
+        "tr": "Türkçe (Turkish)",
         "en": "English",
-        "es": "Español",
-        "id": "Bahasa",
-        "fr": "Français",
-        "it": "Italiano",
-        "pt": "Português",
-        "zh": "中文",
-        "ru": "Русский",
-        "ja": "日本語",
-        "hi": "हिन्दी",
+        "es": "Español (Spanish)",
+        "id": "Bahasa (Indonesian)",
+        "fr": "Français (French)",
+        "it": "Italiano (Italian)",
+        "pt": "Português (Portuguese)",
+        "zh": "中文 (Chinese)",
+        "ru": "Русский (Russian)",
+        "ja": "日本語 (Japanese)",
+        "hi": "हिन्दी (Hindi)",
         "fil": "Filipino",
-        "th": "ไทย",
-        "ko": "한국어",
-        "nl": "Nederlands",
-        "sv": "Svenska",
-        "pl": "Polski",
-        "el": "Ελληνικά",
-        "de": "Deutsch"
+        "th": "ไทย (Thai)",
+        "ko": "한국어 (Korean)",
+        "nl": "Nederlands (Dutch)",
+        "sv": "Svenska (Swedish)",
+        "pl": "Polski (Polish)",
+        "el": "Ελληνικά (Greek)",
+        "de": "Deutsch (German)"
     ]
 
     var body: some View {
@@ -140,10 +140,6 @@ struct SettingsView: View {
                 Label("Send Feedback", systemImage: "envelope")
             }
             
-//            Link(destination: URL(string: "https://apps.apple.com/app/id6474726385?action=write-review")!) {
-//                Label("Leave a Review", systemImage: "star")
-//            }
-            
             HStack {
                 Text("Version")
                 Spacer()
@@ -178,7 +174,6 @@ struct SettingsView: View {
         }
     }
     
-    
     private var languageSelectionSheet: some View {
         NavigationView {
             List {
@@ -187,11 +182,23 @@ struct SettingsView: View {
                         if isSelectingSourceLanguage {
                             if code != selectedTargetLanguage {
                                 selectedSourceLanguage = code
+                                // Kaynak dil değiştiğinde kelimeyi yenileyelim
+                                dailyWordViewModel.refreshWord(
+                                    from: code,
+                                    to: selectedTargetLanguage,
+                                    nativeLanguage: code
+                                )
                                 showLanguageSelection = false
                             }
                         } else {
                             if code != selectedSourceLanguage {
                                 selectedTargetLanguage = code
+                                // Hedef dil değiştiğinde kelimeyi yenileyelim
+                                dailyWordViewModel.refreshWord(
+                                    from: selectedSourceLanguage,
+                                    to: code,
+                                    nativeLanguage: selectedSourceLanguage
+                                )
                                 showLanguageSelection = false
                             }
                         }
@@ -255,6 +262,13 @@ struct SettingsView: View {
         let tempSource = selectedSourceLanguage
         selectedSourceLanguage = selectedTargetLanguage
         selectedTargetLanguage = tempSource
+        
+        // Dil değişikliğinde kelimeyi yenileyelim
+        dailyWordViewModel.refreshWord(
+            from: selectedSourceLanguage,
+            to: selectedTargetLanguage,
+            nativeLanguage: selectedSourceLanguage
+        )
     }
 }
 

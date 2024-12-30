@@ -10,6 +10,12 @@
     "🗣️ %@" : {
 
     },
+    "About" : {
+
+    },
+    "Appearance" : {
+
+    },
     "Cancel" : {
 
     },
@@ -23,6 +29,12 @@
           }
         }
       }
+    },
+    "Choose Your Theme" : {
+
+    },
+    "Dark" : {
+
     },
     "Dark Mode" : {
       "extractionState" : "stale",
@@ -47,6 +59,9 @@
     "Done" : {
 
     },
+    "GET" : {
+
+    },
     "Get Started" : {
       "localizations" : {
         "tr" : {
@@ -60,6 +75,12 @@
     "I know this word" : {
 
     },
+    "I speak" : {
+
+    },
+    "I want to learn" : {
+
+    },
     "Language to learn" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -70,6 +91,9 @@
           }
         }
       }
+    },
+    "Languages" : {
+
     },
     "Learn a Language" : {
       "extractionState" : "stale",
@@ -83,6 +107,9 @@
       }
     },
     "Learn a new word one at a time, right on your home screen" : {
+
+    },
+    "Light" : {
 
     },
     "Lingo Widget" : {
@@ -125,6 +152,9 @@
         }
       }
     },
+    "Our Other Apps" : {
+
+    },
     "Paywall" : {
 
     },
@@ -134,13 +164,31 @@
     "Reset All" : {
 
     },
+    "Reset All Known Words?" : {
+
+    },
     "Reset All Words?" : {
+
+    },
+    "Reset Knowledge" : {
+
+    },
+    "Select your preferred app appearance" : {
+
+    },
+    "Send Feedback" : {
 
     },
     "Settings" : {
 
     },
     "Start Learning" : {
+
+    },
+    "Switch Languages" : {
+
+    },
+    "System" : {
 
     },
     "This action cannot be undone." : {
@@ -150,6 +198,9 @@
 
     },
     "Try Premium for Free" : {
+
+    },
+    "Version" : {
 
     },
     "Welcome" : {
@@ -174,6 +225,9 @@
           }
         }
       }
+    },
+    "Word Management" : {
+
     },
     "Words I Learned" : {
 

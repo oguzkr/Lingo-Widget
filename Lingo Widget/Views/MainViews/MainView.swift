@@ -77,6 +77,7 @@ struct MainView: View {
                 }
             }
         }
+        .environmentObject(dailyWordViewModel)
         .preferredColorScheme(colorScheme)
 
     }

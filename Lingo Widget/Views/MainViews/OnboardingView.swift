@@ -12,6 +12,7 @@ struct OnboardingView: View {
     @State private var currentPage = 0
     
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
+    @AppStorage("preferredColorScheme") private var preferredColorScheme = 0
     
     @AppStorage("sourceLanguage", store: UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget"))
     private var selectedSourceLanguage = "" {
@@ -29,7 +30,6 @@ struct OnboardingView: View {
     @State private var nextButtonDisabled = true
     @State private var startLearningButtonDisabled = true
     
-    // Mevcut languages dictionary'sini kullanıyoruz
     let languages = [
         "tr": "Türkçe (Turkish)",
         "en": "English",
@@ -52,17 +52,28 @@ struct OnboardingView: View {
         "de": "Deutsch (German)"
     ]
     
+    private var colorScheme: ColorScheme? {
+        switch preferredColorScheme {
+        case 1: return .light
+        case 2: return .dark
+        default: return nil
+        }
+    }
+    
     var body: some View {
         ZStack {
             TabView(selection: $currentPage) {
                 welcomeView
                     .tag(0)
-                
-                nativeLanguageView
+                    
+                AppearanceSelectionView()
                     .tag(1)
                 
-                targetLanguageView
+                nativeLanguageView
                     .tag(2)
+                
+                targetLanguageView
+                    .tag(3)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .animation(.easeInOut, value: currentPage)
@@ -73,19 +84,20 @@ struct OnboardingView: View {
                     HStack(spacing: 5) {
                         backButton
                             .widthAsPercentage(15)
-                        if currentPage == 1 {
+                        if currentPage == 1 || currentPage == 2 {
                             nextButton
                                 .widthAsPercentage(75)
-                        } else if currentPage == 2 {
+                        } else if currentPage == 3 {
                             startButton
                                 .widthAsPercentage(75)
                         }
-                        
                     }
                 }
                 .ignoresSafeArea(.keyboard)
             }
-        }.ignoresSafeArea(.all)
+        }
+        .ignoresSafeArea(.all)
+        .preferredColorScheme(colorScheme)
     }
     
     private var welcomeView: some View {
@@ -190,7 +202,7 @@ struct OnboardingView: View {
     private var nextButton: some View {
         Button(action: {
             withAnimation {
-                if currentPage == 1 && selectedSourceLanguage.isEmpty {
+                if currentPage == 2 && selectedSourceLanguage.isEmpty {
                     return
                 }
                 currentPage += 1
@@ -201,7 +213,7 @@ struct OnboardingView: View {
                 .foregroundColor(.white)
                 .frame(height: 55)
                 .frame(maxWidth: .infinity)
-                .background(nextButtonDisabled ? .white.opacity(0.5) : .clear)
+                .background(nextButtonDisabled && currentPage == 2 ? .white.opacity(0.5) : .clear)
                 .background(
                     LinearGradient(
                         colors: [.blue, .purple],
@@ -211,7 +223,7 @@ struct OnboardingView: View {
                 )
                 .cornerRadius(15)
         }
-        .disabled(nextButtonDisabled)
+        .disabled(nextButtonDisabled && currentPage == 2)
         .padding(.bottom, 30)
     }
 
@@ -303,11 +315,10 @@ struct LanguageSelectionCard: View {
         .buttonStyle(.plain)
     }
 }
-    
-#Preview("OnboardingView") {
+
+#Preview {
     OnboardingView()
 }
-
 // Preview Helper için özel initializer
 extension OnboardingView {
     init(currentPage: Int = 0) {
