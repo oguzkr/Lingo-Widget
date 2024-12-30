@@ -12,11 +12,13 @@ struct Lingo_WidgetApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject private var viewModel = DailyWordViewModel()
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
-    
+    @AppStorage("preferredColorScheme") private var preferredColorScheme = 0
+
     var body: some Scene {
         WindowGroup {
             if hasCompletedOnboarding {
                 MainView()
+                    .preferredColorScheme(colorScheme)
                     .onOpenURL { url in
                         if url.scheme == "lingowidget" {
                             let sourceLanguage = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "sourceLanguage") ?? "es"
@@ -40,7 +42,16 @@ struct Lingo_WidgetApp: App {
                     }
             } else {
                 OnboardingView()
+                    .preferredColorScheme(colorScheme)
             }
         }
     }
+    
+    private var colorScheme: ColorScheme? {
+            switch preferredColorScheme {
+            case 1: return .light
+            case 2: return .dark
+            default: return nil
+            }
+        }
 }

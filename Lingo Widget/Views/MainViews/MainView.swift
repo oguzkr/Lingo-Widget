@@ -9,6 +9,9 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject private var dailyWordViewModel = DailyWordViewModel()
+    @AppStorage("preferredColorScheme") private var preferredColorScheme = 0
+
+    
     @State private var showSettings = false
     @State private var showPremiumSheet = false
     @Environment(\.scenePhase) var scenePhase
@@ -73,6 +76,16 @@ struct MainView: View {
                     exit(0)
                 }
             }
+        }
+        .preferredColorScheme(colorScheme)
+
+    }
+    
+    private var colorScheme: ColorScheme? {
+        switch preferredColorScheme {
+        case 1: return .light
+        case 2: return .dark
+        default: return nil
         }
     }
 }
