@@ -14,6 +14,8 @@ struct MainView: View {
     
     @State private var showSettings = false
     @State private var showPremiumSheet = false
+    
+    @EnvironmentObject var localeManager: LocaleManager
     @Environment(\.scenePhase) var scenePhase
 
     @AppStorage("sourceLanguage", store: UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget"))

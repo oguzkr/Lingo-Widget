@@ -3,22 +3,22 @@
   "strings" : {
     "%lld words" : {
       "localizations" : {
-        "tr" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld kelime"
+            "value" : "%lld Wörter"
           }
         },
-        "zh-Hans" : {
+        "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld 字"
+            "value" : "%lld λέξεις"
           }
         },
-        "nl" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld woorden"
+            "value" : "%lld palabras"
           }
         },
         "fil" : {
@@ -31,18 +31,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld mots"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld Wörter"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld λέξεις"
           }
         },
         "hi" : {
@@ -75,6 +63,12 @@
             "value" : "%lld 단어"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld woorden"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -93,12 +87,6 @@
             "value" : "%lld слов"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld palabras"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -110,24 +98,36 @@
             "state" : "translated",
             "value" : "%lld คำ"
           }
-        }
-      }
-    },
-    "<" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "<"
+            "value" : "%lld kelime"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
+            "value" : "%lld 字"
+          }
+        }
+      }
+    },
+    "<" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
             "value" : "<"
           }
         },
-        "nl" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "<"
@@ -140,18 +140,6 @@
           }
         },
         "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "<"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "<"
-          }
-        },
-        "el" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "<"
@@ -187,6 +175,12 @@
             "value" : "<"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -205,12 +199,6 @@
             "value" : "<"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "<"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -218,6 +206,18 @@
           }
         },
         "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "<"
+          }
+        },
+        "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "<"
@@ -227,19 +227,19 @@
     },
     "🗣️ %@" : {
       "localizations" : {
-        "tr" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "🗣️ %@"
           }
         },
-        "zh-Hans" : {
+        "el" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "🗣️ %@"
           }
         },
-        "nl" : {
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "🗣️ %@"
@@ -252,18 +252,6 @@
           }
         },
         "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "🗣️ %@"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "🗣️ %@"
-          }
-        },
-        "el" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "🗣️ %@"
@@ -299,6 +287,12 @@
             "value" : "🗣️ %@"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🗣️ %@"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -317,12 +311,6 @@
             "value" : "🗣️ %@"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "🗣️ %@"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -334,27 +322,40 @@
             "state" : "translated",
             "value" : "🗣️ %@"
           }
-        }
-      }
-    },
-    "About" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hakkında"
+            "value" : "🗣️ %@"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "关于"
+            "value" : "🗣️ %@"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "About" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Over"
+            "value" : "Über"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Σχετικά"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Acerca de"
           }
         },
         "fil" : {
@@ -367,18 +368,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "À propos"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Über"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Σχετικά"
           }
         },
         "hi" : {
@@ -411,6 +400,12 @@
             "value" : "정보"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Over"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -429,12 +424,6 @@
             "value" : "О"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Acerca de"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -446,27 +435,40 @@
             "state" : "translated",
             "value" : "เกี่ยวกับ"
           }
-        }
-      }
-    },
-    "Appearance" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Görünüm"
+            "value" : "Hakkında"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "外观"
+            "value" : "关于"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Appearance" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Weergave"
+            "value" : "Erscheinungsbild"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Εμφάνιση"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apariencia"
           }
         },
         "fil" : {
@@ -479,18 +481,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Apparence"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Erscheinungsbild"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Εμφάνιση"
           }
         },
         "hi" : {
@@ -523,6 +513,12 @@
             "value" : "외관"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weergave"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -541,12 +537,6 @@
             "value" : "Внешний вид"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apariencia"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -558,27 +548,39 @@
             "state" : "translated",
             "value" : "ลักษณะ"
           }
-        }
-      }
-    },
-    "Cancel" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "İptal"
+            "value" : "Görünüm"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "取消"
+            "value" : "外观"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Cancel" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Annuleren"
+            "value" : "Abbrechen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ακύρωση"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
           }
         },
         "fil" : {
@@ -591,18 +593,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Annuler"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Abbrechen"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ακύρωση"
           }
         },
         "hi" : {
@@ -635,6 +625,12 @@
             "value" : "취소"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuleren"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -653,12 +649,6 @@
             "value" : "Отмена"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cancelar"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -670,27 +660,39 @@
             "state" : "translated",
             "value" : "ยกเลิก"
           }
-        }
-      }
-    },
-    "Choose Your Theme" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tema Seç"
+            "value" : "İptal"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择主题"
+            "value" : "取消"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Choose Your Theme" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kies uw thema"
+            "value" : "Wählen Sie Ihr Thema"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Επιλέξτε το θέμα σας"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elige tu tema"
           }
         },
         "fil" : {
@@ -703,18 +705,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Choisissez votre thème"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wählen Sie Ihr Thema"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Επιλέξτε το θέμα σας"
           }
         },
         "hi" : {
@@ -747,6 +737,12 @@
             "value" : "테마 선택"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kies uw thema"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -765,12 +761,6 @@
             "value" : "Выберите тему"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Elige tu tema"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -782,27 +772,40 @@
             "state" : "translated",
             "value" : "เลือกธีมของคุณ"
           }
-        }
-      }
-    },
-    "Dark" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Koyu"
+            "value" : "Tema Seç"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "深色"
+            "value" : "选择主题"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Dark" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Donker"
+            "value" : "Dunkel"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Σκούρο"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oscuro"
           }
         },
         "fil" : {
@@ -815,18 +818,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sombre"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dunkel"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Σκούρο"
           }
         },
         "hi" : {
@@ -859,6 +850,12 @@
             "value" : "어두운"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Donker"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -877,12 +874,6 @@
             "value" : "Темный"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oscuro"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -894,27 +885,39 @@
             "state" : "translated",
             "value" : "มืด"
           }
-        }
-      }
-    },
-    "Delete" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sil"
+            "value" : "Koyu"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "删除"
+            "value" : "深色"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Delete" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Verwijderen"
+            "value" : "Löschen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διαγραφή"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar"
           }
         },
         "fil" : {
@@ -927,18 +930,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Supprimer"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Löschen"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Διαγραφή"
           }
         },
         "hi" : {
@@ -971,6 +962,12 @@
             "value" : "삭제"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verwijderen"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -989,12 +986,6 @@
             "value" : "Удалить"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eliminar"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1006,27 +997,39 @@
             "state" : "translated",
             "value" : "ลบ"
           }
-        }
-      }
-    },
-    "Delete Selected" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seçilenleri Sil"
+            "value" : "Sil"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "删除选定内容"
+            "value" : "删除"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Delete Selected" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Geselecteerde verwijderen"
+            "value" : "Ausgewählte löschen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διαγραφή επιλεγμένων"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar seleccionados"
           }
         },
         "fil" : {
@@ -1039,18 +1042,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Supprimer la sélection"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ausgewählte löschen"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Διαγραφή επιλεγμένων"
           }
         },
         "hi" : {
@@ -1083,6 +1074,12 @@
             "value" : "선택 항목 삭제"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geselecteerde verwijderen"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1101,12 +1098,6 @@
             "value" : "Удалить выбранное"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eliminar seleccionados"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1118,27 +1109,39 @@
             "state" : "translated",
             "value" : "ลบที่เลือก"
           }
-        }
-      }
-    },
-    "Delete Selected Words?" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Seçilen Kelimeler Silinsin Mi?"
+            "value" : "Seçilenleri Sil"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "删除选定的单词？"
+            "value" : "删除选定内容"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Delete Selected Words?" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Geselecteerde woorden verwijderen?"
+            "value" : "Ausgewählte Wörter löschen?"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διαγραφή επιλεγμένων λέξεων;"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Eliminar palabras seleccionadas?"
           }
         },
         "fil" : {
@@ -1151,18 +1154,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Supprimer les mots sélectionnés ?"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ausgewählte Wörter löschen?"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Διαγραφή επιλεγμένων λέξεων;"
           }
         },
         "hi" : {
@@ -1195,6 +1186,12 @@
             "value" : "선택한 단어를 삭제할까요?"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Geselecteerde woorden verwijderen?"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1213,12 +1210,6 @@
             "value" : "Удалить выбранные слова?"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Eliminar palabras seleccionadas?"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1230,27 +1221,39 @@
             "state" : "translated",
             "value" : "ลบคำที่เลือก?"
           }
-        }
-      }
-    },
-    "Done" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tamam"
+            "value" : "Seçilen Kelimeler Silinsin Mi?"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "完成"
+            "value" : "删除选定的单词？"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Done" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Klaar"
+            "value" : "Fertig"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ολοκληρώθηκε"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hecho"
           }
         },
         "fil" : {
@@ -1263,18 +1266,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Terminé"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fertig"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ολοκληρώθηκε"
           }
         },
         "hi" : {
@@ -1307,6 +1298,12 @@
             "value" : "완료"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Klaar"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1325,12 +1322,6 @@
             "value" : "Готово"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hecho"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1342,27 +1333,39 @@
             "state" : "translated",
             "value" : "เสร็จสิ้น"
           }
-        }
-      }
-    },
-    "GET" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "AL"
+            "value" : "Tamam"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "获取"
+            "value" : "完成"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "GET" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "HAAL"
+            "value" : "HOLEN"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ΠΑΡΑΛΑΒΗ"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OBTENER"
           }
         },
         "fil" : {
@@ -1375,18 +1378,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "OBTENIR"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "HOLEN"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ΠΑΡΑΛΑΒΗ"
           }
         },
         "hi" : {
@@ -1419,6 +1410,12 @@
             "value" : "가져오기"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HAAL"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1437,12 +1434,6 @@
             "value" : "ПОЛУЧИТЬ"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OBTENER"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1454,27 +1445,39 @@
             "state" : "translated",
             "value" : "รับ"
           }
-        }
-      }
-    },
-    "Get Started" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Başla"
+            "value" : "AL"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "开始"
+            "value" : "获取"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Get Started" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Aan de slag"
+            "value" : "Loslegen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ξεκινήστε"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empezar"
           }
         },
         "fil" : {
@@ -1487,18 +1490,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Commencer"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Loslegen"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ξεκινήστε"
           }
         },
         "hi" : {
@@ -1531,6 +1522,12 @@
             "value" : "시작하기"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aan de slag"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1549,12 +1546,6 @@
             "value" : "Начать"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Empezar"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1566,27 +1557,39 @@
             "state" : "translated",
             "value" : "เริ่มต้น"
           }
-        }
-      }
-    },
-    "I know this word" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bu kelimeyi biliyorum"
+            "value" : "Başla"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "我知道这个词"
+            "value" : "开始"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "I know this word" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ik ken dit woord"
+            "value" : "Ich kenne dieses Wort"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ξέρω αυτή τη λέξη"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conozco esta palabra"
           }
         },
         "fil" : {
@@ -1599,18 +1602,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Je connais ce mot"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ich kenne dieses Wort"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ξέρω αυτή τη λέξη"
           }
         },
         "hi" : {
@@ -1643,6 +1634,12 @@
             "value" : "이 단어를 알고 있습니다"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ik ken dit woord"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1661,12 +1658,6 @@
             "value" : "Я знаю это слово"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Conozco esta palabra"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1678,27 +1669,40 @@
             "state" : "translated",
             "value" : "ฉันรู้จักคำนี้"
           }
-        }
-      }
-    },
-    "I speak" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konuştuğum Dil"
+            "value" : "Bu kelimeyi biliyorum"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "我讲"
+            "value" : "我知道这个词"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "I speak" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ik spreek"
+            "value" : "Ich spreche"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Μιλάω"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hablo"
           }
         },
         "fil" : {
@@ -1711,18 +1715,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Je parle"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ich spreche"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Μιλάω"
           }
         },
         "hi" : {
@@ -1755,6 +1747,12 @@
             "value" : "나는 말합니다"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ik spreek"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1773,12 +1771,6 @@
             "value" : "Я говорю"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hablo"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1790,27 +1782,40 @@
             "state" : "translated",
             "value" : "ฉันพูด"
           }
-        }
-      }
-    },
-    "I want to learn" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Öğrenmek İstediğim Dil"
+            "value" : "Konuştuğum Dil"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "我想学习"
+            "value" : "我讲"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "I want to learn" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ik wil leren"
+            "value" : "Ich möchte lernen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Θέλω να μάθω"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiero aprender"
           }
         },
         "fil" : {
@@ -1823,18 +1828,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Je veux apprendre"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ich möchte lernen"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Θέλω να μάθω"
           }
         },
         "hi" : {
@@ -1867,6 +1860,12 @@
             "value" : "나는 배우고 싶어요"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ik wil leren"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1885,12 +1884,6 @@
             "value" : "Я хочу выучить"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quiero aprender"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1902,27 +1895,40 @@
             "state" : "translated",
             "value" : "ฉันต้องการเรียนรู้"
           }
-        }
-      }
-    },
-    "Languages" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Diller"
+            "value" : "Öğrenmek İstediğim Dil"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "语言"
+            "value" : "我想学习"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Languages" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Talen"
+            "value" : "Sprachen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Γλώσσες"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Idiomas"
           }
         },
         "fil" : {
@@ -1935,18 +1941,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Langues"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sprachen"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Γλώσσες"
           }
         },
         "hi" : {
@@ -1979,6 +1973,12 @@
             "value" : "언어"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Talen"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1997,12 +1997,6 @@
             "value" : "Языки"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Idiomas"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2014,27 +2008,39 @@
             "state" : "translated",
             "value" : "ภาษา"
           }
-        }
-      }
-    },
-    "Learn a new word every day." : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Her gün yeni bir kelime öğren"
+            "value" : "Diller"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "每天学习一个新单词"
+            "value" : "语言"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Learn a new word every day." : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Leer elke dag een nieuw woord"
+            "value" : "Lerne jeden Tag ein neues Wort"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Μάθε μια νέα λέξη κάθε μέρα"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aprende una nueva palabra cada día"
           }
         },
         "fil" : {
@@ -2047,18 +2053,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Apprenez un nouveau mot chaque jour"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lerne jeden Tag ein neues Wort"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Μάθε μια νέα λέξη κάθε μέρα"
           }
         },
         "hi" : {
@@ -2091,6 +2085,12 @@
             "value" : "매일 새로운 단어를 배우세요"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leer elke dag een nieuw woord"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2109,12 +2109,6 @@
             "value" : "Учите новое слово каждый день"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aprende una nueva palabra cada día"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2126,27 +2120,39 @@
             "state" : "translated",
             "value" : "เรียนรู้คำใหม่ทุกวัน"
           }
-        }
-      }
-    },
-    "Learn a new word one at a time, right on your home screen" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ana ekranınızdan yeni kelimeler öğrenin"
+            "value" : "Her gün yeni bir kelime öğren"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "在主屏幕上一次学习一个新单词"
+            "value" : "每天学习一个新单词"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Learn a new word one at a time, right on your home screen" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Leer een nieuw woord op uw startscherm"
+            "value" : "Lerne ein neues Wort auf deinem Startbildschirm"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Μάθε μια νέα λέξη στην αρχική σου οθόνη"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aprende una nueva palabra en tu pantalla de inicio"
           }
         },
         "fil" : {
@@ -2159,18 +2165,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Apprenez un nouveau mot sur votre écran d'accueil"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lerne ein neues Wort auf deinem Startbildschirm"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Μάθε μια νέα λέξη στην αρχική σου οθόνη"
           }
         },
         "hi" : {
@@ -2203,6 +2197,12 @@
             "value" : "홈 화면에서 새로운 단어를 배우세요"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leer een nieuw woord op uw startscherm"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2221,12 +2221,6 @@
             "value" : "Учите новое слово на главном экране"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aprende una nueva palabra en tu pantalla de inicio"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2238,27 +2232,40 @@
             "state" : "translated",
             "value" : "เรียนรู้คำใหม่บนหน้าจอหลักของคุณ"
           }
-        }
-      }
-    },
-    "Light" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Açık"
+            "value" : "Ana ekranınızdan yeni kelimeler öğrenin"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "浅色"
+            "value" : "在主屏幕上一次学习一个新单词"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Light" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Licht"
+            "value" : "Hell"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Φωτεινό"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Claro"
           }
         },
         "fil" : {
@@ -2271,18 +2278,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Clair"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hell"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Φωτεινό"
           }
         },
         "hi" : {
@@ -2315,6 +2310,12 @@
             "value" : "밝은"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Licht"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2333,12 +2334,6 @@
             "value" : "Светлый"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Claro"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2350,27 +2345,39 @@
             "state" : "translated",
             "value" : "สว่าง"
           }
-        }
-      }
-    },
-    "Lingo Daily Word" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lingo Günlük Kelime"
+            "value" : "Açık"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lingo 每日单词"
+            "value" : "浅色"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Lingo Daily Word" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lingo Dagelijks Woord"
+            "value" : "Lingo Tägliches Wort"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lingo Ημερήσια Λέξη"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lingo Palabra del Día"
           }
         },
         "fil" : {
@@ -2383,18 +2390,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lingo Mot du Jour"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lingo Tägliches Wort"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lingo Ημερήσια Λέξη"
           }
         },
         "hi" : {
@@ -2427,6 +2422,12 @@
             "value" : "Lingo 매일 단어"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lingo Dagelijks Woord"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2445,12 +2446,6 @@
             "value" : "Lingo Слово Дня"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lingo Palabra del Día"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2462,24 +2457,36 @@
             "state" : "translated",
             "value" : "Lingo คำประจำวัน"
           }
-        }
-      }
-    },
-    "Lingo Widget" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lingo Widget"
+            "value" : "Lingo Günlük Kelime"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lingo 小部件"
+            "value" : "Lingo 每日单词"
+          }
+        }
+      }
+    },
+    "Lingo Widget" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lingo Widget"
           }
         },
-        "nl" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lingo Widget"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lingo Widget"
@@ -2492,18 +2499,6 @@
           }
         },
         "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lingo Widget"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lingo Widget"
-          }
-        },
-        "el" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lingo Widget"
@@ -2539,6 +2534,12 @@
             "value" : "Lingo 위젯"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lingo Widget"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2557,12 +2558,6 @@
             "value" : "Lingo Виджет"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lingo Widget"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2574,27 +2569,39 @@
             "state" : "translated",
             "value" : "Lingo วิดเจ็ต"
           }
-        }
-      }
-    },
-    "Manage" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Yönet"
+            "value" : "Lingo Widget"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "管理"
+            "value" : "Lingo 小部件"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Manage" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Beheren"
+            "value" : "Verwalten"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διαχείριση"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gestionar"
           }
         },
         "fil" : {
@@ -2607,18 +2614,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gérer"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Verwalten"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Διαχείριση"
           }
         },
         "hi" : {
@@ -2651,6 +2646,12 @@
             "value" : "관리"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beheren"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2669,12 +2670,6 @@
             "value" : "Управление"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gestionar"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2686,27 +2681,39 @@
             "state" : "translated",
             "value" : "จัดการ"
           }
-        }
-      }
-    },
-    "Manage Known Words" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bilinen Kelimeleri Yönet"
+            "value" : "Yönet"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "管理已知单词"
+            "value" : "管理"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Manage Known Words" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Beheer bekende woorden"
+            "value" : "Bekannte Wörter verwalten"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διαχείριση γνωστών λέξεων"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gestionar palabras conocidas"
           }
         },
         "fil" : {
@@ -2719,18 +2726,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gérer les mots connus"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bekannte Wörter verwalten"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Διαχείριση γνωστών λέξεων"
           }
         },
         "hi" : {
@@ -2763,6 +2758,12 @@
             "value" : "알려진 단어 관리"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beheer bekende woorden"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2781,12 +2782,6 @@
             "value" : "Управление известными словами"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gestionar palabras conocidas"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2798,27 +2793,39 @@
             "state" : "translated",
             "value" : "จัดการคำที่รู้จัก"
           }
-        }
-      }
-    },
-    "Mark words as known to see them here" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bilinen kelimeler burada görünür"
+            "value" : "Bilinen Kelimeleri Yönet"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "将单词标记为已知以在此处查看"
+            "value" : "管理已知单词"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Mark words as known to see them here" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Markeer woorden als bekend om ze hier te zien"
+            "value" : "Markiere Wörter als bekannt, um sie hier zu sehen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Σημειώστε τις λέξεις ως γνωστές για να τις δείτε εδώ"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marca palabras como conocidas para verlas aquí"
           }
         },
         "fil" : {
@@ -2831,18 +2838,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Marquez les mots comme connus pour les voir ici"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Markiere Wörter als bekannt, um sie hier zu sehen"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Σημειώστε τις λέξεις ως γνωστές για να τις δείτε εδώ"
           }
         },
         "hi" : {
@@ -2875,6 +2870,12 @@
             "value" : "단어를 알려진 것으로 표시하여 여기에서 확인"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Markeer woorden als bekend om ze hier te zien"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2893,12 +2894,6 @@
             "value" : "Отметьте слова как известные, чтобы увидеть их здесь"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Marca palabras como conocidas para verlas aquí"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2910,27 +2905,39 @@
             "state" : "translated",
             "value" : "ทำเครื่องหมายคำว่าเป็นที่รู้จักเพื่อดูที่นี่"
           }
-        }
-      }
-    },
-    "Next" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sonraki"
+            "value" : "Bilinen kelimeler burada görünür"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "下一步"
+            "value" : "将单词标记为已知以在此处查看"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Next" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Volgende"
+            "value" : "Weiter"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Επόμενο"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Siguiente"
           }
         },
         "fil" : {
@@ -2943,18 +2950,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Suivant"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Weiter"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Επόμενο"
           }
         },
         "hi" : {
@@ -2987,6 +2982,12 @@
             "value" : "다음"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volgende"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3005,12 +3006,6 @@
             "value" : "Далее"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Siguiente"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3022,27 +3017,39 @@
             "state" : "translated",
             "value" : "ถัดไป"
           }
-        }
-      }
-    },
-    "No Words Yet" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Henüz Kelime Yok"
+            "value" : "Sonraki"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "尚无单词"
+            "value" : "下一步"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "No Words Yet" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nog geen woorden"
+            "value" : "Noch keine Wörter"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Δεν υπάρχουν ακόμα λέξεις"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aún no hay palabras"
           }
         },
         "fil" : {
@@ -3055,18 +3062,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pas encore de mots"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Noch keine Wörter"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Δεν υπάρχουν ακόμα λέξεις"
           }
         },
         "hi" : {
@@ -3099,6 +3094,12 @@
             "value" : "아직 단어가 없습니다"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nog geen woorden"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3117,12 +3118,6 @@
             "value" : "Пока нет слов"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aún no hay palabras"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3134,27 +3129,40 @@
             "state" : "translated",
             "value" : "ยังไม่มีคำ"
           }
-        }
-      }
-    },
-    "Our Other Apps" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Diğer Uygulamalarımız"
+            "value" : "Henüz Kelime Yok"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "我们的其他应用"
+            "value" : "尚无单词"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Our Other Apps" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Onze andere apps"
+            "value" : "Unsere anderen Apps"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Άλλες εφαρμογές μας"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nuestras otras aplicaciones"
           }
         },
         "fil" : {
@@ -3167,18 +3175,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nos autres applications"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unsere anderen Apps"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Άλλες εφαρμογές μας"
           }
         },
         "hi" : {
@@ -3211,6 +3207,12 @@
             "value" : "우리의 다른 앱"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Onze andere apps"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3229,12 +3231,6 @@
             "value" : "Наши другие приложения"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nuestras otras aplicaciones"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3246,24 +3242,36 @@
             "state" : "translated",
             "value" : "แอปอื่น ๆ ของเรา"
           }
-        }
-      }
-    },
-    "Paywall" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ödeme Duvarı"
+            "value" : "Diğer Uygulamalarımız"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "付费墙"
+            "value" : "我们的其他应用"
+          }
+        }
+      }
+    },
+    "Paywall" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paywall"
           }
         },
-        "nl" : {
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paywall"
+          }
+        },
+        "es" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Paywall"
@@ -3276,18 +3284,6 @@
           }
         },
         "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Paywall"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Paywall"
-          }
-        },
-        "el" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Paywall"
@@ -3323,6 +3319,12 @@
             "value" : "페이월"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paywall"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3341,12 +3343,6 @@
             "value" : "Платный доступ"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Paywall"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3358,27 +3354,39 @@
             "state" : "translated",
             "value" : "Paywall"
           }
-        }
-      }
-    },
-    "Recent Words" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Son Kelimeler"
+            "value" : "Ödeme Duvarı"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "最近的单词"
+            "value" : "付费墙"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Recent Words" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Recente woorden"
+            "value" : "Letzte Wörter"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Πρόσφατες λέξεις"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Palabras recientes"
           }
         },
         "fil" : {
@@ -3391,18 +3399,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mots récents"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Letzte Wörter"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Πρόσφατες λέξεις"
           }
         },
         "hi" : {
@@ -3435,6 +3431,12 @@
             "value" : "최근 단어"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recente woorden"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3453,12 +3455,6 @@
             "value" : "Последние слова"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Palabras recientes"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3470,27 +3466,39 @@
             "state" : "translated",
             "value" : "คำล่าสุด"
           }
-        }
-      }
-    },
-    "Refresh Word" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kelimeyi Yenile"
+            "value" : "Son Kelimeler"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "刷新单词"
+            "value" : "最近的单词"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Refresh Word" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Woord vernieuwen"
+            "value" : "Wort aktualisieren"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ανανέωση λέξης"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualizar palabra"
           }
         },
         "fil" : {
@@ -3503,18 +3511,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rafraîchir le mot"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wort aktualisieren"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ανανέωση λέξης"
           }
         },
         "hi" : {
@@ -3547,6 +3543,12 @@
             "value" : "단어 새로 고침"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Woord vernieuwen"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3565,12 +3567,6 @@
             "value" : "Обновить слово"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Actualizar palabra"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3582,27 +3578,39 @@
             "state" : "translated",
             "value" : "รีเฟรชคำ"
           }
-        }
-      }
-    },
-    "Reset" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sıfırla"
+            "value" : "Kelimeyi Yenile"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "重置"
+            "value" : "刷新单词"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Reset" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Resetten"
+            "value" : "Zurücksetzen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Επαναφορά"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reiniciar"
           }
         },
         "fil" : {
@@ -3615,18 +3623,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réinitialiser"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zurücksetzen"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Επαναφορά"
           }
         },
         "hi" : {
@@ -3659,6 +3655,12 @@
             "value" : "재설정"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resetten"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3677,12 +3679,6 @@
             "value" : "Сброс"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reiniciar"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3694,27 +3690,39 @@
             "state" : "translated",
             "value" : "รีเซ็ต"
           }
-        }
-      }
-    },
-    "Reset All" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hepsini Sıfırla"
+            "value" : "Sıfırla"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "全部重置"
+            "value" : "重置"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Reset All" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alles resetten"
+            "value" : "Alles zurücksetzen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Επαναφορά όλων"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reiniciar todo"
           }
         },
         "fil" : {
@@ -3727,18 +3735,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tout réinitialiser"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Alles zurücksetzen"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Επαναφορά όλων"
           }
         },
         "hi" : {
@@ -3771,6 +3767,12 @@
             "value" : "모두 재설정"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alles resetten"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3789,12 +3791,6 @@
             "value" : "Сбросить все"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reiniciar todo"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3806,27 +3802,40 @@
             "state" : "translated",
             "value" : "รีเซ็ตทั้งหมด"
           }
-        }
-      }
-    },
-    "Reset All Known Words?" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tüm Bilinen Kelimeler Sıfırlansın Mı?"
+            "value" : "Hepsini Sıfırla"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "重置所有已知单词？"
+            "value" : "全部重置"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Reset All Known Words?" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alle bekende woorden resetten?"
+            "value" : "Alle bekannten Wörter zurücksetzen?"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Επαναφορά όλων των γνωστών λέξεων;"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Reiniciar todas las palabras conocidas?"
           }
         },
         "fil" : {
@@ -3839,18 +3848,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réinitialiser tous les mots connus ?"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Alle bekannten Wörter zurücksetzen?"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Επαναφορά όλων των γνωστών λέξεων;"
           }
         },
         "hi" : {
@@ -3883,6 +3880,12 @@
             "value" : "모든 알려진 단어를 재설정할까요?"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle bekende woorden resetten?"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3901,12 +3904,6 @@
             "value" : "Сбросить все известные слова?"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Reiniciar todas las palabras conocidas?"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3918,27 +3915,39 @@
             "state" : "translated",
             "value" : "รีเซ็ตคำที่รู้จักทั้งหมด?"
           }
-        }
-      }
-    },
-    "Reset All Words?" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tüm Kelimeler Sıfırlansın Mı?"
+            "value" : "Tüm Bilinen Kelimeler Sıfırlansın Mı?"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "重置所有单词？"
+            "value" : "重置所有已知单词？"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Reset All Words?" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Alle woorden resetten?"
+            "value" : "Alle Wörter zurücksetzen?"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Επαναφορά όλων των λέξεων;"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Reiniciar todas las palabras?"
           }
         },
         "fil" : {
@@ -3951,18 +3960,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réinitialiser tous les mots ?"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Alle Wörter zurücksetzen?"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Επαναφορά όλων των λέξεων;"
           }
         },
         "hi" : {
@@ -3995,6 +3992,12 @@
             "value" : "모든 단어를 재설정할까요?"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle woorden resetten?"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4013,12 +4016,6 @@
             "value" : "Сбросить все слова?"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Reiniciar todas las palabras?"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4030,27 +4027,40 @@
             "state" : "translated",
             "value" : "รีเซ็ตคำทั้งหมด?"
           }
-        }
-      }
-    },
-    "Reset Knowledge" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Her şeyi sıfırla"
+            "value" : "Tüm Kelimeler Sıfırlansın Mı?"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "重置知识"
+            "value" : "重置所有单词？"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Reset Knowledge" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kennis resetten"
+            "value" : "Wissen zurücksetzen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Επαναφορά γνώσεων"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reiniciar conocimiento"
           }
         },
         "fil" : {
@@ -4063,18 +4073,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Réinitialiser les connaissances"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wissen zurücksetzen"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Επαναφορά γνώσεων"
           }
         },
         "hi" : {
@@ -4107,6 +4105,12 @@
             "value" : "지식 재설정"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kennis resetten"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4125,12 +4129,6 @@
             "value" : "Сбросить знания"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Reiniciar conocimiento"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4142,27 +4140,39 @@
             "state" : "translated",
             "value" : "รีเซ็ตความรู้"
           }
-        }
-      }
-    },
-    "Select your preferred app appearance" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tercih ettiğiniz uygulama görünümünü seçin"
+            "value" : "Her şeyi sıfırla"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择您喜欢的应用外观"
+            "value" : "重置知识"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Select your preferred app appearance" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Selecteer uw voorkeursapp-weergave"
+            "value" : "Wählen Sie Ihr bevorzugtes App-Erscheinungsbild"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Επιλέξτε την εμφάνιση της εφαρμογής που προτιμάτε"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecciona la apariencia de la aplicación que prefieras"
           }
         },
         "fil" : {
@@ -4175,18 +4185,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sélectionnez l'apparence de l'application que vous préférez"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wählen Sie Ihr bevorzugtes App-Erscheinungsbild"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Επιλέξτε την εμφάνιση της εφαρμογής που προτιμάτε"
           }
         },
         "hi" : {
@@ -4219,6 +4217,12 @@
             "value" : "선호하는 앱 외관을 선택하세요"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selecteer uw voorkeursapp-weergave"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4237,12 +4241,6 @@
             "value" : "Выберите предпочтительный внешний вид приложения"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Selecciona la apariencia de la aplicación que prefieras"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4254,27 +4252,40 @@
             "state" : "translated",
             "value" : "เลือกรูปลักษณ์แอปที่คุณต้องการ"
           }
-        }
-      }
-    },
-    "Send Feedback" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Geri Bildirim Gönder"
+            "value" : "Tercih ettiğiniz uygulama görünümünü seçin"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "发送反馈"
+            "value" : "选择您喜欢的应用外观"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Send Feedback" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Feedback verzenden"
+            "value" : "Feedback senden"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Αποστολή σχολίων"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enviar comentarios"
           }
         },
         "fil" : {
@@ -4287,18 +4298,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Envoyer des commentaires"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Feedback senden"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Αποστολή σχολίων"
           }
         },
         "hi" : {
@@ -4331,6 +4330,12 @@
             "value" : "피드백 보내기"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Feedback verzenden"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4349,12 +4354,6 @@
             "value" : "Отправить отзыв"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enviar comentarios"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4366,27 +4365,40 @@
             "state" : "translated",
             "value" : "ส่งคำติชม"
           }
-        }
-      }
-    },
-    "Settings" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ayarlar"
+            "value" : "Geri Bildirim Gönder"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "设置"
+            "value" : "发送反馈"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Settings" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Instellingen"
+            "value" : "Einstellungen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ρυθμίσεις"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuración"
           }
         },
         "fil" : {
@@ -4399,18 +4411,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Paramètres"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Einstellungen"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ρυθμίσεις"
           }
         },
         "hi" : {
@@ -4443,6 +4443,12 @@
             "value" : "설정"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instellingen"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4461,12 +4467,6 @@
             "value" : "Настройки"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Configuración"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4478,27 +4478,39 @@
             "state" : "translated",
             "value" : "การตั้งค่า"
           }
-        }
-      }
-    },
-    "Start Learning" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Öğrenmeye Başla"
+            "value" : "Ayarlar"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "开始学习"
+            "value" : "设置"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Start Learning" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Begin met leren"
+            "value" : "Lernen beginnen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ξεκινήστε τη μάθηση"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Empezar a aprender"
           }
         },
         "fil" : {
@@ -4511,18 +4523,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Commencer à apprendre"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lernen beginnen"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ξεκινήστε τη μάθηση"
           }
         },
         "hi" : {
@@ -4555,6 +4555,12 @@
             "value" : "학습 시작"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Begin met leren"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4573,12 +4579,6 @@
             "value" : "Начать обучение"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Empezar a aprender"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4590,27 +4590,40 @@
             "state" : "translated",
             "value" : "เริ่มเรียนรู้"
           }
-        }
-      }
-    },
-    "Switch Languages" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dillerin Yerini Değiştir"
+            "value" : "Öğrenmeye Başla"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "切换语言"
+            "value" : "开始学习"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Switch Languages" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wissel van taal"
+            "value" : "Sprache wechseln"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Αλλαγή γλώσσας"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cambiar idioma"
           }
         },
         "fil" : {
@@ -4623,18 +4636,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Changer de langue"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sprache wechseln"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Αλλαγή γλώσσας"
           }
         },
         "hi" : {
@@ -4667,6 +4668,12 @@
             "value" : "언어 전환"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wissel van taal"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4685,12 +4692,6 @@
             "value" : "Переключить язык"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cambiar idioma"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4702,27 +4703,40 @@
             "state" : "translated",
             "value" : "เปลี่ยนภาษา"
           }
-        }
-      }
-    },
-    "System" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sistem"
+            "value" : "Dillerin Yerini Değiştir"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "系统"
+            "value" : "切换语言"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "System" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Systeem"
+            "value" : "System"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Σύστημα"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sistema"
           }
         },
         "fil" : {
@@ -4735,18 +4749,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Système"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "System"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Σύστημα"
           }
         },
         "hi" : {
@@ -4779,6 +4781,12 @@
             "value" : "시스템"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Systeem"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4797,12 +4805,6 @@
             "value" : "Система"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sistema"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4814,27 +4816,39 @@
             "state" : "translated",
             "value" : "ระบบ"
           }
-        }
-      }
-    },
-    "This action cannot be undone." : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bu işlem geri alınamaz."
+            "value" : "Sistem"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "此操作无法撤消。"
+            "value" : "系统"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "This action cannot be undone." : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deze actie kan niet ongedaan worden gemaakt."
+            "value" : "Diese Aktion kann nicht rückgängig gemacht werden."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Αυτή η ενέργεια δεν μπορεί να αναιρεθεί."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esta acción no se puede deshacer."
           }
         },
         "fil" : {
@@ -4847,18 +4861,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cette action ne peut pas être annulée."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Diese Aktion kann nicht rückgängig gemacht werden."
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Αυτή η ενέργεια δεν μπορεί να αναιρεθεί."
           }
         },
         "hi" : {
@@ -4891,6 +4893,12 @@
             "value" : "이 작업은 취소할 수 없습니다."
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deze actie kan niet ongedaan worden gemaakt."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4909,12 +4917,6 @@
             "value" : "Это действие нельзя отменить."
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Esta acción no se puede deshacer."
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4926,27 +4928,39 @@
             "state" : "translated",
             "value" : "การดำเนินการนี้ไม่สามารถยกเลิกได้"
           }
-        }
-      }
-    },
-    "This will remove all known words. This action cannot be undone." : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bu işlem bütün bilinen kelimeleri hafızadan siler, bu işlem geri alınamaz."
+            "value" : "Bu işlem geri alınamaz."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "这将删除所有已知单词。此操作无法撤消。"
+            "value" : "此操作无法撤消。"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "This will remove all known words. This action cannot be undone." : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hiermee worden alle bekende woorden verwijderd. Deze actie kan niet ongedaan worden gemaakt."
+            "value" : "Dadurch werden alle bekannten Wörter entfernt. Diese Aktion kann nicht rückgängig gemacht werden."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Αυτό θα αφαιρέσει όλες τις γνωστές λέξεις. Αυτή η ενέργεια δεν μπορεί να αναιρεθεί."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Esto eliminará todas las palabras conocidas. Esta acción no se puede deshacer."
           }
         },
         "fil" : {
@@ -4959,18 +4973,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Cela supprimera tous les mots connus. Cette action ne peut pas être annulée."
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Dadurch werden alle bekannten Wörter entfernt. Diese Aktion kann nicht rückgängig gemacht werden."
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Αυτό θα αφαιρέσει όλες τις γνωστές λέξεις. Αυτή η ενέργεια δεν μπορεί να αναιρεθεί."
           }
         },
         "hi" : {
@@ -5003,6 +5005,12 @@
             "value" : "모든 알려진 단어가 제거됩니다. 이 작업은 취소할 수 없습니다."
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hiermee worden alle bekende woorden verwijderd. Deze actie kan niet ongedaan worden gemaakt."
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5021,12 +5029,6 @@
             "value" : "Это удалит все известные слова. Это действие нельзя отменить."
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Esto eliminará todas las palabras conocidas. Esta acción no se puede deshacer."
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5038,27 +5040,39 @@
             "state" : "translated",
             "value" : "การดำเนินการนี้จะลบคำที่รู้จักทั้งหมด การดำเนินการนี้ไม่สามารถยกเลิกได้"
           }
-        }
-      }
-    },
-    "Try Premium for Free" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ücretsiz Premium Deneyimi"
+            "value" : "Bu işlem bütün bilinen kelimeleri hafızadan siler, bu işlem geri alınamaz."
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "免费试用高级版"
+            "value" : "这将删除所有已知单词。此操作无法撤消。"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Try Premium for Free" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Probeer Premium gratis"
+            "value" : "Premium kostenlos testen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Δοκιμάστε το Premium δωρεάν"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prueba Premium gratis"
           }
         },
         "fil" : {
@@ -5071,18 +5085,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Essayez Premium gratuitement"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Premium kostenlos testen"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Δοκιμάστε το Premium δωρεάν"
           }
         },
         "hi" : {
@@ -5115,6 +5117,12 @@
             "value" : "프리미엄 무료 체험"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Probeer Premium gratis"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5133,12 +5141,6 @@
             "value" : "Попробуйте Premium бесплатно"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Prueba Premium gratis"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5150,27 +5152,40 @@
             "state" : "translated",
             "value" : "ลองใช้ Premium ฟรี"
           }
-        }
-      }
-    },
-    "Version" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sürüm"
+            "value" : "Ücretsiz Premium Deneyimi"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "版本"
+            "value" : "免费试用高级版"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Version" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Versie"
+            "value" : "Version"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Έκδοση"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versión"
           }
         },
         "fil" : {
@@ -5183,18 +5198,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Version"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Version"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Έκδοση"
           }
         },
         "hi" : {
@@ -5227,6 +5230,12 @@
             "value" : "버전"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versie"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5245,12 +5254,6 @@
             "value" : "Версия"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Versión"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5262,27 +5265,39 @@
             "state" : "translated",
             "value" : "เวอร์ชัน"
           }
-        }
-      }
-    },
-    "Welcome" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hoş Geldin"
+            "value" : "Sürüm"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "欢迎"
+            "value" : "版本"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Welcome" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Welkom"
+            "value" : "Willkommen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Καλώς ήρθατε"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bienvenido"
           }
         },
         "fil" : {
@@ -5295,18 +5310,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bienvenue"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Willkommen"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Καλώς ήρθατε"
           }
         },
         "hi" : {
@@ -5339,6 +5342,12 @@
             "value" : "환영합니다"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welkom"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5357,12 +5366,6 @@
             "value" : "Добро пожаловать"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bienvenido"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5374,27 +5377,39 @@
             "state" : "translated",
             "value" : "ยินดีต้อนรับ"
           }
-        }
-      }
-    },
-    "What language do you want to learn?" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hangi dili öğrenmek istiyorsun?"
+            "value" : "Hoş Geldin"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "你想学习什么语言？"
+            "value" : "欢迎"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "What language do you want to learn?" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Welke taal wil je leren?"
+            "value" : "Welche Sprache möchtest du lernen?"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ποια γλώσσα θέλετε να μάθετε;"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Qué idioma quieres aprender?"
           }
         },
         "fil" : {
@@ -5407,18 +5422,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Quelle langue souhaitez-vous apprendre ?"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Welche Sprache möchtest du lernen?"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ποια γλώσσα θέλετε να μάθετε;"
           }
         },
         "hi" : {
@@ -5451,6 +5454,12 @@
             "value" : "어떤 언어를 배우고 싶으세요?"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welke taal wil je leren?"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5469,12 +5478,6 @@
             "value" : "Какой язык вы хотите выучить?"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Qué idioma quieres aprender?"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5486,27 +5489,39 @@
             "state" : "translated",
             "value" : "คุณต้องการเรียนภาษาอะไร?"
           }
-        }
-      }
-    },
-    "What's your native language?" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Anadilin nedir?"
+            "value" : "Hangi dili öğrenmek istiyorsun?"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "你的母语是什么？"
+            "value" : "你想学习什么语言？"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "What's your native language?" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wat is je moedertaal?"
+            "value" : "Was ist deine Muttersprache?"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ποια είναι η μητρική σου γλώσσα;"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "¿Cuál es tu lengua materna?"
           }
         },
         "fil" : {
@@ -5519,18 +5534,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Quelle est votre langue maternelle ?"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Was ist deine Muttersprache?"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ποια είναι η μητρική σου γλώσσα;"
           }
         },
         "hi" : {
@@ -5563,6 +5566,12 @@
             "value" : "귀하의 모국어는 무엇입니까?"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wat is je moedertaal?"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5581,12 +5590,6 @@
             "value" : "Какой ваш родной язык?"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "¿Cuál es tu lengua materna?"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5598,27 +5601,40 @@
             "state" : "translated",
             "value" : "ภาษาพื้นเมืองของคุณคืออะไร?"
           }
-        }
-      }
-    },
-    "Word Management" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kelime Yönetimi"
+            "value" : "Anadilin nedir?"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "单词管理"
+            "value" : "你的母语是什么？"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Word Management" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Woordbeheer"
+            "value" : "Wortverwaltung"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Διαχείριση λέξεων"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gestión de palabras"
           }
         },
         "fil" : {
@@ -5631,18 +5647,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gestion des mots"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wortverwaltung"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Διαχείριση λέξεων"
           }
         },
         "hi" : {
@@ -5675,6 +5679,12 @@
             "value" : "단어 관리"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Woordbeheer"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5693,12 +5703,6 @@
             "value" : "Управление словами"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gestión de palabras"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5710,27 +5714,39 @@
             "state" : "translated",
             "value" : "การจัดการคำ"
           }
-        }
-      }
-    },
-    "Words I Learned" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Öğrendiğim Kelimeler"
+            "value" : "Kelime Yönetimi"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "我学到的单词"
+            "value" : "单词管理"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Words I Learned" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Woorden die ik heb geleerd"
+            "value" : "Wörter, die ich gelernt habe"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Λέξεις που έμαθα"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Palabras que aprendí"
           }
         },
         "fil" : {
@@ -5743,18 +5759,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Les mots que j'ai appris"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wörter, die ich gelernt habe"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Λέξεις που έμαθα"
           }
         },
         "hi" : {
@@ -5787,6 +5791,12 @@
             "value" : "내가 배운 단어"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Woorden die ik heb geleerd"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5805,12 +5815,6 @@
             "value" : "Слова, которые я выучил"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Palabras que aprendí"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5822,27 +5826,39 @@
             "state" : "translated",
             "value" : "คำที่ฉันเรียนรู้"
           }
-        }
-      }
-    },
-    "Words you mark as known will appear here" : {
-      "localizations" : {
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bildiğin kelimeler burada listelenir"
+            "value" : "Öğrendiğim Kelimeler"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "你标记为已知的单词将出现在这里"
+            "value" : "我学到的单词"
           }
-        },
-        "nl" : {
+        }
+      }
+    },
+    "Words you mark as known will appear here" : {
+      "localizations" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Woorden die je als bekend markeert, verschijnen hier"
+            "value" : "Wörter, die du als bekannt markierst, werden hier angezeigt"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Οι λέξεις που σημειώνετε ως γνωστές θα εμφανίζονται εδώ"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Las palabras que marques como conocidas aparecerán aquí"
           }
         },
         "fil" : {
@@ -5855,18 +5871,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Les mots que vous marquez comme connus apparaîtront ici"
-          }
-        },
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wörter, die du als bekannt markierst, werden hier angezeigt"
-          }
-        },
-        "el" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Οι λέξεις που σημειώνετε ως γνωστές θα εμφανίζονται εδώ"
           }
         },
         "hi" : {
@@ -5899,6 +5903,12 @@
             "value" : "알려진 것으로 표시한 단어가 여기에 나타납니다"
           }
         },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Woorden die je als bekend markeert, verschijnen hier"
+          }
+        },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5917,12 +5927,6 @@
             "value" : "Слова, которые вы отметите как известные, будут отображаться здесь"
           }
         },
-        "es" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Las palabras que marques como conocidas aparecerán aquí"
-          }
-        },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5933,6 +5937,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "คำที่คุณทำเครื่องหมายว่าเป็นที่รู้จักจะปรากฏที่นี่"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bildiğin kelimeler burada listelenir"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你标记为已知的单词将出现在这里"
           }
         }
       }

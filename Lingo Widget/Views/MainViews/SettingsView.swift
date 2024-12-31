@@ -10,9 +10,16 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var dailyWordViewModel: DailyWordViewModel
+    @EnvironmentObject var localeManager: LocaleManager
     @AppStorage("preferredColorScheme") private var preferredColorScheme = 0
+    
     @AppStorage("sourceLanguage", store: UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget"))
-    private var selectedSourceLanguage = "en"
+    private var selectedSourceLanguage = "en" {
+        didSet {
+            localeManager.setLocale(languageCode: selectedSourceLanguage)
+        }
+    }
+    
     @AppStorage("targetLanguage", store: UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget"))
     private var selectedTargetLanguage = "es"
     @State private var showResetConfirmation = false
@@ -50,11 +57,11 @@ struct SettingsView: View {
                 otherAppsSection
                 aboutSection
             }
-            .navigationTitle("Settings")
+            .navigationTitle("Settings".localized(language: localeManager.currentLocale))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Done") {
+                    Button("Done".localized(language: localeManager.currentLocale)) {
                         dismiss()
                     }
                 }
@@ -63,14 +70,14 @@ struct SettingsView: View {
         .sheet(isPresented: $showLanguageSelection) {
             languageSelectionSheet
         }
-        .alert("Reset All Known Words?", isPresented: $showResetConfirmation) {
-            Button("Cancel", role: .cancel) { }
-            Button("Reset", role: .destructive) {
+        .alert("Reset All Known Words?".localized(language: localeManager.currentLocale), isPresented: $showResetConfirmation) {
+            Button("Cancel".localized(language: localeManager.currentLocale), role: .cancel) { }
+            Button("Reset".localized(language: localeManager.currentLocale), role: .destructive) {
                 dailyWordViewModel.knownWords.removeAll()
                 dailyWordViewModel.saveKnownWords()
             }
         } message: {
-            Text("This action cannot be undone.")
+            Text("This action cannot be undone.".localized(language: localeManager.currentLocale))
         }
         .preferredColorScheme(colorScheme)
     }
@@ -84,13 +91,14 @@ struct SettingsView: View {
     }
     
     private var languageSection: some View {
-        Section("Languages") {
-            languageRow(title: "My language", code: selectedSourceLanguage) {
+        Section("Languages".localized(language: localeManager.currentLocale)) {
+            languageRow(title: "My language".localized(language: localeManager.currentLocale), code: selectedSourceLanguage) {
                 isSelectingSourceLanguage = true
                 showLanguageSelection = true
+                self.localeManager.setLocale(languageCode: selectedSourceLanguage)
             }
             
-            languageRow(title: "I want to learn", code: selectedTargetLanguage) {
+            languageRow(title: "I want to learn".localized(language: localeManager.currentLocale), code: selectedTargetLanguage) {
                 isSelectingSourceLanguage = false
                 showLanguageSelection = true
             }
@@ -98,20 +106,20 @@ struct SettingsView: View {
             Button(action: switchLanguages) {
                 HStack {
                     Image(systemName: "arrow.triangle.2.circlepath")
-                    Text("Switch Languages")
+                    Text("Switch Languages".localized(language: localeManager.currentLocale))
                 }
             }
         }
     }
     
     private var appearanceSection: some View {
-        Section("Appearance") {
-            Picker("Appearance", selection: $preferredColorScheme) {
-                Text("System")
+        Section("Appearance".localized(language: localeManager.currentLocale)) {
+            Picker("Appearance".localized(language: localeManager.currentLocale), selection: $preferredColorScheme) {
+                Text("System".localized(language: localeManager.currentLocale))
                     .tag(0)
-                Text("Light")
+                Text("Light".localized(language: localeManager.currentLocale))
                     .tag(1)
-                Text("Dark")
+                Text("Dark".localized(language: localeManager.currentLocale))
                     .tag(2)
             }
             .pickerStyle(.menu)
@@ -119,29 +127,29 @@ struct SettingsView: View {
     }
     
     private var wordManagementSection: some View {
-        Section("Word Management") {
+        Section("Word Management".localized(language: localeManager.currentLocale)) {
             NavigationLink {
                 ManageKnownWordsView(viewModel: dailyWordViewModel)
             } label: {
-                Label("Manage Known Words", systemImage: "list.bullet")
+                Label("Manage Known Words".localized(language: localeManager.currentLocale), systemImage: "list.bullet")
             }
             
             Button(role: .destructive) {
                 showResetConfirmation = true
             } label: {
-                Label("Reset Knowledge", systemImage: "trash")
+                Label("Reset Knowledge".localized(language: localeManager.currentLocale), systemImage: "trash")
             }
         }
     }
     
     private var aboutSection: some View {
-        Section("About") {
+        Section("About".localized(language: localeManager.currentLocale)) {
             Link(destination: URL(string: "mailto:contact@oguzdoruk.com")!) {
-                Label("Send Feedback", systemImage: "envelope")
+                Label("Send Feedback".localized(language: localeManager.currentLocale), systemImage: "envelope")
             }
             
             HStack {
-                Text("Version")
+                Text("Version".localized(language: localeManager.currentLocale))
                 Spacer()
                 Text(Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0")
                     .foregroundStyle(.secondary)
@@ -150,7 +158,7 @@ struct SettingsView: View {
     }
     
     private var otherAppsSection: some View {
-        Section("Our Other Apps") {
+        Section("Our Other Apps".localized(language: localeManager.currentLocale)) {
             OtherAppRow(
                 icon: "kalory_icon",
                 title: "Kalory",
@@ -227,11 +235,11 @@ struct SettingsView: View {
                             (!isSelectingSourceLanguage && code == selectedSourceLanguage))
                 }
             }
-            .navigationTitle(isSelectingSourceLanguage ? "I speak" : "I want to learn")
+            .navigationTitle(isSelectingSourceLanguage ? "I speak".localized(language: localeManager.currentLocale) : "I want to learn".localized(language: localeManager.currentLocale))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
+                    Button("Done".localized(language: localeManager.currentLocale)) {
                         showLanguageSelection = false
                     }
                 }

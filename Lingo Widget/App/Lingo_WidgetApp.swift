@@ -11,6 +11,8 @@ import SwiftUI
 struct Lingo_WidgetApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject private var viewModel = DailyWordViewModel()
+    @StateObject private var localeManager = LocaleManager()
+
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     @AppStorage("preferredColorScheme") private var preferredColorScheme = 0
 
@@ -19,6 +21,7 @@ struct Lingo_WidgetApp: App {
             if hasCompletedOnboarding {
                 MainView()
                     .preferredColorScheme(colorScheme)
+                    .environmentObject(localeManager)
                     .onOpenURL { url in
                         if url.scheme == "lingowidget" {
                             let sourceLanguage = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "sourceLanguage") ?? "es"
@@ -43,6 +46,7 @@ struct Lingo_WidgetApp: App {
             } else {
                 OnboardingView()
                     .preferredColorScheme(colorScheme)
+                    .environmentObject(localeManager)
             }
         }
     }
