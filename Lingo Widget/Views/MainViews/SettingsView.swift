@@ -92,7 +92,7 @@ struct SettingsView: View {
     
     private var languageSection: some View {
         Section("Languages".localized(language: localeManager.currentLocale)) {
-            languageRow(title: "My language".localized(language: localeManager.currentLocale), code: selectedSourceLanguage) {
+            languageRow(title: "I speak".localized(language: localeManager.currentLocale), code: selectedSourceLanguage) {
                 isSelectingSourceLanguage = true
                 showLanguageSelection = true
                 self.localeManager.setLocale(languageCode: selectedSourceLanguage)
