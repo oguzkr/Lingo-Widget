@@ -10,13 +10,14 @@ import SwiftUI
 
 struct PremiumButton: View {
     let action: () -> Void
+    @EnvironmentObject var localeManager: LocaleManager
     
     var body: some View {
         Button(action: action) {
             HStack {
                 Image(systemName: "crown.fill")
                     .foregroundColor(.yellow)
-                Text("Try Premium for Free")
+                Text("Try Premium for Free".localized(language: localeManager.currentLocale))
                     .fontWeight(.semibold)
             }
             .frame(maxWidth: .infinity)
@@ -39,4 +40,5 @@ struct PremiumButton: View {
     PremiumButton {
         print("Premium tapped")
     }
+    .environmentObject(LocaleManager())
 }

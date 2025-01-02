@@ -9,10 +9,13 @@
 import SwiftUI
 
 struct OtherAppRow: View {
+    
     let icon: String
     let title: String
     let subtitle: String
     let appStoreUrl: String
+    
+    @EnvironmentObject var localeManager: LocaleManager
     
     var body: some View {
         HStack(spacing: 12) {
@@ -39,7 +42,7 @@ struct OtherAppRow: View {
                     UIApplication.shared.open(url)
                 }
             } label: {
-                Text("GET")
+                Text("GET".localized(language: localeManager.currentLocale))
                     .font(.system(size: 14, weight: .medium))
                     .foregroundColor(.white)
                     .padding(.horizontal, 12)
@@ -70,5 +73,6 @@ struct OtherAppRow_Previews: PreviewProvider {
         .padding()
         .background(Color("backgroundColor"))
         .previewLayout(.sizeThatFits)
+        .environmentObject(LocaleManager())
     }
 }

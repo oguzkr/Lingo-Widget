@@ -1,114 +1,115 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%lld words" : {
+    "words" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld Wörter"
+            "value" : "Wörter"
           }
         },
         "el" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld λέξεις"
+            "value" : "λέξεις"
           }
         },
         "es" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld palabras"
+            "value" : "palabras"
           }
         },
         "fil" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld mga salita"
+            "value" : "mga salita"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld mots"
+            "value" : "mots"
           }
         },
         "hi" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld शब्द"
+            "value" : "शब्द"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld kata"
+            "value" : "kata"
           }
         },
         "it" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld parole"
+            "value" : "parole"
           }
         },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld 語"
+            "value" : "語"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld 단어"
+            "value" : "단어"
           }
         },
         "nl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld woorden"
+            "value" : "woorden"
           }
         },
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld słów"
+            "value" : "słów"
           }
         },
         "pt-PT" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld palavras"
+            "value" : "palavras"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld слов"
+            "value" : "слов"
           }
         },
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld ord"
+            "value" : "ord"
           }
         },
         "th" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld คำ"
+            "value" : "คำ"
           }
         },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld kelime"
+            "value" : "kelime"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld 字"
+            "value" : "字"
           }
         }
       }
@@ -1573,6 +1574,7 @@
       }
     },
     "I know this word" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2585,6 +2587,7 @@
       }
     },
     "Manage" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2809,6 +2812,7 @@
       }
     },
     "Mark words as known to see them here" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -5730,6 +5734,7 @@
       }
     },
     "Words I Learned" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

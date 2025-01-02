@@ -10,6 +10,7 @@ import SwiftUI
 struct AppearanceSelectionView: View {
     @AppStorage("preferredColorScheme") private var preferredColorScheme = 0
     @Environment(\.colorScheme) private var currentColorScheme
+    @EnvironmentObject var localeManager: LocaleManager
     
     private var previewColorScheme: ColorScheme? {
         switch preferredColorScheme {
@@ -21,12 +22,12 @@ struct AppearanceSelectionView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            Text("Choose Your Theme")
+            Text("Choose Your Theme".localized(language: localeManager.currentLocale))
                 .font(.system(size: 28, weight: .bold))
                 .multilineTextAlignment(.center)
                 .padding(.top)
             
-            Text("Select your preferred app appearance")
+            Text("Select your preferred app appearance".localized(language: localeManager.currentLocale))
                 .font(.system(size: 18))
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
@@ -37,7 +38,7 @@ struct AppearanceSelectionView: View {
             HStack(spacing: 20) {
                 // System theme option
                 ThemeOptionCard(
-                    title: "System",
+                    title: "System".localized(language: localeManager.currentLocale),
                     icon: "iphone",
                     isSelected: preferredColorScheme == 0,
                     colorScheme: nil
@@ -49,7 +50,7 @@ struct AppearanceSelectionView: View {
                 
                 // Light theme option
                 ThemeOptionCard(
-                    title: "Light",
+                    title: "Light".localized(language: localeManager.currentLocale),
                     icon: "sun.max.fill",
                     isSelected: preferredColorScheme == 1,
                     colorScheme: .light
@@ -61,7 +62,7 @@ struct AppearanceSelectionView: View {
                 
                 // Dark theme option
                 ThemeOptionCard(
-                    title: "Dark",
+                    title: "Dark".localized(language: localeManager.currentLocale),
                     icon: "moon.fill",
                     isSelected: preferredColorScheme == 2,
                     colorScheme: .dark
@@ -128,4 +129,6 @@ struct ThemeOptionCard: View {
 
 #Preview {
     AppearanceSelectionView()
+        .environmentObject(LocaleManager())
+        
 }

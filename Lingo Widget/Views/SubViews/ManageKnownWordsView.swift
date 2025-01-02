@@ -11,6 +11,7 @@ import SwiftUI
 struct ManageKnownWordsView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var viewModel: DailyWordViewModel
+    @EnvironmentObject var localeManager: LocaleManager
     @State private var selectedWords = Set<String>()
     @State private var showingDeleteConfirmation = false
     @State private var showingResetConfirmation = false
@@ -28,9 +29,9 @@ struct ManageKnownWordsView: View {
             VStack {
                 if viewModel.knownWords.isEmpty {
                     ContentUnavailableView(
-                        "No Words Yet",
+                        "No Words Yet".localized(language: localeManager.currentLocale),
                         systemImage: "book.closed",
-                        description: Text("Words you mark as known will appear here")
+                        description: Text("Words you mark as known will appear here".localized(language: localeManager.currentLocale))
                     )
                 } else {
                     List {
@@ -49,11 +50,11 @@ struct ManageKnownWordsView: View {
                     }
                 }
             }
-            .navigationTitle("Manage Known Words")
+            .navigationTitle("Manage Known Words".localized(language: localeManager.currentLocale))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button("Done") {
+                    Button("Done".localized(language: localeManager.currentLocale)) {
                         dismiss()
                     }
                 }
@@ -64,7 +65,7 @@ struct ManageKnownWordsView: View {
                             Button(role: .destructive) {
                                 showingDeleteConfirmation = true
                             } label: {
-                                Label("Delete Selected", systemImage: "trash")
+                                Label("Delete Selected".localized(language: localeManager.currentLocale), systemImage: "trash")
                             }
                         }
                         
@@ -72,7 +73,7 @@ struct ManageKnownWordsView: View {
                             Button(role: .destructive) {
                                 showingResetConfirmation = true
                             } label: {
-                                Label("Reset All", systemImage: "trash.slash")
+                                Label("Reset All".localized(language: localeManager.currentLocale), systemImage: "trash.slash")
                             }
                         }
                     } label: {
@@ -81,21 +82,21 @@ struct ManageKnownWordsView: View {
                     .disabled(viewModel.knownWords.isEmpty)
                 }
             }
-            .alert("Delete Selected Words?", isPresented: $showingDeleteConfirmation) {
-                Button("Cancel", role: .cancel) {}
-                Button("Delete", role: .destructive) {
+            .alert("Delete Selected Words?".localized(language: localeManager.currentLocale), isPresented: $showingDeleteConfirmation) {
+                Button("Cancel".localized(language: localeManager.currentLocale), role: .cancel) {}
+                Button("Delete".localized(language: localeManager.currentLocale), role: .destructive) {
                     deleteSelectedWords()
                 }
             } message: {
-                Text("This action cannot be undone.")
+                Text("This action cannot be undone.".localized(language: localeManager.currentLocale))
             }
-            .alert("Reset All Words?", isPresented: $showingResetConfirmation) {
-                Button("Cancel", role: .cancel) {}
-                Button("Reset", role: .destructive) {
+            .alert("Reset All Words?".localized(language: localeManager.currentLocale), isPresented: $showingResetConfirmation) {
+                Button("Cancel".localized(language: localeManager.currentLocale), role: .cancel) {}
+                Button("Reset".localized(language: localeManager.currentLocale), role: .destructive) {
                     resetAllWords()
                 }
             } message: {
-                Text("This will remove all known words. This action cannot be undone.")
+                Text("This will remove all known words. This action cannot be undone.".localized(language: localeManager.currentLocale))
             }
         }
     }
@@ -260,10 +261,11 @@ struct KnownWordListItem: View {
     
     // UserDefaults mock değerlerini ayarlıyoruz
     let defaults = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")!
-    defaults.set("en", forKey: "sourceLanguage")
+    defaults.set("tr", forKey: "sourceLanguage")
     defaults.set("ja", forKey: "targetLanguage")
     
     return ManageKnownWordsView(viewModel: viewModel)
+        .environmentObject(LocaleManager())
 }
 
 // Boş liste durumu için preview
@@ -272,4 +274,5 @@ struct KnownWordListItem: View {
     viewModel.knownWords = [] // Boş liste
     
     return ManageKnownWordsView(viewModel: viewModel)
+        .environmentObject(LocaleManager())
 }

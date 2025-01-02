@@ -285,4 +285,7 @@ struct SettingsView: View {
 
 #Preview {
     SettingsView()
+        .environmentObject(LocaleManager())
+        .environmentObject(DailyWordViewModel())
+        
 }

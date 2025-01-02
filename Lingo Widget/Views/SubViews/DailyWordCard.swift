@@ -15,6 +15,7 @@ struct DailyWordCard: View {
     let onSpeak: (String) -> Void
     
     @Environment(\.colorScheme) var colorScheme
+    @EnvironmentObject var localeManager: LocaleManager
     
     private var sourceLanguage: String {
         UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "sourceLanguage") ?? "en"
@@ -148,7 +149,7 @@ struct DailyWordCard: View {
                     HStack {
                         Image(systemName: "checkmark.circle.fill")
                             .imageScale(.medium)
-                        Text("I know this word")
+                        Text("I know this word".localized(language: localeManager.currentLocale))
                             .fontWeight(.semibold)
                     }
                     .font(.system(size: 16))
@@ -208,4 +209,5 @@ struct DailyWordCard: View {
     }, onSpeak: { _ in
         print("Speak")
     })
+    .environmentObject(LocaleManager())
 }

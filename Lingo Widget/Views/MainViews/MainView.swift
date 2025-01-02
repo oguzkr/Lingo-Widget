@@ -86,7 +86,6 @@ struct MainView: View {
         }
         .environmentObject(dailyWordViewModel)
         .preferredColorScheme(colorScheme)
-
     }
     
     private var colorScheme: ColorScheme? {
@@ -100,4 +99,5 @@ struct MainView: View {
  
 #Preview {
     MainView()
+        .environmentObject(LocaleManager())
 }

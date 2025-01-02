@@ -10,23 +10,24 @@ import SwiftUI
 struct KnownWordsList: View {
     @ObservedObject var viewModel: DailyWordViewModel
     @State private var showingManageWords = false
-    
+    @EnvironmentObject var localeManager: LocaleManager
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             HStack {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Words I Learned")
+                    Text("Words I Learned".localized(language: localeManager.currentLocale))
                         .font(.system(size: 24, weight: .bold))
                         .foregroundColor(.primary)
-                    
-                    Text("\(viewModel.getKnownWordsForCurrentLanguages().count) words")
+
+                    Text(localizedWordCountText())
                         .font(.system(size: 14))
                         .foregroundColor(.secondary)
                 }
                 
                 Spacer()
                 
-                Button("Manage") {
+                Button("Manage".localized(language: localeManager.currentLocale)) {
                     showingManageWords = true
                 }
                 .font(.system(size: 16, weight: .medium))
@@ -35,7 +36,7 @@ struct KnownWordsList: View {
             .padding(.horizontal)
             
             if viewModel.getKnownWordsForCurrentLanguages().isEmpty {
-                Text("Mark words as known to see them here")
+                Text("Mark words as known to see them here".localized(language: localeManager.currentLocale))
                     .font(.system(size: 16))
                     .foregroundColor(.secondary)
                     .padding()
@@ -50,8 +51,18 @@ struct KnownWordsList: View {
             ManageKnownWordsView(viewModel: viewModel)  // Pass the viewModel
         }
     }
+    
+    private func localizedWordCountText() -> String {
+        let wordCount = viewModel.getKnownWordsForCurrentLanguages().count
+        var localizedWordText = "words".localized(language: localeManager.currentLocale)
+        if localeManager.currentLocale.identifier == "en" && wordCount < 2 {
+            localizedWordText = "word"
+        }
+        return "\(wordCount) \(localizedWordText)"
+    }
 }
 
 #Preview {
     KnownWordsList(viewModel: .init())
+        .environmentObject(LocaleManager())
 }

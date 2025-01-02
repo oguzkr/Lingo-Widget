@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    @EnvironmentObject var localeManager: LocaleManager
+
     @State private var currentPage = 0
     
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
@@ -110,7 +112,7 @@ struct OnboardingView: View {
             Spacer()
 
             VStack(spacing: 16) {
-                Text("Welcome")
+                Text("Welcome".localized(language: localeManager.currentLocale))
                     .font(.system(size: 32, weight: .bold))
                     .foregroundStyle(
                         LinearGradient(
@@ -120,7 +122,7 @@ struct OnboardingView: View {
                         )
                     )
                 
-                Text("Learn a new word one at a time, right on your home screen")
+                Text("Learn a new word one at a time, right on your home screen".localized(language: localeManager.currentLocale))
                     .font(.system(size: 20, weight: .semibold))
                     .multilineTextAlignment(.center)
                     .foregroundColor(.secondary)
@@ -129,7 +131,7 @@ struct OnboardingView: View {
             .padding(.bottom, 40)
             
             Button(action: { withAnimation { currentPage = 1 } }) {
-                Text("Get Started")
+                Text("Get Started".localized(language: localeManager.currentLocale))
                     .font(.headline)
                     .foregroundColor(.white)
                     .frame(height: 55)
@@ -151,7 +153,7 @@ struct OnboardingView: View {
     
     private var nativeLanguageView: some View {
         VStack(spacing: 20) {
-            Text("What's your native language?")
+            Text("What's your native language?".localized(language: localeManager.currentLocale))
                 .font(.system(size: 28, weight: .bold))
                 .multilineTextAlignment(.center)
                 .padding(.top)
@@ -175,7 +177,7 @@ struct OnboardingView: View {
     
     private var targetLanguageView: some View {
         VStack(spacing: 20) {
-            Text("What language do you want to learn?")
+            Text("What language do you want to learn?".localized(language: localeManager.currentLocale))
                 .font(.system(size: 28, weight: .bold))
                 .multilineTextAlignment(.center)
                 .padding(.top)
@@ -208,7 +210,7 @@ struct OnboardingView: View {
                 currentPage += 1
             }
         }) {
-            Text("Next")
+            Text("Next".localized(language: localeManager.currentLocale))
                 .font(.headline)
                 .foregroundColor(.white)
                 .frame(height: 55)
@@ -235,7 +237,7 @@ struct OnboardingView: View {
                 }
             }
         }) {
-            Text("Start Learning")
+            Text("Start Learning".localized(language: localeManager.currentLocale))
                 .font(.headline)
                 .foregroundColor(.white)
                 .frame(height: 55)
@@ -318,6 +320,7 @@ struct LanguageSelectionCard: View {
 
 #Preview {
     OnboardingView()
+        .environmentObject(LocaleManager())
 }
 // Preview Helper için özel initializer
 extension OnboardingView {
