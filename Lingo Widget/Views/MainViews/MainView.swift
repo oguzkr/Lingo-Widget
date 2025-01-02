@@ -79,6 +79,11 @@ struct MainView: View {
                 }
             }
         }
+        .onAppear {
+            if let sourceLanguage = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "sourceLanguage") {
+                localeManager.setLocale(languageCode: sourceLanguage)
+            }
+        }
         .environmentObject(dailyWordViewModel)
         .preferredColorScheme(colorScheme)
 

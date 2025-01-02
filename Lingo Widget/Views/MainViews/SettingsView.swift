@@ -66,6 +66,9 @@ struct SettingsView: View {
                     }
                 }
             }
+            .onAppear {
+                localeManager.setLocale(languageCode: selectedSourceLanguage)
+            }
         }
         .sheet(isPresented: $showLanguageSelection) {
             languageSelectionSheet

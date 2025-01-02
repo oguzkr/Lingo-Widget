@@ -225,7 +225,7 @@ class DailyWordViewModel: ObservableObject {
     // MARK: - Known Words Management
     
     /// Mark the current word as known and refresh to a new word
-    func markCurrentWordAsKnown() -> Bool {
+    func markCurrentWordAsKnown() {
         let sourceLanguage = defaults.string(forKey: "sourceLanguage") ?? "en"
         let targetLanguage = defaults.string(forKey: "targetLanguage") ?? "es"
         
@@ -266,7 +266,6 @@ class DailyWordViewModel: ObservableObject {
                 nativeLanguage: sourceLanguage
             )
             
-            return true
         } else {
             print("This word is already known for the current language pair")
             // Yine de yeni kelime göster
@@ -275,7 +274,6 @@ class DailyWordViewModel: ObservableObject {
                 to: targetLanguage,
                 nativeLanguage: sourceLanguage
             )
-            return false
         }
     }
     
