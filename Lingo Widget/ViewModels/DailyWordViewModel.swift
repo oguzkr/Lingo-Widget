@@ -224,33 +224,59 @@ class DailyWordViewModel: ObservableObject {
     
     // MARK: - Known Words Management
     
-    /// Mark the current word as known
-    func markCurrentWordAsKnown() {
+    /// Mark the current word as known and refresh to a new word
+    func markCurrentWordAsKnown() -> Bool {
         let sourceLanguage = defaults.string(forKey: "sourceLanguage") ?? "en"
         let targetLanguage = defaults.string(forKey: "targetLanguage") ?? "es"
         
+        // Daha detaylı kontrol - hem ID hem de dil çifti kontrolü
         let isAlreadyKnown = knownWords.contains { word in
             word.word.id == currentWord.id &&
             word.sourceLanguage == sourceLanguage &&
             word.targetLanguage == targetLanguage
         }
         
-        guard !isAlreadyKnown else { return }
+        print("Checking word: \(currentWord.id)")
+        print("Source Language: \(sourceLanguage)")
+        print("Target Language: \(targetLanguage)")
+        print("Is Already Known: \(isAlreadyKnown)")
+        print("Current Known Words: \(knownWords.map { "\($0.word.id) (\($0.sourceLanguage)-\($0.targetLanguage))" })")
         
-        let wordWithLangs = WordWithLanguages(
-            word: currentWord,
-            sourceLanguage: sourceLanguage,
-            targetLanguage: targetLanguage
-        )
-        
-        knownWords.insert(wordWithLangs, at: 0)
-        saveKnownWords()
-        
-        refreshWord(
-            from: sourceLanguage,
-            to: targetLanguage,
-            nativeLanguage: sourceLanguage
-        )
+        if !isAlreadyKnown {
+            let wordWithLangs = WordWithLanguages(
+                word: currentWord,
+                sourceLanguage: sourceLanguage,
+                targetLanguage: targetLanguage
+            )
+            
+            knownWords.insert(wordWithLangs, at: 0)
+            saveKnownWords()
+            
+            // Update recent words list
+            if let index = recentWords.firstIndex(where: { $0.id == currentWord.id }) {
+                recentWords.remove(at: index)
+                saveRecentWords()
+            }
+            
+            print("Word successfully marked as known")
+            
+            refreshWord(
+                from: sourceLanguage,
+                to: targetLanguage,
+                nativeLanguage: sourceLanguage
+            )
+            
+            return true
+        } else {
+            print("This word is already known for the current language pair")
+            // Yine de yeni kelime göster
+            refreshWord(
+                from: sourceLanguage,
+                to: targetLanguage,
+                nativeLanguage: sourceLanguage
+            )
+            return false
+        }
     }
     
     /// Get known words for the current language pair
