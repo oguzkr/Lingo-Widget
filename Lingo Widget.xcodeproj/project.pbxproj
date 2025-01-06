@@ -147,6 +147,7 @@
 				Resources/WordsJsonFiles/straight.json,
 				Resources/WordsJsonFiles/subway.json,
 				Resources/WordsJsonFiles/sweet.json,
+				Resources/WordsJsonFiles/table.json,
 				Resources/WordsJsonFiles/take_care.json,
 				Resources/WordsJsonFiles/thank_you.json,
 				Resources/WordsJsonFiles/there.json,

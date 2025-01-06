@@ -386,7 +386,10 @@ extension DailyWordViewModel {
             
             // Basic Communication
             "listen", "forget", "understand", "repeat", "please",
-            "same", "place", "young", "new", "nice", "old", "maybe"
+            "same", "place", "young", "new", "nice", "old", "maybe",
+            
+            // Objects and Descriptions
+            "table" //, "chair", "book", "pen", "paper",
         ]
     }
 }

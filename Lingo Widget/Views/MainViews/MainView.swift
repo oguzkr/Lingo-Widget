@@ -4,6 +4,7 @@
 //
 //  Created by Oguz Doruk on 6.12.2024.
 //
+//https://youtube.com/shorts/tlK7d-w7naQ
 
 import SwiftUI
 
