@@ -173,6 +173,17 @@ struct OnboardingView: View {
                 }.padding(.bottom, 60)
             }.padding(.horizontal)
         }
+        .onAppear {
+            // Eğer henüz bir dil seçilmemişse
+            if selectedSourceLanguage.isEmpty {
+                if let sourceLanguage = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "sourceLanguage") {
+                    selectedSourceLanguage = sourceLanguage
+                    nextButtonDisabled = false
+                }
+            } else {
+                nextButtonDisabled = false
+            }
+        }
     }
     
     private var targetLanguageView: some View {
