@@ -11,11 +11,12 @@ import SwiftUI
 struct MainView: View {
     @StateObject private var dailyWordViewModel = DailyWordViewModel()
     @AppStorage("preferredColorScheme") private var preferredColorScheme = 0
-
+    @AppStorage("hasSeenWidgetGuide") private var hasSeenWidgetGuide = false
     
     @State private var showSettings = false
     @State private var showPremiumSheet = false
-    
+    @State private var showWidgetGuide = true
+
     @EnvironmentObject var localeManager: LocaleManager
     @Environment(\.scenePhase) var scenePhase
 
@@ -83,6 +84,12 @@ struct MainView: View {
         .onAppear {
             if let sourceLanguage = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "sourceLanguage") {
                 localeManager.setLocale(languageCode: sourceLanguage)
+            }
+        }
+        .overlay {
+            if showWidgetGuide {
+                WidgetGuideView(isPresented: $showWidgetGuide,
+                                showVideo: .constant(false))
             }
         }
         .environmentObject(dailyWordViewModel)

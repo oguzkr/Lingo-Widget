@@ -11,6 +11,10 @@ struct SettingsView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var dailyWordViewModel: DailyWordViewModel
     @EnvironmentObject var localeManager: LocaleManager
+    
+    @State private var showWidgetGuide = false
+    @State private var showGuideVideo = false
+    
     @AppStorage("preferredColorScheme") private var preferredColorScheme = 0
     
     @AppStorage("sourceLanguage", store: UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget"))
@@ -274,13 +278,14 @@ struct SettingsView: View {
         selectedSourceLanguage = selectedTargetLanguage
         selectedTargetLanguage = tempSource
         
-        // Dil değişikliğinde kelimeyi yenileyelim
+        // Refresh the word when languages are changed
         dailyWordViewModel.refreshWord(
             from: selectedSourceLanguage,
             to: selectedTargetLanguage,
             nativeLanguage: selectedSourceLanguage
         )
     }
+    
 }
 
 #Preview {
