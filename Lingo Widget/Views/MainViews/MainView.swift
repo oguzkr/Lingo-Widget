@@ -15,7 +15,9 @@ struct MainView: View {
     
     @State private var showSettings = false
     @State private var showPremiumSheet = false
-    @State private var showWidgetGuide = true
+    @State private var showWidgetGuide = false
+    @State private var showWidgetCard = true
+    @State private var showTutorialVideo = false
 
     @EnvironmentObject var localeManager: LocaleManager
     @Environment(\.scenePhase) var scenePhase
@@ -30,6 +32,16 @@ struct MainView: View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 20) {
+                    if !hasSeenWidgetGuide && showWidgetCard {
+                        WidgetGuideCard(
+                            isVisible: $showWidgetCard,
+                            onTutorialTap: {
+                                showTutorialVideo = true // Video gösterimini tetikle
+                                showWidgetGuide = true
+                            }
+                        )
+                    }
+                    
                     // Daily Word Card
                     DailyWordCard(
                         word: dailyWordViewModel.currentWord,
@@ -85,11 +97,16 @@ struct MainView: View {
             if let sourceLanguage = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "sourceLanguage") {
                 localeManager.setLocale(languageCode: sourceLanguage)
             }
+            if !hasSeenWidgetGuide {
+                showWidgetGuide = true
+            }
         }
         .overlay {
             if showWidgetGuide {
-                WidgetGuideView(isPresented: $showWidgetGuide,
-                                showVideo: .constant(false))
+                WidgetGuideView(
+                    isPresented: $showWidgetGuide,
+                    showVideo: $showTutorialVideo
+                )
             }
         }
         .environmentObject(dailyWordViewModel)

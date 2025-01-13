@@ -74,6 +74,14 @@ struct SettingsView: View {
                 localeManager.setLocale(languageCode: selectedSourceLanguage)
             }
         }
+        .overlay {
+            if showWidgetGuide {
+                WidgetGuideView(
+                    isPresented: $showWidgetGuide,
+                    showVideo: $showGuideVideo
+                )
+            }
+        }
         .sheet(isPresented: $showLanguageSelection) {
             languageSelectionSheet
         }
@@ -153,6 +161,15 @@ struct SettingsView: View {
         Section("About".localized(language: localeManager.currentLocale)) {
             Link(destination: URL(string: "mailto:contact@oguzdoruk.com")!) {
                 Label("Send Feedback".localized(language: localeManager.currentLocale), systemImage: "envelope")
+            }
+            
+            Button {
+                showWidgetGuide = true
+                showGuideVideo = true
+            } label: {
+                Label("Add Widget to Home Screen".localized(language: localeManager.currentLocale),
+                      systemImage: "plusminus.circle.fill")
+                    .foregroundColor(.primary)
             }
             
             HStack {

@@ -10,7 +10,6 @@ import Foundation
 import WebKit
 
 struct WidgetGuideView: View {
-    
     @AppStorage("hasSeenWidgetGuide") private var hasSeenWidgetGuide = false
     @State private var dontShowAgain = false
     
@@ -49,12 +48,12 @@ struct WidgetGuideView: View {
                         showVideo = true
                     }
                     .buttonStyle(.borderedProminent)
-                    
-                    Toggle("Don't show this again", isOn: $dontShowAgain)
-                        .onChange(of: dontShowAgain) { _, newValue in
-                            hasSeenWidgetGuide = newValue
-                        }
                 }
+                
+                Toggle("Don't show this again", isOn: $dontShowAgain)
+                    .onChange(of: dontShowAgain) { _, newValue in
+                        hasSeenWidgetGuide = newValue
+                    }
             }
             .padding()
             .background(.background)
