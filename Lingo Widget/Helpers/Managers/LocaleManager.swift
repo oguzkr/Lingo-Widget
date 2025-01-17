@@ -23,14 +23,16 @@ class LocaleManager: ObservableObject {
     func initializeAppLanguage() {
         let defaults = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")
         
-        // Eğer daha önce bir dil seçilmemişse
+        // If no language was previously selected
+        
         if defaults?.string(forKey: "sourceLanguage") == nil {
             let systemLanguage = Locale.current.language.languageCode?.identifier ?? "en"
             let selectedLanguage = LocaleManager.supportedLanguageCodes.contains(systemLanguage) ? systemLanguage : "en"
             defaults?.set(selectedLanguage, forKey: "sourceLanguage")
         }
         
-        // Locale'i ayarla
+        // Set locale
+        
         if let sourceLanguage = defaults?.string(forKey: "sourceLanguage") {
             setLocale(languageCode: sourceLanguage)
         }
