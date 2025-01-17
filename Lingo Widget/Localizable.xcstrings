@@ -3497,6 +3497,7 @@
       }
     },
     "Paywall" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

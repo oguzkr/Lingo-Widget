@@ -80,8 +80,8 @@ struct MainView: View {
             .sheet(isPresented: $showSettings) {
                 SettingsView()
             }
-            .sheet(isPresented: $showPremiumSheet) {
-                PremiumView()
+            .fullScreenCover(isPresented: $showPremiumSheet) {
+                RevenueCatPaywallView()
             }
             .onChange(of: scenePhase) { oldPhase, newPhase in
                 print("Scene phase changed from \(oldPhase) to \(newPhase)")
