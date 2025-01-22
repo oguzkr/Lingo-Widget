@@ -31,6 +31,7 @@ class DailyWordViewModel: ObservableObject {
     @Published var sourceExampleSentence: String = ""
     @Published var romanized: String?
     @Published var romanizedExample: String?
+    @Published var showingPaywall = false
     
     // MARK: - Private Properties
     private let defaults = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")!
@@ -39,6 +40,9 @@ class DailyWordViewModel: ObservableObject {
     
     private let recentWordsKey = "recentWords"
     private let knownWordsKey = "knownWords"
+    
+    private let notificationCenterManager = NotificationCenterManager.shared
+    private let userDefaultsManager = UserDefaultsManager.shared
     
     // MARK: - Computed Properties
     
@@ -62,6 +66,15 @@ class DailyWordViewModel: ObservableObject {
         loadRecentWords()
         loadKnownWords()
         fetchCurrentWord()
+        
+        notificationCenterManager.addShowPaywallObserver(
+            self,
+            selector: #selector(handleShowPaywall)
+        )
+    }
+    
+    @objc private func handleShowPaywall() {
+        showingPaywall = true
     }
     
     // MARK: - Word Selection and Management
@@ -319,16 +332,20 @@ class DailyWordViewModel: ObservableObject {
     
     /// Speak the provided text or current target word
     func speakWord(text: String? = nil) {
-        let textToSpeak = text ?? targetWord
-        let languageCode = convertToSpeechLanguageCode(currentLanguageCode)
-        
-        let utterance = AVSpeechUtterance(string: textToSpeak)
-        utterance.voice = AVSpeechSynthesisVoice(language: languageCode)
-        utterance.rate = 0.4
-        utterance.pitchMultiplier = 1.0
-        utterance.volume = 1.0
-        
-        synthesizer.speak(utterance)
+        if userDefaultsManager.isPremiumUser {
+            let textToSpeak = text ?? targetWord
+            let languageCode = convertToSpeechLanguageCode(currentLanguageCode)
+            
+            let utterance = AVSpeechUtterance(string: textToSpeak)
+            utterance.voice = AVSpeechSynthesisVoice(language: languageCode)
+            utterance.rate = 0.4
+            utterance.pitchMultiplier = 1.0
+            utterance.volume = 1.0
+            
+            synthesizer.speak(utterance)
+        } else {
+            notificationCenterManager.postShowPaywall()
+        }
     }
     
     /// Convert language code to speech synthesis format

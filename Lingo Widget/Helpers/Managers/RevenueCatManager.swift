@@ -29,6 +29,10 @@ class RevenueCatManager: NSObject, PurchasesDelegate {
         Purchases.shared.delegate = self
     }
     
+    var isPremiumUser: Bool {
+        return userDefaultsManager.isPremiumUser
+    }
+    
     // MARK: - Delegate Methods
     func purchases(_ purchases: Purchases, receivedUpdated customerInfo: CustomerInfo) {
         let hasSubscription = customerInfo.entitlements["pro"]?.isActive == true

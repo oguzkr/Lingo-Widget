@@ -28,6 +28,8 @@ struct MainView: View {
     @AppStorage("targetLanguage", store: UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget"))
     private var selectedTargetLanguage = "en"
     
+    private let revenueCatManager = RevenueCatManager.shared
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -60,10 +62,13 @@ struct MainView: View {
                         }
                     )
                     
-                    PremiumButton {
-                        showPremiumSheet = true
-                    }
                     
+                    if !revenueCatManager.isPremiumUser {
+                        PremiumButton {
+                            showPremiumSheet = true
+                        }
+                    }
+
                     KnownWordsList(viewModel: dailyWordViewModel)
                 }
                 .padding(.top)
@@ -83,6 +88,9 @@ struct MainView: View {
             .fullScreenCover(isPresented: $showPremiumSheet) {
                 RevenueCatPaywallView()
             }
+            .fullScreenCover(isPresented: $dailyWordViewModel.showingPaywall) {
+                RevenueCatPaywallView()
+            }
             .onChange(of: scenePhase) { oldPhase, newPhase in
                 print("Scene phase changed from \(oldPhase) to \(newPhase)")
                 if newPhase == .active {
@@ -90,6 +98,9 @@ struct MainView: View {
                 }
                 if newPhase == .background {
                     exit(0)
+                }
+                revenueCatManager.checkProEntitlement { status in
+                    print("Pro Entitlement: \(status)")
                 }
             }
         }

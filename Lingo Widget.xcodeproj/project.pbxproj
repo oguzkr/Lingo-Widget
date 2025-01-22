@@ -61,6 +61,8 @@
 			membershipExceptions = (
 				Assets.xcassets,
 				Helpers/Extensions/placeholderExtension.swift,
+				Helpers/Managers/NotificationCenterManager.swift,
+				Helpers/Managers/UserDefaultsManager.swift,
 				Localizable.xcstrings,
 				Models/Word.swift,
 				Resources/WordsJsonFiles/afternoon.json,

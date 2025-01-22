@@ -12,7 +12,7 @@ struct RevenueCatPaywallView: View {
     private let revenueCatManager = RevenueCatManager.shared
 
     var body: some View {
-        PaywallView()
+        PaywallView(displayCloseButton: true)
     }
 }
 

@@ -13,10 +13,11 @@ final class NotificationCenterManager {
     
     // Notification names
     static let premiumStatusChanged = Notification.Name("premiumStatusChanged")
+    static let showPaywall = Notification.Name("showPaywall")
     
     private init() {}
     
-    // Post premium status change notification
+    // Post methods
     func postPremiumStatusChanged(_ status: Bool) {
         notificationCenter.post(
             name: NotificationCenterManager.premiumStatusChanged,
@@ -24,8 +25,15 @@ final class NotificationCenterManager {
             userInfo: ["isPremium": status]
         )
     }
+
+    func postShowPaywall() {
+        notificationCenter.post(
+            name: NotificationCenterManager.showPaywall,
+            object: nil
+        )
+    }
     
-    // Add observer for premium status changes
+    // Add observer methods
     func addPremiumStatusObserver(_ observer: Any, selector: Selector) {
         notificationCenter.addObserver(
             observer,
@@ -35,7 +43,25 @@ final class NotificationCenterManager {
         )
     }
     
-    // Remove observer
+    func addShowPaywallObserver(_ observer: Any, selector: Selector) {
+        notificationCenter.addObserver(
+            observer,
+            selector: selector,
+            name: NotificationCenterManager.showPaywall,
+            object: nil
+        )
+    }
+    
+    // Remove observer methods
+    
+    func removeShowPaywallObserver(_ observer: Any) {
+        notificationCenter.removeObserver(
+            observer,
+            name: NotificationCenterManager.showPaywall,
+            object: nil
+        )
+    }
+    
     func removePremiumStatusObserver(_ observer: Any) {
         notificationCenter.removeObserver(
             observer,
