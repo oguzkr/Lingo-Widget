@@ -19,6 +19,7 @@ struct MainView: View {
     @State private var showWidgetCard = true
     @State private var showTutorialVideo = false
     @State private var showRefreshLimitAlert = false
+    @State private var isPremiumUser = false
 
     @EnvironmentObject var localeManager: LocaleManager
     
@@ -73,7 +74,7 @@ struct MainView: View {
                     )
                     
                     
-                    if !revenueCatManager.isPremiumUser {
+                    if !isPremiumUser {
                         
                         if dailyWordViewModel.shouldAllowRefresh() {
                             Text("Remaining daily refreshes:".localized(language: localeManager.currentLocale) + " \(dailyWordViewModel.remainingRefreshCount)")
@@ -130,9 +131,12 @@ struct MainView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: { showSettings = true }) {
                         Image(systemName: "gearshape.fill")
-                            .foregroundColor(.blue)
+                            .foregroundColor(.primary)
                     }
                 }
+            }
+            .onAppear {
+                isPremiumUser = revenueCatManager.isPremiumUser
             }
             .sheet(isPresented: $showSettings) {
                 SettingsView()
@@ -155,6 +159,12 @@ struct MainView: View {
                     print("Pro Entitlement: \(status)")
                 }
             }
+            .onReceive(NotificationCenter.default.publisher(for: NotificationCenterManager.premiumStatusChanged)) { notification in
+                if let isPremium = notification.userInfo?["isPremium"] as? Bool {
+                    isPremiumUser = isPremium
+                }
+            }
+
         }
         .onAppear {
             if let sourceLanguage = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "sourceLanguage") {
@@ -184,7 +194,7 @@ struct MainView: View {
         }
     }
 }
- 
+
 #Preview {
     MainView()
         .environmentObject(LocaleManager())
