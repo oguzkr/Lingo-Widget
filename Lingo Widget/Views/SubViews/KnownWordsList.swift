@@ -27,11 +27,14 @@ struct KnownWordsList: View {
                 
                 Spacer()
                 
-                Button("Manage".localized(language: localeManager.currentLocale)) {
-                    showingManageWords = true
+                if !viewModel.getKnownWordsForCurrentLanguages().isEmpty {
+                    Button("Manage".localized(language: localeManager.currentLocale)) {
+                        showingManageWords = true
+                    }
+                    .font(.system(size: 16, weight: .medium))
+                    .foregroundColor(.blue)
                 }
-                .font(.system(size: 16, weight: .medium))
-                .foregroundColor(.blue)
+                
             }
             .padding(.horizontal)
             

@@ -120,8 +120,14 @@ struct SettingsView: View {
             
             Button(action: switchLanguages) {
                 HStack {
+                    Spacer()
                     Image(systemName: "arrow.triangle.2.circlepath")
+                        .foregroundColor(.primary)
+                        .bold()
                     Text("Switch Languages".localized(language: localeManager.currentLocale))
+                        .foregroundColor(.primary)
+                        .bold()
+                    Spacer()
                 }
             }
         }
@@ -137,6 +143,8 @@ struct SettingsView: View {
                 Text("Dark".localized(language: localeManager.currentLocale))
                     .tag(2)
             }
+            .foregroundColor(.primary)
+            .bold()
             .pickerStyle(.menu)
         }
     }
@@ -275,6 +283,8 @@ struct SettingsView: View {
         Button(action: action) {
             HStack {
                 Text(title)
+                    .foregroundColor(.primary)
+                    .bold()
                 Spacer()
                 Image(code)
                     .resizable()
@@ -282,7 +292,8 @@ struct SettingsView: View {
                     .frame(width: 30, height: 30)
                     .clipShape(Circle())
                 Text(languages[code] ?? code)
-                    .foregroundStyle(.secondary)
+                    .foregroundColor(.secondary)
+                    .bold()
                 Image(systemName: "chevron.right")
                     .font(.system(size: 14))
                     .foregroundStyle(.secondary)
