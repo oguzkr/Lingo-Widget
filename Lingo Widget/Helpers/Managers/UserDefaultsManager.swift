@@ -61,7 +61,6 @@ final class UserDefaultsManager {
     func increaseDailyRefreshCount() {
         dailyRefreshCount += 1
         lastRefreshDate = Date()
-        NotificationCenterManager.shared.postRefreshCountChanged()
     }
 
     func shouldAllowRefresh() -> Bool {
