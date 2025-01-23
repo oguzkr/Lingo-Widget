@@ -11,6 +11,8 @@ import WebKit
 
 struct WidgetGuideView: View {
     @AppStorage("hasSeenWidgetGuide") private var hasSeenWidgetGuide = false
+    @EnvironmentObject var localeManager: LocaleManager
+
     @State private var dontShowAgain = false
     
     @Binding var isPresented: Bool
@@ -36,21 +38,21 @@ struct WidgetGuideView: View {
                         .heightAsPercentage(70)
                         .cornerRadius(12)
                 } else {
-                    Text("Add Widget to Your Home Screen")
+                    Text("Add Widget to Your Home Screen".localized(language: localeManager.currentLocale))
                         .font(.title2.bold())
                         .multilineTextAlignment(.center)
                     
-                    Text("Learn how to add the Lingo Widget to your home screen for quick access to your daily words.")
+                    Text("Learn how to add the Lingo Widget to your home screen for quick access to your daily words.".localized(language: localeManager.currentLocale))
                         .multilineTextAlignment(.center)
                         .foregroundStyle(.secondary)
                     
-                    Button("Watch Tutorial") {
+                    Button("Watch Tutorial".localized(language: localeManager.currentLocale)) {
                         showVideo = true
                     }
                     .buttonStyle(.borderedProminent)
                 }
                 
-                Toggle("Don't show this again", isOn: $dontShowAgain)
+                Toggle("Don't show this again".localized(language: localeManager.currentLocale), isOn: $dontShowAgain)
                     .onChange(of: dontShowAgain) { _, newValue in
                         hasSeenWidgetGuide = newValue
                     }

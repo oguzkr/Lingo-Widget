@@ -20,6 +20,7 @@ struct OnboardingView: View {
     private var selectedSourceLanguage = "" {
         didSet {
             nextButtonDisabled = false
+            localeManager.setLocale(languageCode: selectedSourceLanguage)
         }
     }
     @AppStorage("targetLanguage", store: UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget"))

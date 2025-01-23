@@ -165,6 +165,10 @@ class DailyWordViewModel: ObservableObject {
         WidgetCenter.shared.reloadAllTimelines()
     }
     
+    var remainingRefreshCount: Int {
+        userDefaultsManager.remainingRefreshCount
+    }
+    
     /// Fetch the current word or load a new one if needed
     func fetchCurrentWord() {
         let sourceLang = defaults.string(forKey: "sourceLanguage") ?? "es"

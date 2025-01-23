@@ -52,6 +52,10 @@ final class UserDefaultsManager {
         set { defaults.set(newValue, forKey: kDailyRefreshLimit) }
     }
     
+    var remainingRefreshCount: Int {
+        return dailyRefreshLimit - dailyRefreshCount
+    }
+    
     // Get last refresh date
     var lastRefreshDate: Date? {
         get { defaults.object(forKey: kLastRefreshDate) as? Date }

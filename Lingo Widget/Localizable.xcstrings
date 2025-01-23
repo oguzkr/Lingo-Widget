@@ -339,6 +339,7 @@
       }
     },
     "Add Widget to Your Home Screen" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1242,6 +1243,7 @@
       }
     },
     "Don't show this again" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -2370,6 +2372,7 @@
       }
     },
     "Learn how to add the Lingo Widget to your home screen for quick access to your daily words." : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -3829,6 +3832,119 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "刷新单词"
+          }
+        }
+      }
+    },
+    "Remaining daily refreshes:" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbleibende tägliche Aktualisierungen:"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Υπολειπόμενες ημερήσιες ανανεώσεις:"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualizaciones diarias restantes:"
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Natitirang araw-araw na pag-refresh:"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Actualisations quotidiennes restantes:"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "शेष दैनिक रिफ्रेश:"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pembaruan harian tersisa:"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aggiornamenti giornalieri rimanenti:"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本日の残り更新回数:"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오늘 남은 새로 고침 횟수:"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Natitirang araw-araw na pag-refresh:"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pozostałe dzienne odświeżenia:"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atualizações diárias restantes:"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оставшиеся ежедневные обновления:"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Återstående dagliga uppdateringar:"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "จำนวนการรีเฟรชที่เหลือในวันนี้:"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalan günlük yenileme:"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今日剩余刷新次数:"
           }
         }
       }
@@ -5529,6 +5645,7 @@
       }
     },
     "Watch Tutorial" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -6427,6 +6544,119 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "你标记为已知的单词将出现在这里"
+          }
+        }
+      }
+    },
+    "You've reached today's refresh limit. Upgrade to Premium for unlimited refreshes." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sie haben das heutige Aktualisierungslimit erreicht. Aktualisieren Sie auf Premium für unbegrenzte Aktualisierungen."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Έχετε φτάσει το ημερήσιο όριο ανανέωσης. Αναβαθμίστε σε Premium για απεριόριστες ανανεώσεις."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Has alcanzado el límite de actualizaciones de hoy. Actualiza a Premium para obtener actualizaciones ilimitadas."
+          }
+        },
+        "fil" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naabot mo na ang limitasyon sa pag-refresh ngayon. Mag-upgrade sa Premium para sa walang limitasyong pag-refresh."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous avez atteint la limite d'actualisation d'aujourd'hui. Passez à Premium pour des actualisations illimitées."
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "आप आज के रिफ्रेश लिमिट तक पहुंच गए हैं। असीमित रिफ्रेश के लिए प्रीमियम में अपग्रेड करें।"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anda telah mencapai batas pembaruan hari ini. Tingkatkan ke Premium untuk pembaruan tanpa batas."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hai raggiunto il limite di aggiornamenti di oggi. Passa a Premium per aggiornamenti illimitati."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本日の更新上限に達しました。無制限の更新のためにプレミアムにアップグレードしてください。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "오늘의 새로 고침 한도에 도달했습니다. 무제한 새로 고침을 위해 Premium으로 업그레이드하세요."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naabot mo na ang limitasyon sa pag-refresh ngayon. Mag-upgrade sa Premium para sa walang limitasyong pag-refresh."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Osiągnąłeś dzisiejszy limit odświeżeń. Przejdź na Premium, aby uzyskać nielimitowane odświeżenia."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Atingiu o limite de atualizações de hoje. Atualize para Premium para atualizações ilimitadas."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы достигли лимита обновлений на сегодня. Перейдите на Premium для неограниченных обновлений."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "u har nått dagens uppdateringsgräns. Uppgradera till Premium för obegränsade uppdateringar."
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "คุณใช้จำนวนการรีเฟรชครบแล้วสำหรับวันนี้ อัปเกรดเป็น Premium เพื่อรีเฟรชได้ไม่จำกัด"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bugünkü yenileme limitine ulaştınız. Sınırsız yenileme için Premium'a yükseltin."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "您已达到今日的刷新限制。升级到Premium以获取无限刷新。"
           }
         }
       }

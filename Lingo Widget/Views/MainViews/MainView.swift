@@ -18,8 +18,10 @@ struct MainView: View {
     @State private var showWidgetGuide = false
     @State private var showWidgetCard = true
     @State private var showTutorialVideo = false
+    @State private var showRefreshLimitAlert = false
 
     @EnvironmentObject var localeManager: LocaleManager
+    
     @Environment(\.scenePhase) var scenePhase
 
     @AppStorage("sourceLanguage", store: UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget"))
@@ -48,7 +50,11 @@ struct MainView: View {
                     DailyWordCard(
                         word: dailyWordViewModel.currentWord,
                         onKnowTap: {
-                            dailyWordViewModel.markCurrentWordAsKnown()
+                            if dailyWordViewModel.shouldAllowRefresh() {
+                                dailyWordViewModel.markCurrentWordAsKnown()
+                            } else {
+                                showPremiumSheet = true
+                            }
                         },
                         onRefreshTap: {
                             if dailyWordViewModel.shouldAllowRefresh() {
@@ -68,6 +74,48 @@ struct MainView: View {
                     
                     
                     if !revenueCatManager.isPremiumUser {
+                        
+                        if dailyWordViewModel.shouldAllowRefresh() {
+                            Text("Remaining daily refreshes:".localized(language: localeManager.currentLocale) + " \(dailyWordViewModel.remainingRefreshCount)")
+                                .font(.system(size: 16, weight: .medium))
+                                .foregroundColor(.blue)
+                                .padding(.vertical, 8)
+                                .frame(maxWidth: .infinity)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(Color.blue.opacity(0.1))
+                                )
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .strokeBorder(Color.blue.opacity(0.3), lineWidth: 1)
+                                )
+                                .padding(.horizontal)
+                            
+                            
+                        } else {
+                            VStack(spacing: 12) {
+                                Image(systemName: "exclamationmark.circle")
+                                    .font(.system(size: 24))
+                                    .foregroundColor(.orange)
+                                
+                                Text("You've reached today's refresh limit. Upgrade to Premium for unlimited refreshes.".localized(language: localeManager.currentLocale))
+                                    .font(.system(size: 16, weight: .medium))
+                                    .foregroundColor(.primary)
+                                    .multilineTextAlignment(.center)
+                                    .padding(.horizontal)
+                            }
+                            .padding(16)
+                            .background(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(Color.orange.opacity(0.1))
+                            )
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .strokeBorder(Color.orange.opacity(0.3), lineWidth: 1)
+                            )
+                            .padding(.horizontal)
+                        }
+
                         PremiumButton {
                             showPremiumSheet = true
                         }
