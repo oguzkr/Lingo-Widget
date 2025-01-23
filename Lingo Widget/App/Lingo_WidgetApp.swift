@@ -27,6 +27,10 @@ struct Lingo_WidgetApp: App {
                             let sourceLanguage = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "sourceLanguage") ?? "es"
                             let targetLanguage = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "targetLanguage") ?? "en"
                             
+                            if url.host == "showPaywall" {
+                                viewModel.postShowPaywall()
+                                return
+                            }
                             viewModel.fetchDailyWord(from: sourceLanguage, to: targetLanguage)
                             
                             if let components = URLComponents(url: url, resolvingAgainstBaseURL: true),

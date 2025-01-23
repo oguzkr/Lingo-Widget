@@ -140,6 +140,9 @@ class DailyWordViewModel: ObservableObject {
     }
     
     // MARK: - Public Word Management Methods
+    func shouldAllowRefresh() -> Bool {
+        userDefaultsManager.shouldAllowRefresh()
+    }
     
     /// Refresh the current word with a new one
     func refreshWord(from sourceLang: String, to targetLang: String, nativeLanguage: String) {
@@ -157,7 +160,8 @@ class DailyWordViewModel: ObservableObject {
         
         addToRecentWords(newWord)
         updateUI(with: newWord, sourceLang: sourceLang, targetLang: targetLang)
-        
+        userDefaultsManager.increaseDailyRefreshCount()
+
         WidgetCenter.shared.reloadAllTimelines()
     }
     
@@ -346,6 +350,10 @@ class DailyWordViewModel: ObservableObject {
         } else {
             notificationCenterManager.postShowPaywall()
         }
+    }
+    
+    func postShowPaywall() {
+        notificationCenterManager.postShowPaywall()
     }
     
     /// Convert language code to speech synthesis format

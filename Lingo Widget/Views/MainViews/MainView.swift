@@ -51,11 +51,15 @@ struct MainView: View {
                             dailyWordViewModel.markCurrentWordAsKnown()
                         },
                         onRefreshTap: {
-                            dailyWordViewModel.refreshWord(
-                                from: selectedSourceLanguage,
-                                to: selectedTargetLanguage,
-                                nativeLanguage: selectedSourceLanguage
-                            )
+                            if dailyWordViewModel.shouldAllowRefresh() {
+                                dailyWordViewModel.refreshWord(
+                                    from: selectedSourceLanguage,
+                                    to: selectedTargetLanguage,
+                                    nativeLanguage: selectedSourceLanguage
+                                )
+                            } else {
+                                showPremiumSheet = true
+                            }
                         },
                         onSpeak: { text in
                             dailyWordViewModel.speakWord(text: text)
@@ -97,7 +101,7 @@ struct MainView: View {
                     dailyWordViewModel.fetchCurrentWord()
                 }
                 if newPhase == .background {
-                    exit(0)
+                   exit(0)
                 }
                 revenueCatManager.checkProEntitlement { status in
                     print("Pro Entitlement: \(status)")

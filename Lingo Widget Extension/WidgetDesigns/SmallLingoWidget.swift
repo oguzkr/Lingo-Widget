@@ -14,12 +14,12 @@ struct RefreshIntent: AppIntent {
     static var title: LocalizedStringResource = "Refresh Word"
     
     func perform() async throws -> some IntentResult {
-        let sharedDefaults = UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")!
+        let userDefaultsManager = UserDefaultsManager.shared
         let viewModel = DailyWordViewModel()
 
-        let sourceLanguage = sharedDefaults.string(forKey: "sourceLanguage") ?? "es"
-        let targetLanguage = sharedDefaults.string(forKey: "targetLanguage") ?? "en"
-
+        let sourceLanguage = userDefaultsManager.string(forKey: "sourceLanguage") ?? "es"
+        let targetLanguage = userDefaultsManager.string(forKey: "targetLanguage") ?? "en"
+        
         viewModel.refreshWord(from: sourceLanguage, to: targetLanguage, nativeLanguage: sourceLanguage)
         
         WidgetCenter.shared.reloadAllTimelines()
@@ -32,6 +32,8 @@ struct SmallLingoWidget: View {
     let word: Word
     @Environment(\.widgetFamily) var family
     @Environment(\.colorScheme) var colorScheme
+    
+    private let userDefaultsManager = UserDefaultsManager.shared
     
     // UserDefaults'dan dil ayarlarını al
     private var sourceLanguage: String {
@@ -165,13 +167,22 @@ struct SmallLingoWidget: View {
             Spacer(minLength: 5)
             HStack {
                 Spacer()
-                Button(intent: RefreshIntent()) {
-                    Image(systemName: "arrow.triangle.2.circlepath")
-                        .symbolRenderingMode(.hierarchical)
-                        .font(.system(size: 20))
-                        .foregroundStyle(.blue)
+                if userDefaultsManager.shouldAllowRefresh() {
+                    Button(intent: RefreshIntent()) {
+                        Image(systemName: "arrow.triangle.2.circlepath")
+                            .symbolRenderingMode(.hierarchical)
+                            .font(.system(size: 20))
+                            .foregroundStyle(.blue)
+                    }
+                    .buttonStyle(.plain)
+                } else {
+                    Link(destination: URL(string: "lingowidget://showPaywall")!) {
+                        Image(systemName: "arrow.triangle.2.circlepath")
+                            .symbolRenderingMode(.hierarchical)
+                            .font(.system(size: 20))
+                            .foregroundStyle(.blue)
+                    }
                 }
-                .buttonStyle(.plain)
                 
                 Spacer()
                 Divider()
@@ -190,6 +201,8 @@ struct SmallLingoWidget: View {
         .offset(y: 5)
         .frame(height: 30)
     }
+
+    // Rest of the file remains the same
     
     private var backgroundGradient: LinearGradient {
         LinearGradient(
