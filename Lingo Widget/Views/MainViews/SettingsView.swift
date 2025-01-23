@@ -226,7 +226,8 @@ struct SettingsView: View {
                                 dailyWordViewModel.refreshWord(
                                     from: code,
                                     to: selectedTargetLanguage,
-                                    nativeLanguage: code
+                                    nativeLanguage: code,
+                                    forLanguageChange: true
                                 )
                                 showLanguageSelection = false
                             }
@@ -237,7 +238,8 @@ struct SettingsView: View {
                                 dailyWordViewModel.refreshWord(
                                     from: selectedSourceLanguage,
                                     to: code,
-                                    nativeLanguage: selectedSourceLanguage
+                                    nativeLanguage: selectedSourceLanguage,
+                                    forLanguageChange: true
                                 )
                                 showLanguageSelection = false
                             }

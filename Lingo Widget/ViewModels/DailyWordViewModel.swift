@@ -145,7 +145,7 @@ class DailyWordViewModel: ObservableObject {
     }
     
     /// Refresh the current word with a new one
-    func refreshWord(from sourceLang: String, to targetLang: String, nativeLanguage: String) {
+    func refreshWord(from sourceLang: String, to targetLang: String, nativeLanguage: String, forLanguageChange: Bool = false) {
         currentLanguageCode = targetLang
         let newId = selectNewWord()
         
@@ -160,8 +160,9 @@ class DailyWordViewModel: ObservableObject {
         
         addToRecentWords(newWord)
         updateUI(with: newWord, sourceLang: sourceLang, targetLang: targetLang)
-        userDefaultsManager.increaseDailyRefreshCount()
-
+        if !forLanguageChange {
+            userDefaultsManager.increaseDailyRefreshCount()
+        }
         WidgetCenter.shared.reloadAllTimelines()
     }
     
