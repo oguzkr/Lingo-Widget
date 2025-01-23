@@ -14,6 +14,8 @@ struct MediumLingoWidget: View {
     @Environment(\.widgetFamily) var family
     @Environment(\.colorScheme) var colorScheme
     
+    private let userDefaultsManager = UserDefaultsManager.shared
+
     private var sourceLanguage: String {
         UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "sourceLanguage") ?? "es"
     }
@@ -236,12 +238,20 @@ struct MediumLingoWidget: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             
-            Button(intent: RefreshIntent()) {
-                Image(systemName: "arrow.triangle.2.circlepath")
-                    .font(.system(size: 18))
-                    .foregroundStyle(.blue)
+            if userDefaultsManager.shouldAllowRefresh() {
+                Button(intent: RefreshIntent()) {
+                    Image(systemName: "arrow.triangle.2.circlepath")
+                        .font(.system(size: 18))
+                        .foregroundStyle(.blue)
+                }
+                .buttonStyle(.plain)
+            } else {
+                Link(destination: URL(string: "lingowidget://showPaywall")!) {
+                    Image(systemName: "arrow.triangle.2.circlepath")
+                        .font(.system(size: 20))
+                        .foregroundStyle(.blue)
+                }
             }
-            .buttonStyle(.plain)
         }
     }
     

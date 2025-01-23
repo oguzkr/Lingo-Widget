@@ -14,7 +14,8 @@ struct LargeLingoWidget: View {
     let recentWords: [Word]
     @Environment(\.widgetFamily) var family
     @Environment(\.colorScheme) var colorScheme
-    
+    private let userDefaultsManager = UserDefaultsManager.shared
+
     private var sourceLanguage: String {
         UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget")?.string(forKey: "sourceLanguage") ?? "en"
     }
@@ -221,14 +222,23 @@ struct LargeLingoWidget: View {
             }
             
             Spacer()
-            
-            Button(intent: RefreshIntent()) {
-                Image(systemName: "arrow.triangle.2.circlepath")
-                    .font(.system(size: 24))
-                    .foregroundStyle(.blue)
-                    .minimumScaleFactor(0.7)
+
+            if userDefaultsManager.shouldAllowRefresh() {
+                Button(intent: RefreshIntent()) {
+                    Image(systemName: "arrow.triangle.2.circlepath")
+                        .font(.system(size: 24))
+                        .foregroundStyle(.blue)
+                        .minimumScaleFactor(0.7)
+                }
+                .buttonStyle(.bordered)
+            } else {
+                Link(destination: URL(string: "lingowidget://showPaywall")!) {
+                    Image(systemName: "arrow.triangle.2.circlepath")
+                        .font(.system(size: 24))
+                        .foregroundStyle(.blue)
+                        .minimumScaleFactor(0.7)
+                }
             }
-            .buttonStyle(.bordered)
         }
     }
     
@@ -248,13 +258,22 @@ struct LargeLingoWidget: View {
             
             Spacer()
             
-            Button(intent: RefreshIntent()) {
-                Image(systemName: "arrow.triangle.2.circlepath")
-                    .font(.system(size: 24))
-                    .foregroundStyle(.blue)
-                    .minimumScaleFactor(0.7)
+            if userDefaultsManager.shouldAllowRefresh() {
+                Button(intent: RefreshIntent()) {
+                    Image(systemName: "arrow.triangle.2.circlepath")
+                        .font(.system(size: 24))
+                        .foregroundStyle(.blue)
+                        .minimumScaleFactor(0.7)
+                }
+                .buttonStyle(.bordered)
+            } else {
+                Link(destination: URL(string: "lingowidget://showPaywall")!) {
+                    Image(systemName: "arrow.triangle.2.circlepath")
+                        .font(.system(size: 24))
+                        .foregroundStyle(.blue)
+                        .minimumScaleFactor(0.7)
+                }
             }
-            .buttonStyle(.bordered)
         }
     }
     
