@@ -51,6 +51,7 @@ struct MainView: View {
                     DailyWordCard(
                         word: dailyWordViewModel.currentWord,
                         onKnowTap: {
+                            hapticFeedback()
                             if dailyWordViewModel.shouldAllowRefresh() {
                                 dailyWordViewModel.markCurrentWordAsKnown()
                             } else {
@@ -58,6 +59,7 @@ struct MainView: View {
                             }
                         },
                         onRefreshTap: {
+                            hapticFeedback()
                             if dailyWordViewModel.shouldAllowRefresh() {
                                 dailyWordViewModel.refreshWord(
                                     from: selectedSourceLanguage,
@@ -69,6 +71,7 @@ struct MainView: View {
                             }
                         },
                         onSpeak: { text in
+                            hapticFeedback()
                             dailyWordViewModel.speakWord(text: text)
                         }
                     )
@@ -119,6 +122,7 @@ struct MainView: View {
 
                         PremiumButton {
                             showPremiumSheet = true
+                            hapticFeedback()
                         }
                     }
 

@@ -20,12 +20,14 @@ struct OnboardingView: View {
     private var selectedSourceLanguage = "" {
         didSet {
             nextButtonDisabled = false
+            hapticFeedback()
             localeManager.setLocale(languageCode: selectedSourceLanguage)
         }
     }
     @AppStorage("targetLanguage", store: UserDefaults(suiteName: "group.com.oguzdoruk.lingowidget"))
     private var selectedTargetLanguage = "" {
         didSet {
+            hapticFeedback()
             startLearningButtonDisabled = false
         }
     }
@@ -131,7 +133,10 @@ struct OnboardingView: View {
             }
             .padding(.bottom, 40)
             
-            Button(action: { withAnimation { currentPage = 1 } }) {
+            Button(action: {
+                hapticFeedback()
+                withAnimation { currentPage = 1 }
+            }) {
                 Text("Get Started".localized(language: localeManager.currentLocale))
                     .font(.headline)
                     .foregroundColor(.white)
@@ -220,6 +225,7 @@ struct OnboardingView: View {
                     return
                 }
                 currentPage += 1
+                hapticFeedback()
             }
         }) {
             Text("Next".localized(language: localeManager.currentLocale))
@@ -243,6 +249,7 @@ struct OnboardingView: View {
 
     private var startButton: some View {
         Button(action: {
+            hapticFeedback()
             withAnimation {
                 if !selectedTargetLanguage.isEmpty {
                     completeOnboarding()
@@ -270,6 +277,7 @@ struct OnboardingView: View {
     
     private var backButton: some View {
         Button(action: {
+            hapticFeedback()
             withAnimation {
                 currentPage -= 1
             }

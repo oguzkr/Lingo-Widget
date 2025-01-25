@@ -111,11 +111,13 @@ struct SettingsView: View {
                 isSelectingSourceLanguage = true
                 showLanguageSelection = true
                 self.localeManager.setLocale(languageCode: selectedSourceLanguage)
+                hapticFeedback()
             }
             
             languageRow(title: "I want to learn".localized(language: localeManager.currentLocale), code: selectedTargetLanguage) {
                 isSelectingSourceLanguage = false
                 showLanguageSelection = true
+                hapticFeedback()
             }
             
             Button(action: switchLanguages) {
@@ -159,6 +161,7 @@ struct SettingsView: View {
             
             Button(role: .destructive) {
                 showResetConfirmation = true
+                hapticFeedback()
             } label: {
                 Label("Reset Knowledge".localized(language: localeManager.currentLocale), systemImage: "trash")
             }
@@ -307,7 +310,7 @@ struct SettingsView: View {
         let tempSource = selectedSourceLanguage
         selectedSourceLanguage = selectedTargetLanguage
         selectedTargetLanguage = tempSource
-        
+        hapticFeedback()
         // Refresh the word when languages are changed
         dailyWordViewModel.refreshWord(
             from: selectedSourceLanguage,

@@ -39,6 +39,7 @@ struct OtherAppRow: View {
             
             Button {
                 if let url = URL(string: appStoreUrl) {
+                    hapticFeedback()
                     UIApplication.shared.open(url)
                 }
             } label: {

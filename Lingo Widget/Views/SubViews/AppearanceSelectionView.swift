@@ -43,6 +43,7 @@ struct AppearanceSelectionView: View {
                     isSelected: preferredColorScheme == 0,
                     colorScheme: nil
                 ) {
+                    hapticFeedback()
                     withAnimation {
                         preferredColorScheme = 0
                     }
@@ -55,6 +56,7 @@ struct AppearanceSelectionView: View {
                     isSelected: preferredColorScheme == 1,
                     colorScheme: .light
                 ) {
+                    hapticFeedback()
                     withAnimation {
                         preferredColorScheme = 1
                     }
@@ -67,6 +69,7 @@ struct AppearanceSelectionView: View {
                     isSelected: preferredColorScheme == 2,
                     colorScheme: .dark
                 ) {
+                    hapticFeedback()
                     withAnimation {
                         preferredColorScheme = 2
                     }
