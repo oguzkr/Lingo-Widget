@@ -130,8 +130,14 @@ struct Provider: TimelineProvider {
         
     func getTimeline(in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> ()) {
         let currentDate = Date()
-        let midnight = Calendar.current.startOfDay(for: currentDate)
-        let nextMidnight = Calendar.current.date(byAdding: .day, value: 1, to: midnight)!
+        let calendar = Calendar.current
+        
+        let nextMidnight = calendar.date(bySettingHour: 0,
+                                         minute: 0,
+                                         second: 10, // 
+                                         of: calendar.date(byAdding: .day, value: 1, to: currentDate)!)!
+
+        _ = UserDefaultsManager.shared.shouldAllowRefresh()
         
         let sourceLanguage = sharedDefaults?.string(forKey: "sourceLanguage") ?? "es"
         let targetLanguage = sharedDefaults?.string(forKey: "targetLanguage") ?? "en"
@@ -159,7 +165,6 @@ struct Provider: TimelineProvider {
             ]
         )
         
-        // Recent words'ü mevcut kelimeyi dahil etmeden al
         let recentWords = viewModel.recentWords
             .filter { $0.id != currentWord.id }
             .prefix(2)
