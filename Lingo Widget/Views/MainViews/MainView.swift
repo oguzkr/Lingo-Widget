@@ -154,6 +154,7 @@ struct MainView: View {
             .onChange(of: scenePhase) { oldPhase, newPhase in
                 print("Scene phase changed from \(oldPhase) to \(newPhase)")
                 if newPhase == .active {
+                    _ = UserDefaultsManager.shared.shouldAllowRefresh()
                     dailyWordViewModel.fetchCurrentWord()
                 }
                 if newPhase == .background {

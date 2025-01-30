@@ -75,12 +75,13 @@ final class UserDefaultsManager {
         let calendar = Calendar.current
         let now = Date()
         
-        // Reset the refresh count if it's a new day
-        if let lastDate = lastRefreshDate, !calendar.isDate(lastDate, inSameDayAs: now) {
+        // Modified to handle nil lastRefreshDate case
+        if lastRefreshDate == nil || (lastRefreshDate != nil && !calendar.isDate(lastRefreshDate!, inSameDayAs: now)) {
             dailyRefreshCount = 0
+            // Update lastRefreshDate to prevent multiple resets
+            lastRefreshDate = now
         }
-
-        // Check if refresh count is below limit without incrementing
+        
         return dailyRefreshCount < dailyRefreshLimit
     }
 
