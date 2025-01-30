@@ -67,21 +67,23 @@ final class UserDefaultsManager {
         lastRefreshDate = Date()
     }
 
+    func resetRefreshLimitIfNextDay() {
+        let calendar = Calendar.current
+        let now = Date()
+        
+        if lastRefreshDate == nil || (lastRefreshDate != nil && !calendar.isDate(lastRefreshDate!, inSameDayAs: now)) {
+            dailyRefreshCount = 0 // Reset to 0
+            dailyRefreshLimit = 3 // Always set to 3 for new day
+            lastRefreshDate = now
+        }
+    }
+    
     func shouldAllowRefresh() -> Bool {
         if isPremiumUser {
             return true
         }
         
-        let calendar = Calendar.current
-        let now = Date()
-        
-        // Modified to handle nil lastRefreshDate case
-        if lastRefreshDate == nil || (lastRefreshDate != nil && !calendar.isDate(lastRefreshDate!, inSameDayAs: now)) {
-            dailyRefreshCount = 0
-            // Update lastRefreshDate to prevent multiple resets
-            lastRefreshDate = now
-        }
-        
+        resetRefreshLimitIfNextDay()
         return dailyRefreshCount < dailyRefreshLimit
     }
 
